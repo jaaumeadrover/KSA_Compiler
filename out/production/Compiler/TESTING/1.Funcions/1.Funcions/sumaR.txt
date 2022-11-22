@@ -1,0 +1,14 @@
+
+func void main() {
+    int c;
+    int a <- 2;
+    int b <- 1;
+    c <- sumar(a,b);
+}
+
+func suma(int a,int b){
+    if(b==0){
+        return a;
+    }
+    return 1+suma(a,b-1);
+}

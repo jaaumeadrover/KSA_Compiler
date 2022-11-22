@@ -1,0 +1,15 @@
+func suma(int a,int b){
+    if(b=0){
+        return a;
+    }
+    return 1+suma(a,b-1);
+}
+
+
+
+proc main() {
+    int c;
+    int a <- 2;
+    int b <- 1;
+    c <- sumar(a,b);
+}

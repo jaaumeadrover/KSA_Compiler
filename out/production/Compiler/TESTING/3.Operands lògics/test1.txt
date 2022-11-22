@@ -1,0 +1,11 @@
+//3__Operacions lògiques i condicionals
+
+func void main() {
+    bool x <- true;
+    bool y <- false;
+    bool z <- false;
+
+    if (((! y) $ x) $ z){
+        print("Hola");
+    }
+}

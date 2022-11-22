@@ -1,0 +1,11 @@
+//1__Funció de sumar dos variables
+
+func void main() {
+    int c;
+    int a <- 2;
+    int b <- 1;
+    c <- sumar(a,b);
+}
+ func int sumar(int a, int b) {
+    return a + b;
+}

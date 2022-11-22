@@ -1,0 +1,130 @@
+
+/**
+ Per compilar aquest fitxer s'ha d'haver instal·lat JavaCup
+
+  java -jar java-cup-11b.jar prova.cup
+
+alternativament
+
+  java -classpath path_fins_java-cup-11b.jar java_cup.Main prova.cup
+
+ **/
+
+/**
+ * Assignatura 21780 - Compiladors
+ * Estudis: Grau en Informàtica 
+ * Itinerari: Intel·ligència Artificial i Computació
+ *
+ * Professor: Pere Palmer
+ */
+package compiler.sintactic;
+
+
+
+import java_cup.runtime.ComplexSymbolFactory.ComplexSymbol;
+
+import java_cup.runtime.*;
+
+import compiler.sintactic.Symbols.*;
+
+import java.io.PrintStream;
+import java.util.HashMap;
+
+class Parser;
+
+/**
+ ** Aquí es podria posar un codi 'ad hoc' però en aquest cas no és necessari.
+**/
+parser code {:
+/***
+    private Scanner scanner;
+    public Parser(Scanner scanner) { 
+        this.scanner = scanner;
+    }
+***/
+    private HashMap<String, Double>tsymbols = new HashMap<>();
+
+    public Double getSymbolValue(String id) {
+         return tsymbols.get(id);
+    }
+
+    public void addSymbol(String id, Double value) {
+        if (tsymbols.get(id) == null) {
+            tsymbols.put(id, value);
+        } else {
+            tsymbols.replace(id, value);
+        }
+    }
+
+    public void printVars(PrintStream out) {
+        if (tsymbols.size() == 0) {
+            out.println("No hi ha variables declarades");
+        } else {
+            String fmt = "%-8s: %f";
+            tsymbols.forEach((k,v) -> out.println(String.format(fmt,k,v)));
+        }
+    }
+
+
+    public void printUsage(PrintStream out) {
+        out.println("Calculadora 21780");
+        out.println("=================\n");
+        out.println("Utilització:\n------------");
+        out.println("\tEn mode interactiu, les instruccions han d'acabar en \";\"");
+        out.println("\tEn mode fitxer, el \";\" és opcional\n");
+
+        out.println("Comandes:\n---------");
+        out.println("\texit: acaba el programa");
+        out.println("\tvars: mostra valor de totes les variables utilitzades");
+        out.println("\thelp: mostra aquesta ajuda");
+        out.println("\nOperacions aritmètiques:\n------------------------");
+        
+        out.println("\tEs poden fer sumes, restes, productes, divisions, mòduls i inverses");
+        out.println("\t\t+ - * \\ % inv");
+        out.println("\tEs poden fer assignacions a variables (es declaren automàticament)");
+        out.println("\t\tvariable = valor");
+        out.println("\tEl format dels nombres pot ser: real o enter.");
+        out.println("\tEls enters es poden introduir en format decimal, binari, octal o hexadecimal");
+        out.println("\t\tLes següents expressions representen el mateix valor");
+        out.println("\t\t\t     binari: 0b1101");
+        out.println("\t\t\t      octal: 0o15");
+        out.println("\t\t\thexadecimal: 0xD");
+        out.println("\t\t\t    decimal: 13");
+        out.println("\t\t\t       real: 13.0");
+        out.println("\t\t\t       real: .130E2");
+
+        out.println();
+        out.println("\tans: recupera el darrer valor calculat\n");
+    }
+
+    /**
+     * Variable utilitzada per emmagatzemar el darrer valor calculat. 
+     * Val 0 inicialment
+     **/
+    private double ans = 0;
+
+:}
+
+/**
+ ** També aquí es poden afegir accions a realitzar quan es requereix un token.
+scan with {:     next_token(); :}
+**/
+
+terminal String ID;
+
+terminal ADD, SUB, PROD, DIV, MOD;
+
+
+
+non terminal  E;
+
+
+start with E;
+
+E ::=  E ADD  E     {:  :}
+     | E SUB  E     {:  :}
+     | E PROD E     {:  :}
+     | E DIV  E     {:  :}
+     | E MOD  E     {:  :}
+     | ID           {:  :}
+     ;
