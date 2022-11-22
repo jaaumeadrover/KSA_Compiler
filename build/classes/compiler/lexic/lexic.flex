@@ -87,6 +87,7 @@ r_break     = break
 r_function  = func
 r_procedure = proc
 r_return    = return
+r_comment   = --
 r_while     = while
 r_for       = for
 r_const     = const
@@ -135,43 +136,103 @@ comment = "//"([^\n])*
 // Regles/accions
 // És molt important l'ordre de les regles!!!
 
-{add}                    { System.out.println("ADD: "+this.yytext()); }
-{sub}                    { System.out.println("SUB: "+this.yytext() ) ;   }
-{mul}                    { System.out.println("MUL: "+this.yytext());    }
-{div}                    { System.out.println("DIV: "+this.yytext());    }
-{mod}                    { System.out.println("MOD: "+this.yytext());     }
-{lparen}                 { System.out.println("LPAREN: "+this.yytext());  }
-{rparen}                 { System.out.println("RPAREN: "+this.yytext());  }
+{add}                    { System.out.println("ADD: "+this.yytext());
+                           return symbol(ParserSym.ADD);}
+{sub}                    { System.out.println("SUB: "+this.yytext() ) ;
+                            return symbol(ParserSym.sub);}
+{mul}                    { System.out.println("MUL: "+this.yytext());
+                            return symbol(ParserSym.mul);}
+{div}                    { System.out.println("DIV: "+this.yytext());
+                            return symbol(ParserSym.div);}
+{mod}                    { System.out.println("MOD: "+this.yytext());
+                            return symbol(ParserSym.mod);}
+{lparen}                 { System.out.println("LPAREN: "+this.yytext());
+                            return symbol(ParserSym.lparen);}
+{rparen}                 { System.out.println("RPAREN: "+this.yytext());
+                            return symbol(ParserSym.rparen);}
 
-{bg}                     {System.out.println("BG: "+this.yytext());}
+{bg}                     {System.out.println("BG: "+this.yytext());
+                            return symbol(ParserSym.bg);}
 
-{sm}                     {System.out.println("SM <: "+this.yytext());}
-{sm_eq}                  {System.out.println("SM_EQ <=: "+this.yytext());}
-{eq}                     {System.out.println("EQ =: "+this.yytext());}
-{neg}                    {System.out.println("NEG =: "+this.yytext());}
+{sm}                     {System.out.println("SM <: "+this.yytext());
+                            return symbol(ParserSym.sm);}
+{sm_eq}                  {System.out.println("SM_EQ <=: "+this.yytext());
+                            return symbol(ParserSym.sm_eq);}
+{eq}                     {System.out.println("EQ =: "+this.yytext());
+                            return symbol(ParserSym.eq);}
+{neg}                    {System.out.println("NEG =: "+this.yytext());
+                            return symbol(ParserSym.neg);}
 
-{asig}                   {System.out.println("ASIG: "+this.yytext()); }
-{bg_eq}                  { System.out.println("BIG_EQ: "+this.yytext()); }
+{asig}                   {System.out.println("ASIG: "+this.yytext());
+                            return symbol(ParserSym.asig);}
+{bg_eq}                  { System.out.println("BIG_EQ: "+this.yytext());
+                            return symbol(ParserSym.bg);}
 
 
-{smcol}                  {System.out.println("PUNT I COMA: "+this.yytext());}
-{com}                    { System.out.println("COMA: "+this.yytext()); }
-{brcl}                   { System.out.println("BRCL }: "+this.yytext()); }
-{brop}                   {System.out.println("BROP {: "+this.yytext());}
-{lop}                    {System.out.println("Obrir [: "+this.yytext());}
-{lclose}                 {System.out.println("Tancar ]: "+this.yytext());}
-{lparen}                 {System.out.println("LPAREN: "+this.yytext()); }
-{rparen}                 {System.out.println("RPAREN: "+this.yytext()); }
+{smcol}                  {System.out.println("PUNT I COMA: "+this.yytext());
+                            return symbol(ParserSym.smcol);}
+{com}                    { System.out.println("COMA: "+this.yytext());
+                            return symbol(ParserSym.com);}
+{brcl}                   { System.out.println("BRCL }: "+this.yytext());
+                            return symbol(ParserSym.brcl);}
+{brop}                   {System.out.println("BROP {: "+this.yytext());
+                            return symbol(ParserSym.brop);}
+{lop}                    {System.out.println("Obrir [: "+this.yytext());
+                            return symbol(ParserSym.lop);}
+{lclose}                 {System.out.println("Tancar ]: "+this.yytext());
+                            return symbol(ParserSym.lclose);}
+{lparen}                 {System.out.println("LPAREN: "+this.yytext());
+                            return symbol(ParserSym.lparen);}
+{rparen}                 {System.out.println("RPAREN: "+this.yytext());
+                            return symbol(ParserSym.rparen);}
 
-{r_if}                   {System.out.println("If: "+this.yytext());}
-{r_procedure}            {System.out.println("PROCEDURE: "+this.yytext()); }
-{r_int}                  {System.out.println("keyword int: "+this.yytext());}
-{r_function}             {System.out.println("FUNCTION: "+this.yytext()); }
-{r_return}               {System.out.println("Return!: "+this.yytext());}
-{r_main}                  {System.out.println("Return!: "+this.yytext());}
+{r_if}                   {System.out.println("If: "+this.yytext());
+                            return symbol(ParserSym.r_if);}
+{r_true}                   {System.out.println("If: "+this.yytext());
+                             return symbol(ParserSym.r_true);}
+{r_while}                   {System.out.println("If: "+this.yytext());
+                            return symbol(ParserSym.r_while);}
+{r_break}                   {System.out.println("If: "+this.yytext());
+                            return symbol(ParserSym.r_break);}
+{r_for}                   {System.out.println("If: "+this.yytext());
+                            return symbol(ParserSym.r_for);}
+{r_switch}                   {System.out.println("If: "+this.yytext());
+                            return symbol(ParserSym.r_switch);}
+{r_else}                   {System.out.println("If: "+this.yytext());
+                            return symbol(ParserSym.r_else);}
+{r_const}                   {System.out.println("If: "+this.yytext());
+                            return symbol(ParserSym.r_const);}
+{r_or}                   {System.out.println("If: "+this.yytext());
+                            return symbol(ParserSym.r_or);}
+{r_bool}                   {System.out.println("If: "+this.yytext());
+                            return symbol(ParserSym.r_bool);}
+{r_default}                   {System.out.println("If: "+this.yytext());
+                            return symbol(ParserSym.r_default);}
+{r_case}                   {System.out.println("If: "+this.yytext());
+                            return symbol(ParserSym.r_case);}
+{r_not}                   {System.out.println("If: "+this.yytext());
+                            return symbol(ParserSym.r_not);}
+{r_and}                   {System.out.println("If: "+this.yytext());
+                            return symbol(ParserSym.r_and);}
+{r_comment}                   {System.out.println("If: "+this.yytext());
+                            return symbol(ParserSym.r_comment);}
+{r_false}                   {System.out.println("If: "+this.yytext());
+                            return symbol(ParserSym.r_false);}
+{r_procedure}            {System.out.println("PROCEDURE: "+this.yytext());
+                            return symbol(ParserSym.r_procedure);}
+{r_int}                  {System.out.println("keyword int: "+this.yytext());
+                            return symbol(ParserSym.r_int);}
+{r_function}             {System.out.println("FUNCTION: "+this.yytext());
+                            return symbol(ParserSym.r_function);}
+{r_return}               {System.out.println("Return!: "+this.yytext());
+                            return symbol(ParserSym.r_return);}
+{r_main}                  {System.out.println("Return!: "+this.yytext());
+                            return symbol(ParserSym.r_main);}
 
-{id}                     {System.out.println("ID: "+this.yytext()); }
-{integer}                {System.out.println("INT: "+this.yytext());}
+{id}                     {System.out.println("ID: "+this.yytext());
+                            return symbol(ParserSym.id);}
+{integer}                {System.out.println("INT: "+this.yytext());
+                            return symbol(ParserSym.integer);}
 
 
 

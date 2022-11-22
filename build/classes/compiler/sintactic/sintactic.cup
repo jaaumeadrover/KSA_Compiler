@@ -90,7 +90,6 @@ non terminal SymbolConstSwitch constSwitch;
 non terminal SymbolRealExpr realExpr;
 non terminal SymbolBolExpr boolExpr;
 non terminal SymbolOperador op;
-non terminal SymbolBool bool;
 
 non terminal SymbolBoolOp boolOp;
 non terminal SymbolAritOp aritOp;
@@ -228,7 +227,7 @@ realOp::= neg|eq|bg|sm|bg_eq|sm_eq;
 
 //EXPRESSIONS
 boolExpr::= r_not exprSimple
-    |exprSimple boolOp exprSimple | bool;
+    |exprSimple boolOp exprSimple | r_bool;
 
 aritExpr ::= exprSimple aritOp exprSimple;
 

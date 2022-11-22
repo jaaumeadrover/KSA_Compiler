@@ -2,97 +2,102 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71e0d910-71c7-4acf-8b8b-096e7e30d792" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/build.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/1.Funcions/mult.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/1.Funcions/resta.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/1.Funcions/suma.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/1.Funcions/sumaR.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/TESTING/2.Arrays/print.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/TESTING/3.Operands lògics/test1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/calculadora/Calculadora.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/Prova.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/java-cup-11b-runtime.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Compiler.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Compiler.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/1.Funcions/mult.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/1.Funcions/mult.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/1.Funcions/resta.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/1.Funcions/resta.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/1.Funcions/suma.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/1.Funcions/suma.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/1.Funcions/sumaR.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/1.Funcions/sumaR.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/prova.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/prova.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/TESTING/2.Arrays/print.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/TESTING/2.Arrays/print.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/TESTING/3.Operands lògics/test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/TESTING/3.Operands lògics/test1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/TablaSimbolos/Simbol.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/TablaSimbolos/TaulaSimbols.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/TablaSimbolos/TipusSub.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/dudas.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/java-cup-11b.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/jflex-1.6.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/Scanner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/lexic.flex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/prova.flex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/Parser$CUP$Parser$actions.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/Parser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/ParserSym.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/Symbols/SymbolBase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/Symbols/SymbolE.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/Symbols/SymbolEp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/Symbols/SymbolF.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/Symbols/SymbolT.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/Symbols/SymbolTp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/Prova.rs" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/lexic/Prova.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/Scanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/lexic/Scanner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/java-cup-11b.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/lexic/lexic.flex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/prova.jflex" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/lexic/prova.jflex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/prova.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/lexic/prova.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/prova.flex" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/prova.flex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/prova.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/prova.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/prova.cup" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic.cup" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler_v2/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler_v2/Yylex.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic.cup" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic.cup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic_og.cup" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler_v2/entrada.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler_v2/example_expr.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler_v2/java-cup-11b-runtime.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler_v2/java-cup-11b.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler_v2/jflex-1.6.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler_v2/parser$CUP$parser$actions.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler_v2/parser.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler_v2/parser.cup" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler_v2/scanner.jflex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler_v2/sym.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/lib/java-cup-11b-runtime.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/lib/java-cup-11b.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/lib/jflex-1.6.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/syntax.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.mf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/build-impl.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/genfiles.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/config.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TESTING/1.Funcions/1.Funcions/mult.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TESTING/1.Funcions/1.Funcions/resta.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TESTING/1.Funcions/1.Funcions/suma.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TESTING/1.Funcions/1.Funcions/sumaR.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TESTING/2.Arrays/print.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TESTING/3.Operands lògics/test1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/calculadora/Calculadora.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Prova.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Prova.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/java-cup-11b-runtime.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/syntax.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/syntax.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.mf" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.mf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/build-impl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/build-impl.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/genfiles.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/genfiles.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Compiler/TESTING/1.Funcions/1.Funcions/mult.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compiler/TESTING/1.Funcions/1.Funcions/mult.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Compiler/TESTING/1.Funcions/1.Funcions/resta.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compiler/TESTING/1.Funcions/1.Funcions/resta.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Compiler/TESTING/1.Funcions/1.Funcions/suma.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compiler/TESTING/1.Funcions/1.Funcions/suma.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Compiler/TESTING/1.Funcions/1.Funcions/sumaR.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compiler/TESTING/1.Funcions/1.Funcions/sumaR.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Compiler/TESTING/2.Arrays/print.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compiler/TESTING/2.Arrays/print.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Compiler/TESTING/3.Operands lògics/test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compiler/TESTING/3.Operands lògics/test1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Compiler/compiler/sintactic/prova.cup" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compiler/compiler/sintactic/prova.cup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Compiler/compiler/sintactic/sintactic.cup" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compiler/compiler/sintactic/sintactic.cup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Compiler/compiler_v2/example_expr.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compiler/compiler_v2/example_expr.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Compiler/compiler_v2/parser.cup" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compiler/compiler_v2/parser.cup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Compiler/compiler_v2/scanner.jflex" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compiler/compiler_v2/scanner.jflex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Compiler/syntax.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Compiler/syntax.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TESTING/1.Funcions/1.Funcions/mult.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/TESTING/1.Funcions/1.Funcions/mult.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TESTING/1.Funcions/1.Funcions/resta.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/TESTING/1.Funcions/1.Funcions/resta.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TESTING/1.Funcions/1.Funcions/suma.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/TESTING/1.Funcions/1.Funcions/suma.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TESTING/1.Funcions/1.Funcions/sumaR.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/TESTING/1.Funcions/1.Funcions/sumaR.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TESTING/1.Funcions/prova.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/TESTING/1.Funcions/prova.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TESTING/2.Arrays/print.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/TESTING/2.Arrays/print.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TESTING/3.Operands lògics/test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/TESTING/3.Operands lògics/test1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/Prova.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Prova.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/TablaSimbolos/Simbol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/TablaSimbolos/TaulaSimbols.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/TablaSimbolos/Tipus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/TablaSimbolos/TipusSub.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/dudas.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/java-cup-11b.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/jflex-1.6.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/Scanner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/prova.flex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/ParserSym.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/Prova.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/Prova.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/Scanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/java-cup-11b.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/prova.jflex" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/prova.jflex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/prova.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/prova.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/prova.flex" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/prova.flex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/prova.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/prova.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/ParserSym.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/ParserSym.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Symbols/SymbolBase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Symbols/SymbolE.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Symbols/SymbolEp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Symbols/SymbolF.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Symbols/SymbolT.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Symbols/SymbolTp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Symbols/SymbolDeclList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Symbols/SymbolInitArray.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/prova.cup" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic.cup" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler_v2/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler_v2/Yylex.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler_v2/entrada.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler_v2/example_expr.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler_v2/java-cup-11b-runtime.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler_v2/java-cup-11b.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler_v2/jflex-1.6.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler_v2/parser.cup" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler_v2/parser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler_v2/scanner.jflex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler_v2/sym.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/java-cup-11b-runtime.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/java-cup-11b.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/jflex-1.6.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/syntax.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/syntax.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/syntax.txt" afterDir="false" />
+    </list>
+    <list id="ab83df2f-db2f-4a4f-bd2c-3021c33f021d" name="Changes by diegofes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic.cup" afterDir="false" />
+    </list>
+    <list id="2572b6af-eb77-4ec6-99e0-0777f62cbc4a" name="Changes by joanbalaguer" comment="">
+      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" afterDir="false" />
+    </list>
+    <list id="900794de-462a-45ea-9421-4b03734daadb" name="Changes by messi" comment="">
+      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +105,21 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/compiler/lexic/lexic.flex">
+      <ranges>
+        <range start1="89" end1="89" start2="89" end2="90" changelist="71e0d910-71c7-4acf-8b8b-096e7e30d792" />
+        <range start1="137" end1="144" start2="138" end2="152" changelist="71e0d910-71c7-4acf-8b8b-096e7e30d792" />
+        <range start1="145" end1="146" start2="153" end2="155" changelist="2572b6af-eb77-4ec6-99e0-0777f62cbc4a" />
+        <range start1="147" end1="151" start2="156" end2="164" changelist="2572b6af-eb77-4ec6-99e0-0777f62cbc4a" />
+        <range start1="152" end1="154" start2="165" end2="169" changelist="2572b6af-eb77-4ec6-99e0-0777f62cbc4a" />
+        <range start1="156" end1="164" start2="171" end2="187" changelist="900794de-462a-45ea-9421-4b03734daadb" />
+        <range start1="165" end1="171" start2="188" end2="230" changelist="900794de-462a-45ea-9421-4b03734daadb" />
+        <range start1="172" end1="174" start2="231" end2="235" changelist="900794de-462a-45ea-9421-4b03734daadb" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -119,7 +138,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/diegofes/GitHub/Compiler-UIB"
+    "last_opened_file_path": "C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r quatri/COMPILADORS/PRÀCTICA KSA/KSA_Compiler"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -132,6 +151,7 @@
       <updated>1665744410559</updated>
       <workItem from="1665744411659" duration="113000" />
       <workItem from="1665746506625" duration="1259000" />
+      <workItem from="1669118144533" duration="2036000" />
     </task>
     <servers />
   </component>

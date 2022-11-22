@@ -32,7 +32,7 @@ public class Main {
             } else {
                 //System.out.println("Escriu l'expressió que vols calcular (help; per ajuda):");
                 //System.out.print(">>> ");
-                input = new FileReader("C:\\Users\\Jaume\\Documents\\NetBeansProjects\\Compiler-UIB\\PracticaCompiler\\src\\compiler\\prova.txt");
+                input = new FileReader("C:\\Users\\Jaume\\Desktop\\UIB\\Cursos\\TERCER\\1r quatri\\COMPILADORS\\PRÀCTICA KSA\\KSA_Compiler\\src\\compiler\\prova.txt");
                 //input = new InputStreamReader(System.in);
             }
 
