@@ -804,7 +804,7 @@ public class Scanner implements java_cup.runtime.Scanner {
       if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
         zzAtEOF = true;
             zzDoEOF();
-          { 
+          {     return symbol(ParserSym.EOF);
  }
       }
       else {

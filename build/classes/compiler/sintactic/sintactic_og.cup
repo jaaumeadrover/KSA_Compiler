@@ -111,21 +111,18 @@ non terminal  SymbolArgType   argType;
 non terminal  SymbolType   type;
 non terminal  SymbolStatementList   statementList;
 non terminal  SymbolStatement   statement;
-non terminal  SymbolWhileStatement   whileIteration;
+non terminal  SymbolWhileStatement   whileStatement;
 non terminal  SymbolForStatement   forIteration;
 non terminal  SymbolForInit   forInit;
 non terminal  SymbolForPostExpression   forPostExpression;
 non terminal  SymbolIfStatement   ifStatement;
 non terminal  SymbolElseIfStatement   elseIfStatement;
 non terminal  SymbolElseStatement   elseStatement;
-non terminal  SymbolExpressio   exprSimple;
-non terminal  SymbolArithmeticalExpression   aritExpr;
+non terminal  SymbolExpressioSimple  exprSimple;
 non terminal  SymbolSubProgramCall   subProgramCall;
 non terminal  SymbolSubProgramContCall   subProgramContCall;
 non terminal  SymbolArray      array;
 non terminal  SymbolArrayInit  arrayInit;
-non terminal SymbolRealExpr realExpr;
-non terminal SymbolBolExpr boolExpr;
 non terminal SymbolOperador op;
 non terminal SymbolOper operacio;
 non terminal SymbolValor valor;
@@ -144,125 +141,158 @@ precedence left  mul, div, mod;
 
 start with program;
 
-program ::= declList r_main brop statementList brcl {:System.out.println("SOC UN SYMBOL PROGRAM");:} //producció inicial
+program ::= declList r_main lparen rparen brop statementList brcl {:RESULT = new SymbolProgram();:} //producció inicial
     ;
 
 //DECLARACIONS
-declList ::= declList decl {:return new SymbolDeclList();:} //Llista declaracions
-    |
+declList ::= declList decl {:RESULT=new SymbolDeclList();:} //Llista declaracions
+    |                      {:RESULT=new SymbolDeclList();:}
     ;
-decl ::= varDecl smcol      //declaració de variables,funcions o procediments
-    | funcDecl
-    | procDecl
+decl ::= varDecl smcol    {:RESULT = new SymbolDecl();:}  //declaració de variables,funcions o procediments
+    | funcDecl            {:RESULT = new SymbolDecl();:}
+    | procDecl            {:RESULT = new SymbolDecl();:}
     ;
 //DECLARACIÓ VARIABLES
-varDecl ::=r_const type id varInit    //declaració de una constant
-    |type id varInit                 //declaració d'una variable
-    |varDecl com id varInit;
+varDecl ::=r_const type id varInit      {:RESULT=new SymbolVarDecl();:}//declaració de una constant
+    |type id varInit                    {:RESULT=new SymbolVarDecl();:}//declaració d'una variable
+    |varDecl com id varInit             {:RESULT=new SymbolVarDecl();:}
+    ;
 
-varInit ::= asig exprSimple     //asigació d'un valor a una variable
-    |asig arrayInit
-    |asig subProgramCall
+varInit ::= asig exprSimple              {:RESULT =new SymbolVarInit();:}     //asigació d'un valor a una variable
+    |asig arrayInit                      {:RESULT =new SymbolVarInit();:}
+    |                                    {:RESULT = new SymbolVarInit();:}
+    //|asig subProgramCall                 {:RESULT =new SymbolVarInit();:}
     ;
 //ARRAYS!
-arrayInit ::=type lop integer lclose;//inicialització d'un array: 'nom' [arrayEllist]
+arrayInit ::=type lop integer lclose {:RESULT =new  SymbolArrayInit();:}
+;//inicialització d'un array: 'nom' [arrayEllist]
 
-type ::= r_int|r_bool|r_string;
+type ::= r_int                 {:RESULT=new SymbolType();:}
+    |r_bool                    {:RESULT=new SymbolType();:}
+    |r_string                  {:RESULT=new SymbolType();:}
+    ;
 
 
 //FUNCIONS
-funcDecl ::= r_function type id funcCap brop statementList brcl ; //declaració d'una funció
+funcDecl ::= r_function type id funcCap brop statementList brcl {:RESULT=new SymbolFuncDecl();:}
+    ; //declaració d'una funció
 
-funcCap ::= funcContCap rparen                           //declaració de parentesis per als arguments
-    | lparen rparen
+funcCap ::= funcContCap rparen              {:RESULT=new SymbolFuncCap();:}               //declaració de parentesis per als arguments
+    | lparen rparen                         {:RESULT=new SymbolFuncCap();:}
     ;
 
-funcContCap ::= lparen argType type id        //tancam parentesis i definim els paràmetres
-    | funcContCap com argType type id
+funcContCap ::= lparen argType type id   {:RESULT =new SymbolFuncContCap();:}     //tancam parentesis i definim els paràmetres
+    | funcContCap com argType type id    {:RESULT =new SymbolFuncContCap();:}
     ;
 
-procDecl ::= r_procedure id procCap brop statementList brcl; //declaració d'un procediment: proc 'nom' parametres {...}
+procDecl ::= r_procedure id procCap brop statementList brcl{:RESULT =new SymbolProcDecl();:}; //declaració d'un procediment: proc 'nom' parametres {...}
 
-procCap ::=procContCap rparen       //declaració de parentesis per als arguments
-    |lparen rparen
+procCap ::=procContCap rparen       {:RESULT = new SymbolProcCap();:} //declaració de parentesis per als arguments
+    |lparen rparen                  {:RESULT = new SymbolProcCap();:}
     ;
 
-procContCap ::= lparen argType type id //tancam parentesis i definim els paràmetres
-    | procContCap com argType type id
+procContCap ::= lparen argType type id  {:RESULT = new SymbolProcContCap();:}//tancam parentesis i definim els paràmetres
+    | procContCap com argType type id   {:RESULT = new SymbolProcContCap();:}
     ;
 
-argType ::= r_const //tipus d'argument (constant o no)
-    | ;
+argType ::= r_const {:RESULT = new SymbolArgType();:}   //tipus d'argument (constant o no)
+    | {:RESULT = new SymbolArgType();:}
+    ;
 //INSTRUCCIONS
-statementList ::= statement statementList {:return new SymbolStatementList();:}      //declaració d'una llista
-    |;
+statementList ::= statement statementList {:RESULT= new SymbolStatementList();:}      //declaració d'una llista
+    |                                     {:RESULT=new SymbolStatementList();:}
+    ;
 
-statement ::= varDecl smcol
-    |exprSimple smcol//posava expression
-    |subProgramCall smcol
-    |forIteration
-    |whileIteration
-    |ifStatement
-    |SwitchCase
-    |r_return exprSimple
-    |r_break;
+statement ::= varDecl smcol         {:RESULT=new SymbolStatement();:}
+    |exprSimple smcol               {:RESULT=new SymbolStatement();:}
+    //|subProgramCall smcol           {:RESULT=new SymbolStatement();:}
+    |forIteration                   {:RESULT=new SymbolStatement();:}
+    |whileStatement                 {:RESULT=new SymbolStatement();:}
+    |ifStatement                    {:RESULT=new SymbolStatement();:}
+    |SwitchCase                     {:RESULT=new SymbolStatement();:}
+    |r_return exprSimple smcol      {:RESULT=new SymbolStatement();:}
+    |r_break smcol                  {:RESULT=new SymbolStatement();:}
+    ;
 
 
 //EXPRESSIONS
-exprSimple ::=lparen exprSimple rparen operacio
-    |valor operacio
+exprSimple ::=lparen exprSimple rparen operacio{:RESULT=new SymbolExpressioSimple();:}
+    |valor operacio                            {:RESULT=new SymbolExpressioSimple();:}
     ;
 
-valor::= id
-    |array
-    |integer {:System.out.println("VALOR ENTER ASSIGNAT");:}
-    |bool
-    |r_not bool
+valor::= id                         {:RESULT=new SymbolValor();:}
+    |array                          {:RESULT=new SymbolValor();:}
+    |integer                        {:RESULT=new SymbolValor();:}
+    |bool                           {:RESULT=new SymbolValor();:}
+    |r_not bool                     {:RESULT=new SymbolValor();:}
+    |subProgramCall                 {:RESULT=new SymbolValor();:}
     ;
 
-array::=id lop exprSimple lclose;
+array::=id lop exprSimple lclose {:RESULT=new SymbolArray();:}
+;
 
-operacio::=op exprSimple|;
+operacio::=op exprSimple   {:RESULT = new SymbolOper();:}
+            |              {:RESULT = new SymbolOper();:}
+            ;
 
 //OPERADORS
-op::= boolOp|aritOp|realOp;
-boolOp::= r_and|r_or ;
-aritOp ::= add|sub|mul|div|mod;
-realOp::= neg|eq|bg|sm|bg_eq|sm_eq;
+op::= boolOp {:RESULT = new SymbolOperador();:}
+|aritOp      {:RESULT = new SymbolOperador();:}
+|realOp      {:RESULT = new SymbolOperador();:}
+;
+
+boolOp::= r_and {:RESULT = new SymbolBoolOp();:}
+|r_or           {:RESULT = new SymbolBoolOp();:}
+;
+
+aritOp ::= add {:RESULT = new SymbolAritOp();:}
+|sub           {:RESULT = new SymbolAritOp();:}
+|mul           {:RESULT = new SymbolAritOp();:}
+|div           {:RESULT = new SymbolAritOp();:}
+|mod           {:RESULT = new SymbolAritOp();:}
+;
+
+realOp::= neg {:RESULT = new SymbolRealOp();:}
+|eq           {:RESULT = new SymbolRealOp();:}
+|bg           {:RESULT = new SymbolRealOp();:}
+|sm           {:RESULT = new SymbolRealOp();:}
+|bg_eq        {:RESULT = new SymbolRealOp();:}
+|sm_eq        {:RESULT = new SymbolRealOp();:}
+;
 
 
-subProgramCall ::= id lparen rparen
-    |subProgramContCall rparen
+subProgramCall ::= id lparen rparen {:RESULT = new SymbolSubProgramCall();:}
+|subProgramContCall rparen          {:RESULT = new SymbolSubProgramCall();:}
+;
+
+subProgramContCall ::= id lparen exprSimple {:RESULT = new SymbolSubProgramContCall();:}
+    |subProgramContCall com exprSimple      {:RESULT = new SymbolSubProgramContCall();:}
     ;
 
-subProgramContCall ::= id lparen exprSimple
-    | subProgramContCall com exprSimple
+SwitchCase ::= r_switch lparen exprSimple rparen brop LCases Default brcl {:RESULT = new SymbolSwitchCase();:};
+LCases ::= Case LCases {:RESULT = new SymbolLCases();:}
+    |                  {:RESULT = new SymbolLCases();:}
+    ;
+Case ::= r_case exprSimple twodots statementList {:RESULT = new SymbolCase();:};
+Default ::= r_default twodots statementList      {:RESULT = new SymbolDefault();:}
+    |                                            {:RESULT = new SymbolDefault();:}
+    ;
+forIteration ::= r_for lparen forInit smcol exprSimple smcol forPostExpression rparen brop statementList brcl {:RESULT = new SymbolForStatement();:}
     ;
 
-SwitchCase ::= r_switch lparen exprSimple rparen brop LCases Default brcl;
-LCases ::= Case LCases
-    |
-    ;
-Case ::= r_case exprSimple twodots statementList;
-Default ::= r_default twodots statementList
-    |
-    ;
-forIteration ::= r_for lparen forInit smcol exprSimple smcol forPostExpression rparen brop statementList brcl
+forInit ::= varDecl {:RESULT = new SymbolForInit();:}//inicialització de l'iterador
+    |               {:RESULT = new SymbolForInit();:};
+
+forPostExpression ::= exprSimple  {:RESULT = new SymbolForPostExpression();:}//declaració de la postExpressio
+    |                             {:RESULT = new SymbolForPostExpression();:}
     ;
 
-forInit ::= varDecl //inicialització de l'iterador
-    | ;
+whileStatement ::= r_while lparen exprSimple rparen brop statementList brcl {:RESULT = new SymbolWhileStatement();:};//while (expresio){...}
 
-forPostExpression ::= exprSimple  //declaració de la postExpressio
-    |
-    ;
+ifStatement ::= r_if lparen exprSimple rparen elseStatement brcl {:RESULT = new SymbolIfStatement();:};
 
-whileIteration ::= r_while lparen exprSimple rparen brop statementList brcl; //while (expresio){...}
-
-ifStatement ::= r_if lparen exprSimple rparen elseStatement brcl;
-
-elseStatement ::= elseIfStatement r_else brop statementList
-    | brop statementList
+elseStatement ::= elseIfStatement r_else brop statementList {:RESULT = new SymbolElseStatement();:}
+    | brop statementList                                    {:RESULT = new SymbolElseStatement();:}
     ;
 
 

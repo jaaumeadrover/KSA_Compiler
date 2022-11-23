@@ -1,5 +1,5 @@
 
-main( {
+main() {
     bool x <- true;
     bool y <- false;
     bool z <- false;

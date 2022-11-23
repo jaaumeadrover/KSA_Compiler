@@ -1,7 +1,7 @@
 package compiler.Symbols;
 
-public class SymbolExpressio extends SymbolBase{
-    public SymbolExpressio(){
+public class SymbolExpressioSimple extends SymbolBase{
+    public SymbolExpressioSimple(){
         System.out.println("SOC UN SYMBOL SYMBOLEXPRESSIO");
     }
 }

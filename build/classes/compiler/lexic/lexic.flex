@@ -46,7 +46,7 @@ La línia anterior és una alternativa a la indicació element a element:
 %column
 
 %eofval{
-
+    return symbol(ParserSym.EOF);
 %eofval}
 // Declaracions
 
