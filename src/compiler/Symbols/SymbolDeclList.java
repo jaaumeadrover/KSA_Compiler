@@ -5,7 +5,7 @@
  *
  * Professor: Pere Palmer
  */
-package compiler.sintactic.Symbols;
+package compiler.Symbols;
 
 import java_cup.runtime.ComplexSymbolFactory.ComplexSymbol;
 
@@ -28,20 +28,8 @@ public class SymbolDeclList extends SymbolBase {
 
     }
 
-    /**
-     * construeix una variable E a partir del valor que es rep. Servei pes
-     * cassos d'assignació
-     * @param valor el valor que té
-     */
-    public SymbolE(SymbolDecl decl) {
-        super("E", valor); // Crear instància amb el valor rebut
+    public SymbolDeclList() {
+        System.out.println("Soc un Declist"); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-
-    /**
-     * construeix una variable Ep buida (en una derivació a lambda)
-     */
-    public SymbolE() {
-        super(); // Crear instància amb un valor fals
-    }
 }

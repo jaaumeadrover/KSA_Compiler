@@ -5,7 +5,7 @@
  *
  * Professor: Pere Palmer
  */
-package compiler.sintactic.Symbols;
+package compiler.Symbols;
 
 import java_cup.runtime.ComplexSymbolFactory.ComplexSymbol;
 

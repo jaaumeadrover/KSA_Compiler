@@ -69,6 +69,7 @@ div          = \/
 mod          = \%
 asig         = <-
 smcol        = ;
+twodots      = :
 com          = ,
 brop         = \{
 brcl         = \}
@@ -87,7 +88,6 @@ r_break     = break
 r_function  = func
 r_procedure = proc
 r_return    = return
-r_comment   = --
 r_while     = while
 r_for       = for
 r_const     = const
@@ -96,8 +96,6 @@ r_or        = or
 r_not       = not
 r_int       = int
 r_bool      = bool
-r_true      = true
-r_false     = false
 r_main      = main
 
 /* Altres */
@@ -105,7 +103,7 @@ new_line = ([\n\r]|(\n\r))+
 blank = [ \t\r]+
 
 /* Comentaris */
-comment = "//"([^\n])*
+r_comment = "//"([^\n])*
 
 // El següent codi es copiarà també, dins de la classe. És a dir, si es posa res
 // ha de ser en el format adient: mètodes, atributs, etc. 
@@ -137,7 +135,7 @@ comment = "//"([^\n])*
 // És molt important l'ordre de les regles!!!
 
 {add}                    { System.out.println("ADD: "+this.yytext());
-                           return symbol(ParserSym.ADD);}
+                           return symbol(ParserSym.add);}
 {sub}                    { System.out.println("SUB: "+this.yytext() ) ;
                             return symbol(ParserSym.sub);}
 {mul}                    { System.out.println("MUL: "+this.yytext());
@@ -150,7 +148,10 @@ comment = "//"([^\n])*
                             return symbol(ParserSym.lparen);}
 {rparen}                 { System.out.println("RPAREN: "+this.yytext());
                             return symbol(ParserSym.rparen);}
-
+"true"                   { System.out.println("RPAREN: "+this.yytext());
+                            return symbol(ParserSym.bool);}
+"false"                   { System.out.println("RPAREN: "+this.yytext());
+                            return symbol(ParserSym.bool);}
 {bg}                     {System.out.println("BG: "+this.yytext());
                             return symbol(ParserSym.bg);}
 
@@ -171,6 +172,10 @@ comment = "//"([^\n])*
 
 {smcol}                  {System.out.println("PUNT I COMA: "+this.yytext());
                             return symbol(ParserSym.smcol);}
+
+{twodots}                  {System.out.println("DOS PUNTS: "+this.yytext());
+                            return symbol(ParserSym.twodots);}
+
 {com}                    { System.out.println("COMA: "+this.yytext());
                             return symbol(ParserSym.com);}
 {brcl}                   { System.out.println("BRCL }: "+this.yytext());
@@ -188,8 +193,6 @@ comment = "//"([^\n])*
 
 {r_if}                   {System.out.println("If: "+this.yytext());
                             return symbol(ParserSym.r_if);}
-{r_true}                   {System.out.println("If: "+this.yytext());
-                             return symbol(ParserSym.r_true);}
 {r_while}                   {System.out.println("If: "+this.yytext());
                             return symbol(ParserSym.r_while);}
 {r_break}                   {System.out.println("If: "+this.yytext());
@@ -214,10 +217,9 @@ comment = "//"([^\n])*
                             return symbol(ParserSym.r_not);}
 {r_and}                   {System.out.println("If: "+this.yytext());
                             return symbol(ParserSym.r_and);}
-{r_comment}                   {System.out.println("If: "+this.yytext());
-                            return symbol(ParserSym.r_comment);}
-{r_false}                   {System.out.println("If: "+this.yytext());
-                            return symbol(ParserSym.r_false);}
+{r_comment}                {System.out.println("If: "+this.yytext());}
+
+
 {r_procedure}            {System.out.println("PROCEDURE: "+this.yytext());
                             return symbol(ParserSym.r_procedure);}
 {r_int}                  {System.out.println("keyword int: "+this.yytext());

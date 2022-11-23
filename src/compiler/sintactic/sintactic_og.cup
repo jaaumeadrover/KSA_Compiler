@@ -25,7 +25,7 @@ import java_cup.runtime.ComplexSymbolFactory.ComplexSymbol;
 
 import java_cup.runtime.*;
 
-import compiler.sintactic.Symbols.*;
+import compiler.Symbols.*;
 
 import java.io.PrintStream;
 import java.util.HashMap;
@@ -39,7 +39,7 @@ parser code {:
 
     private Scanner scanner;
 
-    public Parser(Scanner scanner) {
+    public Parser(Scanner scanner){
         this.scanner = scanner;
     }
 
@@ -66,38 +66,6 @@ parser code {:
         }
     }
 
-
-    public void printUsage(PrintStream out) {
-        out.println("Calculadora 21780");
-        out.println("=================\n");
-        out.println("Utilització:\n------------");
-        out.println("\tEn mode interactiu, les instruccions han d'acabar en \";\"");
-        out.println("\tEn mode fitxer, el \";\" és opcional\n");
-
-        out.println("Comandes:\n---------");
-        out.println("\texit: acaba el programa");
-        out.println("\tvars: mostra valor de totes les variables utilitzades");
-        out.println("\thelp: mostra aquesta ajuda");
-        out.println("\nOperacions aritmètiques:\n------------------------");
-
-        out.println("\tEs poden fer sumes, restes, productes, divisions, mòduls i inverses");
-        out.println("\t\t+ - * \\ % inv");
-        out.println("\tEs poden fer assignacions a variables (es declaren automàticament)");
-        out.println("\t\tvariable = valor");
-        out.println("\tEl format dels nombres pot ser: real o enter.");
-        out.println("\tEls enters es poden introduir en format decimal, binari, octal o hexadecimal");
-        out.println("\t\tLes següents expressions representen el mateix valor");
-        out.println("\t\t\t     binari: 0b1101");
-        out.println("\t\t\t      octal: 0o15");
-        out.println("\t\t\thexadecimal: 0xD");
-        out.println("\t\t\t    decimal: 13");
-        out.println("\t\t\t       real: 13.0");
-        out.println("\t\t\t       real: .130E2");
-
-        out.println();
-        out.println("\tans: recupera el darrer valor calculat\n");
-    }
-
     /**
      * Variable utilitzada per emmagatzemar el darrer valor calculat.
      * Val 0 inicialment
@@ -115,7 +83,7 @@ scan with {:     next_token(); :}
 //TERMINALS
 
 //identificadores
-terminal id,boolean;
+terminal id,bool;
 //enteros
 terminal integer;
 //operadors
@@ -123,7 +91,7 @@ terminal bg, sm, bg_eq, sm_eq, eq, neg;
 //operaciones
 terminal add, sub, mul, div, mod;
 //caracteres suplementarios
-terminal asig, smcol, com, brop, brcl, lop, lclose, lparen, rparen;
+terminal asig, smcol, twodots, com, brop, brcl, lop, lclose, lparen, rparen;
 //palabras reservadas
 terminal r_if, r_else, r_switch, r_case, r_default, r_break, r_function, r_procedure, r_return, r_while, r_for, r_const,
          r_and, r_or, r_not, r_int, r_bool, r_main, r_string;
@@ -136,7 +104,6 @@ non terminal  SymbolVarInit  varInit;
 non terminal  SymbolFuncDecl   funcDecl;
 non terminal  SymbolFuncCap   funcCap;
 non terminal  SymbolFuncContCap   funcContCap;
-non terminal  SymbolBloc   bloc;
 non terminal  SymbolProcDecl   procDecl;
 non terminal  SymbolProcCap   procCap;
 non terminal  SymbolProcContCap   procContCap;
@@ -148,29 +115,27 @@ non terminal  SymbolWhileStatement   whileIteration;
 non terminal  SymbolForStatement   forIteration;
 non terminal  SymbolForInit   forInit;
 non terminal  SymbolForPostExpression   forPostExpression;
-non terminal  SymbolSwitchStatement   switchStatement;
-non terminal  SymbolContSwitch   contSwitch;
-non terminal  SymbolSwitchCaseCont   switchCaseCont;
 non terminal  SymbolIfStatement   ifStatement;
 non terminal  SymbolElseIfStatement   elseIfStatement;
 non terminal  SymbolElseStatement   elseStatement;
 non terminal  SymbolExpressio   exprSimple;
 non terminal  SymbolArithmeticalExpression   aritExpr;
-non terminal  SymbolAssignacio   expression;
 non terminal  SymbolSubProgramCall   subProgramCall;
 non terminal  SymbolSubProgramContCall   subProgramContCall;
 non terminal  SymbolArray      array;
 non terminal  SymbolArrayInit  arrayInit;
-non terminal SymbolConstSwitch constSwitch;
 non terminal SymbolRealExpr realExpr;
 non terminal SymbolBolExpr boolExpr;
 non terminal SymbolOperador op;
-non terminal SymbolBool bool;
 non terminal SymbolOper operacio;
 non terminal SymbolValor valor;
 non terminal SymbolBoolOp boolOp;
 non terminal SymbolAritOp aritOp;
 non terminal SymbolRealOp realOp;
+non terminal SymbolSwitchCase SwitchCase;
+non terminal SymbolLCases LCases;
+non terminal SymbolCase Case;
+non terminal SymbolDefault Default;
 
 precedence right asig;
 precedence left  add, sub;
@@ -179,11 +144,11 @@ precedence left  mul, div, mod;
 
 start with program;
 
-program ::= declList r_main brop statementList brcl {: :} //producció inicial
+program ::= declList r_main brop statementList brcl {:System.out.println("SOC UN SYMBOL PROGRAM");:} //producció inicial
     ;
 
 //DECLARACIONS
-declList ::= declList decl {: :} //Llista declaracions
+declList ::= declList decl {:return new SymbolDeclList();:} //Llista declaracions
     |
     ;
 decl ::= varDecl smcol      //declaració de variables,funcions o procediments
@@ -206,7 +171,7 @@ type ::= r_int|r_bool|r_string;
 
 
 //FUNCIONS
-funcDecl ::= r_function type id funcCap brop bloc brcl ; //declaració d'una funció
+funcDecl ::= r_function type id funcCap brop statementList brcl ; //declaració d'una funció
 
 funcCap ::= funcContCap rparen                           //declaració de parentesis per als arguments
     | lparen rparen
@@ -216,7 +181,7 @@ funcContCap ::= lparen argType type id        //tancam parentesis i definim els 
     | funcContCap com argType type id
     ;
 
-procDecl ::= r_procedure id procCap brop bloc brcl; //declaració d'un procediment: proc 'nom' parametres {...}
+procDecl ::= r_procedure id procCap brop statementList brcl; //declaració d'un procediment: proc 'nom' parametres {...}
 
 procCap ::=procContCap rparen       //declaració de parentesis per als arguments
     |lparen rparen
@@ -229,7 +194,7 @@ procContCap ::= lparen argType type id //tancam parentesis i definim els paràme
 argType ::= r_const //tipus d'argument (constant o no)
     | ;
 //INSTRUCCIONS
-statementList ::= statement statementList      //declaració d'una llista
+statementList ::= statement statementList {:return new SymbolStatementList();:}      //declaració d'una llista
     |;
 
 statement ::= varDecl smcol
@@ -238,7 +203,7 @@ statement ::= varDecl smcol
     |forIteration
     |whileIteration
     |ifStatement
-    |switchStatement
+    |SwitchCase
     |r_return exprSimple
     |r_break;
 
@@ -251,8 +216,8 @@ exprSimple ::=lparen exprSimple rparen operacio
 valor::= id
     |array
     |integer {:System.out.println("VALOR ENTER ASSIGNAT");:}
-    |boolean
-    |r_not boolean
+    |bool
+    |r_not bool
     ;
 
 array::=id lop exprSimple lclose;
@@ -274,16 +239,30 @@ subProgramContCall ::= id lparen exprSimple
     | subProgramContCall com exprSimple
     ;
 
-forIteration ::= r_for lparen forInit smcol exprSimple smcol forPostExpression rparen brop bloc brcl
+SwitchCase ::= r_switch lparen exprSimple rparen brop LCases Default brcl;
+LCases ::= Case LCases
+    |
+    ;
+Case ::= r_case exprSimple twodots statementList;
+Default ::= r_default twodots statementList
+    |
+    ;
+forIteration ::= r_for lparen forInit smcol exprSimple smcol forPostExpression rparen brop statementList brcl
     ;
 
 forInit ::= varDecl //inicialització de l'iterador
-    |expression
     | ;
 
-forPostExpression ::= expression  //declaració de la postExpressio
+forPostExpression ::= exprSimple  //declaració de la postExpressio
     |
     ;
 
-whileIteration ::= r_while lparen exprSimple rparen brop bloc brcl; //while (expresio){...}
+whileIteration ::= r_while lparen exprSimple rparen brop statementList brcl; //while (expresio){...}
+
+ifStatement ::= r_if lparen exprSimple rparen elseStatement brcl;
+
+elseStatement ::= elseIfStatement r_else brop statementList
+    | brop statementList
+    ;
+
 

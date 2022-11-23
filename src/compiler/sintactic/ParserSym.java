@@ -8,55 +8,56 @@ package compiler.sintactic;
 /** CUP generated class containing symbol constants. */
 public class ParserSym {
   /* terminals */
+  public static final int bool = 3;
   public static final int mul = 13;
-  public static final int r_return = 33;
+  public static final int r_return = 34;
   public static final int add = 11;
-  public static final int lop = 21;
+  public static final int lop = 22;
   public static final int mod = 15;
   public static final int sm_eq = 8;
-  public static final int r_procedure = 32;
+  public static final int r_procedure = 33;
   public static final int asig = 16;
-  public static final int com = 18;
-  public static final int r_function = 31;
-  public static final int r_else = 26;
-  public static final int r_switch = 27;
+  public static final int com = 19;
+  public static final int r_function = 32;
+  public static final int r_else = 27;
+  public static final int r_switch = 28;
   public static final int neg = 10;
-  public static final int r_default = 29;
-  public static final int r_const = 36;
+  public static final int r_default = 30;
+  public static final int r_const = 37;
   public static final int bg_eq = 7;
   public static final int sm = 6;
-  public static final int r_or = 38;
-  public static final int r_string = 43;
+  public static final int r_or = 39;
+  public static final int r_string = 44;
   public static final int smcol = 17;
-  public static final int r_if = 25;
+  public static final int twodots = 18;
+  public static final int r_if = 26;
   public static final int sub = 12;
   public static final int EOF = 0;
-  public static final int r_int = 40;
-  public static final int lclose = 22;
+  public static final int r_int = 41;
+  public static final int lclose = 23;
   public static final int error = 1;
-  public static final int r_for = 35;
-  public static final int lparen = 23;
-  public static final int brcl = 20;
-  public static final int r_not = 39;
-  public static final int r_and = 37;
-  public static final int brop = 19;
+  public static final int r_for = 36;
+  public static final int lparen = 24;
+  public static final int brcl = 21;
+  public static final int r_not = 40;
+  public static final int r_and = 38;
+  public static final int brop = 20;
   public static final int integer = 4;
-  public static final int r_case = 28;
-  public static final int rparen = 24;
+  public static final int r_case = 29;
+  public static final int rparen = 25;
   public static final int id = 2;
-  public static final int r_break = 30;
-  public static final int r_bool = 41;
+  public static final int r_break = 31;
+  public static final int r_bool = 42;
   public static final int eq = 9;
   public static final int div = 14;
-  public static final int r_main = 42;
+  public static final int r_main = 43;
   public static final int bg = 5;
-  public static final int r_while = 34;
-  public static final int boolean = 3;
+  public static final int r_while = 35;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
   "id",
-  "boolean",
+  "bool",
   "integer",
   "bg",
   "sm",
@@ -71,6 +72,7 @@ public class ParserSym {
   "mod",
   "asig",
   "smcol",
+  "twodots",
   "com",
   "brop",
   "brcl",
