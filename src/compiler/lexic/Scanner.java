@@ -120,12 +120,12 @@ public class Scanner implements java_cup.runtime.Scanner {
     "\1\17\1\20\1\21\1\22\17\20\1\23\1\24\1\25"+
     "\1\26\1\27\1\30\1\31\12\20\1\32\3\20\1\33"+
     "\5\20\1\34\7\20\1\35\1\20\1\36\1\20\1\37"+
-    "\5\20\1\40\1\20\1\41\2\20\1\42\1\43\1\44"+
-    "\1\45\2\20\1\46\1\20\1\47\1\50\3\20\1\51"+
-    "\1\20\1\52\1\53\1\54";
+    "\5\20\1\40\1\20\1\41\2\20\1\42\1\20\1\43"+
+    "\1\44\1\45\2\20\1\46\1\20\1\47\1\50\1\20"+
+    "\1\51\2\20\1\52\1\20\1\53\1\54\1\55";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[105];
+    int [] result = new int[107];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -161,12 +161,12 @@ public class Scanner implements java_cup.runtime.Scanner {
     "\0\u01ae\0\u078f\0\u07ba\0\u07e5\0\u0810\0\u083b\0\u0866\0\u0891"+
     "\0\u01ae\0\u08bc\0\u01ae\0\u08e7\0\u01ae\0\u0912\0\u093d\0\u0968"+
     "\0\u0993\0\u09be\0\u01ae\0\u09e9\0\u01ae\0\u0a14\0\u0a3f\0\u01ae"+
-    "\0\u01ae\0\u01ae\0\u01ae\0\u0a6a\0\u0a95\0\u01ae\0\u0ac0\0\u01ae"+
-    "\0\u01ae\0\u0aeb\0\u0b16\0\u0b41\0\u01ae\0\u0b6c\0\u01ae\0\u01ae"+
-    "\0\u01ae";
+    "\0\u0a6a\0\u01ae\0\u01ae\0\u01ae\0\u0a95\0\u0ac0\0\u01ae\0\u0aeb"+
+    "\0\u01ae\0\u01ae\0\u0b16\0\u01ae\0\u0b41\0\u0b6c\0\u01ae\0\u0b97"+
+    "\0\u01ae\0\u01ae\0\u01ae";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[105];
+    int [] result = new int[107];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -238,27 +238,28 @@ public class Scanner implements java_cup.runtime.Scanner {
     "\1\24\5\0\1\24\2\0\17\24\1\126\3\24\17\0"+
     "\1\24\5\0\1\24\2\0\1\127\22\24\17\0\1\24"+
     "\5\0\1\24\2\0\4\24\1\130\16\24\17\0\1\24"+
-    "\5\0\1\24\2\0\17\24\1\121\3\24\17\0\1\24"+
-    "\5\0\1\24\2\0\2\24\1\131\20\24\17\0\1\24"+
-    "\5\0\1\24\2\0\13\24\1\132\7\24\17\0\1\24"+
-    "\5\0\1\24\2\0\2\24\1\133\20\24\17\0\1\24"+
-    "\5\0\1\24\2\0\21\24\1\134\1\24\17\0\1\24"+
-    "\5\0\1\24\2\0\20\24\1\135\2\24\17\0\1\24"+
-    "\5\0\1\24\2\0\4\24\1\136\16\24\17\0\1\24"+
-    "\5\0\1\24\2\0\11\24\1\137\11\24\17\0\1\24"+
-    "\5\0\1\24\2\0\10\24\1\140\12\24\17\0\1\24"+
-    "\5\0\1\24\2\0\20\24\1\141\2\24\17\0\1\24"+
-    "\5\0\1\24\2\0\21\24\1\142\1\24\17\0\1\24"+
-    "\5\0\1\24\2\0\16\24\1\143\4\24\17\0\1\24"+
-    "\5\0\1\24\2\0\2\24\1\144\20\24\17\0\1\24"+
-    "\5\0\1\24\2\0\4\24\1\145\16\24\17\0\1\24"+
-    "\5\0\1\24\2\0\11\24\1\146\11\24\17\0\1\24"+
-    "\5\0\1\24\2\0\13\24\1\147\7\24\17\0\1\24"+
-    "\5\0\1\24\2\0\6\24\1\150\14\24\17\0\1\24"+
-    "\5\0\1\24\2\0\20\24\1\151\2\24\2\0";
+    "\5\0\1\24\2\0\17\24\1\131\3\24\17\0\1\24"+
+    "\5\0\1\24\2\0\2\24\1\132\20\24\17\0\1\24"+
+    "\5\0\1\24\2\0\13\24\1\133\7\24\17\0\1\24"+
+    "\5\0\1\24\2\0\2\24\1\134\20\24\17\0\1\24"+
+    "\5\0\1\24\2\0\21\24\1\135\1\24\17\0\1\24"+
+    "\5\0\1\24\2\0\20\24\1\136\2\24\17\0\1\24"+
+    "\5\0\1\24\2\0\4\24\1\137\16\24\17\0\1\24"+
+    "\5\0\1\24\2\0\11\24\1\140\11\24\17\0\1\24"+
+    "\5\0\1\24\2\0\10\24\1\141\12\24\17\0\1\24"+
+    "\5\0\1\24\2\0\20\24\1\142\2\24\17\0\1\24"+
+    "\5\0\1\24\2\0\21\24\1\143\1\24\17\0\1\24"+
+    "\5\0\1\24\2\0\4\24\1\144\16\24\17\0\1\24"+
+    "\5\0\1\24\2\0\16\24\1\145\4\24\17\0\1\24"+
+    "\5\0\1\24\2\0\2\24\1\146\20\24\17\0\1\24"+
+    "\5\0\1\24\2\0\4\24\1\147\16\24\17\0\1\24"+
+    "\5\0\1\24\2\0\11\24\1\150\11\24\17\0\1\24"+
+    "\5\0\1\24\2\0\13\24\1\151\7\24\17\0\1\24"+
+    "\5\0\1\24\2\0\6\24\1\152\14\24\17\0\1\24"+
+    "\5\0\1\24\2\0\20\24\1\153\2\24\2\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[2967];
+    int [] result = new int[3010];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -302,10 +303,10 @@ public class Scanner implements java_cup.runtime.Scanner {
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
     "\1\0\3\1\1\0\7\11\2\1\2\11\1\1\1\11"+
-    "\2\1\2\11\17\1\3\11\1\1\3\11\75\1";
+    "\2\1\2\11\17\1\3\11\1\1\3\11\77\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[105];
+    int [] result = new int[107];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -813,264 +814,270 @@ public class Scanner implements java_cup.runtime.Scanner {
             { 
             }
             // fall through
-          case 45: break;
+          case 46: break;
           case 2:
             { System.out.println("MOD: "+this.yytext());
                             return symbol(ParserSym.mod);
             }
             // fall through
-          case 46: break;
+          case 47: break;
           case 3:
             { System.out.println("LPAREN: "+this.yytext());
                             return symbol(ParserSym.lparen);
             }
             // fall through
-          case 47: break;
+          case 48: break;
           case 4:
             { System.out.println("RPAREN: "+this.yytext());
                             return symbol(ParserSym.rparen);
             }
             // fall through
-          case 48: break;
+          case 49: break;
           case 5:
             { System.out.println("MUL: "+this.yytext());
                             return symbol(ParserSym.mul);
             }
             // fall through
-          case 49: break;
+          case 50: break;
           case 6:
             { System.out.println("ADD: "+this.yytext());
                            return symbol(ParserSym.add);
             }
             // fall through
-          case 50: break;
+          case 51: break;
           case 7:
             { System.out.println("COMA: "+this.yytext());
                             return symbol(ParserSym.com);
             }
             // fall through
-          case 51: break;
+          case 52: break;
           case 8:
             { System.out.println("SUB: "+this.yytext() ) ;
                             return symbol(ParserSym.sub);
             }
             // fall through
-          case 52: break;
+          case 53: break;
           case 9:
             { System.out.println("DIV: "+this.yytext());
                             return symbol(ParserSym.div);
             }
             // fall through
-          case 53: break;
+          case 54: break;
           case 10:
             { System.out.println("INT: "+this.yytext());
                             return symbol(ParserSym.integer);
             }
             // fall through
-          case 54: break;
+          case 55: break;
           case 11:
             { System.out.println("DOS PUNTS: "+this.yytext());
                             return symbol(ParserSym.twodots);
             }
             // fall through
-          case 55: break;
+          case 56: break;
           case 12:
             { System.out.println("PUNT I COMA: "+this.yytext());
                             return symbol(ParserSym.smcol);
             }
             // fall through
-          case 56: break;
+          case 57: break;
           case 13:
             { System.out.println("SM <: "+this.yytext());
                             return symbol(ParserSym.sm);
             }
             // fall through
-          case 57: break;
+          case 58: break;
           case 14:
             { System.out.println("EQ =: "+this.yytext());
                             return symbol(ParserSym.eq);
             }
             // fall through
-          case 58: break;
+          case 59: break;
           case 15:
             { System.out.println("BG: "+this.yytext());
                             return symbol(ParserSym.bg);
             }
             // fall through
-          case 59: break;
+          case 60: break;
           case 16:
             { System.out.println("ID: "+this.yytext());
                             return symbol(ParserSym.id);
             }
             // fall through
-          case 60: break;
+          case 61: break;
           case 17:
             { System.out.println("Obrir [: "+this.yytext());
                             return symbol(ParserSym.lop);
             }
             // fall through
-          case 61: break;
+          case 62: break;
           case 18:
             { System.out.println("Tancar ]: "+this.yytext());
                             return symbol(ParserSym.lclose);
             }
             // fall through
-          case 62: break;
+          case 63: break;
           case 19:
             { System.out.println("BROP {: "+this.yytext());
                             return symbol(ParserSym.brop);
             }
             // fall through
-          case 63: break;
+          case 64: break;
           case 20:
             { System.out.println("BRCL }: "+this.yytext());
                             return symbol(ParserSym.brcl);
             }
             // fall through
-          case 64: break;
+          case 65: break;
           case 21:
             { System.out.println("NEG =: "+this.yytext());
                             return symbol(ParserSym.neg);
             }
             // fall through
-          case 65: break;
+          case 66: break;
           case 22:
-            { System.out.println("If: "+this.yytext());
+            { System.out.println("comment: "+this.yytext());
             }
             // fall through
-          case 66: break;
+          case 67: break;
           case 23:
             { System.out.println("ASIG: "+this.yytext());
                             return symbol(ParserSym.asig);
             }
             // fall through
-          case 67: break;
+          case 68: break;
           case 24:
             { System.out.println("SM_EQ <=: "+this.yytext());
                             return symbol(ParserSym.sm_eq);
             }
             // fall through
-          case 68: break;
+          case 69: break;
           case 25:
             { System.out.println("BIG_EQ: "+this.yytext());
                             return symbol(ParserSym.bg);
             }
             // fall through
-          case 69: break;
+          case 70: break;
           case 26:
             { System.out.println("If: "+this.yytext());
                             return symbol(ParserSym.r_if);
             }
             // fall through
-          case 70: break;
+          case 71: break;
           case 27:
-            { System.out.println("If: "+this.yytext());
+            { System.out.println("or: "+this.yytext());
                             return symbol(ParserSym.r_or);
             }
             // fall through
-          case 71: break;
+          case 72: break;
           case 28:
-            { System.out.println("If: "+this.yytext());
+            { System.out.println("and: "+this.yytext());
                             return symbol(ParserSym.r_and);
             }
             // fall through
-          case 72: break;
+          case 73: break;
           case 29:
-            { System.out.println("If: "+this.yytext());
+            { System.out.println("for: "+this.yytext());
                             return symbol(ParserSym.r_for);
             }
             // fall through
-          case 73: break;
+          case 74: break;
           case 30:
             { System.out.println("keyword int: "+this.yytext());
                             return symbol(ParserSym.r_int);
             }
             // fall through
-          case 74: break;
+          case 75: break;
           case 31:
-            { System.out.println("If: "+this.yytext());
+            { System.out.println("not: "+this.yytext());
                             return symbol(ParserSym.r_not);
             }
             // fall through
-          case 75: break;
+          case 76: break;
           case 32:
-            { System.out.println("If: "+this.yytext());
+            { System.out.println("bool: "+this.yytext());
                             return symbol(ParserSym.r_bool);
             }
             // fall through
-          case 76: break;
+          case 77: break;
           case 33:
-            { System.out.println("If: "+this.yytext());
+            { System.out.println("case: "+this.yytext());
                             return symbol(ParserSym.r_case);
             }
             // fall through
-          case 77: break;
+          case 78: break;
           case 34:
-            { System.out.println("If: "+this.yytext());
+            { System.out.println("else: "+this.yytext());
                             return symbol(ParserSym.r_else);
             }
             // fall through
-          case 78: break;
+          case 79: break;
           case 35:
             { System.out.println("FUNCTION: "+this.yytext());
                             return symbol(ParserSym.r_function);
             }
             // fall through
-          case 79: break;
+          case 80: break;
           case 36:
             { System.out.println("Return!: "+this.yytext());
                             return symbol(ParserSym.r_main);
             }
             // fall through
-          case 80: break;
+          case 81: break;
           case 37:
             { System.out.println("PROCEDURE: "+this.yytext());
                             return symbol(ParserSym.r_procedure);
             }
             // fall through
-          case 81: break;
+          case 82: break;
           case 38:
-            { System.out.println("RPAREN: "+this.yytext());
+            { System.out.println("TRUE: "+this.yytext());
                             return symbol(ParserSym.bool);
             }
             // fall through
-          case 82: break;
+          case 83: break;
           case 39:
-            { System.out.println("If: "+this.yytext());
+            { System.out.println("breack: "+this.yytext());
                             return symbol(ParserSym.r_break);
             }
             // fall through
-          case 83: break;
+          case 84: break;
           case 40:
-            { System.out.println("If: "+this.yytext());
+            { System.out.println("const: "+this.yytext());
                             return symbol(ParserSym.r_const);
             }
             // fall through
-          case 84: break;
+          case 85: break;
           case 41:
-            { System.out.println("If: "+this.yytext());
+            { System.out.println("FALSE: "+this.yytext());
+                            return symbol(ParserSym.bool);
+            }
+            // fall through
+          case 86: break;
+          case 42:
+            { System.out.println("while: "+this.yytext());
                             return symbol(ParserSym.r_while);
             }
             // fall through
-          case 85: break;
-          case 42:
+          case 87: break;
+          case 43:
             { System.out.println("Return!: "+this.yytext());
                             return symbol(ParserSym.r_return);
             }
             // fall through
-          case 86: break;
-          case 43:
-            { System.out.println("If: "+this.yytext());
+          case 88: break;
+          case 44:
+            { System.out.println("switch: "+this.yytext());
                             return symbol(ParserSym.r_switch);
             }
             // fall through
-          case 87: break;
-          case 44:
-            { System.out.println("If: "+this.yytext());
+          case 89: break;
+          case 45:
+            { System.out.println("default: "+this.yytext());
                             return symbol(ParserSym.r_default);
             }
             // fall through
-          case 88: break;
+          case 90: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

@@ -196,7 +196,7 @@ procContCap ::= lparen argType type id  {:RESULT = new SymbolProcContCap();:}//t
     ;
 
 argType ::= r_const {:RESULT = new SymbolArgType();:}   //tipus d'argument (constant o no)
-    | {:RESULT = new SymbolArgType();:}
+    |               {:RESULT = new SymbolArgType();:}
     ;
 //INSTRUCCIONS
 statementList ::= statement statementList {:RESULT= new SymbolStatementList();:}      //declaració d'una llista
@@ -220,19 +220,19 @@ exprSimple ::=lparen exprSimple rparen operacio{:RESULT=new SymbolExpressioSimpl
     |valor operacio                            {:RESULT=new SymbolExpressioSimple();:}
     ;
 
-valor::= id                         {:RESULT=new SymbolValor();:}
-    |array                          {:RESULT=new SymbolValor();:}
-    |integer                        {:RESULT=new SymbolValor();:}
-    |bool                           {:RESULT=new SymbolValor();:}
-    |r_not bool                     {:RESULT=new SymbolValor();:}
-    |subProgramCall                 {:RESULT=new SymbolValor();:}
+valor::= id                         {:RESULT=new SymbolValor("soy un id en valor");:}
+    |array                          {:RESULT=new SymbolValor("soy un array en valor");:}
+    |integer                        {:RESULT=new SymbolValor("soy un integer en valor");:}
+    |bool                           {:RESULT=new SymbolValor("soy un bool en valor");:}
+    |r_not bool                     {:RESULT=new SymbolValor("soy un r_not bool en valor");:}
+    |subProgramCall                 {:RESULT=new SymbolValor("soy un subProgramCall en valor");:}
     ;
 
 array::=id lop exprSimple lclose {:RESULT=new SymbolArray();:}
 ;
 
 operacio::=op exprSimple   {:RESULT = new SymbolOper();:}
-            |              {:RESULT = new SymbolOper();:}
+            | varInit      {:RESULT = new SymbolOper();:}
             ;
 
 //OPERADORS

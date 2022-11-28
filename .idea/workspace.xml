@@ -2,33 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b33019b-17bb-49c6-9ad2-0abb86f410ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/compiler/sintactic/milloresGramatica.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/prova.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/prova.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/TESTING/3.Operands lògics/test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/TESTING/3.Operands lògics/test1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/Scanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/lexic/Scanner.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/lexic/lexic.flex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/prova.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/Parser$CUP$Parser$actions.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/sintactic/Parser$CUP$Parser$actions.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/sintactic/Parser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic_og.cup" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TESTING/1.Funcions/prova.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/TESTING/1.Funcions/prova.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TESTING/3.Operands lògics/test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/TESTING/3.Operands lògics/test1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Symbols/SymbolElseIfStatement.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/lexic/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/Scanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/prova.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
     </list>
     <list id="d692a7f0-1e89-485c-a059-6cde022e44b7" name="Changes by diegofes" comment="">
       <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
     </list>
-    <list id="2e079f58-e220-4918-b3dd-89d6cbe6b885" name="Changes by Jaume" comment="">
+    <list id="73589215-0605-44b4-854a-25c0840bedf4" name="Changes by Jaume" comment="">
+      <change beforePath="$PROJECT_DIR$/src/compiler/Symbols/SymbolValor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Symbols/SymbolValor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
     </list>
-    <list id="201473c7-cfd3-4d1e-bec7-f7202cddf2f7" name="Changes by messi" comment="">
-      <change beforePath="$PROJECT_DIR$/src/compiler/Symbols/SymbolExpressio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Symbols/SymbolExpressioSimple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
-    </list>
+    <list id="58cceed4-2ebd-4add-94de-92150b1a83c2" name="Changes by messi" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,41 +37,28 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup">
       <ranges>
-        <range start1="113" end1="114" start2="113" end2="114" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
-        <range start1="120" end1="122" start2="120" end2="121" changelist="201473c7-cfd3-4d1e-bec7-f7202cddf2f7" />
-        <range start1="126" end1="128" start2="125" end2="125" changelist="2e079f58-e220-4918-b3dd-89d6cbe6b885" />
-        <range start1="146" end1="147" start2="143" end2="144" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
-        <range start1="150" end1="152" start2="147" end2="149" changelist="2e079f58-e220-4918-b3dd-89d6cbe6b885" />
-        <range start1="153" end1="156" start2="150" end2="153" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
-        <range start1="158" end1="161" start2="155" end2="159" changelist="2e079f58-e220-4918-b3dd-89d6cbe6b885" />
-        <range start1="162" end1="165" start2="160" end2="164" changelist="2e079f58-e220-4918-b3dd-89d6cbe6b885" />
-        <range start1="167" end1="168" start2="166" end2="168" changelist="2e079f58-e220-4918-b3dd-89d6cbe6b885" />
-        <range start1="169" end1="170" start2="169" end2="173" changelist="201473c7-cfd3-4d1e-bec7-f7202cddf2f7" />
-        <range start1="173" end1="174" start2="176" end2="178" changelist="201473c7-cfd3-4d1e-bec7-f7202cddf2f7" />
-        <range start1="175" end1="177" start2="179" end2="181" changelist="201473c7-cfd3-4d1e-bec7-f7202cddf2f7" />
-        <range start1="179" end1="181" start2="183" end2="185" changelist="2e079f58-e220-4918-b3dd-89d6cbe6b885" />
-        <range start1="183" end1="184" start2="187" end2="188" changelist="2e079f58-e220-4918-b3dd-89d6cbe6b885" />
-        <range start1="185" end1="187" start2="189" end2="191" changelist="201473c7-cfd3-4d1e-bec7-f7202cddf2f7" />
-        <range start1="189" end1="191" start2="193" end2="195" changelist="201473c7-cfd3-4d1e-bec7-f7202cddf2f7" />
-        <range start1="193" end1="195" start2="197" end2="200" changelist="201473c7-cfd3-4d1e-bec7-f7202cddf2f7" />
-        <range start1="196" end1="198" start2="201" end2="204" changelist="2e079f58-e220-4918-b3dd-89d6cbe6b885" />
-        <range start1="199" end1="208" start2="205" end2="215" changelist="201473c7-cfd3-4d1e-bec7-f7202cddf2f7" />
-        <range start1="211" end1="213" start2="218" end2="220" changelist="201473c7-cfd3-4d1e-bec7-f7202cddf2f7" />
-        <range start1="215" end1="220" start2="222" end2="228" changelist="201473c7-cfd3-4d1e-bec7-f7202cddf2f7" />
-        <range start1="222" end1="223" start2="230" end2="232" changelist="2e079f58-e220-4918-b3dd-89d6cbe6b885" />
-        <range start1="224" end1="225" start2="233" end2="236" changelist="2e079f58-e220-4918-b3dd-89d6cbe6b885" />
-        <range start1="227" end1="231" start2="238" end2="246" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="232" end1="232" start2="247" end2="253" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="233" end1="236" start2="254" end2="261" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="237" end1="239" start2="262" end2="269" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="241" end1="244" start2="271" end2="274" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
-        <range start1="245" end1="248" start2="275" end2="278" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
-        <range start1="249" end1="250" start2="279" end2="280" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
-        <range start1="252" end1="254" start2="282" end2="284" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
-        <range start1="255" end1="257" start2="285" end2="287" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
-        <range start1="259" end1="260" start2="289" end2="290" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
-        <range start1="261" end1="262" start2="291" end2="292" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
-        <range start1="263" end1="265" start2="293" end2="295" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
+        <range start1="198" end1="199" start2="198" end2="199" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
+        <range start1="222" end1="228" start2="222" end2="228" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="234" end1="235" start2="234" end2="235" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/compiler/lexic/lexic.flex">
+      <ranges>
+        <range start1="150" end1="151" start2="150" end2="151" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="152" end1="153" start2="152" end2="153" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="195" end1="196" start2="195" end2="196" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="197" end1="198" start2="197" end2="198" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="199" end1="200" start2="199" end2="200" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="201" end1="202" start2="201" end2="202" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="203" end1="204" start2="203" end2="204" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
+        <range start1="205" end1="206" start2="205" end2="206" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
+        <range start1="207" end1="208" start2="207" end2="208" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
+        <range start1="209" end1="210" start2="209" end2="210" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
+        <range start1="211" end1="212" start2="211" end2="212" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
+        <range start1="213" end1="214" start2="213" end2="214" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="215" end1="216" start2="215" end2="216" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="217" end1="218" start2="217" end2="218" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="219" end1="220" start2="219" end2="220" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
       </ranges>
     </file>
   </component>
@@ -110,7 +94,7 @@
       <workItem from="1669117375594" duration="745000" />
       <workItem from="1669126802878" duration="107000" />
       <workItem from="1669126929973" duration="902000" />
-      <workItem from="1669128812301" duration="15189000" />
+      <workItem from="1669128812301" duration="18983000" />
     </task>
     <servers />
   </component>

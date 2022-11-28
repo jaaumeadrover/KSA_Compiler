@@ -148,9 +148,9 @@ r_comment = "//"([^\n])*
                             return symbol(ParserSym.lparen);}
 {rparen}                 { System.out.println("RPAREN: "+this.yytext());
                             return symbol(ParserSym.rparen);}
-"true"                   { System.out.println("RPAREN: "+this.yytext());
+"true"                   { System.out.println("TRUE: "+this.yytext());
                             return symbol(ParserSym.bool);}
-"false"                   { System.out.println("RPAREN: "+this.yytext());
+"false"                   { System.out.println("FALSE: "+this.yytext());
                             return symbol(ParserSym.bool);}
 {bg}                     {System.out.println("BG: "+this.yytext());
                             return symbol(ParserSym.bg);}
@@ -193,31 +193,31 @@ r_comment = "//"([^\n])*
 
 {r_if}                   {System.out.println("If: "+this.yytext());
                             return symbol(ParserSym.r_if);}
-{r_while}                   {System.out.println("If: "+this.yytext());
+{r_while}                   {System.out.println("while: "+this.yytext());
                             return symbol(ParserSym.r_while);}
-{r_break}                   {System.out.println("If: "+this.yytext());
+{r_break}                   {System.out.println("breack: "+this.yytext());
                             return symbol(ParserSym.r_break);}
-{r_for}                   {System.out.println("If: "+this.yytext());
+{r_for}                   {System.out.println("for: "+this.yytext());
                             return symbol(ParserSym.r_for);}
-{r_switch}                   {System.out.println("If: "+this.yytext());
+{r_switch}                   {System.out.println("switch: "+this.yytext());
                             return symbol(ParserSym.r_switch);}
-{r_else}                   {System.out.println("If: "+this.yytext());
+{r_else}                   {System.out.println("else: "+this.yytext());
                             return symbol(ParserSym.r_else);}
-{r_const}                   {System.out.println("If: "+this.yytext());
+{r_const}                   {System.out.println("const: "+this.yytext());
                             return symbol(ParserSym.r_const);}
-{r_or}                   {System.out.println("If: "+this.yytext());
+{r_or}                   {System.out.println("or: "+this.yytext());
                             return symbol(ParserSym.r_or);}
-{r_bool}                   {System.out.println("If: "+this.yytext());
+{r_bool}                   {System.out.println("bool: "+this.yytext());
                             return symbol(ParserSym.r_bool);}
-{r_default}                   {System.out.println("If: "+this.yytext());
+{r_default}                   {System.out.println("default: "+this.yytext());
                             return symbol(ParserSym.r_default);}
-{r_case}                   {System.out.println("If: "+this.yytext());
+{r_case}                   {System.out.println("case: "+this.yytext());
                             return symbol(ParserSym.r_case);}
-{r_not}                   {System.out.println("If: "+this.yytext());
+{r_not}                   {System.out.println("not: "+this.yytext());
                             return symbol(ParserSym.r_not);}
-{r_and}                   {System.out.println("If: "+this.yytext());
+{r_and}                   {System.out.println("and: "+this.yytext());
                             return symbol(ParserSym.r_and);}
-{r_comment}                {System.out.println("If: "+this.yytext());}
+{r_comment}                {System.out.println("comment: "+this.yytext());}
 
 
 {r_procedure}            {System.out.println("PROCEDURE: "+this.yytext());
