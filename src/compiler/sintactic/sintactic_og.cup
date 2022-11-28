@@ -83,7 +83,7 @@ scan with {:     next_token(); :}
 //TERMINALS
 
 //identificadores
-terminal id,bool;
+terminal id,bool,string;
 //enteros
 terminal integer;
 //operadors
@@ -94,7 +94,7 @@ terminal add, sub, mul, div, mod;
 terminal asig, smcol, twodots, com, brop, brcl, lop, lclose, lparen, rparen;
 //palabras reservadas
 terminal r_if, r_else, r_switch, r_case, r_default, r_break, r_function, r_procedure, r_return, r_while, r_for, r_const,
-         r_and, r_or, r_not, r_int, r_bool, r_main, r_string;
+         r_and, r_or, r_not, r_int, r_bool, r_main, r_string,r_input,r_print;
 
 non terminal  SymbolProgram   program;
 non terminal  SymbolDeclList  declList;
@@ -103,10 +103,8 @@ non terminal  SymbolVarDecl  varDecl;
 non terminal  SymbolVarInit  varInit;
 non terminal  SymbolFuncDecl   funcDecl;
 non terminal  SymbolFuncCap   funcCap;
-non terminal  SymbolFuncContCap   funcContCap;
 non terminal  SymbolProcDecl   procDecl;
 non terminal  SymbolProcCap   procCap;
-non terminal  SymbolProcContCap   procContCap;
 non terminal  SymbolArgType   argType;
 non terminal  SymbolType   type;
 non terminal  SymbolStatementList   statementList;
@@ -123,6 +121,8 @@ non terminal  SymbolSubProgramCall   subProgramCall;
 non terminal  SymbolSubProgramContCall   subProgramContCall;
 non terminal  SymbolArray      array;
 non terminal  SymbolArrayInit  arrayInit;
+non terminal  SymbolContCap ContCap;
+non terminal  SymbolReturn return;
 non terminal SymbolOperador op;
 non terminal SymbolOper operacio;
 non terminal SymbolValor valor;
@@ -133,6 +133,10 @@ non terminal SymbolSwitchCase SwitchCase;
 non terminal SymbolLCases LCases;
 non terminal SymbolCase Case;
 non terminal SymbolDefault Default;
+non terminal SymbolInputStatement inputStatement;
+non terminal SymbolPrintStatement printStatement;
+non terminal SymbolStringValue stringValue;
+non terminal SymbolLiteral literal;
 
 precedence right asig;
 precedence left  add, sub;
@@ -174,25 +178,22 @@ type ::= r_int                 {:RESULT=new SymbolType();:}
 
 
 //FUNCIONS
-funcDecl ::= r_function type id funcCap brop statementList brcl {:RESULT=new SymbolFuncDecl();:}
+funcDecl ::= r_function type id funcCap brop statementList return brcl {:RESULT=new SymbolFuncDecl();:}
     ; //declaració d'una funció
-
-funcCap ::= funcContCap rparen              {:RESULT=new SymbolFuncCap();:}               //declaració de parentesis per als arguments
+return   ::=r_return exprSimple smcol  {:RESULT = new SymbolReturn();:}
+;
+funcCap ::= ContCap rparen                  {:RESULT=new SymbolFuncCap();:}               //declaració de parentesis per als arguments
     | lparen rparen                         {:RESULT=new SymbolFuncCap();:}
-    ;
-
-funcContCap ::= lparen argType type id   {:RESULT =new SymbolFuncContCap();:}     //tancam parentesis i definim els paràmetres
-    | funcContCap com argType type id    {:RESULT =new SymbolFuncContCap();:}
     ;
 
 procDecl ::= r_procedure id procCap brop statementList brcl{:RESULT =new SymbolProcDecl();:}; //declaració d'un procediment: proc 'nom' parametres {...}
 
-procCap ::=procContCap rparen       {:RESULT = new SymbolProcCap();:} //declaració de parentesis per als arguments
+procCap ::=ContCap rparen       {:RESULT = new SymbolProcCap();:} //declaració de parentesis per als arguments
     |lparen rparen                  {:RESULT = new SymbolProcCap();:}
     ;
 
-procContCap ::= lparen argType type id  {:RESULT = new SymbolProcContCap();:}//tancam parentesis i definim els paràmetres
-    | procContCap com argType type id   {:RESULT = new SymbolProcContCap();:}
+ContCap ::= lparen argType type id      {:RESULT = new SymbolContCap();:}//tancam parentesis i definim els paràmetres
+    | ContCap com argType type id   {:RESULT = new SymbolContCap();:}
     ;
 
 argType ::= r_const {:RESULT = new SymbolArgType();:}   //tipus d'argument (constant o no)
@@ -205,14 +206,24 @@ statementList ::= statement statementList {:RESULT= new SymbolStatementList();:}
 
 statement ::= varDecl smcol         {:RESULT=new SymbolStatement();:}
     |exprSimple smcol               {:RESULT=new SymbolStatement();:}
-    //|subProgramCall smcol           {:RESULT=new SymbolStatement();:}
     |forIteration                   {:RESULT=new SymbolStatement();:}
     |whileStatement                 {:RESULT=new SymbolStatement();:}
+    |inputStatement smcol           {:RESULT=new SymbolStatement();:}
+    |printStatement smcol           {:RESULT=new SymbolStatement();:}
     |ifStatement                    {:RESULT=new SymbolStatement();:}
     |SwitchCase                     {:RESULT=new SymbolStatement();:}
-    |r_return exprSimple smcol      {:RESULT=new SymbolStatement();:}
     |r_break smcol                  {:RESULT=new SymbolStatement();:}
     ;
+
+inputStatement ::= r_input lparen rparen {:RESULT = new SymbolInputStatement();:};
+
+printStatement ::= r_print lparen stringValue rparen {:RESULT = new SymbolPrintStatement();:};
+
+stringValue    ::= literal
+                   | stringValue add literal {:RESULT = new SymbolStringValue();:};
+
+literal ::=          string {:RESULT = new SymbolLiteral();:}
+                    | valor {:RESULT = new SymbolLiteral();:};
 
 
 //EXPRESSIONS

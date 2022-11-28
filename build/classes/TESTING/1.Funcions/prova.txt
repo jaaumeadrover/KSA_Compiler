@@ -1,8 +1,5 @@
 
 
 main() {
-    int d <- int[3];
-    for(int i<-0;i<5;i<-i+1){
-        c <-d[i];
-    }
+    print("ATA2 aprovara la practica");
 }

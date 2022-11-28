@@ -52,13 +52,14 @@ La línia anterior és una alternativa a la indicació element a element:
 
 id		= [A-Za-z_][A-Za-z0-9_]*
 integer  = [0-9][0-9]*
+string  = [\"](([A-Za-z0-9_)])|({blank}))*[\"]
 
 
 //simbolos operadores
-bg      = \>              //verificat
-sm      = \<              //verificat
-bg_eq   = >=           //verificat
-sm_eq   = <=          //verificat
+bg      = \>                 //verificat
+sm      = \<                //verificat
+bg_eq   = >=               //verificat
+sm_eq   = <=              //verificat
 eq      = =              //verificat
 neg     = \!=           //verificat
 
@@ -97,6 +98,9 @@ r_not       = not
 r_int       = int
 r_bool      = bool
 r_main      = main
+r_print     = print
+r_input     = input
+r_string    = string
 
 /* Altres */
 new_line = ([\n\r]|(\n\r))+
@@ -154,6 +158,10 @@ r_comment = "//"([^\n])*
                             return symbol(ParserSym.bool);}
 {bg}                     {System.out.println("BG: "+this.yytext());
                             return symbol(ParserSym.bg);}
+{string}                     {System.out.println("string: "+this.yytext());
+                            return symbol(ParserSym.string);}
+{r_string}                     {System.out.println("r_string: "+this.yytext());
+                            return symbol(ParserSym.r_string);}
 
 {sm}                     {System.out.println("SM <: "+this.yytext());
                             return symbol(ParserSym.sm);}
@@ -230,11 +238,16 @@ r_comment = "//"([^\n])*
                             return symbol(ParserSym.r_return);}
 {r_main}                  {System.out.println("Return!: "+this.yytext());
                             return symbol(ParserSym.r_main);}
-
+{r_input}                     {System.out.println("input: "+this.yytext());
+                            return symbol(ParserSym.r_input);}
+{r_print}                {System.out.println("print: "+this.yytext());
+                            return symbol(ParserSym.r_print);}
 {id}                     {System.out.println("ID: "+this.yytext());
                             return symbol(ParserSym.id);}
 {integer}                {System.out.println("INT: "+this.yytext());
                             return symbol(ParserSym.integer);}
+
+
 
 
 
