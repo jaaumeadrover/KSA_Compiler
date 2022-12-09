@@ -302,8 +302,9 @@ whileStatement ::= r_while lparen exprSimple rparen brop statementList brcl {:RE
 
 ifStatement ::= r_if lparen exprSimple rparen elseStatement brcl {:RESULT = new SymbolIfStatement();:};
 
-elseStatement ::= elseIfStatement r_else brop statementList {:RESULT = new SymbolElseStatement();:}
+elseStatement ::= elseIfStatement r_else brop statementList  {:RESULT = new SymbolElseStatement();:}
     | brop statementList                                    {:RESULT = new SymbolElseStatement();:}
     ;
 
-
+elseIfStatement::= elseIfStatement r_else r_if exprSimple brop bloc brcl
+    ;

@@ -2,37 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b33019b-17bb-49c6-9ad2-0abb86f410ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/compiler/Symbols/SymbolContCap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/compiler/Symbols/SymbolInputStatement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/compiler/Symbols/SymbolLiteral.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/compiler/Symbols/SymbolPrintStatement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/compiler/Symbols/SymbolReturn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/compiler/Symbols/SymbolStringValue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/compiler/Symbols/TaulaSimbols/Simbol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/compiler/Symbols/TaulaSimbols/TaulaSimbols.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/prova.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/prova.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/Scanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/lexic/Scanner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/lexic/lexic.flex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/Parser$CUP$Parser$actions.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/sintactic/Parser$CUP$Parser$actions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/sintactic/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/ParserSym.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/sintactic/ParserSym.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/TablaSimbolos/Simbol.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/TablaSimbolos/Simbol.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/TablaSimbolos/TaulaSimbols.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/TablaSimbolos/TipusSub.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic_og.cup" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Symbols/SymbolFuncCap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Symbols/SymbolFuncCap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Symbols/SymbolFuncContCap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Symbols/SymbolProcContCap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/Scanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/ParserSym.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/ParserSym.java" afterDir="false" />
-    </list>
-    <list id="d692a7f0-1e89-485c-a059-6cde022e44b7" name="Changes by diegofes" comment="">
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TESTING/1.Funcions/prova.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/TESTING/1.Funcions/prova.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/Symbols/TablaSimbolos/Simbol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/Symbols/TablaSimbolos/TaulaSimbols.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/Symbols/TablaSimbolos/Tipus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/execute.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/Symbols/TablaSimbolos/TipusSub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Symbols/TaulaSimbols/TipusSub.java" afterDir="false" />
     </list>
-    <list id="73589215-0605-44b4-854a-25c0840bedf4" name="Changes by Jaume" comment="">
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
+    <list id="c8142d37-37d8-4d77-b254-b00a3d002d8a" name="Changes by de jong" comment="" />
+    <list id="f7a5fd41-0353-4aff-a24b-374b321132ca" name="Changes by diegofes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/compiler/Symbols/TaulaSimbols/Tipus.java" afterDir="false" />
     </list>
+    <list id="ea3f098e-6539-466f-8de4-74c24f3e6a61" name="Changes by Jaume" comment="" />
     <list id="58cceed4-2ebd-4add-94de-92150b1a83c2" name="Changes by messi" comment="">
-      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,36 +32,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup">
-      <ranges>
-        <range start1="85" end1="86" start2="85" end2="86" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
-        <range start1="96" end1="97" start2="96" end2="97" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
-        <range start1="105" end1="106" start2="105" end2="105" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
-        <range start1="108" end1="109" start2="107" end2="107" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
-        <range start1="125" end1="125" start2="123" end2="125" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
-        <range start1="135" end1="135" start2="135" end2="139" changelist="58cceed4-2ebd-4add-94de-92150b1a83c2" />
-        <range start1="176" end1="177" start2="180" end2="181" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
-        <range start1="178" end1="180" start2="182" end2="185" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
-        <range start1="182" end1="186" start2="187" end2="187" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
-        <range start1="189" end1="190" start2="190" end2="191" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
-        <range start1="193" end1="195" start2="194" end2="196" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
-        <range start1="207" end1="208" start2="208" end2="208" changelist="58cceed4-2ebd-4add-94de-92150b1a83c2" />
-        <range start1="210" end1="210" start2="210" end2="212" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
-        <range start1="212" end1="213" start2="214" end2="214" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
-        <range start1="216" end1="216" start2="217" end2="227" changelist="73589215-0605-44b4-854a-25c0840bedf4" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/compiler/lexic/lexic.flex">
-      <ranges>
-        <range start1="54" end1="54" start2="54" end2="55" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
-        <range start1="99" end1="99" start2="100" end2="103" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
-        <range start1="156" end1="156" start2="160" end2="164" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
-        <range start1="232" end1="233" start2="240" end2="244" changelist="58cceed4-2ebd-4add-94de-92150b1a83c2" />
-        <range start1="237" end1="237" start2="248" end2="250" changelist="d692a7f0-1e89-485c-a059-6cde022e44b7" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -110,7 +70,8 @@
       <workItem from="1669117375594" duration="745000" />
       <workItem from="1669126802878" duration="107000" />
       <workItem from="1669126929973" duration="902000" />
-      <workItem from="1669128812301" duration="23011000" />
+      <workItem from="1669128812301" duration="23822000" />
+      <workItem from="1670578679304" duration="5525000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,5 @@
-
-
 main() {
-    print("ATA2 aprovara la practica");
+    //joan
+    int x;
+    x <- 2;
 }
