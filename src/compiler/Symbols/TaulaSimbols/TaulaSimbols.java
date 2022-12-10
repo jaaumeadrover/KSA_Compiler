@@ -57,6 +57,7 @@ public class TaulaSimbols {
                     System.out.println("TA.GET(1)="+ta.get(1));
                     System.out.println("INDEXOF: "+ts.indexOf(ta.get(1)));
                     ts.add(ts.indexOf(ta.get(1)), simbol);
+                    System.out.println("        simbol afegit"+id);
                 } else {
                     ts.add(simbol);
                     System.out.println("        simbol afegit"+id);

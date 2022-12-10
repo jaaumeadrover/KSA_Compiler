@@ -25,7 +25,7 @@ public class Parser extends java_cup.runtime.lr_parser {
   /** Default constructor. */
   @Deprecated
   public Parser() {super();}
-
+//
 //  /** Constructor which sets the default scanner. */
 //  @Deprecated
 //  public Parser(java_cup.runtime.Scanner s) {super(s);}
@@ -594,7 +594,7 @@ class CUP$Parser$actions {
 		int idenright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		Object iden = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		RESULT=new SymbolVarDecl();
-                                          ts.afegeixSimbol(iden.toString(), t.getTipus(), TipusSub.CONST, 0);                              
+                                          ts.afegeixSimbol(iden.toString(), t.getTipus(), TipusSub.CONST, 0);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("varDecl",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -691,7 +691,7 @@ class CUP$Parser$actions {
 		int idenright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-6)).right;
 		Object iden = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-6)).value;
 		RESULT=new SymbolFuncDecl(iden.toString());
-                                                                                ts.afegeixNivell();
+                                                                                System.out.println("VAIG A AFEGIR SÍMBOL");
                                                                                 ts.afegeixSimbol(iden.toString(), t.getTipus(), TipusSub.FUNC, 0);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("funcDecl",6, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-8)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
@@ -732,7 +732,7 @@ class CUP$Parser$actions {
 		int idenright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)).right;
 		Object iden = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-4)).value;
 		RESULT =new SymbolProcDecl();
-                                                             ts.afegeixSimbol(iden.toString(), Tipus.NULL, TipusSub.PROC, 0);
+                                                                  ts.afegeixSimbol(iden.toString(), Tipus.NULL, TipusSub.PROC, 0);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("procDecl",8, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;

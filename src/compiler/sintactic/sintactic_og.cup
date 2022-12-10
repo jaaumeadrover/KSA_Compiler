@@ -128,20 +128,20 @@ non terminal  SymbolArray      array;
 non terminal  SymbolArrayInit  arrayInit;
 non terminal  SymbolContCap ContCap;
 non terminal  SymbolReturn return;
-non terminal SymbolOperador op;
-non terminal SymbolOper operacio;
-non terminal SymbolValor valor;
-non terminal SymbolBoolOp boolOp;
-non terminal SymbolAritOp aritOp;
-non terminal SymbolRealOp realOp;
-non terminal SymbolSwitchCase SwitchCase;
-non terminal SymbolLCases LCases;
-non terminal SymbolCase Case;
-non terminal SymbolDefault Default;
-non terminal SymbolInputStatement inputStatement;
-non terminal SymbolPrintStatement printStatement;
-non terminal SymbolStringValue stringValue;
-non terminal SymbolLiteral literal;
+non terminal  SymbolOperador op;
+non terminal  SymbolOper operacio;
+non terminal  SymbolValor valor;
+non terminal  SymbolBoolOp boolOp;
+non terminal  SymbolAritOp aritOp;
+non terminal  SymbolRealOp realOp;
+non terminal  SymbolSwitchCase SwitchCase;
+non terminal  SymbolLCases LCases;
+non terminal  SymbolCase Case;
+non terminal  SymbolDefault Default;
+non terminal  SymbolInputStatement inputStatement;
+non terminal  SymbolPrintStatement printStatement;
+non terminal  SymbolStringValue stringValue;
+non terminal  SymbolLiteral literal;
 
 precedence right asig;
 precedence left  add, sub;
@@ -163,8 +163,9 @@ decl ::= varDecl smcol    {:RESULT = new SymbolDecl();:}  //NO FA FALTA
     ;
 //DECLARACIÓ VARIABLES
 varDecl ::=r_const type:t id:iden varInit      {:RESULT=new SymbolVarDecl();
-                                          ts.afegeixSimbol(iden.toString(), t.getTipus(), TipusSub.CONST, 0);                              :}//declaració de una constant
-    |type id varInit                    {:RESULT=new SymbolVarDecl();:}//declaració d'una variable
+                                          ts.afegeixSimbol(iden.toString(), t.getTipus(), TipusSub.CONST, 0);:}//declaració de una constant
+    |type id varInit                    {:RESULT=new SymbolVarDecl();
+                                          ts.afegeixSimbol(iden.toString(), t.getTipus(), TipusSub.CONST, 0);:}//declaració d'una variable
     |varDecl com id varInit             {:RESULT=new SymbolVarDecl();:}
     ;
 
@@ -195,7 +196,7 @@ funcCap ::= ContCap rparen                  {:RESULT=new SymbolFuncCap();:}     
     ;
 
 procDecl ::= r_procedure id:iden procCap brop statementList brcl{:RESULT =new SymbolProcDecl();
-                                                             ts.afegeixSimbol(iden.toString(), Tipus.NULL, TipusSub.PROC, 0);:}; //declaració d'un procediment: proc 'nom' parametres {...}
+                                                                  ts.afegeixSimbol(iden.toString(), Tipus.NULL, TipusSub.PROC, 0);:}; //declaració d'un procediment: proc 'nom' parametres {...}
 
 procCap ::=ContCap rparen       {:RESULT = new SymbolProcCap();:} //declaració de parentesis per als arguments
     |lparen rparen                  {:RESULT = new SymbolProcCap();:}
@@ -291,7 +292,7 @@ subProgramContCall ::= id lparen exprSimple {:RESULT = new SymbolSubProgramContC
 
 SwitchCase ::= r_switch lparen exprSimple rparen brop LCases Default brcl {:RESULT = new SymbolSwitchCase();:};
 LCases ::= Case LCases {:RESULT = new SymbolLCases();:}
-    |                  {:RESULT = new SymbolLCases();:}
+    |                  {:RESULT = new SymbolLCases();:};
 
 Case ::= r_case exprSimple twodots statementList {:RESULT = new SymbolCase();:};
 Default ::= r_default twodots statementList      {:RESULT = new SymbolDefault();:}

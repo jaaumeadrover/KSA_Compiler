@@ -32,7 +32,7 @@ public class Main {
             } else {
                 //System.out.println("Escriu l'expressió que vols calcular (help; per ajuda):");
                 //System.out.print(">>> ");
-                input = new FileReader("/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova.txt");
+                input = new FileReader("/home/diegofes/GitHub/KSA_Compiler/src/TESTING/1.Funcions/prova.txt");
                 //input = new InputStreamReader(System.in);
             }
 
