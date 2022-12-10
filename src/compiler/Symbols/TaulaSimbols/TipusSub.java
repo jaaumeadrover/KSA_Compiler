@@ -1,9 +1,9 @@
-package TablaSimbolos;
+package compiler.Symbols.TaulaSimbols;
 
 /**
  *
  * @author ATA2
  */
 public enum TipusSub {
-    FUNC, CONST, VAR, PARAM
+    FUNC, PROC, CONST,ARRAY, VAR, PARAM
 }

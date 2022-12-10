@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TaulaSimbols;
+package compiler.Symbols.TaulaSimbols;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- *
- * @author Jaume
+ AUTORS: Joan Balaguer, Marc Cañellas, Diego Bermejo i Jaume Adrover
+ DATA CREACIÓ: 10/12/2023
  */
 public class TaulaSimbols {
 
@@ -20,7 +20,7 @@ public class TaulaSimbols {
     private int nivellMax;
     private int punterInici;
 
-    public TaulaSimbols(TaulaSimbols prev) {
+    public TaulaSimbols() {
         ts = new ArrayList<>();
         ta = new HashMap<>();
         //variables
@@ -35,54 +35,65 @@ public class TaulaSimbols {
      */
     public int afegeixSimbol(String id,Tipus t,TipusSub tSub,int pos){
 
-            if(tSub==TipusSub.FUNC){//si símbol està dins una funció
-                if(getFuncio(id) != null){ //si no existeix la funció retorna 0
-                    return 0;
-                }
-                Simbol sym=new Simbol(id,t,nivell,tSub,pos);
-                ta.put(nivell,sym);
-                ts.add(punterInici,sym);
-                nivell=0;
-                punterInici =0;
-            }else{
-                if(consulta(id) != null){   //si ja existeix
-                    return 0;
-                }
-                if(tSub != TipusSub.PARAM){
-                    Simbol simbol = new Simbol(id, tipus, nivell, tSub, pos);
-                    if (nivell == 0 && !ta.isEmpty()) {
-                        ts.add(ts.indexOf(ta.get(1)), simbol);
-                    } else {
-                        ts.add(simbol);
-                    }
-                }else{
-                    Simbol simbol = new Simbol(id, t, nivell, tSub, pos);
-                    ts.add(punterInici, s);
-                }
+        if(tSub==TipusSub.FUNC){//si símbol està dins una funció
+            if(consultaFunc(id) != null){ //si no existeix la funció retorna 0
+                System.out.println("simbol ja existeix"+id);
+                return 0;
             }
-
+            Simbol sym=new Simbol(id,tSub, t, nivell,pos);
+            ta.put(nivell,sym);
+            ts.add(punterInici,sym);
+            System.out.println("        simbol afegit"+id);
+            nivell=0;
+            punterInici =0;
+        }else{
+            if(consulta(id) != null){   //si ja existeix
+                System.out.println("        simbol ja existeix"+id);
+                return 0;
+            }
+            if(tSub != TipusSub.PARAM){
+                Simbol simbol = new Simbol(id,tSub, t, nivell, pos);
+                if (nivell == 0 && !ta.isEmpty()) {
+                    System.out.println("TA.GET(1)="+ta.get(1));
+                    System.out.println("INDEXOF: "+ts.indexOf(ta.get(1)));
+                    ts.add(ts.indexOf(ta.get(1)), simbol);
+                } else {
+                    ts.add(simbol);
+                    System.out.println("        simbol afegit"+id);
+                }
+            }else{
+                Simbol simbol = new Simbol(id, tSub, t, nivell, pos);
+                ts.add(punterInici, simbol);
+                System.out.println("        simbol afegit"+id);
+            }
+        }
+        return 1;
     }
 
     public void afegeixNivell(){
-        nivells++;
-        nivell=nivells;
+        nivellMax++;
+        nivell=nivellMax;
         punterInici=ts.size();
-
+        System.out.println("HE AFEGIT UN NIVELL A LA TAULA DE SÍMBOLS: "+nivellMax);
     }
-}
 
     public Simbol consultaFunc(String identificador){
         //si la taula d'àmbits no buida
         if(ta.isEmpty()){
+            System.out.println("LA TAULA D'ÀMBITS ESTÀ BUIDA!");
             return null;
         }
 
         for(int i=0;i<ta.size();i++){
             Simbol sym=ta.get(i);
-            if(sym.id==identificador){
+            System.out.println("    Iteració: "+i+": simbol: "+sym);
+            System.out.println("    IDENTIFICADOR: "+sym.getIdAutoIncrement());
+            System.out.println("    IDENTIFICADOR PARAM: "+identificador);
+            if(sym.getIdAutoIncrement().equals(identificador)){
                 return sym;
             }
         }
+        return null;
     }
     public Simbol consulta(String identificador){
         if(nivell != 0){
@@ -108,35 +119,11 @@ public class TaulaSimbols {
         return null;
     }
 
-    public Simbol getSimbol(String id) {
-        if (nivell != 0) {
-            for (int i = punterInici; i < ts.size(); i++) {
-                Simbol s = ts.get(i);
-                if (s.getId().equals(id)) {
-                    return s;
-                }
-            }
-        }
-        int max = 0;
-        if (ta.isEmpty()) {
-            max = ts.size();
-        } else {
-            max = ts.indexOf(ta.get(1));
-        }
-        for (int i = 0; i < max; i++) {
-            Simbol s = ts.get(i);
-            if (s.getId().equals(id)) {
-                return s;
-            }
-        }
-        return null;
-    }
-
     public Simbol consultaParametre(Simbol f, int n) {
         int i = ts.indexOf(f);
         if (i + n < ts.size()) {
             Simbol s = ts.get(i + n);
-            if (s.getTipoSub().equals(TipoSub.PARAMETRO) && s.getNivel() == f.getNivel()) {
+            if (s.getTipusSub().equals(TipusSub.PARAM) && s.getNivell() == f.getNivell()) {
                 return s;
             }
         }
@@ -147,18 +134,13 @@ public class TaulaSimbols {
     public String toString() {
         String text = "";
         for (Simbol simbol : ts) {
-            if (simbol.getNivel() > 0 && !(simbol.getTipoSub()==TipusSub.FUNCION)) {
+            if (simbol.getNivell() > 0 && !(simbol.getTipusSub()==TipusSub.FUNC)) {
                 text += "\t" + simbol.toString() + "\n";
             } else {
                 text += simbol.toString() + "\n";
             }
         }
-        return txt;
+        return text;
     }
-
-
-
-
-
 
 }

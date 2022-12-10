@@ -1,8 +1,8 @@
 
 
-package TablaSimbolos;
+package compiler.Symbols.TaulaSimbols;
 
-import ArbolSintactico.Tipo;
+//import ArbolSintactico.Tipo;
 /**
  *
  * @author Ata2
@@ -10,21 +10,21 @@ import ArbolSintactico.Tipo;
 public class Simbol {
 
     private String idAutoIncrement;
-    private Tipo tipus;
-    private int nivell;
-    private TipoSub tiopusSub;
+    private TipusSub tiopusSub;
+    private Tipus tipus;
     private int fila;
+    private int nivell;
 
-    public Simbolo(String id, Tipo tipo, int nivell, TipoSub tipoSub, int fila) {
-        this.idAutoIncrement = id;
-        this.tipus = tipo;
-        this.nivell = nivell;
+    public Simbol(String idAutoIncrement, TipusSub tipoSub, Tipus tipus, int fila, int nivell) {
+        this.idAutoIncrement = idAutoIncrement;
         this.tiopusSub = tipoSub;
+        this.tipus = tipus;
         this.fila = fila;
+        this.nivell = nivell;
     }
 
-    public boolean equals(Simbolo s){
-        return this.idAutoIncrement.equals(s.getId()) && this.nivell == s.getNivel();
+    public boolean equals(Simbol simbol){
+        return ( ( this.idAutoIncrement==simbol.getIdAutoIncrement() ) && ( this.nivell == simbol.getNivell() ) );
     }
 
     public int getFila(){
@@ -40,7 +40,7 @@ public class Simbol {
         return idAutoIncrement;
     }
 
-    public Tipo getTipus() {
+    public Tipus getTipus() {
         return tipus;
     }
 
@@ -48,7 +48,7 @@ public class Simbol {
         return nivell;
     }
 
-    public TipoSub getTiopusSub() {
+    public TipusSub getTipusSub() {
         return tiopusSub;
     }
 }

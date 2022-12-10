@@ -22,10 +22,11 @@ package compiler.sintactic;
 
 
 import java_cup.runtime.ComplexSymbolFactory.ComplexSymbol;
+import compiler.Symbols.TaulaSimbols.*;
+import compiler.Symbols.*;
 
 import java_cup.runtime.*;
 
-import compiler.Symbols.*;
 
 import java.io.PrintStream;
 import java.util.HashMap;
@@ -36,7 +37,7 @@ class Parser;
  ** Aquí es podria posar un codi 'ad hoc' però en aquest cas no és necessari.
 **/
 parser code {:
-
+    private TaulaSimbols ts=new TaulaSimbols();
     private Scanner scanner;
 
     public Parser(Scanner scanner){
@@ -96,6 +97,10 @@ terminal asig, smcol, twodots, com, brop, brcl, lop, lclose, lparen, rparen;
 terminal r_if, r_else, r_switch, r_case, r_default, r_break, r_function, r_procedure, r_return, r_while, r_for, r_const,
          r_and, r_or, r_not, r_int, r_bool, r_main, r_string,r_input,r_print;
 
+non terminal M;
+
+
+
 non terminal  SymbolProgram   program;
 non terminal  SymbolDeclList  declList;
 non terminal  SymbolDecl   decl;
@@ -145,19 +150,20 @@ precedence left  mul, div, mod;
 
 start with program;
 
-program ::= declList r_main lparen rparen brop statementList brcl {:RESULT = new SymbolProgram();:} //producció inicial
+program ::= declList r_main lparen rparen brop statementList brcl {:RESULT = new SymbolProgram();:} //NO FA FALTA
     ;
 
 //DECLARACIONS
-declList ::= declList decl {:RESULT=new SymbolDeclList();:} //Llista declaracions
+declList ::= declList decl {:RESULT=new SymbolDeclList();:} //NO FA FALTA
     |                      {:RESULT=new SymbolDeclList();:}
     ;
-decl ::= varDecl smcol    {:RESULT = new SymbolDecl();:}  //declaració de variables,funcions o procediments
+decl ::= varDecl smcol    {:RESULT = new SymbolDecl();:}  //NO FA FALTA
     | funcDecl            {:RESULT = new SymbolDecl();:}
     | procDecl            {:RESULT = new SymbolDecl();:}
     ;
 //DECLARACIÓ VARIABLES
-varDecl ::=r_const type id varInit      {:RESULT=new SymbolVarDecl();:}//declaració de una constant
+varDecl ::=r_const type:t id:iden varInit      {:RESULT=new SymbolVarDecl();
+                                          ts.afegeixSimbol(iden.toString(), t.getTipus(), TipusSub.CONST, 0);                              :}//declaració de una constant
     |type id varInit                    {:RESULT=new SymbolVarDecl();:}//declaració d'una variable
     |varDecl com id varInit             {:RESULT=new SymbolVarDecl();:}
     ;
@@ -171,14 +177,16 @@ varInit ::= asig exprSimple              {:RESULT =new SymbolVarInit();:}     //
 arrayInit ::=type lop integer lclose {:RESULT =new  SymbolArrayInit();:}
 ;//inicialització d'un array: 'nom' [arrayEllist]
 
-type ::= r_int                 {:RESULT=new SymbolType();:}
-    |r_bool                    {:RESULT=new SymbolType();:}
-    |r_string                  {:RESULT=new SymbolType();:}
+type ::= r_int                 {:RESULT=new SymbolType(Tipus.INT);:}
+    |r_bool                    {:RESULT=new SymbolType(Tipus.BOOLEAN);:}
+    |r_string                  {:RESULT=new SymbolType(Tipus.STRING);:}
     ;
 
 
 //FUNCIONS
-funcDecl ::= r_function type id funcCap brop statementList return brcl {:RESULT=new SymbolFuncDecl();:}
+funcDecl ::= r_function type:t  id:iden funcCap M brop statementList return brcl {:RESULT=new SymbolFuncDecl(iden.toString());
+                                                                                System.out.println("VAIG A AFEGIR SÍMBOL");
+                                                                                ts.afegeixSimbol(iden.toString(), t.getTipus(), TipusSub.FUNC, 0);:}
     ; //declaració d'una funció
 return   ::=r_return exprSimple smcol  {:RESULT = new SymbolReturn();:}
 ;
@@ -186,7 +194,8 @@ funcCap ::= ContCap rparen                  {:RESULT=new SymbolFuncCap();:}     
     | lparen rparen                         {:RESULT=new SymbolFuncCap();:}
     ;
 
-procDecl ::= r_procedure id procCap brop statementList brcl{:RESULT =new SymbolProcDecl();:}; //declaració d'un procediment: proc 'nom' parametres {...}
+procDecl ::= r_procedure id:iden procCap brop statementList brcl{:RESULT =new SymbolProcDecl();
+                                                             ts.afegeixSimbol(iden.toString(), Tipus.NULL, TipusSub.PROC, 0);:}; //declaració d'un procediment: proc 'nom' parametres {...}
 
 procCap ::=ContCap rparen       {:RESULT = new SymbolProcCap();:} //declaració de parentesis per als arguments
     |lparen rparen                  {:RESULT = new SymbolProcCap();:}
@@ -283,7 +292,7 @@ subProgramContCall ::= id lparen exprSimple {:RESULT = new SymbolSubProgramContC
 SwitchCase ::= r_switch lparen exprSimple rparen brop LCases Default brcl {:RESULT = new SymbolSwitchCase();:};
 LCases ::= Case LCases {:RESULT = new SymbolLCases();:}
     |                  {:RESULT = new SymbolLCases();:}
-    ;
+
 Case ::= r_case exprSimple twodots statementList {:RESULT = new SymbolCase();:};
 Default ::= r_default twodots statementList      {:RESULT = new SymbolDefault();:}
     |                                            {:RESULT = new SymbolDefault();:}
@@ -306,5 +315,7 @@ elseStatement ::= elseIfStatement r_else brop statementList  {:RESULT = new Symb
     | brop statementList                                    {:RESULT = new SymbolElseStatement();:}
     ;
 
-elseIfStatement::= elseIfStatement r_else r_if exprSimple brop bloc brcl
-    ;
+elseIfStatement::= elseIfStatement r_else r_if exprSimple brop statementList brcl
+    {:RESULT= new SymbolElseIfStatement();:};
+
+    M ::= {:ts.afegeixNivell();:};

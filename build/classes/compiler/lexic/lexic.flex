@@ -243,9 +243,9 @@ r_comment = "//"([^\n])*
 {r_print}                {System.out.println("print: "+this.yytext());
                             return symbol(ParserSym.r_print);}
 {id}                     {System.out.println("ID: "+this.yytext());
-                            return symbol(ParserSym.id);}
+                            return symbol(ParserSym.id,this.yytext());}
 {integer}                {System.out.println("INT: "+this.yytext());
-                            return symbol(ParserSym.integer);}
+                            return symbol(ParserSym.integer,this.yytext());}
 
 
 
