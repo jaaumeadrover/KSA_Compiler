@@ -11,15 +11,15 @@ public class SymbolValor extends SymbolBase {
 
    public SymbolValor(String id){
         this.iden=id;
-       System.out.println("Soy un valor);
+       System.out.println("Soy un valor");
    }
 
     public SymbolValor(SymbolArray arr){
         this.array=arr;
-        System.out.println("Soy un valor);
+        System.out.println("Soy un valor");
     }
     public SymbolValor(){
-        System.out.println("Soy un valor);
+        System.out.println("Soy un valor");
     }
 
     public SymbolValor(boolean b){
@@ -30,12 +30,12 @@ public class SymbolValor extends SymbolBase {
         else{
 
         }
-        System.out.println("Soy un valor);
+        System.out.println("Soy un valor");
     }
 
     public SymbolValor(SymbolSubProgramCall subProgCall){
         this.subProgramCall=subProgCall;
-        System.out.println("Soy un valor);
+        System.out.println("Soy un valor");
     }
 
  }
