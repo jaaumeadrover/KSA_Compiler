@@ -1,6 +1,5 @@
-package compiler.Symbols;
+package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
-import Operacions;
 
 public class SymbolOp extends SymbolBase{
     private SymbolBoolOp boolOP;
@@ -8,7 +7,7 @@ public class SymbolOp extends SymbolBase{
     private SymbolRealOp realOP;
 
     public SymbolOp(SymbolBoolOp oper){
-        this.boolOp=oper;
+        this.boolOP=oper;
         System.out.println("soy un operador");
     }
 

@@ -1,8 +1,8 @@
-package compiler.Symbols;
+package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
 
 public class SymbolSubProgramCall extends SymbolBase {
-    private Sting id;
+    private String id;
     private SymbolSubProgramContCall subProgramContCall;
 
     public SymbolSubProgramCall(String id){

@@ -1,11 +1,10 @@
-package compiler.Symbols;
+package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
-import Operacions;
 
 public class SymbolBoolOp extends SymbolBase{
-    private Operacions bool;
+    private operacions bool;
 
-    public SymbolBoolOp(Operacions b){
+    public SymbolBoolOp(operacions b){
         this.bool = b;
         System.out.println("SOC UN SYMBOLOP");
     }

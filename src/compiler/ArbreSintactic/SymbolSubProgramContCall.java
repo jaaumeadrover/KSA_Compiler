@@ -1,4 +1,4 @@
-package compiler.Symbols;
+package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
 
 public class SymbolSubProgramContCall extends SymbolBase {
@@ -13,8 +13,9 @@ public class SymbolSubProgramContCall extends SymbolBase {
         System.out.println("soy un subprogramcontcall");
     }
 
-    public SymbolSubProgramContCall(SymbolSubProgramContCall subContCall){
+    public SymbolSubProgramContCall(SymbolSubProgramContCall subContCall, SymbolExpressioSimple expr){
         this.subProgramContCall=subContCall;
+        this.expressioSimple=expr;
         System.out.println("soy un subprogramcontcall");
     }
 }

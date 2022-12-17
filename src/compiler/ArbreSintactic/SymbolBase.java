@@ -5,7 +5,7 @@
  *
  * Professor: Pere Palmer
  */
-package compiler.Symbols;
+package compiler.ArbreSintactic;
 
 import java_cup.runtime.ComplexSymbolFactory.ComplexSymbol;
 import compiler.Symbols.TaulaSimbols.Tipus;

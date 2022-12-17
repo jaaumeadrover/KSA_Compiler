@@ -1,3 +1,6 @@
+package compiler.ArbreSintactic;
+
+
 public class ArbreSintactic {
 
     public SymbolProgram root;
@@ -6,3 +9,4 @@ public class ArbreSintactic {
     public void setRoot(SymbolProgram root) {
         this.root = root;
     }
+}

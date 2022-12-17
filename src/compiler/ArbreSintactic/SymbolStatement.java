@@ -1,4 +1,4 @@
-package compiler.Symbols;
+package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
 
 public class SymbolStatement extends SymbolBase {
@@ -10,7 +10,13 @@ public class SymbolStatement extends SymbolBase {
     private SymbolInputStatement input;
     private SymbolPrintStatement print;
     private SymbolIfStatement i;
-    private SymbolSwitchStatement s;
+    private SymbolSwitchCase s;
+
+    public SymbolStatement(){
+
+        System.out.println("soy un statement");
+    }
+    
     public SymbolStatement(SymbolVarDecl vard){
         this.vard = vard;
         System.out.println("soy un statement");
@@ -39,7 +45,7 @@ public class SymbolStatement extends SymbolBase {
         this.i=i;
         System.out.println("soy un statement");
     }
-    public SymbolStatement(SymbolSwitchStatement s){
+    public SymbolStatement(SymbolSwitchCase s){
         this.s=s;
         System.out.println("soy un statement");
     }

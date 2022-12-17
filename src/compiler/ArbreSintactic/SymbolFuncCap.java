@@ -1,9 +1,9 @@
-package compiler.Symbols;
+package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
 
 public class SymbolFuncCap extends SymbolBase{
 
-    private SymbolContCap contcap
+    private SymbolContCap contcap;
     public SymbolFuncCap(){
 
         System.out.println("soy un SymbolFuncCap");

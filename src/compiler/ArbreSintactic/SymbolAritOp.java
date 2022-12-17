@@ -1,10 +1,9 @@
-package compiler.Symbols;
+package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
-import Operacions;
 
 public class SymbolAritOp extends SymbolBase{
-    private Operacions aritOp;
-    public SymbolAritOp(Operacions oper){
+    private operacions aritOp;
+    public SymbolAritOp(operacions oper){
         this.aritOp=oper;
         System.out.println("SOC UN SYMBOLARITOP");
     }

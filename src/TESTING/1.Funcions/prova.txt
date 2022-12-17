@@ -1,13 +1,18 @@
 func int suma(int a, int b){
     return a+b;
 }
+proc resta(int c, int b){
+    a <- 1;
+}
+
+func int resta(){
+    int b <- 1;
+    int a;
+    a <- 3;
+    return c;
+}
 
 main() {
     int a <- 1;
-    int b <- 1;
-    const int a;
-    const int a;
-    const bool b;
-    const bool b;
-    int c <- suma(a, b);
+    int c <- a+b;
 }

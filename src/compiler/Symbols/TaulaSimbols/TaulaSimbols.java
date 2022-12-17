@@ -35,6 +35,7 @@ public class TaulaSimbols {
      */
     public int afegeixSimbol(String id,Tipus t,TipusSub tSub,int pos){
 
+
         if(tSub==TipusSub.FUNC){//si símbol està dins una funció
             if(consultaFunc(id) != null){ //si no existeix la funció retorna 0
                 System.out.println("simbol ja existeix"+id);
@@ -46,6 +47,7 @@ public class TaulaSimbols {
             System.out.println("        simbol afegit"+id);
             nivell=0;
             punterInici =0;
+            System.out.println("HE AFEGIT SIMBOL FUNCIO: "+id);
         }else{
             if(consulta(id) != null){   //si ja existeix
                 System.out.println("        simbol ja existeix"+id);
@@ -58,6 +60,7 @@ public class TaulaSimbols {
                     System.out.println("INDEXOF: "+ts.indexOf(ta.get(1)));
                     ts.add(ts.indexOf(ta.get(1)), simbol);
                     System.out.println("        simbol afegit"+id);
+
                 } else {
                     ts.add(simbol);
                     System.out.println("        simbol afegit"+id);
@@ -85,13 +88,15 @@ public class TaulaSimbols {
             return null;
         }
 
-        for(int i=0;i<ta.size();i++){
+        for(int i=1;i<ta.size()+1;i++){
             Simbol sym=ta.get(i);
             System.out.println("    Iteració: "+i+": simbol: "+sym);
             System.out.println("    IDENTIFICADOR: "+sym.getIdAutoIncrement());
             System.out.println("    IDENTIFICADOR PARAM: "+identificador);
-            if(sym.getIdAutoIncrement().equals(identificador)){
-                return sym;
+            if(sym.getIdAutoIncrement()!=null) {
+                if (sym.getIdAutoIncrement().equals(identificador)) {
+                    return sym;
+                }
             }
         }
         return null;
@@ -143,5 +148,7 @@ public class TaulaSimbols {
         }
         return text;
     }
-
+    public int getMida(){
+        return ts.size();
+    }
 }

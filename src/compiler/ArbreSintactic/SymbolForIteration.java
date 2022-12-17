@@ -1,4 +1,4 @@
-package compiler.Symbols;
+package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
 
 public class SymbolForIteration extends SymbolBase{
@@ -6,12 +6,13 @@ public class SymbolForIteration extends SymbolBase{
     private SymbolForInit init;
     private SymbolExpressioSimple expressio;
     private SymbolForPostExpression postexpression;
-    private SymbolStatementList statementlist;
+    private SymbolStatementList states;
 
-    public SymbolForIteration(SymbolForInit forinit, SymbolExpressioSimple expr, SymbolForPost forpost){
+    public SymbolForIteration(SymbolForInit forinit, SymbolExpressioSimple expr, SymbolForPostExpression forpost, SymbolStatementList states){
         this.init = forinit;
-        this.expressio = expr
+        this.expressio = expr;
         this.postexpression = forpost;
+        this.states=states;
         System.out.println("soy un forstatement");
     }
 }
