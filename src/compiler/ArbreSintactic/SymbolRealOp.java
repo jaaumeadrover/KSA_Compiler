@@ -1,16 +1,16 @@
 package compiler.ArbreSintactic;
-import compiler.Symbols.TaulaSimbols.Tipus;
+import compiler.Symbols.TaulaSimbols.*;
 
 public class SymbolRealOp extends SymbolBase {
     private operacions realOp;
-    private Tipus tipus;
+    private TipusSub tipus;
     public SymbolRealOp(operacions op){
         this.realOp = op;
-        this.tipus = Tipus.BOOLEAN;
+        this.tipus = TipusSub.BOOLEAN;
         System.out.println("soy un simbol real op");
     }
 
-    public Tipus getTipus() {
+    public TipusSub getTipus() {
         return tipus;
     }
 }

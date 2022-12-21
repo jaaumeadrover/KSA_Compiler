@@ -1,28 +1,31 @@
 package compiler.ArbreSintactic;
-import compiler.Symbols.TaulaSimbols.Tipus;
+import compiler.Symbols.TaulaSimbols.TipusSub;
 
 public class SymbolOp extends SymbolBase{
     private SymbolBoolOp boolOP;
     private SymbolAritOp aritOp;
     private SymbolRealOp realOP;
-    public Tipus tipus;
+    public TipusSub tipus;
 
     public SymbolOp(SymbolBoolOp oper){
         this.boolOP=oper;
         System.out.println("soy un operador");
-        this.tipus = Tipus.BOOLEAN;
+        this.tipus = TipusSub.BOOLEAN;
     }
 
     public SymbolOp(SymbolAritOp oper){
         this.aritOp=oper;
         System.out.println("soy un operador");
-        this.tipus = Tipus.INTEGER;
+        this.tipus = TipusSub.INT;
     }
 
     public SymbolOp(SymbolRealOp oper){
         this.realOP=oper;
         System.out.println("soy un operador");
-        this.tipus = Tipus.BOOLEAN;
+        this.tipus = TipusSub.BOOLEAN;
+    }
+    public TipusSub getTipusSub(){
+        return tipus;
     }
 
 }

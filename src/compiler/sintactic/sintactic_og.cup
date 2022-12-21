@@ -337,7 +337,13 @@ forPostExpression ::= exprSimple:expr               {:RESULT = new SymbolForPost
     ;
 
 whileStatement ::= r_while lparen exprSimple:expr
-rparen brop statementList:state brcl                {:RESULT = new SymbolWhileStatement(expr,state);:};
+rparen brop statementList:state brcl                {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN){
+                                                        RESULT = new SymbolWhileStatement(expr,state);
+                                                     }else{
+                                                          RESULT = new SymbolWhileStatement();
+                                                           System.out.print("Aixó no es boolean");
+                                                    }
+                                                    :};
 
 
 ifStatement ::= r_if lparen exprSimple:expr rparen brop statementList:stateif brcl   {:RESULT = new SymbolIfStatement(expr,stateif);:}
