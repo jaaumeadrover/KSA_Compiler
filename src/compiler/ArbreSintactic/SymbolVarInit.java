@@ -20,5 +20,8 @@ public class SymbolVarInit extends SymbolBase {
     public SymbolVarInit(){
 
     }
+    public boolean isIsarray(){
+      return isarray;
+    }
 
  }

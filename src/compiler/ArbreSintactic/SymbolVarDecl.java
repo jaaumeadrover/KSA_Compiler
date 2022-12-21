@@ -3,19 +3,19 @@ import compiler.Symbols.TaulaSimbols.Tipus;
 
 public class SymbolVarDecl extends SymbolBase {
 
-    private Tipus tipus;
+    private TipusSub tipus;
     private boolean esConst;
     private  String id;
     private SymbolVarInit simbol;
     
-  public SymbolVarDecl(boolean esConst, Tipus t, String id, SymbolVarInit simbol){
+  public SymbolVarDecl(boolean esConst, TipusSub t, String id, SymbolVarInit simbol){
         this.esConst=esConst;
         this.tipus = t;
         this.id = id;
         this.simbol = simbol;
         System.out.println("soy un vardecl");
   }
-  public Tipus getTipus(){
+  public TipusSub getTipusSub(){
       return tipus;
   }
   

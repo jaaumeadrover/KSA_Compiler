@@ -1,8 +1,9 @@
 package compiler.Symbols.TaulaSimbols;
 
-
-
+/**
+ *
+ * @author ATA2
+ */
 public enum Tipus {
-    BOOLEAN, INT, STRING, NULL
+    FUNC, PROC, CONST,ARRAY, VAR, PARAM
 }
-

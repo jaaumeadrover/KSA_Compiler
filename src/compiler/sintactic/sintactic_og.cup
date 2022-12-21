@@ -160,11 +160,17 @@ decl ::= varDecl smcol    {:RESULT = new SymbolDecl();:}  //NO FA FALTA
     | procDecl            {:RESULT = new SymbolDecl();:}
     ;
 //DECLARACIÓ VARIABLES
-varDecl ::=  r_const type:t id:iden varInit:varinit     {:RESULT=new SymbolVarDecl(true, t.getTipus(), iden.toString(),varinit);
-                                                        ts.afegeixSimbol(iden.toString(), t.getTipus(), TipusSub.CONST, 0);:}//declaració de una constant
-    |type:t id:iden varInit:varinit                    {:RESULT=new SymbolVarDecl(false,t.getTipus(),iden.toString(),varinit);
-                                                        ts.afegeixSimbol(iden.toString(), t.getTipus(), TipusSub.VAR, 0);:}//declaració d'una variable
-    |varDecl:vard com id:iden varInit:varinit          {:RESULT=new SymbolVarDecl(vard.esConst(), vard.getTipus(), iden.toString(),varinit);
+varDecl ::=  r_const type:t id:iden varInit:varinit     {:RESULT=new SymbolVarDecl(true, t.getTipusSub(), iden.toString(),varinit);
+                                                        ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.CONST, 0);:}//declaració de una constant
+    |type:t id:iden varInit:varinit                    {:RESULT=new SymbolVarDecl(false,t.getTipusSub(),iden.toString(),varinit);
+                                                        if(varinit.Isisarray()){
+                                                                ts.afegeixSimbol(iden.toString(),vard.getTipusSub(), Tipus.ARRAY,0);
+                                                            }
+                                                            else{
+                                                                ts.afegeixSimbol(iden.toString(),vard.getTipusSub(), Tipus.ARRAY,0);
+                                                            }
+                                                        ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.VAR, 0);:}//declaració d'una variable
+    |varDecl:vard com id:iden varInit:varinit          {:RESULT=new SymbolVarDecl(vard.esConst(), vard.getTipusSub(), iden.toString(),varinit);
                                                         if(vard.esConst()){
                                                             ts.afegeixSimbol(iden.toString(),vard.getTipus(), TipusSub.CONST,0);
                                                         }
@@ -180,18 +186,16 @@ varInit ::= asig exprSimple:expr             {:RESULT =new SymbolVarInit(expr);:
     //|asig subProgramCall                 {:RESULT =new SymbolVarInit();:}
     ;
 //ARRAYS!
-arrayInit ::=type:t lop exprSimple:expr lclose {:RESULT =new  SymbolArrayInit(t.getTipus(),expr);:}
+arrayInit ::=type:t lop exprSimple:expr lclose {:RESULT =new  SymbolArrayInit(t.getTipusSub(),expr);:}
 ;//inicialització d'un array: 'nom' [arrayEllist]
 
-type ::= r_int                 {:RESULT=new SymbolType(Tipus.INT);:}
-    |r_bool                    {:RESULT=new SymbolType(Tipus.BOOLEAN);:}
-    |r_string                  {:RESULT=new SymbolType(Tipus.STRING);:}
+type ::= r_int                 {:RESULT=new SymbolType(TipusSub.INT);:}
+    |r_bool                    {:RESULT=new SymbolType(TipusSub.BOOLEAN);:}
+    |r_string                  {:RESULT=new SymbolType(TipusSub.STRING);:}
     ;
 
 
 //FUNCIONS
-
-
 return   ::=r_return exprSimple:expr smcol  {:RESULT = new SymbolReturn(expr);:}
 ;
 funcDecl ::= r_function type:t  id:iden funcCap:funcCap M brop statementList:stats return:rtn brcl {:
@@ -199,22 +203,22 @@ funcDecl ::= r_function type:t  id:iden funcCap:funcCap M brop statementList:sta
                                                                                 Simbol s=ts.consultaFunc(iden.toString());
                                                                                 System.out.println("SIMBOL S: "+s);
                                                                                 if(s == null){
-                                                                                    RESULT=new SymbolFuncDecl(t.getTipus(), iden.toString(), stats, rtn,funcCap);
-                                                                                    ts.afegeixSimbol(iden.toString(), t.getTipus(), TipusSub.FUNC, 0);
+                                                                                    RESULT=new SymbolFuncDecl(t.getTipusSub(), iden.toString(), stats, rtn,funcCap);
+                                                                                    ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.FUNC, 0);
                                                                                 }else{
                                                                                     System.out.println("FUNCIÓ JA CREADA ANTERIORMENT!");
                                                                                     RESULT=new SymbolFuncDecl();
                                                                                 }
                                                                                 :};
-funcCap ::= ContCap:contcap rparen                  {:RESULT=new SymbolFuncCap(contcap);:}               //declaració de parentesis per als arguments
+funcCap ::= ContCap:contcap rparen          {:RESULT=new SymbolFuncCap(contcap);:}               //declaració de parentesis per als arguments
     | lparen rparen                         {:RESULT=new SymbolFuncCap();:}
     ;
 
 procDecl ::= r_procedure id:iden funcCap:funcCap M brop statementList:stats brcl{:RESULT =new SymbolProcDecl(iden.toString(), stats,funcCap);
-                                                                                ts.afegeixSimbol(iden.toString(), Tipus.NULL, TipusSub.FUNC, 0);:}; //declaració d'un procediment: proc 'nom' parametres {...}
+                                                                                ts.afegeixSimbol(iden.toString(), TipusSub.NULL, Tipus.FUNC, 0);:}; //declaració d'un procediment: proc 'nom' parametres {...}
 
-ContCap ::= lparen argType:arg type:t id:iden              {:RESULT = new SymbolContCap(arg,t.getTipus(), iden.toString());:}//tancam parentesis i definim els paràmetres
-    | ContCap:contcap com argType:arg type:t id:iden       {:RESULT = new SymbolContCap(contcap,arg,t.getTipus(), iden.toString());:}
+ContCap ::= lparen argType:arg type:t id:iden              {:RESULT = new SymbolContCap(arg,t.getTipusSub(), iden.toString());:}//tancam parentesis i definim els paràmetres
+    | ContCap:contcap com argType:arg type:t id:iden       {:RESULT = new SymbolContCap(contcap,arg,t.getTipusSub(), iden.toString());:}
     ;
 
 argType ::= r_const {:RESULT = new SymbolArgType(true);:}   //tipus d'argument (constant o no)
