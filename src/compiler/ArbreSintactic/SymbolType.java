@@ -1,16 +1,17 @@
 package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
+import compiler.Symbols.TaulaSimbols.TipusSub;
 
 public class SymbolType extends SymbolBase {
-    Tipus tipusSub;
+    TipusSub tipusSub;
 
     public SymbolType(TipusSub tipus){
         System.out.println("soy un type de tipo"+tipus);
-        this.tipus = tipus;
+        this.tipusSub = tipus;
    }
 
-   public Tipus getTipusSub(){
-        return tipus;
+   public TipusSub getTipusSub(){
+        return tipusSub;
    }
 
- }
+ } 
