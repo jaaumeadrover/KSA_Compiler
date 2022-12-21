@@ -33,10 +33,8 @@ public class TaulaSimbols {
         Params: id,tipus variable, tipus subàmbit, posició.
         Return: 0 si no ha funcionat, 1 si funciona
      */
-    public int afegeixSimbol(String id,Tipus t,TipusSub tSub,int pos){
-
-
-        if(tSub==TipusSub.FUNC){//si símbol està dins una funció
+    public int afegeixSimbol(String id, TipusSub tSub,Tipus t,int pos){
+        if(t==Tipus.FUNC){//si símbol està dins una funció
             if(consultaFunc(id) != null){ //si no existeix la funció retorna 0
                 System.out.println("simbol ja existeix"+id);
                 return 0;
@@ -53,7 +51,7 @@ public class TaulaSimbols {
                 System.out.println("        simbol ja existeix"+id);
                 return 0;
             }
-            if(tSub != TipusSub.PARAM){
+            if(t != Tipus.PARAM){
                 Simbol simbol = new Simbol(id,tSub, t, nivell, pos);
                 if (nivell == 0 && !ta.isEmpty()) {
                     System.out.println("TA.GET(1)="+ta.get(1));
@@ -101,6 +99,11 @@ public class TaulaSimbols {
         }
         return null;
     }
+
+    /*
+    Mètode per a obtenir un Símbol, si no el troba retorna null.
+    També ens serveix per a mirar si un Símbol ha estat creat.
+     */
     public Simbol consulta(String identificador){
         if(nivell != 0){
             for (int i = punterInici; i<ts.size();i++){
@@ -129,7 +132,7 @@ public class TaulaSimbols {
         int i = ts.indexOf(f);
         if (i + n < ts.size()) {
             Simbol s = ts.get(i + n);
-            if (s.getTipusSub().equals(TipusSub.PARAM) && s.getNivell() == f.getNivell()) {
+            if (s.getTipusSub().equals(Tipus.PARAM) && s.getNivell() == f.getNivell()) {
                 return s;
             }
         }
@@ -140,7 +143,7 @@ public class TaulaSimbols {
     public String toString() {
         String text = "";
         for (Simbol simbol : ts) {
-            if (simbol.getNivell() > 0 && !(simbol.getTipusSub()==TipusSub.FUNC)) {
+            if (simbol.getNivell() > 0 && !(simbol.getTipus()==Tipus.FUNC)) {
                 text += "\t" + simbol.toString() + "\n";
             } else {
                 text += simbol.toString() + "\n";

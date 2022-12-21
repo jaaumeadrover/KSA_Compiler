@@ -8,6 +8,7 @@ package compiler.sintactic;
 import java_cup.runtime.ComplexSymbolFactory.ComplexSymbol;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.ArbreSintactic.*;
+import compiler.Semantic.Semantic;
 import java_cup.runtime.*;
 import java.io.PrintStream;
 import java.util.HashMap;
@@ -26,10 +27,9 @@ public class Parser extends java_cup.runtime.lr_parser {
   @Deprecated
   public Parser() {super();}
 
-
   /** Constructor which sets the default scanner. */
-  //@Deprecated
-  //public Parser(java_cup.runtime.Scanner s) {super(s);}
+  @Deprecated
+  public Parser(java_cup.runtime.Scanner s) {super(s);}
 
   /** Constructor which sets the default scanner. */
   public Parser(java_cup.runtime.Scanner s, java_cup.runtime.SymbolFactory sf) {super(s,sf);}
@@ -443,6 +443,7 @@ public class Parser extends java_cup.runtime.lr_parser {
 
     private TaulaSimbols ts=new TaulaSimbols();
     private Scanner scanner;
+    private Semantic comprovacioTipus=new Semantic(ts);
 
     public Parser(Scanner scanner){
         this.scanner = scanner;
@@ -584,8 +585,8 @@ class CUP$Parser$actions {
 		int varinitleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int varinitright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		SymbolVarInit varinit = (SymbolVarInit)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		RESULT=new SymbolVarDecl(true, t.getTipus(), iden.toString(),varinit);
-                                                        ts.afegeixSimbol(iden.toString(), t.getTipus(), TipusSub.CONST, 0);
+		RESULT=new SymbolVarDecl(true, t.getTipusSub(), iden.toString(),varinit);
+                                                        ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.CONST, 0);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("varDecl",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -603,8 +604,14 @@ class CUP$Parser$actions {
 		int varinitleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int varinitright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		SymbolVarInit varinit = (SymbolVarInit)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		RESULT=new SymbolVarDecl(false,t.getTipus(),iden.toString(),varinit);
-                                                        ts.afegeixSimbol(iden.toString(), t.getTipus(), TipusSub.VAR, 0);
+		RESULT=new SymbolVarDecl(false,t.getTipusSub(),iden.toString(),varinit);
+                                                        if(varinit.isIsarray()){
+                                                                ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0);
+                                                            }
+                                                            else{
+                                                                ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0);
+                                                            }
+                                                        ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.VAR, 0);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("varDecl",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -622,7 +629,7 @@ class CUP$Parser$actions {
 		int varinitleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int varinitright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		SymbolVarInit varinit = (SymbolVarInit)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		RESULT=new SymbolVarDecl(vard.esConst(), vard.getTipus(), iden.toString(),varinit);
+		RESULT=new SymbolVarDecl(vard.esConst(), vard.getTipusSub(), iden.toString(),varinit);
                                                         if(vard.esConst()){
                                                             ts.afegeixSimbol(iden.toString(),vard.getTipus(), TipusSub.CONST,0);
                                                         }
@@ -677,7 +684,7 @@ class CUP$Parser$actions {
 		int exprleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
 		int exprright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		SymbolExpressioSimple expr = (SymbolExpressioSimple)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
-		RESULT =new  SymbolArrayInit(t.getTipus(),expr);
+		RESULT =new  SymbolArrayInit(t.getTipusSub(),expr);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("arrayInit",23, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -686,7 +693,7 @@ class CUP$Parser$actions {
           case 14: // type ::= r_int 
             {
               SymbolType RESULT =null;
-		RESULT=new SymbolType(Tipus.INT);
+		RESULT=new SymbolType(TipusSub.INT);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("type",10, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -695,7 +702,7 @@ class CUP$Parser$actions {
           case 15: // type ::= r_bool 
             {
               SymbolType RESULT =null;
-		RESULT=new SymbolType(Tipus.BOOLEAN);
+		RESULT=new SymbolType(TipusSub.BOOLEAN);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("type",10, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -704,7 +711,7 @@ class CUP$Parser$actions {
           case 16: // type ::= r_string 
             {
               SymbolType RESULT =null;
-		RESULT=new SymbolType(Tipus.STRING);
+		RESULT=new SymbolType(TipusSub.STRING);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("type",10, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -745,8 +752,8 @@ class CUP$Parser$actions {
                                                                                 Simbol s=ts.consultaFunc(iden.toString());
                                                                                 System.out.println("SIMBOL S: "+s);
                                                                                 if(s == null){
-                                                                                    RESULT=new SymbolFuncDecl(t.getTipus(), iden.toString(), stats, rtn,funcCap);
-                                                                                    ts.afegeixSimbol(iden.toString(), t.getTipus(), TipusSub.FUNC, 0);
+                                                                                    RESULT=new SymbolFuncDecl(t.getTipusSub(), iden.toString(), stats, rtn,funcCap);
+                                                                                    ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.FUNC, 0);
                                                                                 }else{
                                                                                     System.out.println("FUNCIÓ JA CREADA ANTERIORMENT!");
                                                                                     RESULT=new SymbolFuncDecl();
@@ -791,7 +798,7 @@ class CUP$Parser$actions {
 		int statsright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		SymbolStatementList stats = (SymbolStatementList)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		RESULT =new SymbolProcDecl(iden.toString(), stats,funcCap);
-                                                                                ts.afegeixSimbol(iden.toString(), Tipus.NULL, TipusSub.FUNC, 0);
+                                                                                ts.afegeixSimbol(iden.toString(), TipusSub.NULL, Tipus.FUNC, 0);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("procDecl",8, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-6)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -809,7 +816,7 @@ class CUP$Parser$actions {
 		int idenleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int idenright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		Object iden = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		RESULT = new SymbolContCap(arg,t.getTipus(), iden.toString());
+		RESULT = new SymbolContCap(arg,t.getTipusSub(), iden.toString());
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("ContCap",24, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -830,7 +837,7 @@ class CUP$Parser$actions {
 		int idenleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int idenright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		Object iden = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		RESULT = new SymbolContCap(contcap,arg,t.getTipus(), iden.toString());
+		RESULT = new SymbolContCap(contcap,arg,t.getTipusSub(), iden.toString());
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("ContCap",24, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1534,7 +1541,13 @@ class CUP$Parser$actions {
 		int stateleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
 		int stateright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		SymbolStatementList state = (SymbolStatementList)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
-		RESULT = new SymbolWhileStatement(expr,state);
+		if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN){
+                                                        RESULT = new SymbolWhileStatement(expr,state);
+                                                     }else{
+                                                          RESULT = new SymbolWhileStatement();
+                                                           System.out.print("Aixó no es boolean");
+                                                    }
+                                                    
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("whileStatement",13, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-6)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;

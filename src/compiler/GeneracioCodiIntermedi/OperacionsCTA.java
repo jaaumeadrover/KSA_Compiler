@@ -1,4 +1,5 @@
-public enum operacionsCTA {
+package GeneracioCodiIntermedi;
+public enum OperacionsCTA {
     // OPERACIONS ARITÈTIQUES I LÒGIQUES
     COPIA, SUMA, RESTA, PRODUCTE, DIVISIO, MODUL, MENYS, AND, OR, NOT,
     // OPERACIONS INDEXACIÓ

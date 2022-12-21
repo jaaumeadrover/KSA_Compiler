@@ -24,6 +24,7 @@ package compiler.sintactic;
 import java_cup.runtime.ComplexSymbolFactory.ComplexSymbol;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.ArbreSintactic.*;
+import compiler.Semantic.Semantic;
 
 import java_cup.runtime.*;
 
@@ -39,6 +40,7 @@ class Parser;
 parser code {:
     private TaulaSimbols ts=new TaulaSimbols();
     private Scanner scanner;
+    private Semantic comprovacioTipus=new Semantic(ts);
 
     public Parser(Scanner scanner){
         this.scanner = scanner;
@@ -163,11 +165,11 @@ decl ::= varDecl smcol    {:RESULT = new SymbolDecl();:}  //NO FA FALTA
 varDecl ::=  r_const type:t id:iden varInit:varinit     {:RESULT=new SymbolVarDecl(true, t.getTipusSub(), iden.toString(),varinit);
                                                         ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.CONST, 0);:}//declaració de una constant
     |type:t id:iden varInit:varinit                    {:RESULT=new SymbolVarDecl(false,t.getTipusSub(),iden.toString(),varinit);
-                                                        if(varinit.Isisarray()){
-                                                                ts.afegeixSimbol(iden.toString(),vard.getTipusSub(), Tipus.ARRAY,0);
+                                                        if(varinit.isIsarray()){
+                                                                ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0);
                                                             }
                                                             else{
-                                                                ts.afegeixSimbol(iden.toString(),vard.getTipusSub(), Tipus.ARRAY,0);
+                                                                ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0);
                                                             }
                                                         ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.VAR, 0);:}//declaració d'una variable
     |varDecl:vard com id:iden varInit:varinit          {:RESULT=new SymbolVarDecl(vard.esConst(), vard.getTipusSub(), iden.toString(),varinit);
