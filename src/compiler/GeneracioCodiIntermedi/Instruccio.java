@@ -2,13 +2,13 @@ package GeneracioCodiIntermedi;
 
 public class Instruccio{
 
-    private OperacionsCTA operacions;
+    private OperacionsCTA codi;
     private String operadorEsquerra;
     private String operadorDreta;
     private String desti;
 
     public Instruccio(OperacionsCTA oper, String o1, String o2, String d){
-        this.operacions=oper;
+        this.codi=oper;
         this.operadorEsquerra=o1;
         this.operadorDreta=o2;
         this.desti=d;
@@ -16,7 +16,7 @@ public class Instruccio{
 
     //GETTERS
     public OperacionsCTA getOperacions() {
-        return this.operacions;
+        return this.codi;
     }
 
     public String getOperadorEsquerra() {
@@ -33,7 +33,7 @@ public class Instruccio{
 
     //SETTERS
     public void setOperacions(OperacionsCTA o){
-        this.operacions=o;
+        this.codi=o;
     }
 
     public void setOperadorEsquerra(String o){
@@ -51,7 +51,7 @@ public class Instruccio{
     //Metode toStrong
     @Override
     public String toString() {
-        return "[" + operacions.toString() + ", " + operadorEsquerra +
+        return "[" + codi.toString() + ", " + operadorEsquerra +
                 ", " + operadorDreta + ", " + desti + "]";
     }
 }

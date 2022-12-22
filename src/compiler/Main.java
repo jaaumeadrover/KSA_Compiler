@@ -34,7 +34,8 @@ public class Main {
                 //System.out.print(">>> ");
                 ///Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova.txt
                 ///home/diegofes/GitHub/KSA_Compiler/src/TESTING/1.Funcions/prova.txt
-                input = new FileReader("/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova.txt");
+                //C:\Users\Jaume\Desktop\UIB\Cursos\TERCER\1r quatri\COMPILADORS\PRÀCTICA KSA\KSA_Compiler\src\TESTING\1.Funcions\prova.txt
+                input = new FileReader("\\Users\\Jaume\\Desktop\\UIB\\Cursos\\TERCER\\1r quatri\\COMPILADORS\\PRÀCTICA KSA\\KSA_Compiler\\src\\TESTING\\1.Funcions\\prova.txt");
                 //input = new InputStreamReader(System.in);
             }
 

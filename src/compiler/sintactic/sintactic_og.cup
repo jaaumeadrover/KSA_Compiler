@@ -40,7 +40,7 @@ class Parser;
 parser code {:
     private TaulaSimbols ts=new TaulaSimbols();
     private Scanner scanner;
-    private Semantic comprovacioTipus=new Semantic(ts);
+    private Semantic comprovaTipus=new Semantic(ts);
 
     public Parser(Scanner scanner){
         this.scanner = scanner;
@@ -169,15 +169,15 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:RESULT=new SymbolVarDe
                                                                 ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0);
                                                             }
                                                             else{
-                                                                ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0);
+                                                                ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.VAR,0);
                                                             }
-                                                        ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.VAR, 0);:}//declaració d'una variable
+                                                       :}//declaració d'una variable
     |varDecl:vard com id:iden varInit:varinit          {:RESULT=new SymbolVarDecl(vard.esConst(), vard.getTipusSub(), iden.toString(),varinit);
                                                         if(vard.esConst()){
-                                                            ts.afegeixSimbol(iden.toString(),vard.getTipus(), TipusSub.CONST,0);
+                                                            ts.afegeixSimbol(iden.toString(),vard.getTipusSub(), Tipus.CONST,0);
                                                         }
                                                         else{
-                                                            ts.afegeixSimbol(iden.toString(),vard.getTipus(), TipusSub.VAR,0);
+                                                            ts.afegeixSimbol(iden.toString(),vard.getTipusSub(), Tipus.VAR,0);
                                                         }
                                                         :}
     ;
@@ -261,17 +261,18 @@ exprSimple ::=lparen exprSimple:expr rparen operacio:oper {:RESULT=new SymbolExp
 valor::= id:iden                         {:
                                             Simbol s=ts.consulta(iden.toString());
                                             if(s!=null){
-                                                RESULT=new SymbolValor(iden.toString());
+                                                RESULT=new SymbolValor(iden.toString(),s.getTipusSub());
                                             }else{
                                                 System.out.println("Aquesta variable no existeix");
-                                                RESULT=new SymbolValor();
+                                                RESULT=new SymbolValor(iden.toString());
                                             }
                                          :}
-    |array:arr                           {:RESULT=new SymbolValor(arr);:}
-    |integer                             {:RESULT=new SymbolValor();:}
-    |bool                                {:RESULT=new SymbolValor(true);:}
-    |r_not bool                          {:RESULT=new SymbolValor(false);:}
-    |subProgramCall:subprogram           {:RESULT=new SymbolValor(subprogram);:}
+    |array:arr                                      {:RESULT=new SymbolValor(arr);:}
+    |integer:integer                                {:RESULT=new SymbolValor(integer);:}
+    |bool                                           {:RESULT=new SymbolValor(true);:}
+    |r_not bool                                     {:RESULT=new SymbolValor(false);:}
+    |r_not  lparen exprSimple:exprSimple rparen     {:RESULT=new SymbolValor(exprSimple);:}
+    |subProgramCall:subprogram                      {:RESULT=new SymbolValor(subprogram);:}
     ;
 
 array::=id:iden lop exprSimple:expr lclose {:RESULT=new SymbolArray(iden.toString(),expr);:}
@@ -339,11 +340,11 @@ forPostExpression ::= exprSimple:expr               {:RESULT = new SymbolForPost
     ;
 
 whileStatement ::= r_while lparen exprSimple:expr
-rparen brop statementList:state brcl                {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN){
+rparen brop statementList:state brcl                {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
                                                         RESULT = new SymbolWhileStatement(expr,state);
                                                      }else{
                                                           RESULT = new SymbolWhileStatement();
-                                                           System.out.print("Aixó no es boolean");
+                                                           System.out.print("   Aixó NO ES CORRECTE AL WHILE");
                                                     }
                                                     :};
 

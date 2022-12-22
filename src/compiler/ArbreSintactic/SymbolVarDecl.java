@@ -1,5 +1,6 @@
 package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
+import compiler.Symbols.TaulaSimbols.TipusSub;
 
 public class SymbolVarDecl extends SymbolBase {
 

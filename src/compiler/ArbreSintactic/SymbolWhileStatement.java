@@ -10,5 +10,8 @@ public class SymbolWhileStatement extends SymbolBase {
         this.statementList = state;
         System.out.println("Esto es un while");
    }
+    public SymbolWhileStatement(){
+
+    }
 
  }

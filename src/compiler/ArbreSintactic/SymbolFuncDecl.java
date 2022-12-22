@@ -1,10 +1,11 @@
 package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
+import compiler.Symbols.TaulaSimbols.TipusSub;
 
 public class SymbolFuncDecl extends SymbolBase {
 
  private String iden;
- private Tipus t;
+ private TipusSub t;
  private SymbolStatementList stat;
  private SymbolReturn rtn;
 
@@ -15,7 +16,7 @@ public class SymbolFuncDecl extends SymbolBase {
   System.out.println("soy un funcDecl");
  }
   
- public SymbolFuncDecl(Tipus t, String iden, SymbolStatementList stat,
+ public SymbolFuncDecl(TipusSub t, String iden, SymbolStatementList stat,
                        SymbolReturn rtn,SymbolFuncCap funcCap){
    this.iden = iden;
    this.t = t;

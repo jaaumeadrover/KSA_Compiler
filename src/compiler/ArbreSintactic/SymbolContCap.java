@@ -1,24 +1,25 @@
 package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
+import compiler.Symbols.TaulaSimbols.TipusSub;
 
 public class SymbolContCap extends SymbolBase {
     private SymbolArgType arg;
-    private Tipus t;
+    private TipusSub t;
     private String id;
 
-    public SymbolContCap(SymbolArgType arg, Tipus t,String id){
+    public SymbolContCap(SymbolArgType arg, TipusSub t,String id){
         this.arg=arg;
         this.t=t;
         this.id=id;
     }
 
-    public SymbolContCap(SymbolContCap contcap,SymbolArgType arg, Tipus t,String id){
+    public SymbolContCap(SymbolContCap contcap,SymbolArgType arg, TipusSub t,String id){
         this.arg=arg;
         this.t=t;
         this.id=id;
     }
 
-    public Tipus getTipus() {
+    public TipusSub getTipusSub() {
         return t;
     }
 

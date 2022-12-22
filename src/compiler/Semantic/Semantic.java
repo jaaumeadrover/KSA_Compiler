@@ -17,7 +17,8 @@ public class Semantic {
     
     public boolean gestExpr(SymbolExpressioSimple expr, TipusSub t){
         
-        TipusSub tipoExpr = expr.getTipusSub();
+        TipusSub tipoExpr = expr.tsOperand();
+        
         if(tipoExpr.equals(t)){
            if(expr.getExpr()!=null){
                gestExpr(expr.getExpr(),t);

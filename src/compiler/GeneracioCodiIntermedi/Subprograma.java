@@ -1,17 +1,17 @@
-package GeneracioCodiIntermedi;
+package compiler.GeneracioCodiIntermedi;
 import Symbols.TipusSub;
 
-public class Procediment{
+public class Subprograma{
 
     private String nom;
-    private int numProcediment;
+    private int numSubprogrames;
     private TipusSub valRetorn;
     private ArrayList<Params> parametres;
 
     // Constructor de la classe
-    public Procediment(String nom, int numProcediment, TipusSub retorn, ArrayList<Params> parametres){
+    public Subprograma(String nom, int numProcediment, TipusSub retorn, ArrayList<Params> parametres){
         this.nom = nom;
-        this.numProcediment = numProcediment;
+        this.numSubprogrames = numProcediment;
         this.valRetorn = retorn;
         this.parametres = parametres;
     }
@@ -22,7 +22,7 @@ public class Procediment{
     }
 
     public String getNumProcediment() {
-        return numProcediment;
+        return numSubprogrames;
     }
 
     public String getValRetorn() {
@@ -39,7 +39,7 @@ public class Procediment{
     }
 
     public void setNumProcediment(int nombreProce) {
-        this.numProcediment = nombreProce;
+        this.numSubprogrames = nombreProce;
     }
 
     public void setValRetorn(TipusSub valRetorn) {

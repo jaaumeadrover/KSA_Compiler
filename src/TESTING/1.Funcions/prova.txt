@@ -1,5 +1,6 @@
 func int suma(int a, int b){
-    while (a < 1){
+    int c <- 2;
+    while (not (a>1) ){
         a <- a + b;
     }
     return a;
