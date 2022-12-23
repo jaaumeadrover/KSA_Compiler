@@ -26,7 +26,7 @@ public class Parser extends java_cup.runtime.lr_parser {
   /** Default constructor. */
   @Deprecated
   public Parser() {super();}
-
+//
 //  /** Constructor which sets the default scanner. */
 //  @Deprecated
 //  public Parser(java_cup.runtime.Scanner s) {super(s);}
@@ -676,7 +676,7 @@ class CUP$Parser$actions {
           case 12: // varInit ::= 
             {
               SymbolVarInit RESULT =null;
-		RESULT = new SymbolVarInit();
+		RESULT = new SymbolVarInit(false);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("varInit",5, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1090,10 +1090,12 @@ class CUP$Parser$actions {
 		
                                             Simbol s=ts.consulta(iden.toString());
                                             if(s!=null){
-                                                RESULT=new SymbolValor(iden.toString());
+                                                RESULT=new SymbolValor(iden.toString(),s.getTipusSub());
                                             }else{
-                                                System.out.println("Aquesta variable no existeix");
-                                                RESULT=new SymbolValor(iden.toString());
+                                                //System.out.println("Aquesta variable no existeix");
+                                                //he afegit null perque sinos el confonia amb el constructor de integer!
+                                                //THROWS EXCEPTION??????
+                                                RESULT=new SymbolValor(iden.toString(),TipusSub.INT);
                                             }
                                          
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("valor",28, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1146,7 +1148,10 @@ class CUP$Parser$actions {
           case 50: // valor ::= r_not lparen exprSimple rparen 
             {
               SymbolValor RESULT =null;
-		RESULT=new SymbolValor(false);
+		int exprSimpleleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
+		int exprSimpleright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
+		SymbolExpressioSimple exprSimple = (SymbolExpressioSimple)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		RESULT=new SymbolValor(exprSimple);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("valor",28, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1197,10 +1202,10 @@ class CUP$Parser$actions {
           case 54: // operacio ::= varInit 
             {
               SymbolOperacio RESULT =null;
-		int varinitleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
-		int varinitright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
-		SymbolVarInit varinit = (SymbolVarInit)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		RESULT = new SymbolOperacio(varinit);
+		int vardleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
+		int vardright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
+		SymbolVarInit vard = (SymbolVarInit)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		RESULT = new SymbolOperacio(vard);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("operacio",27, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;

@@ -14,22 +14,21 @@ public class Semantic {
     public Semantic (TaulaSimbols ts){
         this.ts=ts;
     }
-    
+
+    /*
+    Funció per a gestionar les expressions simples.
+     */
     public boolean gestExpr(SymbolExpressioSimple expr, TipusSub t){
         
         TipusSub tipoExpr = expr.tsOperand();
         
-        if(tipoExpr.equals(t)){
-           if(expr.getExpr()!=null){
-               gestExpr(expr.getExpr(),t);
-           } 
-           else{
-               return true;
-           }
+        if(expr.getTipusSubResultat()==t){
+            System.out.println("CORRECTE");
+            return true;
         }else{
+            System.out.println("INCORRECTE");
             return false;
         }
-        return false;
     }
 
 

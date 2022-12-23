@@ -1,12 +1,12 @@
 package GeneracioCodiIntermedi;
 import  Symbols.TipusSub;
 
-public class Params {
+public class Paramtre {
 
     private String nom;
     private TipusSub tipusSub;
 
-    public params(String n, Tipus t){
+    public Parametre(String n, Tipus t){
         this.nom=n;
         this.tipusSub=t;
     }

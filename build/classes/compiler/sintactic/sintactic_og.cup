@@ -184,7 +184,7 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:RESULT=new SymbolVarDe
 
 varInit ::= asig exprSimple:expr             {:RESULT =new SymbolVarInit(expr);:}     //asigació d'un valor a una variable
     |asig arrayInit:arrayInit                {:RESULT =new SymbolVarInit(arrayInit);:}
-    |                                        {:RESULT = new SymbolVarInit();:}
+    |                                        {:RESULT = new SymbolVarInit(false);:}
     //|asig subProgramCall                 {:RESULT =new SymbolVarInit();:}
     ;
 //ARRAYS!
@@ -263,8 +263,10 @@ valor::= id:iden                         {:
                                             if(s!=null){
                                                 RESULT=new SymbolValor(iden.toString(),s.getTipusSub());
                                             }else{
-                                                System.out.println("Aquesta variable no existeix");
-                                                RESULT=new SymbolValor(iden.toString());
+                                                //System.out.println("Aquesta variable no existeix");
+                                                //he afegit null perque sinos el confonia amb el constructor de integer!
+                                                //THROWS EXCEPTION??????
+                                                RESULT=new SymbolValor(iden.toString(),TipusSub.INT);
                                             }
                                          :}
     |array:arr                                      {:RESULT=new SymbolValor(arr);:}
@@ -279,7 +281,7 @@ array::=id:iden lop exprSimple:expr lclose {:RESULT=new SymbolArray(iden.toStrin
 ;
 
 operacio::=op:op exprSimple:expr   {:RESULT = new SymbolOperacio(op,expr);:}
-| varInit:varinit      {:RESULT = new SymbolOperacio(varinit);:}
+| varInit:vard                     {:RESULT = new SymbolOperacio(vard);:}
  ;
 
 //OPERADORS

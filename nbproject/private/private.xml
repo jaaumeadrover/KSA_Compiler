@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/diegofes/GitHub/KSA_Compiler/src/compiler/ArbreSintactic/SymbolVarInit.java</file>
-            <file>file:/home/diegofes/GitHub/KSA_Compiler/src/compiler/ArbreSintactic/SymbolType.java</file>
-            <file>file:/home/diegofes/GitHub/KSA_Compiler/src/compiler/Symbols/TaulaSimbols/Tipus.java</file>
-            <file>file:/home/diegofes/GitHub/KSA_Compiler/src/compiler/Semantic/Semantic.java</file>
-            <file>file:/home/diegofes/GitHub/KSA_Compiler/src/compiler/sintactic/sintactic_og.cup</file>
-            <file>file:/home/diegofes/GitHub/KSA_Compiler/src/compiler/Symbols/TaulaSimbols/Simbol.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/sintactic/Parser.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolValor.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/Semantic/Semantic.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/TESTING/1.Funcions/prova.txt</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolOperacio.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolExpressioSimple.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/Main.java</file>
         </group>
     </open-files>
 </project-private>
