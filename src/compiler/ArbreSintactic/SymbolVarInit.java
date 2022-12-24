@@ -7,12 +7,12 @@ public class SymbolVarInit extends SymbolBase {
     private SymbolExpressioSimple expr;
     private SymbolArrayInit array;
 
-  public SymbolVarInit(SymbolExpressioSimple expr){
+  public SymbolVarInit(SymbolExpressioSimple expr, codiTresAdreces codi){
       this.isEmpty=false;
       this.isarray = false;
       this.expr = expr;
   }
-    public SymbolVarInit(SymbolArrayInit array){
+    public SymbolVarInit(SymbolArrayInit array, codiTresAdreces codi){
         this.isEmpty=false;
         this.isarray = true;
         this.array = array;

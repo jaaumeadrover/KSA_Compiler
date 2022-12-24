@@ -1,6 +1,6 @@
-package GeneracioCodiIntermedi;
-import ArbreSintactic.operacions;
-import  Symbols.TipusSub;
+package compiler.GeneracioCodiIntermedi;
+import compiler.ArbreSintactic.Operacions;
+import  compiler.Symbols.TaulaSimbols.TipusSub;
 import java.util.ArrayList;
 
 public class codiTresAdreces{
@@ -35,9 +35,9 @@ public class codiTresAdreces{
 
     //Afegim una nova etiqueta i tornam el seu nom (les etiquetes començen per 0)
     public String novaEtiqueta() {
-        String novaEtiqueta =  "e" + ne;
-        this.ne++;
-        return this.novaEtiqueta
+        String novaEtiqueta =  "e" + etiquetes;
+        this.etiquetes++;
+        return novaEtiqueta;
     }
 
     // Inicialitzam l'arraylist que contindrà el còdi de tres adreçes
@@ -64,7 +64,6 @@ public class codiTresAdreces{
         }
         return s;
     }
-}
 
     // Inicialitzam la llista de constants
     public void crearLlistaConstants(){
@@ -85,8 +84,8 @@ public class codiTresAdreces{
         // Nom diferent de null = variable no temporal
         if (nom != null) {
             int i = 0;
-            while (i < tv.size()) {
-                Variable v = tv.get(i);
+            while (i < TV.size()) {
+                Variable v = TV.get(i);
                 // Cas on variable dins TV
                 if (v.getNom().equals(nom) && v.getProc() == npActius) {
                     return nom + "_" + npActius;
@@ -98,34 +97,34 @@ public class codiTresAdreces{
             // Afegim a la taula de variables una nova varible temporal,
             // ja que com no té nom, no ha estat declarada i sabem que ha estat
             // creada per a la realització del codi de tres adreces
-            Variable novaVar=new Variable("temporal" + nv, t, npActius, true)
-            tv.add(novaVar);
-            return "t" + nv;
+            Variable novaVar=new Variable("temporal" + nv, t, true, npActius);
+            TV.add(novaVar);
             nv++;
+            return "t" + nv;
         }
         // Si la nova variable no es temporal (tenia nom) i no es trobava
         // a la taula de variables (no ha fet el return del while) l'afegim a la
         // taula de variables amb el seu nom
-        Variable novaVar=new Variable(nom, t, npActius, false)
-        tv.add(novaVar);
+        Variable novaVar=new Variable(nom, t, false, npActius);
+        TV.add(novaVar);
         return nom + "_" + npActius;
     }
 
     // Retorna el nom d'una variable afegint l'àmbit en el que l'utilitzam
     public String getNomVariable(String nom) {
         // Anem iterant sobre tots els elements de la taula de variables
-        for (i = 0 ;i < tv.size(); i++){
-            Variable v = tv.get(i);
+        for (int i = 0 ;i < TV.size(); i++){
+            Variable v = TV.get(i);
             // Cas on la variable no té processos actius (no s'està utilitzant)
             if (v.getNom().equals(nom) && v.getProc() == 0) {
-                if(v.getTemporal()){
+                if(v.getTemp()){
                     return nom;
                 }
                 return nom + "_" + 0;
 
             // Cas on la variable té processos actius (s'està utilitzant)
-            }else if (v.getId().equals(nom) && v.getProc() == npActius){
-                if(v.getTemporal()){
+            }else if (v.getNom().equals(nom) && v.getProc() == npActius){
+                if(v.getTemp()){
                     // si la variable és temporal tan sols retornam el nom
                     return nom;
                 }
@@ -141,9 +140,9 @@ public class codiTresAdreces{
     // Mètode que ens permet borrar la variable de la taula de variables amb el nom que
     // ens passen per paràmetre
     public void eliminaVariable(String nom) {
-        for (int i = 0; i < tv.size(); i++) {
-            if (tv.get(i).getNom().equals(nom)) {
-                tv.remove(i);
+        for (int i = 0; i < TV.size(); i++) {
+            if (TV.get(i).getNom().equals(nom)) {
+                TV.remove(i);
                 break;
             }
 
@@ -157,15 +156,15 @@ public class codiTresAdreces{
         if (div >= 0) {
                         int capa = Integer.parseInt(nom.substring(div + 1));
             String n = nom.substring(0, div);
-            for (int i = 0; i < tv.size(); i++) {
-                if (tv.get(i).nom.equals(n) && tv.get(i).procedimiento == capa) {
-                    return tv.get(i);
+            for (int i = 0; i < TV.size(); i++) {
+                if (TV.get(i).getNom().equals(n) && TV.get(i).getProc() == capa) {
+                    return TV.get(i);
                 }
             }
         } else {
-            for (int i = 0; i < tv.size(); i++) {
-                if (tv.get(i).id.equals(nom)) {
-                    return tv.get(i);
+            for (int i = 0; i < TV.size(); i++) {
+                if (TV.get(i).getNom().equals(nom)) {
+                    return TV.get(i);
                 }
             }
         }
@@ -173,10 +172,10 @@ public class codiTresAdreces{
     }
 
     //?????
-    public Variable getVariable(String nom) {
-        for (int i = 0; i < tv.size(); i++) {
-            if (tv.get(i).nom.equals(id)) {
-                return tv.get(i);
+    public Variable getVar(String nom) {
+        for (int i = 0; i < TV.size(); i++) {
+            if (TV.get(i).getNom().equals(nom)) {
+                return TV.get(i);
             }
         }
         return null;
@@ -188,10 +187,10 @@ public class codiTresAdreces{
     }
 
     // Mètode per mostrar per pantalla la taula de variables
-    public String () {
+    public String taulaVariablesToString() {
         String s = "";
-        for (int i = 0; i < tv.size(); i++) {
-            s += tv.get(i).toString() + "\n";
+        for (int i = 0; i < TV.size(); i++) {
+            s += TV.get(i).toString() + "\n";
         }
         return s;
     }
@@ -211,18 +210,18 @@ public class codiTresAdreces{
         // augmentam comptador de procediments
         np++;
         // el numero de procediments serà igual al numero de procesos actius
-        npa = np;
+        npActius = np;
         // cream el nou procediment sense parametres (atribut 'null' del constructor)
-        Procediment proc=new Procediment(nom, npa, ts, null);
+        Procediment proc=new Procediment(nom, npActius, ts, null);
         // afegim el nou procediment
-        tp.add(proc);
+        TP.add(proc);
     }
 
     // Mètode que retorna el procediment amb el nom indicat per paràmetre
-    public Procedimiento getPro(String nom) {
-        for (int i = 0; i < tp.size(); i++) {
-            if (tp.get(i).geNom().equals(nom)) {
-                return tp.get(i);
+    public Procediment getPro(String nom) {
+        for (int i = 0; i < TP.size(); i++) {
+            if (TP.get(i).getNom().equals(nom)) {
+                return TP.get(i);
             }
         }
         return null;
@@ -231,10 +230,10 @@ public class codiTresAdreces{
     // Mètode que retorna el tipusSubjacent del que retorna
     public TipusSub getTipusSubProc(String nom) {
         // cercam el procediment a la taula de procediments
-        for (int i = 0; i < tp.size(); i++) {
-            if (tp.get(i).getNom()==nom) {
+        for (int i = 0; i < TP.size(); i++) {
+            if (TP.get(i).getNom()==nom) {
                 // si trobam el procediment, retornam el seu TipusSub
-                return tp.get(i).getTipusSub();
+                return TP.get(i).getTipusSub();
             }
         }
         // si no trobam el procediment no retornam res
@@ -244,15 +243,15 @@ public class codiTresAdreces{
     // Mètode per passar la taula de procediments a string
     public String TaulaProcedimentsToString() {
         String s = "";
-        for (int i = 0; i < tp.size(); i++) {
-            s += tp.get(i).toString() + "\n";
+        for (int i = 0; i < TP.size(); i++) {
+            s += TP.get(i).toString() + "\n";
         }
         return s;
     }
 
     // Tancam un procediment posant el nombre de procesos actius a 0
     public void closeProcedimiento() {
-        npa = 0;
+        npActius = 0;
     }
 
 
@@ -269,22 +268,22 @@ public class codiTresAdreces{
     // Afegim un nou paràmetre a la llista de paràmetres
     public void afegirParametre(String nom, TipusSub ts) {
         // cream el nou paràmetre
-        Parametro p = new Parametro(nom, ts);
+        Parametre p = new Parametre(nom, ts);
         // cream una nova variable mitjançant el mètode creat anteriorment
         novaVariable(nom, ts);
         // afegim el paràmetre
-        param.add(p);
+        parametres.add(p);
     }
 
     // Afegim paràmetres al procediment
     public void afegirParamProcediment(ArrayList<Parametre> params) {
-        Procedimient proc = tp.get(tp.size() - 1);
+        Procediment proc = TP.get(TP.size() - 1);
         // afegim els parametres al procediment
-        proc.parametres = params;
+        proc.setParams(params);
     }
 
     // Retorna la llista de paràmetres.
-    public ArrayList<Parametro> getLlistaParametres() {
+    public ArrayList<Parametre> getLlistaParametres() {
         return parametres;
     }
 
@@ -294,10 +293,10 @@ public class codiTresAdreces{
 
     // Genera l'instrucció en 3 direccions
     public void genera(OperacionsCTA o, String oper1, String oper2, String desti) {
-        if (declaracio && npa == 0) {
-            constants.add(new Instruccion(o, oper1, oper2, desti));
+        if (declaracio && npActius == 0) {
+            constants.add(new Instruccio(o, oper1, oper2, desti));
         } else {
-            codi.add(new Instruccion(o, oper1, oper2, desti));
+            codi.add(new Instruccio(o, oper1, oper2, desti));
         }
     }
 
@@ -311,7 +310,7 @@ public class codiTresAdreces{
     public void finalitzaDecl() {
         this.declaracio = false;
         genera(OperacionsCTA.SKIP, null, null, "run");
-        codi.addAll(constante);
+        codi.addAll(constants);
         constants.clear();
     }
 
@@ -352,7 +351,7 @@ public class codiTresAdreces{
 
     // Retorna el tipusSub d'operació
     public TipusSub getTipusSubOperacio(OperacionsCTA operacio) {
-        if (operacio == OperacionsCTA.MULT || operacio == OperacionsCTA.DIV || operacio == OperacionsCTA.SUMA || operacio == OperacionsCTA.RESTA) {
+        if (operacio == OperacionsCTA.PRODUCTE || operacio == OperacionsCTA.DIVISIO || operacio == OperacionsCTA.SUMA || operacio == OperacionsCTA.RESTA) {
             return TipusSub.INT;
         } else {
             return TipusSub.BOOLEAN;

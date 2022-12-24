@@ -23,7 +23,7 @@ public class SymbolBase extends ComplexSymbol {
     protected boolean empty;
 
     
-    public SymbolBase(String variable, Double valor) {
+    public SymbolBase(String variable, Double valor, codiTresAdreces codi) {
         super(variable, idAutoIncrement++, valor);
         this.empty = false;
     }
@@ -32,7 +32,7 @@ public class SymbolBase extends ComplexSymbol {
      * Constructor per crear una instància buida, com a conseqüència d'un error
      * o una produció que deriva lambda.
      */
-    public SymbolBase() {
+    public SymbolBase(codiTresAdreces codi) {
         super("", idAutoIncrement++);
         empty = true;
     }

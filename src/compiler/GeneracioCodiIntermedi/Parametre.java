@@ -1,12 +1,12 @@
-package GeneracioCodiIntermedi;
-import  Symbols.TipusSub;
+package compiler.GeneracioCodiIntermedi;
+import  compiler.Symbols.TaulaSimbols.TipusSub;
 
-public class Paramtre {
+public class Parametre {
 
     private String nom;
     private TipusSub tipusSub;
 
-    public Parametre(String n, Tipus t){
+    public Parametre(String n, TipusSub t){
         this.nom=n;
         this.tipusSub=t;
     }
@@ -16,7 +16,7 @@ public class Paramtre {
         return this.nom;
     }
 
-    public Tipus getTipusSub(){
+    public TipusSub getTipusSub(){
         return this.tipusSub;
     }
 
@@ -25,14 +25,14 @@ public class Paramtre {
         this.nom=n;
     }
 
-    public void setTipusSub(Tipus t){
+    public void setTipusSub(TipusSub t){
         this.tipusSub=t;
     }
 
     // Mètode toString
     @Override
     public String toString(){
-        return "Tipus: "+this.tipusSub+" --> "+this.nom
+        return "TipusSub: "+this.tipusSub+" --> "+this.nom;
     }
 
 

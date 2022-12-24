@@ -9,7 +9,7 @@ public class SymbolVarDecl extends SymbolBase {
     private  String id;
     private SymbolVarInit simbol;
     
-  public SymbolVarDecl(boolean esConst, TipusSub t, String id, SymbolVarInit simbol){
+  public SymbolVarDecl(boolean esConst, TipusSub t, String id, SymbolVarInit simbol, codiTresAdreces codi){
         this.esConst=esConst;
         this.tipus = t;
         this.id = id;

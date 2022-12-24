@@ -1,5 +1,5 @@
 package compiler.ArbreSintactic;
 
-public enum operacions {
+public enum Operacions {
     ADD, SUB, MUL, DIV, MOD, EQ, BG, SM, BGEQ, SMEQ, OR, AND, NEG;
 }

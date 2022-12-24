@@ -5,7 +5,7 @@ import compiler.Symbols.TaulaSimbols.TipusSub;
 public class SymbolType extends SymbolBase {
     TipusSub tipusSub;
 
-    public SymbolType(TipusSub tipus){
+    public SymbolType(TipusSub tipus, codiTresAdreces codi){
         System.out.println("soy un type de tipo"+tipus);
         this.tipusSub = tipus;
    }

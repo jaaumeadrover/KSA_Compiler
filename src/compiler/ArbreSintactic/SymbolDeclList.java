@@ -24,7 +24,7 @@ public class SymbolDeclList extends SymbolBase {
      * @param valorT
      * @param valorEp
      */
-    public SymbolDeclList(SymbolDecl decl,SymbolDeclList declList) {
+    public SymbolDeclList(SymbolDecl decl,SymbolDeclList declList, codiTresAdreces codi) {
             super("DeclList",null);
 
     }

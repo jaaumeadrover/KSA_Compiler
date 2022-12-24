@@ -5,13 +5,13 @@ public class SymbolForInit extends SymbolBase{
 
     private SymbolVarDecl declaracioVar;
 
-    public SymbolForInit(SymbolVarDecl vardecl){
+    public SymbolForInit(SymbolVarDecl vardecl, codiTresAdreces codi){
         this.declaracioVar=vardecl;
         System.out.println("SOC UN SYMBOL SYMBOLFORINIT");
 
     }
 
-    public SymbolForInit(){
+    public SymbolForInit(codiTresAdreces codi){
         System.out.println("SOC UN SYMBOL SYMBOLFORINIT");
     }
 }

@@ -1,4 +1,4 @@
-package GeneracioCodiIntermedi;
+package compiler.GeneracioCodiIntermedi;
 
 public class Instruccio{
 

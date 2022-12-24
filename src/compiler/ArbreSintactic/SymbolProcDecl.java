@@ -8,7 +8,7 @@ public class SymbolProcDecl extends SymbolBase {
 
     private SymbolFuncCap funcCap;
     public SymbolProcDecl(String iden, SymbolStatementList stat,
-                          SymbolFuncCap funcCap){
+                          SymbolFuncCap funcCap, codiTresAdreces){
         this.iden = iden;
         this.stat = stat;
         this.funcCap = funcCap;

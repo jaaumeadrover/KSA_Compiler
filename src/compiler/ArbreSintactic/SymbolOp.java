@@ -13,19 +13,19 @@ public class SymbolOp extends SymbolBase{
     private char tipusOperador;
 
 
-    public SymbolOp(SymbolBoolOp oper){
+    public SymbolOp(SymbolBoolOp oper, codiTresAdreces){
         this.boolOP=oper;
         System.out.println("soy un operador");
         this.tipusOperador='B';
     }
 
-    public SymbolOp(SymbolAritOp oper){
+    public SymbolOp(SymbolAritOp oper, codiTresAdreces){
         this.aritOp=oper;
         System.out.println("soy un operador");
         this.tipusOperador='A';
     }
 
-    public SymbolOp(SymbolRealOp oper){
+    public SymbolOp(SymbolRealOp oper, codiTresAdreces){
         this.realOP=oper;
         System.out.println("soy un operador");
         this.tipusOperador='R';

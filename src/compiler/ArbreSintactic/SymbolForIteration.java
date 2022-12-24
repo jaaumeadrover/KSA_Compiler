@@ -8,7 +8,7 @@ public class SymbolForIteration extends SymbolBase{
     private SymbolForPostExpression postexpression;
     private SymbolStatementList states;
 
-    public SymbolForIteration(SymbolForInit forinit, SymbolExpressioSimple expr, SymbolForPostExpression forpost, SymbolStatementList states){
+    public SymbolForIteration(SymbolForInit forinit, SymbolExpressioSimple expr, SymbolForPostExpression forpost, SymbolStatementList states, codiTresAdreces codi){
         this.init = forinit;
         this.expressio = expr;
         this.postexpression = forpost;

@@ -150,7 +150,7 @@ precedence left  mul, div, mod;
 
 start with program;
 
-program ::= declList r_main lparen rparen brop statementList brcl {:RESULT = new SymbolProgram();:} //NO FA FALTA
+program ::= declList:declist r_main lparen rparen brop statementList:states brcl {:RESULT = new SymbolProgram(declist,states);:}
     ;
 
 //DECLARACIONS
@@ -202,11 +202,15 @@ return   ::=r_return exprSimple:expr smcol  {:RESULT = new SymbolReturn(expr);:}
 ;
 funcDecl ::= r_function type:t  id:iden funcCap:funcCap M brop statementList:stats return:rtn brcl {:
                                                                                 System.out.println("SIMBOL S: "+ts.getMida());
+
                                                                                 Simbol s=ts.consultaFunc(iden.toString());
                                                                                 System.out.println("SIMBOL S: "+s);
                                                                                 if(s == null){
-                                                                                    RESULT=new SymbolFuncDecl(t.getTipusSub(), iden.toString(), stats, rtn,funcCap);
-                                                                                    ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.FUNC, 0);
+                                                                                    if(comprovaTipus.gestFunc(t.getTipusSub,rtn)){
+                                                                                        RESULT=new SymbolFuncDecl(t.getTipusSub(), iden.toString(), stats, rtn,funcCap);
+                                                                                        ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.FUNC, 0);
+                                                                                    }
+
                                                                                 }else{
                                                                                     System.out.println("FUNCIÓ JA CREADA ANTERIORMENT!");
                                                                                     RESULT=new SymbolFuncDecl();
@@ -331,7 +335,12 @@ Default ::= r_default twodots statementList:state           {:RESULT = new Symbo
 
 forIteration ::= r_for lparen forInit:forinit
 smcol exprSimple:expr smcol forPostExpression:forpost
-rparen brop statementList:state brcl                    {:RESULT = new SymbolForIteration(forinit,expr,forpost,state);:}
+rparen brop statementList:state brcl                    {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
+                                                               RESULT = new SymbolForIteration(forinit,expr,forpost,state);
+                                                         }else{
+                                                              RESULT = new SymbolIfStatement();
+                                                              System.out.print("   Aixó NO ES CORRECTE AL FOR");
+                                                         }:}
     ;
 
 forInit ::= varDecl:vardecl                         {:RESULT = new SymbolForInit(vardecl);:}//inicialització de l'iterador
@@ -351,8 +360,20 @@ rparen brop statementList:state brcl                {:if(comprovaTipus.gestExpr(
                                                     :};
 
 
-ifStatement ::= r_if lparen exprSimple:expr rparen brop statementList:stateif brcl   {:RESULT = new SymbolIfStatement(expr,stateif);:}
-| r_if lparen exprSimple:expr rparen brop statementList:statel brcl r_else  brop statementList:stater brcl {:RESULT = new SymbolIfStatement(expr,statel,stater);:};
+ifStatement ::= r_if lparen exprSimple:expr
+rparen brop statementList:stateif brcl   {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
+                                             RESULT = new SymbolIfStatement(expr,state);
+                                           }else{
+                                              RESULT = new SymbolIfStatement();
+                                            System.out.print("   Aixó NO ES CORRECTE AL WHILE");
+                                           }:}
+| r_if lparen exprSimple:expr rparen brop
+statementList:statel brcl r_else  brop statementList:stater brcl {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
+                                                                      RESULT = new SymbolIfStatement(expr,state);
+                                                                  }else{
+                                                                       RESULT = new SymbolIfStatement();
+                                                                      System.out.print("   Aixó NO ES CORRECTE AL IF");
+                                                                 }:};
 
 
 //elseStatement ::= brop statementList:state brcl

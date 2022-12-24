@@ -4,11 +4,11 @@ import compiler.Symbols.TaulaSimbols.Tipus;
 public class SymbolFuncCap extends SymbolBase{
 
     private SymbolContCap contcap;
-    public SymbolFuncCap(){
+    public SymbolFuncCap(codiTresAdreces codi){
 
         System.out.println("soy un SymbolFuncCap");
     }
-    public SymbolFuncCap(SymbolContCap contcap){
+    public SymbolFuncCap(SymbolContCap contcap, codiTresAdreces codi){
         this.contcap=contcap;
         System.out.println("soy un SymbolFuncCap");
     }

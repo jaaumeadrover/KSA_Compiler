@@ -1,5 +1,5 @@
-package GeneracioCodiIntermedi;
-import  Symbols.TipusSub;
+package compiler.GeneracioCodiIntermedi;
+import  compiler.Symbols.TaulaSimbols.TipusSub;
 
 public class Variable{
     // Utilizam un string

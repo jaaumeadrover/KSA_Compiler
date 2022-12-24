@@ -4,7 +4,7 @@ import compiler.Symbols.TaulaSimbols.*;
 public class SymbolBoolOp extends SymbolBase{
     private operacions bool;
     private TipusSub tipus;
-    public SymbolBoolOp(operacions b){
+    public SymbolBoolOp(operacions b, codiTresAdreces codi){
         this.bool = b;
         this.tipus = TipusSub.BOOLEAN;
         System.out.println("SOC UN SYMBOLOP");

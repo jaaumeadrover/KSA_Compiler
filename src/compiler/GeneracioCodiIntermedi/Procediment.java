@@ -1,7 +1,8 @@
 package compiler.GeneracioCodiIntermedi;
-import Symbols.TipusSub;
+import  compiler.Symbols.TaulaSimbols.TipusSub;
+import java.util.ArrayList;
 
-public class Procediments{
+public class Procediment{
 
     private String nom;
     private int numProcediments;
@@ -9,7 +10,7 @@ public class Procediments{
     private ArrayList<Parametre> parametres;
 
     // Constructor de la classe
-    public Procediment(String nom, int numProcediment, TipusSub ts, ArrayList<Params> parametres){
+    public Procediment(String nom, int numProcediment, TipusSub ts, ArrayList<Parametre> parametres){
         this.nom = nom;
         this.numProcediments = numProcediment;
         this.tipusSub = ts;
@@ -21,15 +22,15 @@ public class Procediments{
         return this.nom;
     }
 
-    public String getNumProcediment() {
+    public int getNumProcediment() {
         return this.numProcediments;
     }
 
-    public String getTipusSub() {
+    public TipusSub getTipusSub() {
         return this.tipusSub;
     }
 
-    public String getParametres() {
+    public ArrayList<Parametre> getParametres() {
         return this.parametres;
     }
 
@@ -46,7 +47,7 @@ public class Procediments{
         this.tipusSub = ts;
     }
 
-    public void setParams(ArrayList<Params> params) {
+    public void setParams(ArrayList<Parametre> params) {
         this.parametres = params;
     }
 
@@ -59,7 +60,7 @@ public class Procediments{
                 s += "\t" + parametres.get(i).toString() + "\n";
             }
         }
-        return this.nom + "; " + numProcediments + "; " + valRetorn + "; " + s;
+        return this.nom + "; " + numProcediments + "; " + tipusSub + "; " + s;
     }
 
 }

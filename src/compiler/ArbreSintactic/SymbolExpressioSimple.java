@@ -7,16 +7,16 @@ public class SymbolExpressioSimple extends SymbolBase{
     private SymbolValor valor;
     private String iden;
     private SymbolVarInit varinit;
-    private TipusSub tsOperand;
+    private TipusSub tsOperador;
     private TipusSub tsResultat;
     
     /*
     Constructor en el qual hi ha més d'una expressió
     */
-    public SymbolExpressioSimple(SymbolExpressioSimple expr, SymbolOperacio oper){
+    public SymbolExpressioSimple(SymbolExpressioSimple expr, SymbolOperacio oper, codiTresAdreces codi){
         this.expressioSimple = expr;
         this.operacio = oper;
-        this.tsOperand = operacio.getTipusSub();
+        this.tsOperador = operacio.getTipusSub();
         //setTsResultat();
         System.out.println("SOC UN SYMBOL SYMBOLEXPRESSIO AMB PARENTESIS");
     }
@@ -24,11 +24,11 @@ public class SymbolExpressioSimple extends SymbolBase{
     /*
     Constructor expressio Simple sense expressions interiors.
     */
-    public SymbolExpressioSimple(SymbolValor val, SymbolOperacio oper){
+    public SymbolExpressioSimple(SymbolValor val, SymbolOperacio oper, codiTresAdreces codi){
         this.expressioSimple = null;
         this.valor=val;
         this.operacio=oper;
-        this.tsOperand=operacio.getTipusSub();
+        this.tsOperandor=operacio.getTipusSub();
         System.out.println("SOC UN SYMBOL SYMBOLEXPRESSIO: "+operacio.getTipusSub());
         //if oper is null
         if(oper.isEmpty()){
@@ -41,13 +41,13 @@ public class SymbolExpressioSimple extends SymbolBase{
         //else 
     }
 
-    public SymbolExpressioSimple(String id, SymbolVarInit varini){
+    public SymbolExpressioSimple(String id, SymbolVarInit varini, codiTresAdreces codi){
         this.iden=id;
         this.varinit=varinit;
         System.out.println("SOC UN SYMBOL SYMBOLEXPRESSIO");
     }
-    public TipusSub tsOperand(){
-        return tsOperand;
+    public TipusSub tsOperador(){
+        return tsOperador;
     }
     public SymbolExpressioSimple getExpr(){
         return expressioSimple;

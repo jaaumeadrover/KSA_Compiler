@@ -7,13 +7,13 @@ public class SymbolContCap extends SymbolBase {
     private TipusSub t;
     private String id;
 
-    public SymbolContCap(SymbolArgType arg, TipusSub t,String id){
+    public SymbolContCap(SymbolArgType arg, TipusSub t,String id, codiTresAdreces codi){
         this.arg=arg;
         this.t=t;
         this.id=id;
     }
 
-    public SymbolContCap(SymbolContCap contcap,SymbolArgType arg, TipusSub t,String id){
+    public SymbolContCap(SymbolContCap contcap,SymbolArgType arg, TipusSub t,String id, codiTresAdreces codi){
         this.arg=arg;
         this.t=t;
         this.id=id;

@@ -17,7 +17,7 @@ public class SymbolFuncDecl extends SymbolBase {
  }
   
  public SymbolFuncDecl(TipusSub t, String iden, SymbolStatementList stat,
-                       SymbolReturn rtn,SymbolFuncCap funcCap){
+                       SymbolReturn rtn,SymbolFuncCap funcCap, codiTresAdreces codi){
    this.iden = iden;
    this.t = t;
    this.stat = stat;
