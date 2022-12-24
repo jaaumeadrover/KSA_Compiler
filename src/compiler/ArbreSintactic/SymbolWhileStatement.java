@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolWhileStatement extends SymbolBase {
+public class SymbolWhileStatement {
     private SymbolExpressioSimple expressio;
     private SymbolStatementList statementList;
 

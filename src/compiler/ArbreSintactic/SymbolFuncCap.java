@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolFuncCap extends SymbolBase{
+public class SymbolFuncCap {
 
     private SymbolContCap contcap;
     public SymbolFuncCap(codiTresAdreces codi){

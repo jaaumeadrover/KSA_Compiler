@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolStatement extends SymbolBase {
+public class SymbolStatement {
 
     private SymbolVarDecl vard;
     private SymbolExpressioSimple expr;
@@ -13,7 +13,7 @@ public class SymbolStatement extends SymbolBase {
     private SymbolIfStatement i;
     private SymbolSwitchCase s;
 
-    public SymbolStatement(codiTresAdreces){
+    public SymbolStatement(codiTresAdreces codi){
 
         System.out.println("soy un statement");
     }
@@ -22,7 +22,7 @@ public class SymbolStatement extends SymbolBase {
         this.vard = vard;
         System.out.println("soy un statement");
     }
-    public SymbolStatement(SymbolExpressioSimple , codiTresAdreces codi){
+    public SymbolStatement(SymbolExpressioSimple expr, codiTresAdreces codi){
         this.expr=expr;
         System.out.println("soy un statement");
     }

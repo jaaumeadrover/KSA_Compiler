@@ -7,7 +7,7 @@ Classe SymbolOperació:
     Símbols
     tipusOperador=['B','C','R']
  */
-public class SymbolOp extends SymbolBase{
+public class SymbolOp {
     private SymbolBoolOp boolOP;
     private SymbolAritOp aritOp;
     private SymbolRealOp realOP;

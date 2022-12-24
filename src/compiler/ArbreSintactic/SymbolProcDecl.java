@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolProcDecl extends SymbolBase {
+public class SymbolProcDecl  {
 
     private String iden;
     private SymbolStatementList stat;

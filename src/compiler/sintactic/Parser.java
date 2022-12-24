@@ -23,14 +23,14 @@ public class Parser extends java_cup.runtime.lr_parser {
  public final Class getSymbolContainer() {
     return ParserSym.class;
 }
-
-  /** Default constructor. */
-  @Deprecated
-  public Parser() {super();}
-
-//  /** Constructor which sets the default scanner. */
+//
+//  /** Default constructor. */
 //  @Deprecated
-//  public Parser(java_cup.runtime.Scanner s) {super(s);}
+//  public Parser() {super();}
+
+  /** Constructor which sets the default scanner. */
+  @Deprecated
+  public Parser(java_cup.runtime.Scanner s) {super(s);}
 
   /** Constructor which sets the default scanner. */
   public Parser(java_cup.runtime.Scanner s, java_cup.runtime.SymbolFactory sf) {super(s,sf);}
@@ -1263,7 +1263,7 @@ class CUP$Parser$actions {
           case 58: // boolOp ::= r_and 
             {
               SymbolBoolOp RESULT =null;
-		RESULT = new SymbolBoolOp(operacions.AND,codi);
+		RESULT = new SymbolBoolOp(Operacions.AND,codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("boolOp",29, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1272,7 +1272,7 @@ class CUP$Parser$actions {
           case 59: // boolOp ::= r_or 
             {
               SymbolBoolOp RESULT =null;
-		RESULT = new SymbolBoolOp(operacions.OR,codi);
+		RESULT = new SymbolBoolOp(Operacions.OR,codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("boolOp",29, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1281,7 +1281,7 @@ class CUP$Parser$actions {
           case 60: // aritOp ::= add 
             {
               SymbolAritOp RESULT =null;
-		RESULT = new SymbolAritOp(operacions.ADD,codi);
+		RESULT = new SymbolAritOp(Operacions.ADD,codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("aritOp",30, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1290,7 +1290,7 @@ class CUP$Parser$actions {
           case 61: // aritOp ::= sub 
             {
               SymbolAritOp RESULT =null;
-		RESULT = new SymbolAritOp(operacions.SUB,codi);
+		RESULT = new SymbolAritOp(Operacions.SUB,codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("aritOp",30, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1299,7 +1299,7 @@ class CUP$Parser$actions {
           case 62: // aritOp ::= mul 
             {
               SymbolAritOp RESULT =null;
-		RESULT = new SymbolAritOp(operacions.MUL,codi);
+		RESULT = new SymbolAritOp(Operacions.MUL,codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("aritOp",30, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1308,7 +1308,7 @@ class CUP$Parser$actions {
           case 63: // aritOp ::= div 
             {
               SymbolAritOp RESULT =null;
-		RESULT = new SymbolAritOp(operacions.DIV,codi);
+		RESULT = new SymbolAritOp(Operacions.DIV,codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("aritOp",30, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1317,7 +1317,7 @@ class CUP$Parser$actions {
           case 64: // aritOp ::= mod 
             {
               SymbolAritOp RESULT =null;
-		RESULT = new SymbolAritOp(operacions.MOD,codi);
+		RESULT = new SymbolAritOp(Operacions.MOD,codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("aritOp",30, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1326,7 +1326,7 @@ class CUP$Parser$actions {
           case 65: // realOp ::= neg 
             {
               SymbolRealOp RESULT =null;
-		RESULT = new SymbolRealOp(operacions.NEG,codi);
+		RESULT = new SymbolRealOp(Operacions.NEG,codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("realOp",31, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1335,7 +1335,7 @@ class CUP$Parser$actions {
           case 66: // realOp ::= eq 
             {
               SymbolRealOp RESULT =null;
-		RESULT = new SymbolRealOp(operacions.EQ,codi);
+		RESULT = new SymbolRealOp(Operacions.EQ,codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("realOp",31, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1344,7 +1344,7 @@ class CUP$Parser$actions {
           case 67: // realOp ::= bg 
             {
               SymbolRealOp RESULT =null;
-		RESULT = new SymbolRealOp(operacions.BG,codi);
+		RESULT = new SymbolRealOp(Operacions.BG,codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("realOp",31, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1353,7 +1353,7 @@ class CUP$Parser$actions {
           case 68: // realOp ::= sm 
             {
               SymbolRealOp RESULT =null;
-		RESULT = new SymbolRealOp(operacions.SM,codi);
+		RESULT = new SymbolRealOp(Operacions.SM,codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("realOp",31, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1362,7 +1362,7 @@ class CUP$Parser$actions {
           case 69: // realOp ::= bg_eq 
             {
               SymbolRealOp RESULT =null;
-		RESULT = new SymbolRealOp(operacions.BGEQ,codi);
+		RESULT = new SymbolRealOp(Operacions.BGEQ,codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("realOp",31, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1371,7 +1371,7 @@ class CUP$Parser$actions {
           case 70: // realOp ::= sm_eq 
             {
               SymbolRealOp RESULT =null;
-		RESULT = new SymbolRealOp(operacions.SMEQ,codi);
+		RESULT = new SymbolRealOp(Operacions.SMEQ,codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("realOp",31, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1464,7 +1464,7 @@ class CUP$Parser$actions {
           case 77: // LCases ::= 
             {
               SymbolLCases RESULT =null;
-		RESULT = new SymbolLCases();
+		RESULT = new SymbolLCases(codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("LCases",33, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1500,7 +1500,7 @@ class CUP$Parser$actions {
           case 80: // Default ::= 
             {
               SymbolDefault RESULT =null;
-		RESULT = new SymbolDefault();
+		RESULT = new SymbolDefault(codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("Default",35, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1524,7 +1524,7 @@ class CUP$Parser$actions {
 		if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
                                                                RESULT = new SymbolForIteration(forinit,expr,forpost,state,codi);
                                                          }else{
-                                                              RESULT = new SymbolIfStatement();
+                                                              RESULT = new SymbolForIteration();
                                                               System.out.print("   Aixó NO ES CORRECTE AL FOR");
                                                          }
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("forIteration",14, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-10)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1547,7 +1547,7 @@ class CUP$Parser$actions {
           case 83: // forInit ::= 
             {
               SymbolForInit RESULT =null;
-		RESULT = new SymbolForInit();
+		RESULT = new SymbolForInit(codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("forInit",15, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1568,7 +1568,7 @@ class CUP$Parser$actions {
           case 85: // forPostExpression ::= 
             {
               SymbolForPostExpression RESULT =null;
-		RESULT = new SymbolForPostExpression();
+		RESULT = new SymbolForPostExpression(codi);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("forPostExpression",16, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1601,13 +1601,13 @@ class CUP$Parser$actions {
 		int exprleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)).left;
 		int exprright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)).right;
 		SymbolExpressioSimple expr = (SymbolExpressioSimple)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-4)).value;
-		int stateifleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
-		int stateifright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
-		SymbolStatementList stateif = (SymbolStatementList)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		int statesleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
+		int statesright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
+		SymbolStatementList states = (SymbolStatementList)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
-                                             RESULT = new SymbolIfStatement(expr,state,codi);
+                                             RESULT = new SymbolIfStatement(expr,states,codi);
                                            }else{
-                                              RESULT = new SymbolIfStatement();
+                                              RESULT = new SymbolIfStatement(codi);
                                             System.out.print("   Aixó NO ES CORRECTE AL WHILE");
                                            }
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("ifStatement",17, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-6)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1624,13 +1624,13 @@ class CUP$Parser$actions {
 		int statelleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)).left;
 		int statelright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-5)).right;
 		SymbolStatementList statel = (SymbolStatementList)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-5)).value;
-		int staterleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
-		int staterright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
-		SymbolStatementList stater = (SymbolStatementList)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		int statesleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
+		int statesright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
+		SymbolStatementList states = (SymbolStatementList)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
-                                                                      RESULT = new SymbolIfStatement(expr,state,codi);
+                                                                      RESULT = new SymbolIfStatement(expr,states,codi);
                                                                   }else{
-                                                                       RESULT = new SymbolIfStatement();
+                                                                       RESULT = new SymbolIfStatement(codi);
                                                                       System.out.print("   Aixó NO ES CORRECTE AL IF");
                                                                  }
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("ifStatement",17, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-10)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);

@@ -3,7 +3,7 @@ import compiler.GeneracioCodiIntermedi.*;
 import compiler.Symbols.TaulaSimbols.Tipus;
 import compiler.Symbols.TaulaSimbols.TipusSub;
 
-public class SymbolArrayInit extends SymbolBase{
+public class SymbolArrayInit {
 
     private TipusSub t;
     private SymbolExpressioSimple expr;

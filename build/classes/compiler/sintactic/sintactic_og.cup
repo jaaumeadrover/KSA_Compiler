@@ -209,7 +209,7 @@ funcDecl ::= r_function type:t  id:iden funcCap:funcCap M brop statementList:sta
                                                                                 Simbol s=ts.consultaFunc(iden.toString());
                                                                                 System.out.println("SIMBOL S: "+s);
                                                                                 if(s == null){
-                                                                                    if(comprovaTipus.gestFunc(t.getTipusSub,rtn)){
+                                                                                    if(comprovaTipus.gestFunc(t.getTipusSub(),rtn)){
                                                                                         RESULT=new SymbolFuncDecl(t.getTipusSub(), iden.toString(), stats, rtn,funcCap,codi);
                                                                                         ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.FUNC, 0);
                                                                                     }
@@ -251,7 +251,7 @@ statement ::= varDecl:vard smcol         {:RESULT=new SymbolStatement(vard,codi)
 
 inputStatement ::= r_input lparen rparen {:RESULT = new SymbolInputStatement(codi);:};
 
-printStatement ::= r_print lparen stringValue rparen {:RESULT = new SymbolPrintStatement(codi;:};
+printStatement ::= r_print lparen stringValue rparen {:RESULT = new SymbolPrintStatement(codi);:};
 
 stringValue    ::= literal
                    | stringValue add literal {:RESULT = new SymbolStringValue(codi);:};
@@ -297,23 +297,23 @@ op::= boolOp:bool   {:RESULT = new SymbolOp(bool,codi);:}
 |realOp:realOp      {:RESULT = new SymbolOp(realOp,codi);:}
 ;
 
-boolOp::= r_and {:RESULT = new SymbolBoolOp(operacions.AND,codi);:}
-|r_or           {:RESULT = new SymbolBoolOp(operacions.OR,codi);:}
+boolOp::= r_and {:RESULT = new SymbolBoolOp(Operacions.AND,codi);:}
+|r_or           {:RESULT = new SymbolBoolOp(Operacions.OR,codi);:}
 ;
 
-aritOp ::= add {:RESULT = new SymbolAritOp(operacions.ADD,codi);:}
-|sub           {:RESULT = new SymbolAritOp(operacions.SUB,codi);:}
-|mul           {:RESULT = new SymbolAritOp(operacions.MUL,codi);:}
-|div           {:RESULT = new SymbolAritOp(operacions.DIV,codi);:}
-|mod           {:RESULT = new SymbolAritOp(operacions.MOD,codi);:}
+aritOp ::= add {:RESULT = new SymbolAritOp(Operacions.ADD,codi);:}
+|sub           {:RESULT = new SymbolAritOp(Operacions.SUB,codi);:}
+|mul           {:RESULT = new SymbolAritOp(Operacions.MUL,codi);:}
+|div           {:RESULT = new SymbolAritOp(Operacions.DIV,codi);:}
+|mod           {:RESULT = new SymbolAritOp(Operacions.MOD,codi);:}
 ;
 
-realOp::= neg {:RESULT = new SymbolRealOp(operacions.NEG,codi);:}
-|eq           {:RESULT = new SymbolRealOp(operacions.EQ,codi);:}
-|bg           {:RESULT = new SymbolRealOp(operacions.BG,codi);:}
-|sm           {:RESULT = new SymbolRealOp(operacions.SM,codi);:}
-|bg_eq        {:RESULT = new SymbolRealOp(operacions.BGEQ,codi);:}
-|sm_eq        {:RESULT = new SymbolRealOp(operacions.SMEQ,codi);:}
+realOp::= neg {:RESULT = new SymbolRealOp(Operacions.NEG,codi);:}
+|eq           {:RESULT = new SymbolRealOp(Operacions.EQ,codi);:}
+|bg           {:RESULT = new SymbolRealOp(Operacions.BG,codi);:}
+|sm           {:RESULT = new SymbolRealOp(Operacions.SM,codi);:}
+|bg_eq        {:RESULT = new SymbolRealOp(Operacions.BGEQ,codi);:}
+|sm_eq        {:RESULT = new SymbolRealOp(Operacions.SMEQ,codi);:}
 ;
 
 
@@ -328,12 +328,12 @@ subProgramContCall ::= id:iden lparen exprSimple:expr            {:RESULT = new 
 SwitchCase ::= r_switch lparen exprSimple:expr rparen brop LCases:lcases Default brcl {:RESULT = new SymbolSwitchCase(expr,lcases,codi);:};
 
 LCases ::= Case:c LCases:lcases         {:RESULT = new SymbolLCases(c,lcases,codi);:}
-    |                                   {:RESULT = new SymbolLCases();:};
+    |                                   {:RESULT = new SymbolLCases(codi);:};
 
 Case ::= r_case exprSimple:expr twodots statementList:state {:RESULT = new SymbolCase(expr,state,codi);:};
 
 Default ::= r_default twodots statementList:state           {:RESULT = new SymbolDefault(state,codi);:}
-    |                                                       {:RESULT = new SymbolDefault();:}
+    |                                                       {:RESULT = new SymbolDefault(codi);:}
     ;
 
 forIteration ::= r_for lparen forInit:forinit
@@ -341,16 +341,16 @@ smcol exprSimple:expr smcol forPostExpression:forpost
 rparen brop statementList:state brcl                    {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
                                                                RESULT = new SymbolForIteration(forinit,expr,forpost,state,codi);
                                                          }else{
-                                                              RESULT = new SymbolIfStatement();
+                                                              RESULT = new SymbolForIteration();
                                                               System.out.print("   Aixó NO ES CORRECTE AL FOR");
                                                          }:}
     ;
 
 forInit ::= varDecl:vardecl                         {:RESULT = new SymbolForInit(vardecl,codi);:}//inicialització de l'iterador
-    |                                               {:RESULT = new SymbolForInit();:};
+    |                                               {:RESULT = new SymbolForInit(codi);:};
 
 forPostExpression ::= exprSimple:expr               {:RESULT = new SymbolForPostExpression(expr,codi);:}//declaració de la postExpressio
-    |                                               {:RESULT = new SymbolForPostExpression();:}
+    |                                               {:RESULT = new SymbolForPostExpression(codi);:}
     ;
 
 whileStatement ::= r_while lparen exprSimple:expr
@@ -364,17 +364,17 @@ rparen brop statementList:state brcl                {:if(comprovaTipus.gestExpr(
 
 
 ifStatement ::= r_if lparen exprSimple:expr
-rparen brop statementList:stateif brcl   {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
-                                             RESULT = new SymbolIfStatement(expr,state,codi);
+rparen brop statementList:states brcl   {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
+                                             RESULT = new SymbolIfStatement(expr,states,codi);
                                            }else{
-                                              RESULT = new SymbolIfStatement();
+                                              RESULT = new SymbolIfStatement(codi);
                                             System.out.print("   Aixó NO ES CORRECTE AL WHILE");
                                            }:}
 | r_if lparen exprSimple:expr rparen brop
-statementList:statel brcl r_else  brop statementList:stater brcl {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
-                                                                      RESULT = new SymbolIfStatement(expr,state,codi);
+statementList:statel brcl r_else  brop statementList:states brcl {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
+                                                                      RESULT = new SymbolIfStatement(expr,states,codi);
                                                                   }else{
-                                                                       RESULT = new SymbolIfStatement();
+                                                                       RESULT = new SymbolIfStatement(codi);
                                                                       System.out.print("   Aixó NO ES CORRECTE AL IF");
                                                                  }:};
 

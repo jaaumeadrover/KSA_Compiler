@@ -17,7 +17,7 @@ import compiler.Symbols.TaulaSimbols.Tipus;
  *
  * @author ATA2
  */
-public class SymbolDeclList extends SymbolBase {
+public class SymbolDeclList  {
    SymbolDecl declaracio;
    SymbolDeclList llistaDecl;
    codiTresAdreces codi;

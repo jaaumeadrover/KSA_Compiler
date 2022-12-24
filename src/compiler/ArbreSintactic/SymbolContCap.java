@@ -3,7 +3,7 @@ import compiler.Symbols.TaulaSimbols.Tipus;
 import compiler.Symbols.TaulaSimbols.TipusSub;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolContCap extends SymbolBase {
+public class SymbolContCap {
     private SymbolArgType arg;
     private TipusSub t;
     private String id;

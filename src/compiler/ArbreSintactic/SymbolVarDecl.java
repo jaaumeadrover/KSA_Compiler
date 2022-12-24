@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolVarDecl extends SymbolBase {
+public class SymbolVarDecl {
 
     private TipusSub tipus;
     private boolean esConst;

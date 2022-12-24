@@ -1,7 +1,7 @@
 package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
-public class SymbolVarInit extends SymbolBase {
+public class SymbolVarInit  {
 
     private boolean isarray,isEmpty;
     private SymbolExpressioSimple expr;

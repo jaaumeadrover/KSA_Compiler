@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolStatementList extends SymbolBase {
+public class SymbolStatementList  {
 
     private SymbolStatement stat;
     private SymbolStatementList stats;

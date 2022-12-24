@@ -2,10 +2,10 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolBoolOp extends SymbolBase{
-    private OperacionsCTA bool;
+public class SymbolBoolOp {
+    private Operacions bool;
     private TipusSub tipus;
-    public SymbolBoolOp(operacions b, codiTresAdreces codi){
+    public SymbolBoolOp(Operacions b, codiTresAdreces codi){
         this.bool = b;
         this.tipus = TipusSub.BOOLEAN;
         System.out.println("SOC UN SYMBOLOP");

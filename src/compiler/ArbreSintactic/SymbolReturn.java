@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolReturn extends SymbolBase{
+public class SymbolReturn {
 
     private SymbolExpressioSimple expr;
     public SymbolReturn(SymbolExpressioSimple expr, codiTresAdreces codi){

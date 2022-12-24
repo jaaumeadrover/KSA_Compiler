@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolDefault extends SymbolBase{
+public class SymbolDefault {
     private SymbolStatementList statementList;
     public SymbolDefault(SymbolStatementList state, codiTresAdreces codi){
         this.statementList=state;

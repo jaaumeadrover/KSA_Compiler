@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolProgram extends SymbolBase{
+public class SymbolProgram {
 
     SymbolDeclList declList;
     SymbolStatementList statementList;

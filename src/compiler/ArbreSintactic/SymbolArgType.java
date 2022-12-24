@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolArgType extends SymbolBase{
+public class SymbolArgType {
 
     private boolean esConst;
     public SymbolArgType(boolean esConst, codiTresAdreces codi){

@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolForIteration extends SymbolBase{
+public class SymbolForIteration {
 
     private SymbolForInit init;
     private SymbolExpressioSimple expressio;
@@ -15,5 +15,8 @@ public class SymbolForIteration extends SymbolBase{
         this.postexpression = forpost;
         this.states=states;
         System.out.println("soy un forstatement");
+    }
+    public SymbolForIteration(){
+        
     }
 }

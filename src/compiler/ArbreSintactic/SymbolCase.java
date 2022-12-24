@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolCase extends SymbolBase {
+public class SymbolCase  {
 
     private SymbolExpressioSimple expressioSimple;
     private SymbolStatementList statementList;

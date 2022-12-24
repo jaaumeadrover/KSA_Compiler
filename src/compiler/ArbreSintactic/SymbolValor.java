@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolValor extends SymbolBase {
+public class SymbolValor {
 
     private String iden;
     private SymbolArray array;

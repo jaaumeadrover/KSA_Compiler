@@ -3,7 +3,7 @@ import compiler.Symbols.TaulaSimbols.Tipus;
 import compiler.Symbols.TaulaSimbols.TipusSub;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolFuncDecl extends SymbolBase {
+public class SymbolFuncDecl  {
 
  private String iden;
  private TipusSub t;

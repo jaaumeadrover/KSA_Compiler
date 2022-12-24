@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolForInit extends SymbolBase{
+public class SymbolForInit {
 
     private SymbolVarDecl declaracioVar;
 

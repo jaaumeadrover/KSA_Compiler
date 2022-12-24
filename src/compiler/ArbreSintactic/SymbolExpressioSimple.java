@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolExpressioSimple extends SymbolBase{
+public class SymbolExpressioSimple {
     private SymbolExpressioSimple expressioSimple;
     private SymbolOperacio operacio;
     private SymbolValor valor;
@@ -29,7 +29,7 @@ public class SymbolExpressioSimple extends SymbolBase{
         this.expressioSimple = null;
         this.valor=val;
         this.operacio=oper;
-        this.tsOperandor=operacio.getTipusSub();
+        this.tsOperador=operacio.getTipusSub();
         System.out.println("SOC UN SYMBOL SYMBOLEXPRESSIO: "+operacio.getTipusSub());
         //if oper is null
         if(oper.isEmpty()){

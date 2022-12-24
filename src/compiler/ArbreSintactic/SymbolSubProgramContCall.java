@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolSubProgramContCall extends SymbolBase {
+public class SymbolSubProgramContCall{
 
     private String id;
     private SymbolExpressioSimple expressioSimple;

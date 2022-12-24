@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolForPostExpression extends SymbolBase{
+public class SymbolForPostExpression {
 
     private SymbolExpressioSimple expressioSimple;
 

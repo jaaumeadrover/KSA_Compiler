@@ -2,7 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
-public class SymbolIfStatement extends SymbolBase{
+public class SymbolIfStatement {
 
     private SymbolExpressioSimple expr;
     private SymbolStatementList statesIf;
@@ -16,5 +16,8 @@ public class SymbolIfStatement extends SymbolBase{
         this.expr=expr;
         this.statesIf=statesIf;
         this.statesElse=statesElse;
+    }
+      public SymbolIfStatement( codiTresAdreces codi){
+        
     }
 }

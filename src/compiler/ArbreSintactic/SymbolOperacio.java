@@ -11,7 +11,7 @@ ATRIBUTS:
     TipusSub --> IMPORTANT!! REPRESENTA EL TIPUS SUBJACENT DE EXPRESSIO QUE POT ANAR ABANS.
                  SI ES NULL, HI HA UN FORMAT INCORRECTE.
  */
-public class SymbolOperacio extends SymbolBase{
+public class SymbolOperacio {
 
     private SymbolOp operador;
     private SymbolExpressioSimple expressioSimple;
