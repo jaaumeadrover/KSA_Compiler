@@ -1,6 +1,7 @@
 package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
 import compiler.Symbols.TaulaSimbols.TipusSub;
+import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolContCap extends SymbolBase {
     private SymbolArgType arg;

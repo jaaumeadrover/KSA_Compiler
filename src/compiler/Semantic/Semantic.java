@@ -30,8 +30,8 @@ public class Semantic {
             return false;
         }
     }
-    public boolean gestFunc(TipusSub tfunc, SymbolExpressioSimple exprRtn){
-        expresioReturn = exprRtn.getExpr();
+    public boolean gestFunc(TipusSub tfunc, SymbolReturn exprRtn){
+        SymbolExpressioSimple expresioReturn = exprRtn.getExpr();
         expresioReturn.setTsResultat();
         TipusSub tipoExpr = expresioReturn.getTipusSubResultat();
 
@@ -43,6 +43,5 @@ public class Semantic {
             return false;
         }
     }
-
 
 }

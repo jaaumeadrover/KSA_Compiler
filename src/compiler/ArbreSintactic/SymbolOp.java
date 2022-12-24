@@ -1,5 +1,6 @@
 package compiler.ArbreSintactic;
-import compiler.Symbols.TaulaSimbols.TipusSub;
+import compiler.Symbols.TaulaSimbols.*;
+import compiler.GeneracioCodiIntermedi.*;
 /*
 Classe SymbolOperació:
     ATRIBUTS:
@@ -13,19 +14,19 @@ public class SymbolOp extends SymbolBase{
     private char tipusOperador;
 
 
-    public SymbolOp(SymbolBoolOp oper, codiTresAdreces){
+    public SymbolOp(SymbolBoolOp oper, codiTresAdreces codi){
         this.boolOP=oper;
         System.out.println("soy un operador");
         this.tipusOperador='B';
     }
 
-    public SymbolOp(SymbolAritOp oper, codiTresAdreces){
+    public SymbolOp(SymbolAritOp oper, codiTresAdreces codi){
         this.aritOp=oper;
         System.out.println("soy un operador");
         this.tipusOperador='A';
     }
 
-    public SymbolOp(SymbolRealOp oper, codiTresAdreces){
+    public SymbolOp(SymbolRealOp oper, codiTresAdreces codi){
         this.realOP=oper;
         System.out.println("soy un operador");
         this.tipusOperador='R';

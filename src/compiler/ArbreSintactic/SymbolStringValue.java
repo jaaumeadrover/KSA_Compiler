@@ -1,5 +1,6 @@
 package compiler.ArbreSintactic;
-import compiler.Symbols.TaulaSimbols.Tipus;
+import compiler.Symbols.TaulaSimbols.*;
+import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolStringValue extends SymbolBase {
     public SymbolStringValue(codiTresAdreces codi){

@@ -1,5 +1,6 @@
 package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
+import compiler.GeneracioCodiIntermedi.*;
 
 /*
 Classe SymbolOperacio:
@@ -21,7 +22,7 @@ public class SymbolOperacio extends SymbolBase{
     /*
     Cas en que symbol operació agafa VarInit que pot ser lambda.
      */
-    public SymbolOperacio(SymbolVarInit simbol, codiTresAdreces){
+    public SymbolOperacio(SymbolVarInit simbol, codiTresAdreces codi){
         this.simbol = simbol;                
         if(simbol.esBuit()){
             System.out.println("PASSAT VALOR");
@@ -32,7 +33,7 @@ public class SymbolOperacio extends SymbolBase{
     /*
     Cas en que SymbolOperació utilitza un operador i una altra expressió simple
      */
-    public SymbolOperacio(SymbolOp op,SymbolExpressioSimple expr, codiTresAdreces){
+    public SymbolOperacio(SymbolOp op,SymbolExpressioSimple expr, codiTresAdreces codi){
         this.operador=op;
         this.expressioSimple=expr;
         setTsResultat();

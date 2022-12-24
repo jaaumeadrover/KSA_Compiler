@@ -1,10 +1,11 @@
 package compiler.ArbreSintactic;
-import compiler.Symbols.TaulaSimbols.Tipus;
+import compiler.Symbols.TaulaSimbols.*;
+import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolReturn extends SymbolBase{
 
     private SymbolExpressioSimple expr;
-    public SymbolReturn(SymbolExpressioSimple expr, codiTresAdreces){
+    public SymbolReturn(SymbolExpressioSimple expr, codiTresAdreces codi){
         this.expr = expr;
         System.out.println("soy un SymbolReturn");
     }

@@ -1,8 +1,9 @@
 package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
+import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolBoolOp extends SymbolBase{
-    private operacions bool;
+    private OperacionsCTA bool;
     private TipusSub tipus;
     public SymbolBoolOp(operacions b, codiTresAdreces codi){
         this.bool = b;

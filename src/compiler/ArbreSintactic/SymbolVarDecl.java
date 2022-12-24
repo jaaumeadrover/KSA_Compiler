@@ -1,6 +1,6 @@
 package compiler.ArbreSintactic;
-import compiler.Symbols.TaulaSimbols.Tipus;
-import compiler.Symbols.TaulaSimbols.TipusSub;
+import compiler.Symbols.TaulaSimbols.*;
+import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolVarDecl extends SymbolBase {
 

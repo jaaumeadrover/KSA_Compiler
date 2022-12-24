@@ -1,5 +1,6 @@
 package compiler.ArbreSintactic;
-import compiler.Symbols.TaulaSimbols.Tipus;
+import compiler.Symbols.TaulaSimbols.*;
+import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolStatement extends SymbolBase {
 
@@ -17,35 +18,35 @@ public class SymbolStatement extends SymbolBase {
         System.out.println("soy un statement");
     }
     
-    public SymbolStatement(SymbolVarDecl vard, codiTresAdreces){
+    public SymbolStatement(SymbolVarDecl vard, codiTresAdreces codi){
         this.vard = vard;
         System.out.println("soy un statement");
     }
-    public SymbolStatement(SymbolExpressioSimple , codiTresAdreces){
+    public SymbolStatement(SymbolExpressioSimple , codiTresAdreces codi){
         this.expr=expr;
         System.out.println("soy un statement");
     }
-    public SymbolStatement(SymbolForIteration f, codiTresAdreces){
+    public SymbolStatement(SymbolForIteration f, codiTresAdreces codi){
         this.f=f;
         System.out.println("soy un statement");
     }
-    public SymbolStatement(SymbolWhileStatement w, codiTresAdreces){
+    public SymbolStatement(SymbolWhileStatement w, codiTresAdreces codi){
         this.w=w;
         System.out.println("soy un statement");
     }
-    public SymbolStatement(SymbolInputStatement input, codiTresAdreces){
+    public SymbolStatement(SymbolInputStatement input, codiTresAdreces codi){
         this.input=input;
         System.out.println("soy un statement");
     }
-    public SymbolStatement(SymbolPrintStatement print, codiTresAdreces){
+    public SymbolStatement(SymbolPrintStatement print, codiTresAdreces codi){
         this.print=print;
         System.out.println("soy un statement");
     }
-    public SymbolStatement(SymbolIfStatement i, codiTresAdreces){
+    public SymbolStatement(SymbolIfStatement i, codiTresAdreces codi){
         this.i=i;
         System.out.println("soy un statement");
     }
-    public SymbolStatement(SymbolSwitchCase s, codiTresAdreces){
+    public SymbolStatement(SymbolSwitchCase s, codiTresAdreces codi){
         this.s=s;
         System.out.println("soy un statement");
     }

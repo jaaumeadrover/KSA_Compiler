@@ -1,5 +1,6 @@
 package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
+import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolExpressioSimple extends SymbolBase{
     private SymbolExpressioSimple expressioSimple;
@@ -60,12 +61,11 @@ public class SymbolExpressioSimple extends SymbolBase{
     BOOLEAN: correcte per al whileStatement
     STRING: 
     */
-    private void setTsResultat(){
+    public void setTsResultat(){
         TipusSub x=null;
         
         //Cas 1: expressió sense expressions anteriors
         if(this.expressioSimple==null){
-            System.out.println("HOlaaa 2");
             switch (this.valor.getTipusSub()){
                 //Cas Valor Int i operador aritmètic
                 case INT:

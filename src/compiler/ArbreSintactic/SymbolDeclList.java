@@ -10,6 +10,7 @@ package compiler.ArbreSintactic;
 import java_cup.runtime.ComplexSymbolFactory.ComplexSymbol;
 
 import compiler.sintactic.ParserSym;
+import compiler.GeneracioCodiIntermedi.*;
 import compiler.Symbols.TaulaSimbols.Tipus;
 /**
  * Classe que implementa la variable DeclList de la gramàtica
@@ -17,15 +18,11 @@ import compiler.Symbols.TaulaSimbols.Tipus;
  * @author ATA2
  */
 public class SymbolDeclList extends SymbolBase {
-    /**
-     * construeix una variable E a partir del valor de una T i una Ep
-     * (què pot ser buida). Els valors es combinen segons quina sigui l'operació
-     * que conté valor2 (què és la operació que es troba entre els dos valors
-     * @param valorT
-     * @param valorEp
-     */
+   SymbolDecl declaracio;
+   SymbolDeclList llistaDecl;
+   codiTresAdreces codi;
     public SymbolDeclList(SymbolDecl decl,SymbolDeclList declList, codiTresAdreces codi) {
-            super("DeclList",null);
+            //super("DeclList",null);
 
     }
 

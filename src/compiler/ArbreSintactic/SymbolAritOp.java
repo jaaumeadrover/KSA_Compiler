@@ -1,9 +1,10 @@
 package compiler.ArbreSintactic;
-import compiler.Symbols.TaulaSimbols.Tipus;
+import compiler.Symbols.TaulaSimbols.*;
+import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolAritOp extends SymbolBase{
-    private operacions aritOp;
-    public SymbolAritOp(operacions oper, codiTresAdreces codi){
+    private OperacionsCTA aritOp;
+    public SymbolAritOp(OperacionsCTA oper, codiTresAdreces codi){
         this.aritOp=oper;
         System.out.println("SOC UN SYMBOLARITOP");
     }

@@ -1,5 +1,6 @@
 package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
+import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolDefault extends SymbolBase{
     private SymbolStatementList statementList;

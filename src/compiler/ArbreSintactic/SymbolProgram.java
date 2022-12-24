@@ -1,7 +1,6 @@
 package compiler.ArbreSintactic;
-import compiler.Symbols.TaulaSimbols.Tipus;
-import compiler.GeneracioCodiIntermedi.codiTresAdreces;
-import compiler.ArbreSintactic.ArbreSintactic
+import compiler.Symbols.TaulaSimbols.*;
+import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolProgram extends SymbolBase{
 
@@ -9,8 +8,8 @@ public class SymbolProgram extends SymbolBase{
     SymbolStatementList statementList;
 
     public SymbolProgram(SymbolDeclList declList, SymbolStatementList statementList) {
-        super("DeclList",null);
-        this.declList = decList;
+        //super("DeclList",null);
+        this.declList = declList;
         this.statementList = statementList;
     }
     public SymbolProgram(){
@@ -20,9 +19,9 @@ public class SymbolProgram extends SymbolBase{
     public void codiTresAdreces(codiTresAdreces codi){
         if (declList != null){
             codi.començaDecl();
-            this.declList.codiTresAdreces(codi);
-            codi.finaliztaDecl();
+            //this.declList.codiTresAdreces(codi);
+            //codi.finaliztaDecl();
         }
-        this.statementList.codiTresAdreces(codi);
+        //this.statementList.codiTresAdreces(codi);
     }
 }

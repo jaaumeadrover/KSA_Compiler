@@ -8,6 +8,7 @@
 package compiler.ArbreSintactic;
 
 import java_cup.runtime.ComplexSymbolFactory.ComplexSymbol;
+import compiler.GeneracioCodiIntermedi.*;
 import compiler.Symbols.TaulaSimbols.Tipus;
 
 /**

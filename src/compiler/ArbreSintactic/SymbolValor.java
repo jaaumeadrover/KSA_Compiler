@@ -1,6 +1,6 @@
 package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
-import java_cup.runtime.ComplexSymbolFactory.ComplexSymbol;
+import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolValor extends SymbolBase {
 

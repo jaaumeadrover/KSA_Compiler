@@ -1,4 +1,6 @@
 package compiler.ArbreSintactic;
+import compiler.Symbols.TaulaSimbols.*;
+import compiler.GeneracioCodiIntermedi.*;
 
 
 public class ArbreSintactic {
@@ -7,7 +9,7 @@ public class ArbreSintactic {
     public static codiTresAdreces codi;
 
     // inicialitzam l'arrel de l'abre sintactic
-    pyblic void setRoot(SymbolProgram root){
+    public void setRoot(SymbolProgram root){
         this.root = root;
     }
 
@@ -15,7 +17,7 @@ public class ArbreSintactic {
     // Mètode amb el que instanciem el codi de tres adreçes
     public codiTresAdreces generarCodiTresAdreces(){
         codi = new codiTresAdreces();
-        root.codiTresAdreces();
+        //root.codiTresAdreces();
         return codi;
     }
 }
