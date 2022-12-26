@@ -4,6 +4,6 @@ import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolRealExpr  {
     public SymbolRealExpr(){
-        System.out.println("soy un realexpr");
+
     }
 }

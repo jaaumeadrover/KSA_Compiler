@@ -10,6 +10,6 @@ public class SymbolCase  {
     public SymbolCase(SymbolExpressioSimple expr, SymbolStatementList state){
         this.expressioSimple=expr;
         this.statementList=state;
-        System.out.println("SOC UN SYMBOLCASE");
+        //System.out.println("SOC UN SYMBOLCASE");
     }
 }

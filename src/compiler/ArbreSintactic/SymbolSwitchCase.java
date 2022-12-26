@@ -9,7 +9,6 @@ public class SymbolSwitchCase {
     public SymbolSwitchCase(SymbolExpressioSimple expr, SymbolLCases lcases){
         this.expressioSimple = expr;
         this.lcases = lcases;
-        System.out.println("soy un switch");
     }
 
 }

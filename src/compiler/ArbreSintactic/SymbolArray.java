@@ -11,6 +11,10 @@ public class SymbolArray {
     public SymbolArray(String iden, SymbolExpressioSimple expr){
         this.ID=iden;
         this.expressioSimple=expr;
-        System.out.println("SOC UN SYMBOLARRAY");
+        //System.out.println("SOC UN SYMBOLARRAY");
+    }
+
+    public String getID() {
+        return ID;
     }
 }

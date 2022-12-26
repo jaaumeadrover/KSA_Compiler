@@ -13,7 +13,7 @@ public class SymbolProgram {
         this.statementList = statementList;
     }
     public SymbolProgram(){
-        System.out.println("soy un programa");
+
     }
 
     public void codiTresAdreces(codiTresAdreces codi){
@@ -23,5 +23,6 @@ public class SymbolProgram {
             codi.finaliztaDecl();
         }
         this.statementList.codiTresAdreces(codi);
+
     }
 }

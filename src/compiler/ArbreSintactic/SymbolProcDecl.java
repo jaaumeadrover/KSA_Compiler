@@ -13,6 +13,5 @@ public class SymbolProcDecl  {
         this.iden = iden;
         this.stat = stat;
         this.funcCap = funcCap;
-        System.out.println("soy un funcDecl");
     }
 }

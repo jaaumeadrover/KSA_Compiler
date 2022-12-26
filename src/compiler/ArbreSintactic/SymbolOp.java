@@ -16,19 +16,16 @@ public class SymbolOp {
 
     public SymbolOp(SymbolBoolOp oper){
         this.boolOP=oper;
-        System.out.println("soy un operador");
         this.tipusOperador='B';
     }
 
     public SymbolOp(SymbolAritOp oper){
         this.aritOp=oper;
-        System.out.println("soy un operador");
         this.tipusOperador='A';
     }
 
     public SymbolOp(SymbolRealOp oper){
         this.realOP=oper;
-        System.out.println("soy un operador");
         this.tipusOperador='R';
     }
     public char getTipusOperador(){

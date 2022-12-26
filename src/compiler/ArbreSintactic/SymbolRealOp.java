@@ -8,7 +8,6 @@ public class SymbolRealOp  {
     public SymbolRealOp(Operacions op){
         this.realOp = op;
         this.tipus = TipusSub.BOOLEAN;
-        System.out.println("soy un simbol real op");
     }
 
     public TipusSub getTipus() {

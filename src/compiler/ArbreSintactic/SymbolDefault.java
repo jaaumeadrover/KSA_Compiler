@@ -6,10 +6,10 @@ public class SymbolDefault {
     private SymbolStatementList statementList;
     public SymbolDefault(SymbolStatementList state){
         this.statementList=state;
-        System.out.println("SOC UN SYMBOLDEFAULT");
+        //System.out.println("SOC UN SYMBOLDEFAULT");
     }
 
     public SymbolDefault(){
-        System.out.println("SOC UN SYMBOLDEFAULT");
+        //System.out.println("SOC UN SYMBOLDEFAULT");
     }
 }

@@ -4,6 +4,10 @@ import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolInputStatement  {
     public SymbolInputStatement(){
-        System.out.println("soy un InputStatement");
+
+    }
+
+    public String codiTresAdreces(codiTresAdreces codi){
+        return "wtf";
     }
 }

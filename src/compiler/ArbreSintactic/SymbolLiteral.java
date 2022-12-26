@@ -4,6 +4,6 @@ import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolLiteral  {
     public SymbolLiteral(){
-        System.out.println("soy un Literal");
+
     }
 }

@@ -8,10 +8,9 @@ public class SymbolForPostExpression {
 
     public SymbolForPostExpression(SymbolExpressioSimple expr){
         this.expressioSimple=expr;
-        System.out.println("SOC UN SYMBOL FORPOSTEXPRESSION");
     }
 
     public SymbolForPostExpression(){
-        System.out.println("SOC UN SYMBOL FORPOSTEXPRESSION");
+
     }
 }

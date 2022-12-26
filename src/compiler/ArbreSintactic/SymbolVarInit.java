@@ -8,6 +8,7 @@ public class SymbolVarInit  {
     private SymbolArrayInit array;
 
   public SymbolVarInit(SymbolExpressioSimple expr){
+
       this.isEmpty=false;
       this.isarray = false;
       this.expr = expr;
@@ -18,7 +19,7 @@ public class SymbolVarInit  {
         this.array = array;
     }
     public SymbolVarInit(boolean b){
-        System.out.println("creat varinit");
+
         this.isEmpty=true;
     }
     public boolean isIsarray(){
@@ -30,5 +31,9 @@ public class SymbolVarInit  {
 
     public SymbolExpressioSimple getExpr() {
         return expr;
+    }
+
+    public SymbolArrayInit getArray() {
+        return array;
     }
 }

@@ -13,8 +13,7 @@ public class SymbolFuncDecl  {
  private SymbolFuncCap funcCap;
  
   public SymbolFuncDecl(){
-      
-  System.out.println("soy un funcDecl");
+
  }
   
  public SymbolFuncDecl(TipusSub t, String iden, SymbolStatementList stat,
@@ -24,7 +23,6 @@ public class SymbolFuncDecl  {
    this.stat = stat;
    this.rtn = rtn;
    this.funcCap = funcCap;
-  System.out.println("soy un funcDecl");
  }
 
 

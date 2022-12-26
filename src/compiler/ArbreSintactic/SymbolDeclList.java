@@ -24,17 +24,18 @@ public class SymbolDeclList  {
     public SymbolDeclList(SymbolDecl decl,SymbolDeclList declList) {
             //super("DeclList",null);
 
+
     }
 
     public SymbolDeclList() {
-        System.out.println("Soc un Declist"); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //System.out.println("Soc un Declist"); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public void codiTresAdreces(codiTresAdreces codi){
-        this.declaracio.codiTresAdreces();
-        if (llistaDecl != null){
-            this.llistaDecl.codiTresAdreces();
-        }
-    }
+//    public void codiTresAdreces(codiTresAdreces codi){
+//        this.declaracio.codiTresAdreces(codi);
+//        if (llistaDecl != null){
+//            this.llistaDecl.codiTresAdreces(codi);
+//        }
+//    }
 
 }

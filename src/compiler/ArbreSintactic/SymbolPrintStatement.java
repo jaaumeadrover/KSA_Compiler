@@ -4,6 +4,6 @@ import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolPrintStatement {
     public SymbolPrintStatement(){
-        System.out.println("soy un printStatement");
+
     }
 }

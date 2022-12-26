@@ -9,7 +9,7 @@ public class SymbolWhileStatement {
    public SymbolWhileStatement(SymbolExpressioSimple expr, SymbolStatementList state){
         this.expressio = expr;
         this.statementList = state;
-        System.out.println("Esto es un while");
+
    }
     public SymbolWhileStatement(){
 

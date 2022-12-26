@@ -4,6 +4,6 @@ import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolBolExpr{
     public SymbolBolExpr(){
-        System.out.println("SOC UN SYMBOLBOLEXPR");
+        //System.out.println("SOC UN SYMBOLBOLEXPR");
     }
 }

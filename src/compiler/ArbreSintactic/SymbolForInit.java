@@ -8,11 +8,11 @@ public class SymbolForInit {
 
     public SymbolForInit(SymbolVarDecl vardecl){
         this.declaracioVar=vardecl;
-        System.out.println("SOC UN SYMBOL SYMBOLFORINIT");
+        //System.out.println("SOC UN SYMBOL SYMBOLFORINIT");
 
     }
 
     public SymbolForInit(){
-        System.out.println("SOC UN SYMBOL SYMBOLFORINIT");
+        //System.out.println("SOC UN SYMBOL SYMBOLFORINIT");
     }
 }

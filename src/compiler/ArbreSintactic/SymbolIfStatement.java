@@ -17,6 +17,10 @@ public class SymbolIfStatement {
         this.statesIf=statesIf;
         this.statesElse=statesElse;
     }
+    
+    public SymbolIfStatement(){
+        
+    }
       public SymbolIfStatement( codiTresAdreces codi){
         
     }

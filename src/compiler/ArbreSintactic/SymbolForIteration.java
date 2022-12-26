@@ -14,7 +14,6 @@ public class SymbolForIteration {
         this.expressio = expr;
         this.postexpression = forpost;
         this.states=states;
-        System.out.println("soy un forstatement");
     }
     public SymbolForIteration(){
         

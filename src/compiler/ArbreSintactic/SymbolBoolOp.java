@@ -8,7 +8,7 @@ public class SymbolBoolOp {
     public SymbolBoolOp(Operacions b){
         this.bool = b;
         this.tipus = TipusSub.BOOLEAN;
-        System.out.println("SOC UN SYMBOLOP");
+        //System.out.println("SOC UN SYMBOLOP");
     }
     public TipusSub getTipus(){
         return tipus;

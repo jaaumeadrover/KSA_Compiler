@@ -20,23 +20,23 @@ public class SymbolValor {
    public SymbolValor(String id, TipusSub tipusSub){
         this.iden=id;
         this.tipusSub=tipusSub;
-        System.out.println("Soy un valor de una variable");
+
    }
     /*
     Cas valor en el qual tenim un array
      */
     public SymbolValor(SymbolArray arr){
         this.array=arr;
-        System.out.println("Soy un valor");
+        this.iden = arr.getID();
+
     }
 
     /*
     Cas valor el qual és un integer directe.
      */
     public SymbolValor(Object integer){
-        System.out.println("Soy un valor integer");
         inte=Integer.parseInt(integer.toString()); //passam text a int
-        System.out.println("Integer: "+inte);
+
         tipusSub=TipusSub.INT;
     }
     /*
@@ -45,7 +45,6 @@ public class SymbolValor {
     public SymbolValor(boolean b){
         this.b = b;
         this.tipusSub=TipusSub.BOOLEAN;
-        System.out.println("Soy un valor boolean");
     }
 
     /*
@@ -53,16 +52,20 @@ public class SymbolValor {
      */
     public SymbolValor(SymbolSubProgramCall subProgCall){
         this.subProgramCall=subProgCall;
-        System.out.println("Soy un valor subprogcall");
     }
     
     /*
     Producció on es posa not (ExprSimple)
     */
     public SymbolValor(SymbolExpressioSimple expr){
-        System.out.println("Holaa soc un valor boolean");
         this.exprSimple=expr;
         this.tipusSub=TipusSub.BOOLEAN;
+        if(this.exprSimple.getTipusSubResultat()==this.tipusSub){
+            this.tipusSub=TipusSub.BOOLEAN;
+        }else{
+            this.tipusSub=TipusSub.NULL;
+        }
+        
     }
     
     public int getValorInt(){
@@ -71,5 +74,9 @@ public class SymbolValor {
 
     public TipusSub getTipusSub() {
         return tipusSub;
+    }
+
+    public String getIden() {
+        return iden;
     }
 }

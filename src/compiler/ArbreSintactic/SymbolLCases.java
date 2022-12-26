@@ -8,12 +8,12 @@ public class SymbolLCases {
     private SymbolLCases lcases;
 
     public SymbolLCases(){
-        System.out.println("soy un LCases");
+
     }
 
     public SymbolLCases(SymbolCase c, SymbolLCases l){
         this.cas = c;
         this.lcases = l;
-        System.out.println("soy un LCases");
+
     }
 }

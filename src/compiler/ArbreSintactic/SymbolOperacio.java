@@ -18,13 +18,18 @@ public class SymbolOperacio {
     private SymbolVarInit simbol;
     private TipusSub tipusSBAnterior;
     private boolean isEmpty;
+    private boolean esAssignacio;
 
     /*
     Cas en que symbol operació agafa VarInit que pot ser lambda.
-     */
+    */
     public SymbolOperacio(SymbolVarInit simbol){
-        this.simbol = simbol;                
-        if(simbol.esBuit()){
+        this.simbol = simbol;
+        
+        if(!simbol.esBuit()){
+            this.esAssignacio=true;
+            this.tipusSBAnterior=simbol.getExpr().getTipusSubResultat();
+        }else{
             this.isEmpty=true;
         }
     }
@@ -46,7 +51,7 @@ public class SymbolOperacio {
         TipusSub x=null;
 
         switch(operador.getTipusOperador()) {
-            //Cas 1: Symbol Aritmètic
+            //Cas 1: Symbol Aritmètic(+,*
             case 'A':
                 if(expressioSimple.getTipusSubResultat()==TipusSub.INT){
                     x=TipusSub.INT;
@@ -78,4 +83,10 @@ public class SymbolOperacio {
    public boolean isEmpty(){
        return this.isEmpty;
    }
+   public boolean isAssignacio(){
+       return this.esAssignacio;
+   }
+    public SymbolVarInit getVarInit() {
+        return simbol;
+    }
 }

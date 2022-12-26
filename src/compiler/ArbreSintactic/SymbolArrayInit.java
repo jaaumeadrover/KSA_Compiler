@@ -14,4 +14,12 @@ public class SymbolArrayInit {
         this.expr = expr;
 
     }
+
+    public SymbolExpressioSimple getExpr() {
+        return expr;
+    }
+
+    public TipusSub getT() {
+        return t;
+    }
 }

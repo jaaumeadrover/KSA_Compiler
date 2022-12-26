@@ -1,5 +1,6 @@
 func int suma(int a, int b){
-    int c <- 2+2+true;
+    int c <- 2;
+    bool t <- 2;
     c <- 3;
     while (not (a+1)){
         a <- a + b;

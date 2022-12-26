@@ -54,8 +54,6 @@ public class TaulaSimbols {
             if(t != Tipus.PARAM){
                 Simbol simbol = new Simbol(id,tSub, t, nivell, pos);
                 if (nivell == 0 && !ta.isEmpty()) {
-                    System.out.println("TA.GET(1)="+ta.get(1));
-                    System.out.println("INDEXOF: "+ts.indexOf(ta.get(1)));
                     ts.add(ts.indexOf(ta.get(1)), simbol);
                     System.out.println("        simbol afegit"+id);
 
@@ -88,9 +86,6 @@ public class TaulaSimbols {
 
         for(int i=1;i<ta.size()+1;i++){
             Simbol sym=ta.get(i);
-            System.out.println("    Iteració: "+i+": simbol: "+sym);
-            System.out.println("    IDENTIFICADOR: "+sym.getIdAutoIncrement());
-            System.out.println("    IDENTIFICADOR PARAM: "+identificador);
             if(sym.getIdAutoIncrement()!=null) {
                 if (sym.getIdAutoIncrement().equals(identificador)) {
                     return sym;
@@ -105,6 +100,7 @@ public class TaulaSimbols {
     També ens serveix per a mirar si un Símbol ha estat creat.
      */
     public Simbol consulta(String identificador){
+        //si estam dedins una funció
         if(nivell != 0){
             for (int i = punterInici; i<ts.size();i++){
                 Simbol s = ts.get(i);

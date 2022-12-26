@@ -9,19 +9,18 @@ public class SymbolStatementList  {
 
     public SymbolStatementList(){
 
-        System.out.println("soy un statementlist");
     }
 
     public SymbolStatementList(SymbolStatement stat,SymbolStatementList stats){
         this.stat=stat;
         this.stats=stats;
-        System.out.println("soy un statementlist");
+
     }
 
     public void codiTresAdreces(codiTresAdreces codi){
-        this.stat.codiTresAdreces();
+        this.stat.codiTresAdreces(codi);
         if (stats != null){
-            this.stats.codiTresAdreces();
+            this.stats.codiTresAdreces(codi);
         }
     }
 }
