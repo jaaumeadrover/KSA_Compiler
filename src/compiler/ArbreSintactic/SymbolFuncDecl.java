@@ -18,7 +18,7 @@ public class SymbolFuncDecl  {
  }
   
  public SymbolFuncDecl(TipusSub t, String iden, SymbolStatementList stat,
-                       SymbolReturn rtn,SymbolFuncCap funcCap, codiTresAdreces codi){
+                       SymbolReturn rtn,SymbolFuncCap funcCap){
    this.iden = iden;
    this.t = t;
    this.stat = stat;

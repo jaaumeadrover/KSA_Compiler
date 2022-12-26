@@ -9,7 +9,7 @@ public class SymbolForIteration {
     private SymbolForPostExpression postexpression;
     private SymbolStatementList states;
 
-    public SymbolForIteration(SymbolForInit forinit, SymbolExpressioSimple expr, SymbolForPostExpression forpost, SymbolStatementList states, codiTresAdreces codi){
+    public SymbolForIteration(SymbolForInit forinit, SymbolExpressioSimple expr, SymbolForPostExpression forpost, SymbolStatementList states){
         this.init = forinit;
         this.expressio = expr;
         this.postexpression = forpost;

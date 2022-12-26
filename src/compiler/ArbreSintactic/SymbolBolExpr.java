@@ -3,7 +3,7 @@ import compiler.Symbols.TaulaSimbols.Tipus;
 import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolBolExpr{
-    public SymbolBolExpr(codiTresAdreces codi){
+    public SymbolBolExpr(){
         System.out.println("SOC UN SYMBOLBOLEXPR");
     }
 }

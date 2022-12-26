@@ -6,12 +6,12 @@ public class SymbolForPostExpression {
 
     private SymbolExpressioSimple expressioSimple;
 
-    public SymbolForPostExpression(SymbolExpressioSimple expr, codiTresAdreces codi){
+    public SymbolForPostExpression(SymbolExpressioSimple expr){
         this.expressioSimple=expr;
         System.out.println("SOC UN SYMBOL FORPOSTEXPRESSION");
     }
 
-    public SymbolForPostExpression(codiTresAdreces codi){
+    public SymbolForPostExpression(){
         System.out.println("SOC UN SYMBOL FORPOSTEXPRESSION");
     }
 }

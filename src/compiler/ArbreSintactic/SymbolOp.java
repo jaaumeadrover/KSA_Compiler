@@ -14,19 +14,19 @@ public class SymbolOp {
     private char tipusOperador;
 
 
-    public SymbolOp(SymbolBoolOp oper, codiTresAdreces codi){
+    public SymbolOp(SymbolBoolOp oper){
         this.boolOP=oper;
         System.out.println("soy un operador");
         this.tipusOperador='B';
     }
 
-    public SymbolOp(SymbolAritOp oper, codiTresAdreces codi){
+    public SymbolOp(SymbolAritOp oper){
         this.aritOp=oper;
         System.out.println("soy un operador");
         this.tipusOperador='A';
     }
 
-    public SymbolOp(SymbolRealOp oper, codiTresAdreces codi){
+    public SymbolOp(SymbolRealOp oper){
         this.realOP=oper;
         System.out.println("soy un operador");
         this.tipusOperador='R';

@@ -22,10 +22,9 @@ public class SymbolOperacio {
     /*
     Cas en que symbol operació agafa VarInit que pot ser lambda.
      */
-    public SymbolOperacio(SymbolVarInit simbol, codiTresAdreces codi){
+    public SymbolOperacio(SymbolVarInit simbol){
         this.simbol = simbol;                
         if(simbol.esBuit()){
-            System.out.println("PASSAT VALOR");
             this.isEmpty=true;
         }
     }
@@ -33,11 +32,10 @@ public class SymbolOperacio {
     /*
     Cas en que SymbolOperació utilitza un operador i una altra expressió simple
      */
-    public SymbolOperacio(SymbolOp op,SymbolExpressioSimple expr, codiTresAdreces codi){
+    public SymbolOperacio(SymbolOp op,SymbolExpressioSimple expr){
         this.operador=op;
         this.expressioSimple=expr;
         setTsResultat();
-        System.out.println("soy un oper");
     }
 
     /*
@@ -77,5 +75,7 @@ public class SymbolOperacio {
         return tipusSBAnterior;
     }
 
-   
+   public boolean isEmpty(){
+       return this.isEmpty;
+   }
 }

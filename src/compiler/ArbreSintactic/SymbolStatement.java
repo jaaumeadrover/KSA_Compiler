@@ -13,40 +13,40 @@ public class SymbolStatement {
     private SymbolIfStatement i;
     private SymbolSwitchCase s;
 
-    public SymbolStatement(codiTresAdreces codi){
+    public SymbolStatement(){
 
         System.out.println("soy un statement");
     }
     
-    public SymbolStatement(SymbolVarDecl vard, codiTresAdreces codi){
+    public SymbolStatement(SymbolVarDecl vard){
         this.vard = vard;
         System.out.println("soy un statement");
     }
-    public SymbolStatement(SymbolExpressioSimple expr, codiTresAdreces codi){
+    public SymbolStatement(SymbolExpressioSimple expr){
         this.expr=expr;
         System.out.println("soy un statement");
     }
-    public SymbolStatement(SymbolForIteration f, codiTresAdreces codi){
+    public SymbolStatement(SymbolForIteration f){
         this.f=f;
         System.out.println("soy un statement");
     }
-    public SymbolStatement(SymbolWhileStatement w, codiTresAdreces codi){
+    public SymbolStatement(SymbolWhileStatement w){
         this.w=w;
         System.out.println("soy un statement");
     }
-    public SymbolStatement(SymbolInputStatement input, codiTresAdreces codi){
+    public SymbolStatement(SymbolInputStatement input){
         this.input=input;
         System.out.println("soy un statement");
     }
-    public SymbolStatement(SymbolPrintStatement print, codiTresAdreces codi){
+    public SymbolStatement(SymbolPrintStatement print){
         this.print=print;
         System.out.println("soy un statement");
     }
-    public SymbolStatement(SymbolIfStatement i, codiTresAdreces codi){
+    public SymbolStatement(SymbolIfStatement i){
         this.i=i;
         System.out.println("soy un statement");
     }
-    public SymbolStatement(SymbolSwitchCase s, codiTresAdreces codi){
+    public SymbolStatement(SymbolSwitchCase s){
         this.s=s;
         System.out.println("soy un statement");
     }

@@ -9,7 +9,7 @@ public class SymbolProcDecl  {
 
     private SymbolFuncCap funcCap;
     public SymbolProcDecl(String iden, SymbolStatementList stat,
-                          SymbolFuncCap funcCap, codiTresAdreces codi){
+                          SymbolFuncCap funcCap){
         this.iden = iden;
         this.stat = stat;
         this.funcCap = funcCap;

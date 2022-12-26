@@ -3,7 +3,7 @@ import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolRealExpr  {
-    public SymbolRealExpr(codiTresAdreces codi){
+    public SymbolRealExpr(){
         System.out.println("soy un realexpr");
     }
 }

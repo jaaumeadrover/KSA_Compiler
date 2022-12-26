@@ -6,7 +6,7 @@ public class SymbolWhileStatement {
     private SymbolExpressioSimple expressio;
     private SymbolStatementList statementList;
 
-   public SymbolWhileStatement(SymbolExpressioSimple expr, SymbolStatementList state, codiTresAdreces codi){
+   public SymbolWhileStatement(SymbolExpressioSimple expr, SymbolStatementList state){
         this.expressio = expr;
         this.statementList = state;
         System.out.println("Esto es un while");

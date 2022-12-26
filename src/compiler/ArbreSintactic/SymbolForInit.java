@@ -6,13 +6,13 @@ public class SymbolForInit {
 
     private SymbolVarDecl declaracioVar;
 
-    public SymbolForInit(SymbolVarDecl vardecl, codiTresAdreces codi){
+    public SymbolForInit(SymbolVarDecl vardecl){
         this.declaracioVar=vardecl;
         System.out.println("SOC UN SYMBOL SYMBOLFORINIT");
 
     }
 
-    public SymbolForInit(codiTresAdreces codi){
+    public SymbolForInit(){
         System.out.println("SOC UN SYMBOL SYMBOLFORINIT");
     }
 }

@@ -42,6 +42,7 @@ public class Main {
             Scanner scanner = new Scanner(input);
             SymbolFactory sf = new ComplexSymbolFactory();
             Parser parser = new Parser(scanner, sf);
+
             parser.parse();
         } catch(Exception e) {
             System.err.println("error: "+e);

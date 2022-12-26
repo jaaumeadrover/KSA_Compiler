@@ -4,11 +4,23 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/sintactic/Parser.java</file>
-            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolVarInit.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolValor.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/Semantic/Semantic.java</file>
             <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/TESTING/1.Funcions/prova.txt</file>
-            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolOperacio.java</file>
-            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolExpressioSimple.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolContCap.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolBase.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolType.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolArgType.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolArithmeticalExpression.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolArray.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolVarDecl.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolDefault.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolArrayInit.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolDecl.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolCase.java</file>
             <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/Main.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolProgram.java</file>
+            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/sintactic/sintactic_og.cup</file>
         </group>
     </open-files>
 </project-private>

@@ -7,12 +7,12 @@ public class SymbolVarInit  {
     private SymbolExpressioSimple expr;
     private SymbolArrayInit array;
 
-  public SymbolVarInit(SymbolExpressioSimple expr, codiTresAdreces codi){
+  public SymbolVarInit(SymbolExpressioSimple expr){
       this.isEmpty=false;
       this.isarray = false;
       this.expr = expr;
   }
-    public SymbolVarInit(SymbolArrayInit array, codiTresAdreces codi){
+    public SymbolVarInit(SymbolArrayInit array){
         this.isEmpty=false;
         this.isarray = true;
         this.array = array;
@@ -28,4 +28,7 @@ public class SymbolVarInit  {
         return isEmpty;
     }
 
- }
+    public SymbolExpressioSimple getExpr() {
+        return expr;
+    }
+}

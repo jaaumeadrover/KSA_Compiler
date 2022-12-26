@@ -8,11 +8,11 @@ public class SymbolIfStatement {
     private SymbolStatementList statesIf;
     private SymbolStatementList statesElse;
 
-    public SymbolIfStatement(SymbolExpressioSimple expr,SymbolStatementList statesIf, codiTresAdreces codi){
+    public SymbolIfStatement(SymbolExpressioSimple expr,SymbolStatementList statesIf){
         this.expr=expr;
         this.statesIf=statesIf;
     }
-    public SymbolIfStatement(SymbolExpressioSimple expr,SymbolStatementList statesIf,SymbolStatementList statesElse, codiTresAdreces codi){
+    public SymbolIfStatement(SymbolExpressioSimple expr,SymbolStatementList statesIf,SymbolStatementList statesElse){
         this.expr=expr;
         this.statesIf=statesIf;
         this.statesElse=statesElse;

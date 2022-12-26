@@ -6,7 +6,7 @@ public class SymbolSwitchCase {
     private SymbolExpressioSimple expressioSimple;
     private SymbolLCases lcases;
 
-    public SymbolSwitchCase(SymbolExpressioSimple expr, SymbolLCases lcases, codiTresAdreces codi){
+    public SymbolSwitchCase(SymbolExpressioSimple expr, SymbolLCases lcases){
         this.expressioSimple = expr;
         this.lcases = lcases;
         System.out.println("soy un switch");

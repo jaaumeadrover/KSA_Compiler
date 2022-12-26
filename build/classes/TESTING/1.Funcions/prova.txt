@@ -1,7 +1,7 @@
 func int suma(int a, int b){
-    int c <- 2+2+2;
-    c <- 3 int;
-    while (not (a+1) int ){
+    int c <- 2+2+true;
+    c <- 3;
+    while (not (a+1)){
         a <- a + b;
     }
     return a;

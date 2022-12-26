@@ -20,14 +20,21 @@ import compiler.Symbols.TaulaSimbols.Tipus;
 public class SymbolDeclList  {
    SymbolDecl declaracio;
    SymbolDeclList llistaDecl;
-   codiTresAdreces codi;
-    public SymbolDeclList(SymbolDecl decl,SymbolDeclList declList, codiTresAdreces codi) {
+
+    public SymbolDeclList(SymbolDecl decl,SymbolDeclList declList) {
             //super("DeclList",null);
 
     }
 
     public SymbolDeclList() {
         System.out.println("Soc un Declist"); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void codiTresAdreces(codiTresAdreces codi){
+        this.declaracio.codiTresAdreces();
+        if (llistaDecl != null){
+            this.llistaDecl.codiTresAdreces();
+        }
     }
 
 }

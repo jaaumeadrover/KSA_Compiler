@@ -5,7 +5,7 @@ import compiler.GeneracioCodiIntermedi.*;
 public class SymbolType {
     TipusSub tipusSub;
 
-    public SymbolType(TipusSub tipus, codiTresAdreces codi){
+    public SymbolType(TipusSub tipus){
         System.out.println("soy un type de tipo"+tipus);
         this.tipusSub = tipus;
    }

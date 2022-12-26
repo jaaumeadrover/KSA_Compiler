@@ -7,11 +7,11 @@ public class SymbolLCases {
     private SymbolCase cas;
     private SymbolLCases lcases;
 
-    public SymbolLCases(codiTresAdreces codi){
+    public SymbolLCases(){
         System.out.println("soy un LCases");
     }
 
-    public SymbolLCases(SymbolCase c, SymbolLCases l, codiTresAdreces codi){
+    public SymbolLCases(SymbolCase c, SymbolLCases l){
         this.cas = c;
         this.lcases = l;
         System.out.println("soy un LCases");

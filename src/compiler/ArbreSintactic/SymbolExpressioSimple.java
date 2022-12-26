@@ -14,18 +14,18 @@ public class SymbolExpressioSimple {
     /*
     Constructor en el qual hi ha més d'una expressió
     */
-    public SymbolExpressioSimple(SymbolExpressioSimple expr, SymbolOperacio oper, codiTresAdreces codi){
+    public SymbolExpressioSimple(SymbolExpressioSimple expr, SymbolOperacio oper){
         this.expressioSimple = expr;
         this.operacio = oper;
         this.tsOperador = operacio.getTipusSub();
-        //setTsResultat();
+        setTsResultat();
         System.out.println("SOC UN SYMBOL SYMBOLEXPRESSIO AMB PARENTESIS");
     }
     
     /*
     Constructor expressio Simple sense expressions interiors.
     */
-    public SymbolExpressioSimple(SymbolValor val, SymbolOperacio oper, codiTresAdreces codi){
+    public SymbolExpressioSimple(SymbolValor val, SymbolOperacio oper){
         this.expressioSimple = null;
         this.valor=val;
         this.operacio=oper;
@@ -96,8 +96,7 @@ public class SymbolExpressioSimple {
         }else{
 
             //mentre no quedin expressons per recórrer
-
-                SymbolExpressioSimple exprSimple=new SymbolExpressioSimple(this.expressioSimple,this.expressioSimple.getOperacio());
+                SymbolExpressioSimple exprSimple=new SymbolExpressioSimple(this.expressioSimple,this.expressioSimple.getOperacio(),null);
                 if(exprSimple.getTipusSubResultat()==null){
                     //Hi ha hagut un format incorrecte
                     System.out.println("Aquesta expressió és incorrecta!!!!");

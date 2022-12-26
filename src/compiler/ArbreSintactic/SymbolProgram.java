@@ -19,9 +19,9 @@ public class SymbolProgram {
     public void codiTresAdreces(codiTresAdreces codi){
         if (declList != null){
             codi.començaDecl();
-            //this.declList.codiTresAdreces(codi);
-            //codi.finaliztaDecl();
+            this.declList.codiTresAdreces(codi);
+            codi.finaliztaDecl();
         }
-        //this.statementList.codiTresAdreces(codi);
+        this.statementList.codiTresAdreces(codi);
     }
 }

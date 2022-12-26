@@ -24,7 +24,7 @@ public class SymbolBase extends ComplexSymbol {
     protected boolean empty;
 
     
-    public SymbolBase(String variable, Double valor, codiTresAdreces codi) {
+    public SymbolBase(String variable, Double valor) {
         super(variable, idAutoIncrement++, valor);
         this.empty = false;
     }

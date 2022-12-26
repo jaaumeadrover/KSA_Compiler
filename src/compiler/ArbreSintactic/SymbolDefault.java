@@ -4,12 +4,12 @@ import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolDefault {
     private SymbolStatementList statementList;
-    public SymbolDefault(SymbolStatementList state, codiTresAdreces codi){
+    public SymbolDefault(SymbolStatementList state){
         this.statementList=state;
         System.out.println("SOC UN SYMBOLDEFAULT");
     }
 
-    public SymbolDefault(codiTresAdreces codi){
+    public SymbolDefault(){
         System.out.println("SOC UN SYMBOLDEFAULT");
     }
 }

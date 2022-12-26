@@ -8,13 +8,13 @@ public class SymbolContCap {
     private TipusSub t;
     private String id;
 
-    public SymbolContCap(SymbolArgType arg, TipusSub t,String id, codiTresAdreces codi){
+    public SymbolContCap(SymbolArgType arg, TipusSub t,String id){
         this.arg=arg;
         this.t=t;
         this.id=id;
     }
 
-    public SymbolContCap(SymbolContCap contcap,SymbolArgType arg, TipusSub t,String id, codiTresAdreces codi){
+    public SymbolContCap(SymbolContCap contcap,SymbolArgType arg, TipusSub t,String id){
         this.arg=arg;
         this.t=t;
         this.id=id;

@@ -8,7 +8,7 @@ public class SymbolArrayInit {
     private TipusSub t;
     private SymbolExpressioSimple expr;
 
-    public SymbolArrayInit(TipusSub t, SymbolExpressioSimple expr, codiTresAdreces codi){
+    public SymbolArrayInit(TipusSub t, SymbolExpressioSimple expr){
         
         this.t = t;
         this.expr = expr;
