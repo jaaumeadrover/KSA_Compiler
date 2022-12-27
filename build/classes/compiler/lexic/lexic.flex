@@ -145,8 +145,8 @@ r_comment = "//"([^\n])*
 {mod}                    { return symbol(ParserSym.mod);}
 {lparen}                 { return symbol(ParserSym.lparen);}
 {rparen}                 { return symbol(ParserSym.rparen);}
-"true"                   { return symbol(ParserSym.bool);}
-"false"                  { return symbol(ParserSym.bool);}
+"true"                   { return symbol(ParserSym.bool,this.yytext());}
+"false"                  { return symbol(ParserSym.bool,this.yytext());}
 {bg}                     { return symbol(ParserSym.bg);}
 {string}                 { return symbol(ParserSym.string);}
 {r_string}               { return symbol(ParserSym.r_string);}

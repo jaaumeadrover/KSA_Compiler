@@ -13,4 +13,8 @@ public class SymbolForPostExpression {
     public SymbolForPostExpression(){
 
     }
+
+    public SymbolExpressioSimple getExpressioSimple() {
+        return expressioSimple;
+    }
 }

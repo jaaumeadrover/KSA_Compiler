@@ -36,14 +36,18 @@ public class SymbolValor {
      */
     public SymbolValor(Object integer){
         inte=Integer.parseInt(integer.toString()); //passam text a int
-
+        iden=integer.toString();
         tipusSub=TipusSub.INT;
     }
     /*
     Cas valor equival a un booleam
      */
-    public SymbolValor(boolean b){
-        this.b = b;
+    public SymbolValor(String b){
+        if(b.equals("true")){
+            this.b=true;
+        }else{
+            this.b=false;
+        }
         this.tipusSub=TipusSub.BOOLEAN;
     }
 
@@ -67,6 +71,10 @@ public class SymbolValor {
         }
         
     }
+
+    public SymbolValor() {
+        
+    }
     
     public int getValorInt(){
         return inte;
@@ -78,5 +86,13 @@ public class SymbolValor {
 
     public String getIden() {
         return iden;
+    }
+    
+    @Override
+    public String toString(){
+        String s="";
+        s+="id: "+iden+",valor: "+"";
+        
+        return s;
     }
 }

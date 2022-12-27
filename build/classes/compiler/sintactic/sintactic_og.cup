@@ -49,34 +49,56 @@ parser code {:
         this.scanner = scanner;
     }
 
-    private HashMap<String, Double>tsymbols = new HashMap<>();
-
-    public Double getSymbolValue(String id) {
-         return tsymbols.get(id);
-    }
-
-    public void addSymbol(String id, Double value) {
-        if (tsymbols.get(id) == null) {
-            tsymbols.put(id, value);
-        } else {
-            tsymbols.replace(id, value);
-        }
-    }
-
-    public void printVars(PrintStream out) {
-        if (tsymbols.size() == 0) {
-            out.println("No hi ha variables declarades");
-        } else {
-            String fmt = "%-8s: %f";
-            tsymbols.forEach((k,v) -> out.println(String.format(fmt,k,v)));
-        }
-    }
-
     /**
      * Variable utilitzada per emmagatzemar el darrer valor calculat.
      * Val 0 inicialment
      **/
     private double ans = 0;
+
+    /**
+        Gestió d'errors
+    **/
+
+    // variable que ens indica si hi ha hagut un error semantic
+    private boolean errorSemantic = false;
+
+        @Override
+        public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
+            report_error("Error sintàctic catastròfic", cur_token);
+            done_parsing();
+        }
+
+        @Override
+        public void syntax_error(Symbol cur_token) {
+            report_error("de sintaxis", cur_token);
+        }
+
+        @Override
+        public void report_error(String message, Object info) {
+            StringBuilder msg = new StringBuilder("ERROR");
+            if (info instanceof Symbol) {
+                ComplexSymbol token = (ComplexSymbol)info;
+                Location l = token.getLeft();
+
+                if (l != null) {
+                    msg.append(" (fila: ")
+                       .append(l.getLine())
+                       .append(", columna: ")
+                       .append(l.getColumn())
+                       .append(")");
+                }
+            }
+            msg.append(": ").append(message);
+
+            System.err.println(msg);
+        }
+
+        @Override
+        public void report_fatal_error(String message, Object info) throws Exception {
+            report_error("Error catastròfic ("+message+")", info);
+            done_parsing();
+        }
+
 
 :}
 
@@ -175,15 +197,15 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                         }:}//declaració de una constant
     |type:t id:iden varInit:varinit                    {:
                                                         if(varinit.isIsarray()){
+                                                                System.out.println("Estic a la decl d'un array");
                                                                 ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0);
-                                                                System.out.println("TAMANY TAULA SIMBOLS EXTERNA: "+ts.getMida());
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit)){
                                                                   RESULT=new SymbolVarDecl(false,t.getTipusSub(),iden.toString(),varinit);
                                                                   } else{
                                                                   RESULT=new SymbolVarDecl();
                                                                   }
                                                             }else{
-                                                                System.out.println("TAMANY TAULA SIMBOLS EXTERNA: "+ts.getMida());
+                                                                System.out.println("No Estic a la decl d'un array");
                                                                 ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.VAR,0);
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit)){
                                                                     RESULT=new SymbolVarDecl(false,t.getTipusSub(),iden.toString(),varinit);
@@ -239,7 +261,8 @@ procDecl ::= r_procedure M id:iden funcCap:funcCap brop statementList:stats brcl
 ContCap ::= lparen type:t id:iden              {:
                                                              ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0);
                                                              RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());:}//tancam parentesis i definim els paràmetres
-    | ContCap:contcap com  type:t id:iden       {:RESULT = new SymbolContCap(contcap,t.getTipusSub(), iden.toString());:}
+    | ContCap:contcap com  type:t id:iden       {:          ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0);
+                                                            RESULT = new SymbolContCap(contcap,t.getTipusSub(), iden.toString());:}
     ;
 
 //INSTRUCCIONS
@@ -255,7 +278,6 @@ statement ::= varDecl:vard smcol         {:RESULT=new SymbolStatement(vard);:}
     |printStatement:print smcol          {:RESULT=new SymbolStatement(print);:}
     |ifStatement:i                       {:RESULT=new SymbolStatement(i);:}
     |SwitchCase:s                        {:RESULT=new SymbolStatement(s);:}
-    |r_break smcol                       {:RESULT=new SymbolStatement();:}
     ;
 
 inputStatement ::= r_input lparen rparen {:RESULT = new SymbolInputStatement();:};
@@ -281,21 +303,37 @@ exprSimple ::=lparen exprSimple:expr rparen operacio:oper {:
 
                                                             :}
     |valor:val operacio:oper                              {:
-                                                            if(oper.isAssignacio()){
-                                                                if(comprovaTipus.gestAsig(val,oper)){
-                                                                   RESULT=new SymbolExpressioSimple(val, oper);
+                                                            Simbol s=ts.consulta(val.getIden());
+                                                            if(s!=null){
+                                                                if(oper.isAssignacio()){
+                                                                System.out.println("Estic a una assignacio: "+val.getIden());
+                                                                    RESULT=new SymbolExpressioSimple(val, oper);
+                                                                    if(comprovaTipus.gestAsig(val,oper)){
+                                                                        System.out.println("Assignacio correcta");
+                                                                       RESULT=new SymbolExpressioSimple(val, oper);
+                                                                    }else{
+                                                                        System.out.println("Assignacio incorrecta");
+                                                                      RESULT=new SymbolExpressioSimple();
+                                                                    }
+                                                                }else{
+                                                                    System.out.println("No estic a una assignacio");
+                                                                    RESULT=new SymbolExpressioSimple(val,oper);
                                                                 }
                                                             }else{
-                                                                RESULT=new SymbolExpressioSimple(val,oper);
+                                                                RESULT=RESULT=new SymbolExpressioSimple();
                                                             }
-
     :}
     ;
 
 valor::= id:iden                         {:
                                             Simbol s=ts.consulta(iden.toString());
                                             if(s!=null){
-                                                RESULT=new SymbolValor(iden.toString(),s.getTipusSub());
+                                                if(comprovaTipus.gestIdArray(iden.toString())){
+                                                    RESULT=new SymbolValor(iden.toString(),s.getTipusSub());
+                                                }
+                                                else{
+                                                    RESULT=new SymbolValor();
+                                                }
                                             }else{
                                                 //System.out.println("Aquesta variable no existeix");
                                                 //he afegit null perque sinos el confonia amb el constructor de integer!
@@ -305,8 +343,15 @@ valor::= id:iden                         {:
                                          :}
     |array:arr                                      {:RESULT=new SymbolValor(arr);:}
     |integer:integer                                {:RESULT=new SymbolValor(integer);:}
-    |bool                                           {:RESULT=new SymbolValor(true);:}
-    |r_not  lparen exprSimple:exprSimple rparen     {:RESULT=new SymbolValor(exprSimple);:}
+    |bool:b                                         {: System.out.println("He trobat valoor boolea "+b.toString());
+                                                        RESULT=new SymbolValor(b.toString());:}
+    |r_not  lparen exprSimple:expr rparen     {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
+                                                         RESULT = new SymbolValor(expr);
+                                                }else{
+                                                    System.out.print("   Aixó NO ES una expressió correcte");
+                                                    RESULT=new SymbolValor(expr);
+                                                  }
+                                                  :}
     |subProgramCall:subprogram                      {:RESULT=new SymbolValor(subprogram);:}
     ;
 
@@ -351,16 +396,19 @@ subProgramContCall ::= id:iden lparen exprSimple:expr            {:RESULT = new 
     |subProgramContCall:subprogcontcall com exprSimple:expr      {:RESULT = new SymbolSubProgramContCall(subprogcontcall, expr);:}
     ;
 
-SwitchCase ::= r_switch lparen exprSimple:expr rparen brop LCases:lcases Default brcl {:RESULT = new SymbolSwitchCase(expr,lcases);:};
+SwitchCase ::= r_switch lparen exprSimple:expr rparen brop LCases:lcases Default:defa brcl {:RESULT = new SymbolSwitchCase(expr,lcases,defa);:};
+
+
 
 LCases ::= Case:c LCases:lcases         {:RESULT = new SymbolLCases(c,lcases);:}
     |                                   {:RESULT = new SymbolLCases();:};
 
-Case ::= r_case exprSimple:expr twodots statementList:state {:RESULT = new SymbolCase(expr,state);:};
+Case ::= r_case exprSimple:expr twodots statementList:state r_break smcol{:RESULT = new SymbolCase(expr,state);:};
 
-Default ::= r_default twodots statementList:state           {:RESULT = new SymbolDefault(state);:}
-    |                                                       {:RESULT = new SymbolDefault();:}
+Default ::= r_default twodots statementList:state               {:RESULT = new SymbolDefault(state);:}
+    |                                                           {:RESULT = new SymbolDefault();:}
     ;
+
 
 forIteration ::= r_for lparen forInit:forinit
 smcol exprSimple:expr smcol forPostExpression:forpost

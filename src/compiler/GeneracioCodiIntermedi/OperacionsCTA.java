@@ -7,5 +7,7 @@ public enum OperacionsCTA {
     // OPERACIONS DE BIFURCACIÓ
     SKIP, GOTO, IF, LT, LE, EQ, NE, GE, GT,
     // CRIDES A PROCEDIMENTS
-    PMB, CALL, RTN, PARAMS, PARAMC;
+    PMB, CALL, RTN, PARAMS, PARAMC,
+    // ASSIGNACIÓ
+    ASIGN;
 }

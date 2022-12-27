@@ -1,13 +1,51 @@
 func int suma(int a, int b){
-    int c <- 2;
-    bool t <- 2;
+    int c <- int [2+2];
+    bool g <- 1<2;
+    bool t <- g;
     c <- 3;
-    while (not (a+1)){
-        a <- a + b;
+
+    while (2){
+            a <- a + b;
+        }
+    switch (a){
+        case 1:
+            t <- true;
+            break;
+        case true:
+            t <- false;
+            break;
     }
+ 
     return a;
 }
 
+//retornar integer
+func bool error1(){
+
+    return 2;
+}
+
+//retornar variable integer
+func bool error2(){
+    int s <- 3;
+
+    return s;
+}
+
+func bool error4(){
+    int x <- 2;
+    bool y <- true;
+    //error al while
+    while (x = y){
+       x <- y + x;
+    }
+    return x;
+}
+
+func bool error3(){
+
+    return s;
+}
 
 main() {
     int a <- 1;

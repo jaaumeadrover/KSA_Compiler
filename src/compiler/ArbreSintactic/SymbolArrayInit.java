@@ -22,4 +22,10 @@ public class SymbolArrayInit {
     public TipusSub getT() {
         return t;
     }
+
+    /*
+    public String codiTresAdreces(codiTresAdreces codi){
+        
+    }
+    */
 }

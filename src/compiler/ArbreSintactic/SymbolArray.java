@@ -17,4 +17,8 @@ public class SymbolArray {
     public String getID() {
         return ID;
     }
+
+    /*
+    public String codiTresAdreces
+     */
 }

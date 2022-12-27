@@ -16,4 +16,12 @@ public class SymbolLCases {
         this.lcases = l;
 
     }
+
+    public SymbolCase getCase() {
+        return cas;
+    }
+
+    public SymbolLCases getLCases() {
+        return lcases;
+    }
 }

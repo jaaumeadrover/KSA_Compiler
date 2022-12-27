@@ -15,4 +15,8 @@ public class SymbolForInit {
     public SymbolForInit(){
         //System.out.println("SOC UN SYMBOL SYMBOLFORINIT");
     }
+
+    public SymbolVarDecl getVarDecl(){
+        return this.declaracioVar;
+    })
 }

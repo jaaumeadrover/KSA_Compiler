@@ -5,7 +5,7 @@ public class SymbolVarInit  {
 
     private boolean isarray,isEmpty;
     private SymbolExpressioSimple expr;
-    private SymbolArrayInit array;
+    private SymbolArrayInit arrayinit;
 
   public SymbolVarInit(SymbolExpressioSimple expr){
 
@@ -13,10 +13,10 @@ public class SymbolVarInit  {
       this.isarray = false;
       this.expr = expr;
   }
-    public SymbolVarInit(SymbolArrayInit array){
+    public SymbolVarInit(SymbolArrayInit arrayinit){
         this.isEmpty=false;
         this.isarray = true;
-        this.array = array;
+        this.arrayinit = arrayinit;
     }
     public SymbolVarInit(boolean b){
 
@@ -34,6 +34,19 @@ public class SymbolVarInit  {
     }
 
     public SymbolArrayInit getArray() {
-        return array;
+        return arrayinit;
     }
+/*
+    public String codiTresAdreces(codiTresAdreces codi){
+      // Un inicialitzaci&oacute; de variable pot ser un array o una Expressi&oacute; Simple
+      if (isarray == true){
+         return this.arrayinit.codiTresAdreces(codi);
+      }else if (isEmpty == true){
+         return null;
+      }else{
+         return this.expr.codiTresAdreces(codi);
+      }
+    }
+*/
+
 }

@@ -9,6 +9,7 @@ public class SymbolExpressioSimple {
     private SymbolOperacio operacio;
     private SymbolValor valor;
     private String iden;
+
     private SymbolVarInit varinit;
     private TipusSub tsOperador;
     private TipusSub tsResultat;
@@ -39,10 +40,14 @@ public class SymbolExpressioSimple {
         //if oper is null
         if (oper.isEmpty() || (oper == null)) {
             this.tsResultat = val.getTipusSub();
+            System.out.println("Només tenc un valor!: "+this.tsResultat);
 
         } else {
             if (oper.isAssignacio()) {
-
+                //si es una assignacio?
+                this.tsResultat=oper.getVarInit().getExpr().getTipusSubResultat();
+                System.out.println("EXPRESSIO: "+oper.getVarInit().getExpr());
+                System.out.println("TIPUS: "+this.tsResultat);
             } else {
                 setTsResultat();
             }
@@ -53,7 +58,6 @@ public class SymbolExpressioSimple {
     public SymbolExpressioSimple(String id, SymbolVarInit varini) {
         this.iden = id;
         this.varinit = varinit;
-
     }
 
     public TipusSub tsOperador() {
@@ -129,4 +133,24 @@ public class SymbolExpressioSimple {
     public SymbolOperacio getOperacio() {
         return operacio;
     }
+    
+    @Override
+    public String toString(){
+        if(this.valor!=null){
+             return this.valor.toString();
+        }else{
+            return "";
+        }
+    }
+/*
+    public String codiTresAdreces(codiTresAdreces codi){
+        if (this.expressioSimple != null){
+            String desti = codi.novaVariable()
+            this.expressioSimple.codiTresAdreces(codi)
+            this.operacio
+        }else
+    }
+
+ */
+
 }

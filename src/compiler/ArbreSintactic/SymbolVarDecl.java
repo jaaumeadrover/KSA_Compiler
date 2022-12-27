@@ -7,10 +7,12 @@ public class SymbolVarDecl {
 
     private TipusSub tipus;
     private boolean esConst;
+    private boolean isEmpty;
     private String id;
     private SymbolVarInit varInit;
 
     public SymbolVarDecl() {
+        this.isEmpty=true;
     }
 
     public SymbolVarDecl(boolean esConst, TipusSub t, String id, SymbolVarInit simbol) {
@@ -29,6 +31,18 @@ public class SymbolVarDecl {
         return esConst;
     }
 
+    public boolean isEmpty(){
+        return this.isEmpty;
+    }
+    /*
+    public void codiTresAdreces(CodiTresAdreces codi){
+        String nom = codi.novaVariable(this.id, this.tipus);
+        if (this.varInit != null){
+            String inicialitzacio = this.varInit.codiTresAdreces();
+            codi.genera(OperacionsCTA.ASIGN, inicialitzacio, null, nom)
+        }
+    }
+    */
 }
         
  
