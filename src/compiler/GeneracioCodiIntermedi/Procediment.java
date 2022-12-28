@@ -2,32 +2,64 @@ package compiler.GeneracioCodiIntermedi;
 import  compiler.Symbols.TaulaSimbols.TipusSub;
 import java.util.ArrayList;
 
+/*
+    CLASSE: Procediment
+    AUTOR: ATA2
+    FUNCIONALITAT: ens serveix per a poder crear objectes procediment.
+    DATA CREACIÓ: 26/12/2022
+ */
 public class Procediment{
 
-    private String nom;
-    private int numProcediments;
-    private TipusSub tipusSub;
-    private ArrayList<Parametre> parametres;
+    private int nivell;
+    private String nomProc;
+    private int ocupacio;
+    private int numParams;
+    private ArrayList<Variable> parametres;
+    private TipusSub tipus;
 
     // Constructor de la classe
-    public Procediment(String nom, int numProcediment, TipusSub ts, ArrayList<Parametre> parametres){
-        this.nom = nom;
-        this.numProcediments = numProcediment;
-        this.tipusSub = ts;
-        this.parametres = parametres;
+    public Procediment(int nivell, String id, int ocupacio, int nparams){
+        this.nivell = nivell;
+        this.idProc = id;
+        this.ocupacio = ocupacio;
+        this.numParams = nparams;
     }
+
+    public Procediment(int nivell, String id int nparams){
+        this.nivell = nivell;
+        this.idProc = id;
+        this.numParams = nparams;
+    }
+
+    public Procediment(String id){
+        this.idProc = id;
+    }
+
+    public Procediment(String id, ArrayList<Variable> params){
+        this.idProc = id;
+        this.numParams = params;
+    }
+
 
     // GETTERS
-    public String getNom() {
-        return this.nom;
+    public String getNomProc() {
+        return this.nomProc;
     }
 
-    public int getNumProcediment() {
-        return this.numProcediments;
+    public int getNivell() {
+        return this.nivell;
+    }
+
+    public int getNumParametres() {
+        return this.numParams;
+    }
+
+    public int getOcupacio() {
+        return this.ocupacio;
     }
 
     public TipusSub getTipusSub() {
-        return this.tipusSub;
+        return this.tipus;
     }
 
     public ArrayList<Parametre> getParametres() {
@@ -35,20 +67,28 @@ public class Procediment{
     }
 
     // SETTERS
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNomProc(String nom) {
+        this.nomProc = nom;
     }
 
-    public void setNumProcediment(int nombreProce) {
-        this.numProcediments = nombreProce;
+    public void setNumParametres(int num) {
+        this.numParams = num;
     }
 
     public void setTipusSub(TipusSub ts) {
-        this.tipusSub = ts;
+        this.tipus = ts;
     }
 
-    public void setParams(ArrayList<Parametre> params) {
+    public void setParametres(ArrayList<Parametre> params) {
         this.parametres = params;
+    }
+
+    public void setNivell(int n) {
+        this.nivell = n;
+    }
+
+    public void setOcupacio(int o) {
+        this.ocupacio = o;
     }
 
     // Mètode toString
@@ -60,7 +100,7 @@ public class Procediment{
                 s += "\t" + parametres.get(i).toString() + "\n";
             }
         }
-        return this.nom + "; " + numProcediments + "; " + tipusSub + "; " + s;
+        return this.nomProc + "; " + numParams + "; " + tipus + "; " + s;
     }
 
 }

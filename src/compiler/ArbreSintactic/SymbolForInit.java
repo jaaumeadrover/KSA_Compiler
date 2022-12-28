@@ -18,5 +18,5 @@ public class SymbolForInit {
 
     public SymbolVarDecl getVarDecl(){
         return this.declaracioVar;
-    })
+    }
 }

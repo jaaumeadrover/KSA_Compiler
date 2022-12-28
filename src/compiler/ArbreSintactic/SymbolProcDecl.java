@@ -14,4 +14,8 @@ public class SymbolProcDecl  {
         this.stat = stat;
         this.funcCap = funcCap;
     }
+
+    public SymbolProcDecl() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

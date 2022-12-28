@@ -1,23 +1,43 @@
 package compiler.GeneracioCodiIntermedi;
 import  compiler.Symbols.TaulaSimbols.TipusSub;
 
+/*
+    CLASSE: Variable
+    AUTOR: ATA2
+    FUNCIONALITAT: ens serveix per a crear objectes que representaran variables.
+    DATA CREACIÓ: 26/12/2022
+ */
+
 public class Variable{
-    // Utilizam un string
+
+    private static int contadorVars = 0;
+
+    private int idV;
     private String nom;
     private TipusSub tipusSub;
-    // Boolean per saber si la variable es temporal (s'utilitza per poder obtenir
-    // el codi de tres adreces de forma correcta)
-    private boolean temp;
-    private int proc;
+    private int procedure;
+    private boolean constant = false;
+    private int valor;
 
-    public Variable(String n, TipusSub t, boolean b, int p){
-        this.nom=n;
-        this.tipusSub=t;
-        this.temp =b;
-        this.proc=p;
+
+    public Variable(String s, TipusSub tipusSub, int procedure){
+        this.idV = contadorVars;
+        contadorVars++;
+        this.nom = s;
+        this.tipusSub = tipusSub;
+        this.procedure = procedure;
+    }
+
+    public Variable(tipusSub tipus, int procedure){
+        this.tipusSub = tipus;
+        this.procedure = procedure;
     }
 
     //GETTERS
+    public int getId(){
+        return this.idV;
+    }
+
     public String getNom(){
         return this.nom;
     }
@@ -26,12 +46,16 @@ public class Variable{
         return this.tipusSub;
     }
 
-    public boolean getTemp(){
-        return this.temp;
+    public int getProcedure(){
+        return this.procedure;
     }
 
-    public int getProc(){
-        return this.proc;
+    public boolean getConstant(){
+        return this.constant;
+    }
+
+    public int getValor(){
+        return this.valor;
     }
 
     //SETTERS
@@ -39,22 +63,30 @@ public class Variable{
         this.nom=n;
     }
 
-    public void setTipusSub(TipusSub t){
-        this.tipusSub=t;
+    public void setId(int id) {
+        this.idV = id;
     }
 
-    public void setT(boolean b){
-        this.temp =b;
+    public void setTipusSub(TipusSub ts) {
+        this.tipusSub = ts;
     }
 
-    public void setProc(int p){
-        this.proc=p;
+    public void setProcedure(int p) {
+        this.procedure = p;
+    }
+
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
+
+    public void setConstant(boolean constant) {
+        this.constant = constant;
     }
 
     // Mètode toString
     @Override
     public String toString(){
-        return "Nom: "+this.nom+"; Tipus: "+this.tipusSub+"; Procediment: "+this.proc;
+        return "Nom: "+this.nom+"; Tipus: "+this.tipusSub+"; Procediment: "+this.procedure;
     }
 
 }

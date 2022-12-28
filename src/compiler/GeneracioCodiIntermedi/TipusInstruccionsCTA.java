@@ -1,5 +1,5 @@
 package compiler.GeneracioCodiIntermedi;
-public enum OperacionsCTA {
+public enum TipusInstruccionsCTA {
     // OPERACIONS ARITÈTIQUES I LÒGIQUES
     COPIA, SUMA, RESTA, PRODUCTE, DIVISIO, MODUL, MENYS, AND, OR, NOT,
     // OPERACIONS INDEXACIÓ
@@ -10,4 +10,6 @@ public enum OperacionsCTA {
     PMB, CALL, RTN, PARAMS, PARAMC,
     // ASSIGNACIÓ
     ASIGN;
+    // MOSTRAR PER PANTALLA I DEMANAR ENTRADA PER TECLAT
+    PRINT, INPUT
 }

@@ -4,12 +4,17 @@
  */
 package compiler;
 
+import compiler.Semantic.Semantic;
 import compiler.sintactic.Parser;
 import compiler.lexic.Scanner;
+import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.Writer;
+import java.util.ArrayList;
 import java_cup.runtime.ComplexSymbolFactory;
 import java_cup.runtime.SymbolFactory;
 
@@ -38,12 +43,42 @@ public class Main {
                 input = new FileReader("\\Users\\Jaume\\Desktop\\UIB\\Cursos\\TERCER\\1r quatri\\COMPILADORS\\PRÀCTICA KSA\\KSA_Compiler\\src\\TESTING\\1.Funcions\\prova.txt");
                 //input = new InputStreamReader(System.in);
             }
+            FileWriter writerErrors = new FileWriter("errors.txt");
 
             Scanner scanner = new Scanner(input);
             SymbolFactory sf = new ComplexSymbolFactory();
             Parser parser = new Parser(scanner, sf);
-
             parser.parse();
+            Semantic sem = parser.getComprovaTipus();
+            
+            ArrayList<String> errorsSem = sem.geterrorsSemantic();
+            //System.out.println("Smeantic: "+errorsSem);
+            ArrayList<String> errorsSint = parser.geterrorsSintactic();
+            //System.out.println("Sintactic: "+errorsSint);
+
+            //Escriu errors al fitxer
+            for (int i = 0; i < errorsSint.size(); i++) {
+                String element = errorsSint.get(i);
+
+                writerErrors.write(element+ "\n");
+            }
+            for (int i = 0; i < errorsSem.size(); i++) {
+                String element = errorsSem.get(i);
+
+                writerErrors.write(element+ "\n");
+            }
+            writerErrors.close();
+
+            FileReader readerErrors = new FileReader("errors.txt");
+            BufferedReader br = new BufferedReader(readerErrors);
+            String lineaerror = br.readLine();
+
+            while(lineaerror!=null){
+                System.err.println(lineaerror);
+                lineaerror = br.readLine();
+            }
+
+            
         } catch(Exception e) {
             System.err.println("error: "+e);
             e.printStackTrace(System.err);

@@ -1,0 +1,3 @@
+ERROR Semántic, els cases no tenen el mateix tipus
+ERROR Semántic, El tipus de la declaració no és correcte
+ERROR Semántic, al for invàlida declaració.

@@ -25,7 +25,9 @@ import java_cup.runtime.ComplexSymbolFactory.ComplexSymbol;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.ArbreSintactic.*;
 import compiler.GeneracioCodiIntermedi.*;
+import java_cup.runtime.ComplexSymbolFactory.Location;
 import compiler.Semantic.Semantic;
+import java.util.ArrayList;
 
 import java_cup.runtime.*;
 
@@ -43,10 +45,15 @@ parser code {:
     private Scanner scanner;
     private Semantic comprovaTipus=new Semantic(ts);
     private ArbreSintactic arbre=new ArbreSintactic();
-    private codiTresAdreces codi=arbre.generarCodiTresAdreces();
-
+    //private codiTresAdreces codi=arbre.generarCodiTresAdreces();
+    ArrayList<String> errorsSintactic = new ArrayList<>();
+    /*
     public Parser(Scanner scanner){
         this.scanner = scanner;
+    }
+    */
+    public Semantic getComprovaTipus(){
+        return comprovaTipus;
     }
 
     /**
@@ -64,13 +71,13 @@ parser code {:
 
         @Override
         public void unrecovered_syntax_error(Symbol cur_token) throws Exception {
-            report_error("Error sintàctic catastròfic", cur_token);
-            done_parsing();
+            //report_error("Error sintàctic catastròfic",cur_token);
+            //done_parsing();
         }
 
         @Override
         public void syntax_error(Symbol cur_token) {
-            report_error("de sintaxis", cur_token);
+            report_error(" de sintàxis ",cur_token);
         }
 
         @Override
@@ -89,24 +96,22 @@ parser code {:
                 }
             }
             msg.append(": ").append(message);
+            errorsSintactic.add(message);
 
-            System.err.println(msg);
+
         }
 
         @Override
         public void report_fatal_error(String message, Object info) throws Exception {
-            report_error("Error catastròfic ("+message+")", info);
+            report_error(" sintàctic catastròfic",cur_token);
             done_parsing();
+        }
+        public ArrayList<String> geterrorsSintactic(){
+            return errorsSintactic;
         }
 
 
 :}
-
-/**
- ** També aquí es poden afegir accions a realitzar quan es requereix un token.
-scan with {:     next_token(); :}
-**/
-
 
 //TERMINALS
 
@@ -136,7 +141,6 @@ non terminal  SymbolVarInit  varInit;
 non terminal  SymbolFuncDecl   funcDecl;
 non terminal  SymbolFuncCap   funcCap;
 non terminal  SymbolProcDecl   procDecl;
-non terminal  SymbolArgType   argType;
 non terminal  SymbolType   type;
 non terminal  SymbolStatementList   statementList;
 non terminal  SymbolStatement   statement;
@@ -145,7 +149,6 @@ non terminal  SymbolForIteration   forIteration;
 non terminal  SymbolForInit   forInit;
 non terminal  SymbolForPostExpression   forPostExpression;
 non terminal  SymbolIfStatement   ifStatement;
-non terminal  SymbolElseStatement   elseStatement;
 non terminal  SymbolExpressioSimple  exprSimple;
 non terminal  SymbolSubProgramCall   subProgramCall;
 non terminal  SymbolSubProgramContCall   subProgramContCall;
@@ -188,27 +191,42 @@ decl ::= varDecl:var smcol    {:RESULT = new SymbolDecl(var,null,null);:}  //NO 
     ;
 //DECLARACIÓ VARIABLES
 varDecl ::=  r_const type:t id:iden varInit:varinit     {:
-                                                        ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.CONST, 0);
-                                                        System.out.println("TAMANY TAULA SIMBOLS EXTERNA: "+ts.getMida());
+                                                        int error = ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.CONST, 0);
+                                                        //System.out.println("TAMANY TAULA SIMBOLS EXTERNA: "+ts.getMida());
                                                         if(comprovaTipus.gestAsigDecl(iden.toString(),varinit)){
-                                                            RESULT=new SymbolVarDecl(true, t.getTipusSub(), iden.toString(),varinit);
+                                                            if(error==0){
+                                                                RESULT=new SymbolVarDecl(true, t.getTipusSub(), iden.toString(),varinit);
+                                                                }else{
+                                                                    RESULT=new SymbolVarDecl();
+                                                                    comprovaTipus.addError("ERROR Semántic, la constant  "+iden.toString()+", ja existeix");
+                                                                }
                                                         } else{
                                                             RESULT=new SymbolVarDecl();
                                                         }:}//declaració de una constant
     |type:t id:iden varInit:varinit                    {:
                                                         if(varinit.isIsarray()){
-                                                                System.out.println("Estic a la decl d'un array");
-                                                                ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0);
+                                                                //System.out.println("Estic a la decl d'un array");
+                                                                int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0);
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit)){
+                                                                    if(error==1){
                                                                   RESULT=new SymbolVarDecl(false,t.getTipusSub(),iden.toString(),varinit);
-                                                                  } else{
+                                                                  }else{
+                                                                    comprovaTipus.addError("ERROR Semántic, la variable array "+iden.toString()+", ja existeix");
+                                                                    RESULT=new SymbolVarDecl();
+                                                                  }
+                                                                  }else{
                                                                   RESULT=new SymbolVarDecl();
                                                                   }
                                                             }else{
-                                                                System.out.println("No Estic a la decl d'un array");
-                                                                ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.VAR,0);
+                                                                //System.out.println("No Estic a la decl d'un array");
+                                                                int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.VAR,0);
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit)){
+                                                                if (error==1){
                                                                     RESULT=new SymbolVarDecl(false,t.getTipusSub(),iden.toString(),varinit);
+                                                                    }else{
+                                                                        comprovaTipus.addError("ERROR Semántic, la variable  "+iden.toString()+", ja existeix");
+                                                                        RESULT=new SymbolVarDecl();
+                                                                    }
                                                                 } else{
                                                                 RESULT=new SymbolVarDecl();
                                                                 }
@@ -235,34 +253,52 @@ type ::= r_int                 {:RESULT=new SymbolType(TipusSub.INT);:}
 return   ::=r_return exprSimple:expr smcol  {:RESULT = new SymbolReturn(expr);:}
 ;
 funcDecl ::= r_function M type:t  id:iden funcCap:funcCap brop statementList:stats return:rtn brcl {:
-                                                                                System.out.println("SIMBOL S: "+ts.getMida());
 
                                                                                 Simbol s=ts.consultaFunc(iden.toString());
-                                                                                System.out.println("SIMBOL S: "+s);
+                                                                                //No existeix la funció, es pot afegir
                                                                                 if(s == null){
+                                                                                    //comporvar si la funció retorna el mateix tipus
                                                                                     if(comprovaTipus.gestFunc(t.getTipusSub(),rtn)){
                                                                                         RESULT=new SymbolFuncDecl(t.getTipusSub(), iden.toString(), stats, rtn,funcCap);
                                                                                         ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.FUNC, 0);
-                                                                                        System.out.println("FUNCIÓ AFEGIDA COORECTAMENT!");
+                                                                                    }else{
+                                                                                        RESULT=new SymbolFuncDecl();
                                                                                     }
-
                                                                                 }else{
-                                                                                    System.out.println("FUNCIÓ JA CREADA ANTERIORMENT!");
+                                                                                    comprovaTipus.addError("ERROR Semántic, la funció "+iden.toString()+", ja existeix");
                                                                                     RESULT=new SymbolFuncDecl();
                                                                                 }
                                                                                 :};
-funcCap ::= ContCap:contcap rparen          {:RESULT=new SymbolFuncCap(contcap);:}               //declaració de parentesis per als arguments
+funcCap ::= ContCap:contcap rparen          {:RESULT=new SymbolFuncCap(contcap);:}
     | lparen rparen                         {:RESULT=new SymbolFuncCap();:}
     ;
 
-procDecl ::= r_procedure M id:iden funcCap:funcCap brop statementList:stats brcl{:RESULT =new SymbolProcDecl(iden.toString(), stats,funcCap);
-                                                                                ts.afegeixSimbol(iden.toString(), TipusSub.NULL, Tipus.FUNC, 0);:}; //declaració d'un procediment: proc 'nom' parametres {...}
+procDecl ::= r_procedure M id:iden funcCap:funcCap brop statementList:stats brcl
+{:Simbol s=ts.consultaFunc(iden.toString());
+if(s==null){
+    RESULT =new SymbolProcDecl(iden.toString(), stats,funcCap);
+    ts.afegeixSimbol(iden.toString(), TipusSub.NULL, Tipus.FUNC, 0);
+}else{
+    comprovaTipus.addError("ERROR Semántic, el procediment "+iden.toString()+", ja existeix");
+    RESULT=new SymbolProcDecl();
+    }:}; //declaració d'un procediment: proc 'nom' parametres {...}
 
 ContCap ::= lparen type:t id:iden              {:
-                                                             ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0);
-                                                             RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());:}//tancam parentesis i definim els paràmetres
-    | ContCap:contcap com  type:t id:iden       {:          ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0);
-                                                            RESULT = new SymbolContCap(contcap,t.getTipusSub(), iden.toString());:}
+                                                             int error= ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0);
+                                                             if(error==1){
+                                                                RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());
+                                                             }else{
+                                                                comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix");
+                                                                RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());
+                                                             }
+                                                             :}//tancam parentesis i definim els paràmetres
+    | ContCap:contcap com  type:t id:iden       {:          int error =  ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0);
+                                                            if(error==1){
+                                                                RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());
+                                                            }else{
+                                                               comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix");
+                                                                RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());
+                                                            }:}
     ;
 
 //INSTRUCCIONS
@@ -282,20 +318,20 @@ statement ::= varDecl:vard smcol         {:RESULT=new SymbolStatement(vard);:}
 
 inputStatement ::= r_input lparen rparen {:RESULT = new SymbolInputStatement();:};
 
-printStatement ::= r_print lparen stringValue rparen {:RESULT = new SymbolPrintStatement();:};
+printStatement ::= r_print lparen stringValue:string rparen {:RESULT = new SymbolPrintStatement(string);:};
 
-stringValue    ::= literal
-                   | stringValue add literal {:RESULT = new SymbolStringValue();:};
+stringValue    ::= literal:l                    {:RESULT = new SymbolStringValue(null,l);:}
+                   | stringValue:s add literal:l {:RESULT = new SymbolStringValue(s,l);:};
 
-literal ::=          string {:RESULT = new SymbolLiteral();:}
-                    | valor {:RESULT = new SymbolLiteral();:};
+literal ::=          string {:RESULT = new SymbolLiteral(null);:}
+                    | valor:v {:RESULT = new SymbolLiteral(v);:};
 
 
 //EXPRESSIONS
 exprSimple ::=lparen exprSimple:expr rparen operacio:oper {:
                                                             //Es una assignació
                                                             if(oper.isAssignacio()){
-                                                                System.out.println("Aixo es una assignació invàlida");
+                                                                comprovaTipus.addError("ERROR Semántic, no es correcte assignar una expressió");
                                                                 RESULT=new SymbolExpressioSimple();
                                                             }else{
                                                                 RESULT=new SymbolExpressioSimple(expr,oper);
@@ -303,20 +339,20 @@ exprSimple ::=lparen exprSimple:expr rparen operacio:oper {:
 
                                                             :}
     |valor:val operacio:oper                              {:
-                                                            Simbol s=ts.consulta(val.getIden());
-                                                            if(s!=null){
+                                                            //Simbol s=ts.consulta(val.getIden());
+                                                            if(!val.esBuit()){
                                                                 if(oper.isAssignacio()){
-                                                                System.out.println("Estic a una assignacio: "+val.getIden());
+                                                                //System.out.println("Estic a una assignacio: "+val.getIden());
                                                                     RESULT=new SymbolExpressioSimple(val, oper);
                                                                     if(comprovaTipus.gestAsig(val,oper)){
-                                                                        System.out.println("Assignacio correcta");
+                                                                        //System.out.println("Assignacio correcta");
                                                                        RESULT=new SymbolExpressioSimple(val, oper);
                                                                     }else{
-                                                                        System.out.println("Assignacio incorrecta");
+                                                                       // System.out.println("Assignacio incorrecta");
                                                                       RESULT=new SymbolExpressioSimple();
                                                                     }
                                                                 }else{
-                                                                    System.out.println("No estic a una assignacio");
+                                                                    //System.out.println("No estic a una assignacio");
                                                                     RESULT=new SymbolExpressioSimple(val,oper);
                                                                 }
                                                             }else{
@@ -335,7 +371,7 @@ valor::= id:iden                         {:
                                                     RESULT=new SymbolValor();
                                                 }
                                             }else{
-                                                //System.out.println("Aquesta variable no existeix");
+                                                comprovaTipus.addError("ERROR Semántic de la taula de simbols, La variable "+iden.toString()+" no existeix");
                                                 //he afegit null perque sinos el confonia amb el constructor de integer!
                                                 //THROWS EXCEPTION??????
                                                 RESULT=new SymbolValor(iden.toString(),TipusSub.INT);
@@ -343,12 +379,12 @@ valor::= id:iden                         {:
                                          :}
     |array:arr                                      {:RESULT=new SymbolValor(arr);:}
     |integer:integer                                {:RESULT=new SymbolValor(integer);:}
-    |bool:b                                         {: System.out.println("He trobat valoor boolea "+b.toString());
+    |bool:b                                         {: //System.out.println("He trobat valoor boolea "+b.toString());
                                                         RESULT=new SymbolValor(b.toString());:}
     |r_not  lparen exprSimple:expr rparen     {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
                                                          RESULT = new SymbolValor(expr);
                                                 }else{
-                                                    System.out.print("   Aixó NO ES una expressió correcte");
+                                                    comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte al fer la negació");
                                                     RESULT=new SymbolValor(expr);
                                                   }
                                                   :}
@@ -396,7 +432,13 @@ subProgramContCall ::= id:iden lparen exprSimple:expr            {:RESULT = new 
     |subProgramContCall:subprogcontcall com exprSimple:expr      {:RESULT = new SymbolSubProgramContCall(subprogcontcall, expr);:}
     ;
 
-SwitchCase ::= r_switch lparen exprSimple:expr rparen brop LCases:lcases Default:defa brcl {:RESULT = new SymbolSwitchCase(expr,lcases,defa);:};
+SwitchCase ::= r_switch lparen exprSimple:expr rparen brop LCases:lcases Default:defa brcl {:
+                                                                                                if(comprovaTipus.gestSwitch(expr,lcases)){
+                                                                                                    RESULT = new SymbolSwitchCase(expr,lcases,defa);
+                                                                                                }else{
+
+                                                                                                }
+                                                                                                RESULT = new SymbolSwitchCase(expr,lcases,defa);:};
 
 
 
@@ -412,12 +454,13 @@ Default ::= r_default twodots statementList:state               {:RESULT = new S
 
 forIteration ::= r_for lparen forInit:forinit
 smcol exprSimple:expr smcol forPostExpression:forpost
-rparen brop statementList:state brcl                    {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
+rparen brop statementList:state brcl                    {:
+                                                        if(comprovaTipus.gestForLoop(forinit,expr,forpost)){
                                                                RESULT = new SymbolForIteration(forinit,expr,forpost,state);
-                                                               System.out.print("Això ES CORRECTE AL FOR");
+                                                               //System.out.print("Això ES CORRECTE AL FOR");
                                                          }else{
                                                               RESULT = new SymbolForIteration();
-                                                              System.out.print("   Aixó NO ES CORRECTE AL FOR");
+
                                                          }:}
     ;
 
@@ -431,10 +474,10 @@ forPostExpression ::= exprSimple:expr               {:RESULT = new SymbolForPost
 whileStatement ::= r_while lparen exprSimple:expr
 rparen brop statementList:state brcl                {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
                                                         RESULT = new SymbolWhileStatement(expr,state);
-                                                        System.out.print("Això ES CORRECTE AL WHILE");
+                                                        //System.out.print("Això ES CORRECTE AL WHILE");
                                                      }else{
                                                           RESULT = new SymbolWhileStatement();
-                                                          System.out.print("   Aixó NO ES CORRECTE AL WHILE");
+                                                          comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte a la senténcia WHILE");
                                                     }
                                                     :};
 
@@ -444,14 +487,14 @@ rparen brop statementList:states brcl   {:if(comprovaTipus.gestExpr(expr,TipusSu
                                              RESULT = new SymbolIfStatement(expr,states);
                                            }else{
                                               RESULT = new SymbolIfStatement();
-                                            System.out.print("   Aixó NO ES CORRECTE AL WHILE");
+                                             comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte a la senténcia IF");
                                            }:}
 | r_if lparen exprSimple:expr rparen brop
 statementList:statel brcl r_else  brop statementList:states brcl {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
                                                                       RESULT = new SymbolIfStatement(expr,states);
                                                                   }else{
                                                                        RESULT = new SymbolIfStatement();
-                                                                      System.out.print("   Aixó NO ES CORRECTE AL IF");
+                                                                      comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte a la senténcia IF");
                                                                  }:};
 
 

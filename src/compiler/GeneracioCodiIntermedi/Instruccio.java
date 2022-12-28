@@ -2,29 +2,29 @@ package compiler.GeneracioCodiIntermedi;
 
 public class Instruccio{
 
-    private OperacionsCTA codi;
-    private String operadorEsquerra;
-    private String operadorDreta;
-    private String desti;
+    private TipusInstruccionsCTA tipusInstruccio;
+    private Operand param1;
+    private Operand param2;
+    private Operand desti;
 
-    public Instruccio(OperacionsCTA oper, String o1, String o2, String d){
-        this.codi=oper;
-        this.operadorEsquerra=o1;
-        this.operadorDreta=o2;
+    public Instruccio(TipusInstruccionsCTA tipus, String o1, String o2, String d){
+        this.tipusInstruccio =tipus;
+        this.param1 =o1;
+        this.param2 =o2;
         this.desti=d;
     }
 
     //GETTERS
     public OperacionsCTA getOperacions() {
-        return this.codi;
+        return this.tipoInstruccio;
     }
 
     public String getOperadorEsquerra() {
-        return this.operadorEsquerra;
+        return this.param1;
     }
 
     public String getOperadorDreta() {
-        return this.operadorDreta;
+        return this.param2;
     }
 
     public String getDesti() {
@@ -33,15 +33,15 @@ public class Instruccio{
 
     //SETTERS
     public void setOperacions(OperacionsCTA o){
-        this.codi=o;
+        this.tipoInstruccio =o;
     }
 
     public void setOperadorEsquerra(String o){
-        this.operadorEsquerra=o;
+        this.param1 =o;
     }
 
     public void setOperadorDreta(String o){
-        this.operadorDreta=o;
+        this.param2 =o;
     }
 
     public void setDesti(String d){
@@ -51,7 +51,7 @@ public class Instruccio{
     //Metode toStrong
     @Override
     public String toString() {
-        return "[" + codi.toString() + ", " + operadorEsquerra +
-                ", " + operadorDreta + ", " + desti + "]";
+        return "[" + tipoInstruccio.toString() + ", " + param1 +
+                ", " + param2 + ", " + desti + "]";
     }
 }

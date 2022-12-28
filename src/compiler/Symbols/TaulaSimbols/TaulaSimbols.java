@@ -36,35 +36,35 @@ public class TaulaSimbols {
     public int afegeixSimbol(String id, TipusSub tSub,Tipus t,int pos){
         if(t==Tipus.FUNC){//si símbol està dins una funció
             if(consultaFunc(id) != null){ //si no existeix la funció retorna 0
-                System.out.println("simbol ja existeix"+id);
+                //System.out.println("simbol ja existeix"+id);
                 return 0;
             }
             Simbol sym=new Simbol(id,tSub, t, nivell,pos);
             ta.put(nivell,sym);
             ts.add(punterInici,sym);
-            System.out.println("        simbol afegit"+id);
+            //System.out.println("        simbol afegit"+id);
             nivell=0;
             punterInici =0;
-            System.out.println("HE AFEGIT SIMBOL FUNCIO: "+id);
+            //System.out.println("HE AFEGIT SIMBOL FUNCIO: "+id);
         }else{
             if(consulta(id) != null){   //si ja existeix
-                System.out.println("        simbol ja existeix"+id);
+                //System.out.println("        simbol ja existeix"+id);
                 return 0;
             }
             if(t != Tipus.PARAM){
                 Simbol simbol = new Simbol(id,tSub, t, nivell, pos);
                 if (nivell == 0 && !ta.isEmpty()) {
                     ts.add(ts.indexOf(ta.get(1)), simbol);
-                    System.out.println("        simbol afegit"+id);
+                    //System.out.println("        simbol afegit"+id);
 
                 } else {
                     ts.add(simbol);
-                    System.out.println("        simbol afegit"+id);
+                    //System.out.println("        simbol afegit"+id);
                 }
             }else{
                 Simbol simbol = new Simbol(id, tSub, t, nivell, pos);
                 ts.add(punterInici, simbol);
-                System.out.println("        simbol afegit"+id);
+                //System.out.println("        simbol afegit"+id);
             }
         }
         return 1;
@@ -74,13 +74,13 @@ public class TaulaSimbols {
         nivellMax++;
         nivell=nivellMax;
         punterInici=ts.size();
-        System.out.println("HE AFEGIT UN NIVELL A LA TAULA DE SÍMBOLS: "+nivellMax);
+        //System.out.println("HE AFEGIT UN NIVELL A LA TAULA DE SÍMBOLS: "+nivellMax);
     }
 
     public Simbol consultaFunc(String identificador){
         //si la taula d'àmbits no buida
         if(ta.isEmpty()){
-            System.out.println("LA TAULA D'ÀMBITS ESTÀ BUIDA!");
+            //System.out.println("LA TAULA D'ÀMBITS ESTÀ BUIDA!");
             return null;
         }
 

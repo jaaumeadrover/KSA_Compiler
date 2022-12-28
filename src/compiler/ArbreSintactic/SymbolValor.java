@@ -8,6 +8,7 @@ public class SymbolValor {
     private SymbolArray array;
     private int inte;
     private boolean b;
+    private boolean esBuit;
     private SymbolSubProgramCall subProgramCall;
     private SymbolExpressioSimple exprSimple;
 
@@ -48,6 +49,7 @@ public class SymbolValor {
         }else{
             this.b=false;
         }
+        System.out.println("He utilitzat el constructor de boolean!");
         this.tipusSub=TipusSub.BOOLEAN;
     }
 
@@ -73,7 +75,7 @@ public class SymbolValor {
     }
 
     public SymbolValor() {
-        
+        this.esBuit=true;
     }
     
     public int getValorInt(){
@@ -86,6 +88,9 @@ public class SymbolValor {
 
     public String getIden() {
         return iden;
+    }
+    public boolean esBuit(){
+        return this.esBuit;
     }
     
     @Override
