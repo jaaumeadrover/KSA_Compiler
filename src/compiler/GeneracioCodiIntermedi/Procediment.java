@@ -17,26 +17,26 @@ public class Procediment{
     private ArrayList<Variable> parametres;
     private TipusSub tipus;
 
-    // Constructor de la classe
-    public Procediment(int nivell, String id, int ocupacio, int nparams){
+    // Constructors de la classe
+    public Procediment(int nivell, String nom, int ocupacio, int nparams){
         this.nivell = nivell;
-        this.idProc = id;
+        this.nomProc = nom;
         this.ocupacio = ocupacio;
         this.numParams = nparams;
     }
 
-    public Procediment(int nivell, String id int nparams){
+    public Procediment(int nivell, String nom, int nparams){
         this.nivell = nivell;
-        this.idProc = id;
+        this.nomProc = nom;
         this.numParams = nparams;
     }
 
-    public Procediment(String id){
-        this.idProc = id;
+    public Procediment(String nom){
+        this.nomProc = nom;
     }
 
-    public Procediment(String id, ArrayList<Variable> params){
-        this.idProc = id;
+    public Procediment(String nom, ArrayList<Variable> params){
+        this.nomProc = nom;
         this.numParams = params;
     }
 

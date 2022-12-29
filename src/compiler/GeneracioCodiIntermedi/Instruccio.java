@@ -6,12 +6,14 @@ public class Instruccio{
     private Operand param1;
     private Operand param2;
     private Operand desti;
+    private boolean temporal;
 
-    public Instruccio(TipusInstruccionsCTA tipus, String o1, String o2, String d){
+    public Instruccio(TipusInstruccionsCTA tipus, String o1, String o2, String d, boolean t){
         this.tipusInstruccio =tipus;
         this.param1 =o1;
         this.param2 =o2;
         this.desti=d;
+        this.temporal=t;
     }
 
     //GETTERS
@@ -19,16 +21,20 @@ public class Instruccio{
         return this.tipoInstruccio;
     }
 
-    public String getOperadorEsquerra() {
+    public Operand getOperadorEsquerra() {
         return this.param1;
     }
 
-    public String getOperadorDreta() {
+    public Operand getOperadorDreta() {
         return this.param2;
     }
 
-    public String getDesti() {
+    public Operand getDesti() {
         return this.desti;
+    }
+
+    public boolean getTemporal{
+        return this.temporal;
     }
 
     //SETTERS
@@ -46,6 +52,10 @@ public class Instruccio{
 
     public void setDesti(String d){
         this.desti=d;
+    }
+
+    public void setTemporal(boolean t){
+        this.temporal=t;
     }
 
     //Metode toStrong

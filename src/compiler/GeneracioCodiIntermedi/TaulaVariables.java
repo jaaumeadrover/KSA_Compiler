@@ -10,10 +10,26 @@ import java.util.ArrayList;
     DATA CREACIÓ: 26/12/2022
  */
 public class TaulaVariables {
-    private  ArrayList<Variable> TV;
+    private ArrayList<Variable> TV;
+    private int numVar;
+    private int numVarTemp;
 
     public TaulaVariables(){
         this.TV=new ArrayList<>();
+        this.numVar=0;
+        this.numVarTemp=0;
+    }
+
+    public int getNumVar(){
+        return this.numVar;
+    }
+
+    public int getNumVarTemp(){
+        return this.numVarTemp;
+    }
+
+    public ArrayList<Variable> getTaulaVariables(){
+        return this.TV;
     }
 
     /*
@@ -47,6 +63,38 @@ public class TaulaVariables {
         Variable novaVar=new Variable(nom, t, false, npActius);
         TV.add(novaVar);
         return nom + "_" + npActius;
+    }
+
+    public int addVariable(Variable v) {
+
+        if (!existeix(v)) {
+            numVar++;
+            TV.add(v); //mirar que no este duplicada esta variable
+        }
+        return numVar;
+    }
+
+    public boolean existeix(Variable v) {
+
+        if (TV.isEmpty()) {
+            if (v.nom == null) {
+                numVarTemp++;
+                v.nom = "t" + numVarTemp;
+
+            }
+        } else {
+            if (v.nom == null) {
+                numVarTemp++;
+                v.nom = "t" + numVarTemp;
+
+            }
+        }
+        for (int i = 0; i < TV.size(); i++) {
+            if (v.nom.equals(TV.get(i).nom)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /*

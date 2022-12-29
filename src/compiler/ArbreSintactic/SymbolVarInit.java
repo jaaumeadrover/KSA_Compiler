@@ -36,6 +36,7 @@ public class SymbolVarInit  {
     public SymbolArrayInit getArray() {
         return arrayinit;
     }
+
 /*
     public String codiTresAdreces(codiTresAdreces codi){
       // Un inicialitzaci&oacute; de variable pot ser un array o una Expressi&oacute; Simple

@@ -45,8 +45,8 @@ parser code {:
     private Scanner scanner;
     private Semantic comprovaTipus=new Semantic(ts);
     private ArbreSintactic arbre=new ArbreSintactic();
-    //private codiTresAdreces codi=arbre.generarCodiTresAdreces();
     ArrayList<String> errorsSintactic = new ArrayList<>();
+    //CodiTresAdreces codi3A;
     /*
     public Parser(Scanner scanner){
         this.scanner = scanner;
@@ -54,6 +54,10 @@ parser code {:
     */
     public Semantic getComprovaTipus(){
         return comprovaTipus;
+    }
+
+    public ArbreSintactic getArbreSintac(){
+        return arbre;
     }
 
     /**
@@ -178,7 +182,10 @@ precedence left  mul, div, mod;
 
 start with program;
 
-program ::= declList:declist r_main lparen rparen brop statementList:states brcl {:RESULT = new SymbolProgram(declist,states);:}
+program ::= declList:declist r_main lparen rparen brop statementList:states brcl {: RESULT = new SymbolProgram(declist,states);
+                                                                                    arbre.setRoot(RESULT);
+
+                                                                                 :}
     ;
 
 //DECLARACIONS

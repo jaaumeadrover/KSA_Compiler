@@ -34,15 +34,17 @@ public class SymbolVarDecl {
     public boolean isEmpty(){
         return this.isEmpty;
     }
-    /*
-    public void codiTresAdreces(CodiTresAdreces codi){
-        String nom = codi.novaVariable(this.id, this.tipus);
-        if (this.varInit != null){
-            String inicialitzacio = this.varInit.codiTresAdreces();
-            codi.genera(OperacionsCTA.ASIGN, inicialitzacio, null, nom)
-        }
+
+
+    public String codiTresAdreces(CodiTresAdreces codi){
+        //nom=id de la classe
+        //if (this.varInit != null){
+           // String inicialitzacio = this.varInit.codiTresAdreces(codi);
+          //  codi.genera(Operador.ASIGN, inicialitzacio, null, this.id);
+      //  }
+        return null;
     }
-    */
+
 }
         
  
