@@ -1,19 +1,4 @@
-
 main() {
-    int a <- 1;
-    switch (a){
-        case 1:
-            int x <- 2;
-            break;
-        case 2:
-            bool y <- true;
-            break;
-        case true:
-            print("hola");
-            break;
-    }
-    for (int i <- true;i<2; x <- x+2){
-        int z <- 3;
-    }
+    bool y <- (1 + 2) * 1;
 
 }

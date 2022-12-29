@@ -81,7 +81,7 @@ parser code {:
 
         @Override
         public void syntax_error(Symbol cur_token) {
-            report_error(" de sintàxis ",cur_token);
+            report_error("de sintàxis ",cur_token);
         }
 
         @Override
@@ -100,7 +100,7 @@ parser code {:
                 }
             }
             msg.append(": ").append(message);
-            errorsSintactic.add(message);
+            errorsSintactic.add(msg.toString());
 
 
         }
@@ -335,17 +335,7 @@ literal ::=          string {:RESULT = new SymbolLiteral(null);:}
 
 
 //EXPRESSIONS
-exprSimple ::=lparen exprSimple:expr rparen operacio:oper {:
-                                                            //Es una assignació
-                                                            if(oper.isAssignacio()){
-                                                                comprovaTipus.addError("ERROR Semántic, no es correcte assignar una expressió");
-                                                                RESULT=new SymbolExpressioSimple();
-                                                            }else{
-                                                                RESULT=new SymbolExpressioSimple(expr,oper);
-                                                            }
-
-                                                            :}
-    |valor:val operacio:oper                              {:
+exprSimple ::=valor:val operacio:oper                              {:
                                                             //Simbol s=ts.consulta(val.getIden());
                                                             if(!val.esBuit()){
                                                                 if(oper.isAssignacio()){
@@ -396,6 +386,12 @@ valor::= id:iden                         {:
                                                   }
                                                   :}
     |subProgramCall:subprogram                      {:RESULT=new SymbolValor(subprogram);:}
+    |lparen exprSimple:expr rparen                 {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
+                                                        RESULT = new SymbolValor(expr);
+                                                    }else{
+                                                        comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte ");
+                                                        RESULT=new SymbolValor(expr);
+                                                    }:}
     ;
 
 array::=id:iden lop exprSimple:expr lclose {:RESULT=new SymbolArray(iden.toString(),expr);:}

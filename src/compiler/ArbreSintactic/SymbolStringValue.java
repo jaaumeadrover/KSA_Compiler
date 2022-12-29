@@ -15,11 +15,11 @@ public class SymbolStringValue {
 
     }
 
-    public String codiTresAdreces(codiTresAdreces codi) {
-        String s=literal.codiTresAdreces(codi);
-        if(this.string!=null){
-            s+=this.string,codiTresAdreces(codi);
-        }
-        return s;
-    }
+//    public String codiTresAdreces(codiTresAdreces codi) {
+//        String s=literal.codiTresAdreces(codi);
+//        if(this.string!=null){
+//            s+=this.string,codiTresAdreces(codi);
+//        }
+//        return s;
+//    }
 }

@@ -36,14 +36,14 @@ public class SymbolVarDecl {
     }
 
 
-    public String codiTresAdreces(CodiTresAdreces codi){
-        //nom=id de la classe
-        //if (this.varInit != null){
-           // String inicialitzacio = this.varInit.codiTresAdreces(codi);
-          //  codi.genera(Operador.ASIGN, inicialitzacio, null, this.id);
-      //  }
-        return null;
-    }
+//    public String codiTresAdreces(CodiTresAdreces codi){
+//        //nom=id de la classe
+//        //if (this.varInit != null){
+//           // String inicialitzacio = this.varInit.codiTresAdreces(codi);
+//          //  codi.genera(Operador.ASIGN, inicialitzacio, null, this.id);
+//      //  }
+//        return null;
+//    }
 
 }
         

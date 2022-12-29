@@ -8,9 +8,9 @@ public class SymbolPrintStatement {
     public SymbolPrintStatement(SymbolStringValue s){
         this.string=s;
     }
-
-    public void codiTresAdreces(codiTresAdreces codi){
-        String s=this.string.codiTresAdreces(codi);
-        codi.genera(OperacionsCTA.PRINT,s,null,null);
-    }
+//
+//    public void codiTresAdreces(codiTresAdreces codi){
+//        String s=this.string.codiTresAdreces(codi);
+//        codi.genera(OperacionsCTA.PRINT,s,null,null);
+//    }
 }

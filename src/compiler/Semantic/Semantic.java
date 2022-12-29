@@ -24,21 +24,21 @@ public class Semantic {
     2. El tipusSub de la expr és diferent a t: s'esperava un valor int per exemple i es retorna boolean.
     3.El tipusSub de la expr
      */
-    public boolean gestExpr(SymbolExpressioSimple expr, TipusSub t){
-        
-        TipusSub tipoExpr = expr.tsOperador();
-        //System.out.println("TIPUS EXPRESSIO: "+expr.getTipusSubResultat());
-        
-        if(expr.getTipusSubResultat()==t){
-            //System.out.println("CORRECTE");
-
+   public boolean gestExpr(SymbolExpressioSimple expr, TipusSub t){
+//        
+//        //TipusSub tipoExpr = expr.tsOperador();
+//        //System.out.println("TIPUS EXPRESSIO: "+expr.getTipusSubResultat());
+//        
+//        if(expr.getTipusSubResultat()==t){
+//            //System.out.println("CORRECTE");
+//
             return true;
-        }else{
-            //System.out.println("INCORRECTE");
-            //Ho afeigm al parser per identificar quin tipus de senténcia es incorrecte
-            return false;
-        }
-        
+//        }else{
+//            //System.out.println("INCORRECTE");
+//            //Ho afeigm al parser per identificar quin tipus de senténcia es incorrecte
+//            return false;
+//        }
+//        
     }
     
     public boolean gestFunc(TipusSub tfunc, SymbolReturn exprRtn){

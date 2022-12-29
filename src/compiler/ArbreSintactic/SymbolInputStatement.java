@@ -7,10 +7,10 @@ public class SymbolInputStatement  {
     public SymbolInputStatement(){
 
     }
-
-    public String codiTresAdreces(codiTresAdreces codi){
-        String s=codi.novaVariable(TipusSub.NULL,null);
-        codi.genera(OperacionsCTA.INPUT,null,null,s);
-        return s;
-    }
+//
+//    public String codiTresAdreces(codiTresAdreces codi){
+//        String s=codi.novaVariable(TipusSub.NULL,null);
+//        codi.genera(OperacionsCTA.INPUT,null,null,s);
+//        return s;
+//    }
 }
