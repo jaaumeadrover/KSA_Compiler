@@ -1,12 +1,15 @@
-package compiler.generacioCodiIntermedi
+package compiler.GeneracioCodiIntermedi;
+
+import compiler.Symbols.TaulaSimbols.TipusSub;
+import java.util.ArrayList;
 
 public class codi3A{
-    private ArrayList<Instruccion> codi = new ArrayList<>();
-    private ArrayList<Instruccion> constant = new ArrayList<>(); //Declaracion var.
+    private ArrayList<Instruccio> codi = new ArrayList<>();
+    private ArrayList<Instruccio> constant = new ArrayList<>(); //Declaracion var.
     private boolean esDeclaracio=false;
 
-    private TaulaProcediments tp=new TaulaVariables;
-    private TaulaVariables tv=new TaulaVariables;
+    private TaulaProcediments tp=new TaulaProcediments();
+    private TaulaVariables tv=new TaulaVariables();
 
     private int nEtiquetes=0;
 

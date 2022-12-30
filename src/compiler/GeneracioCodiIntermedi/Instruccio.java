@@ -10,7 +10,7 @@ public class Instruccio{
 
     public Instruccio(TipusInstruccionsCTA tipus, String o1, String o2, String d, boolean t){
         this.tipusInstruccio =tipus;
-        this.param1 =o1;
+        this.param1 = o1;
         this.param2 =o2;
         this.desti=d;
         this.temporal=t;
@@ -33,7 +33,7 @@ public class Instruccio{
         return this.desti;
     }
 
-    public boolean getTemporal{
+    public boolean getTemporal(){
         return this.temporal;
     }
 

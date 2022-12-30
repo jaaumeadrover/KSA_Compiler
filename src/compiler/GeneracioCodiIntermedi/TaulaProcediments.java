@@ -1,3 +1,7 @@
+package compiler.GeneracioCodiIntermedi;
+
+import java.util.ArrayList;
+
 public class TaulaProcediments{
     private ArrayList<Procediment> TP;
     private int numProc;

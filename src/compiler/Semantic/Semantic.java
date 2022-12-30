@@ -20,25 +20,30 @@ public class Semantic {
     Funció per a gestionar les expressions simples.
     Tenim 3 casos diferents:
     
-    1. El tipusSub de la expr és NULL: la expressió conté errors
+    1. El tipusSub de la expr és NULL: la expressió conté errors (ERROS DE QUÈ??? LEXICS??)
     2. El tipusSub de la expr és diferent a t: s'esperava un valor int per exemple i es retorna boolean.
-    3.El tipusSub de la expr
-     */
+    3. El tipusSub de la expr és el mateix que t.
+    
+    */
    public boolean gestExpr(SymbolExpressioSimple expr, TipusSub t,int posicio){
-//        
-//        //TipusSub tipoExpr = expr.tsOperador();
-//        //System.out.println("TIPUS EXPRESSIO: "+expr.getTipusSubResultat());
-//        
-//        if(expr.getTipusSubResultat()==t){
-//            //System.out.println("CORRECTE");
-//
-            return true;
-//        }else{
-//            //System.out.println("INCORRECTE");
-//            //Ho afeigm al parser per identificar quin tipus de senténcia es incorrecte
-//            return false;
-//        }
-//        
+        
+        TipusSub tipoExpr = expr.getTipusSubResultat();
+        System.out.println("TIPUS EXPRESSIO: "+expr.getTipusSubResultat());
+        
+        // Cas 1: tipoExpr exp == NULL
+        if(tipoExpr == null){
+            System.out.println("ERROR");
+            return false;
+        // Cas 2: tipoExpr != t
+        }else if(tipoExpr != t){
+            System.out.println("EROR: S'esperava trobar un "+ t.toString() +" i s'ha trobat un " + tipoExpr.toString());
+            //Ho afeigm al parser per identificar quin tipus de senténcia es incorrecte
+            return false;
+        // Cas 3: tipoExpr == t
+        }
+        System.out.println("CORRECTE");
+        return true;
+        
     }
    public boolean isExprCorrecta(SymbolExpressioSimple expr,int posicio){
        return expr.getTipusSubResultat()!=null;
