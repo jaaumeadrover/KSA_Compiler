@@ -40,7 +40,7 @@ public class Main {
                 ///Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova.txt
                 ///home/diegofes/GitHub/KSA_Compiler/src/TESTING/1.Funcions/prova.txt
                 //C:\Users\Jaume\Desktop\UIB\Cursos\TERCER\1r quatri\COMPILADORS\PRÀCTICA KSA\KSA_Compiler\src\TESTING\1.Funcions\prova.txt
-                input = new FileReader("/home/diegofes/GitHub/KSA_Compiler/src/TESTING/1.Funcions/prova.txt");
+                input = new FileReader("C:\\Users\\Jaume\\Desktop\\UIB\\Cursos\\TERCER\\1r quatri\\COMPILADORS\\PRÀCTICA KSA\\KSA_Compiler\\src\\TESTING\\1.Funcions\\prova.txt");
                 //input = new InputStreamReader(System.in);
             }
             FileWriter writerErrors = new FileWriter("errors.txt");

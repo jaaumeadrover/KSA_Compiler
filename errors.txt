@@ -1,1 +1,5 @@
-ERROR Semántic, l'expressió de la declaració és incorrecte
+ERROR Semántic, expressió de tipus incorrecte. Linea: 2
+ERROR Semántic, la funció no retorna un INT
+ERROR Semántic, la variable  z, ja existeix. Linea: 8
+ERROR Semántic, l'expressió de la declaració és incorrecte. Linea: 9
+ERROR Semántic, Estas assignant un array com una variable 

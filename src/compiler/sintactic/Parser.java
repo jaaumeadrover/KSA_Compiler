@@ -629,12 +629,12 @@ class CUP$Parser$actions {
 		
                                                         int error = ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.CONST, 0);
                                                         //System.out.println("TAMANY TAULA SIMBOLS EXTERNA: "+ts.getMida());
-                                                        if(comprovaTipus.gestAsigDecl(iden.toString(),varinit)){
+                                                        if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                             if(error==0){
                                                                 RESULT=new SymbolVarDecl(true, t.getTipusSub(), iden.toString(),varinit);
                                                                 }else{
                                                                     RESULT=new SymbolVarDecl();
-                                                                    comprovaTipus.addError("ERROR Semántic, la constant  "+iden.toString()+", ja existeix");
+                                                                    comprovaTipus.addError("ERROR Semántic, la constant  "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
                                                                 }
                                                         } else{
                                                             RESULT=new SymbolVarDecl();
@@ -658,13 +658,14 @@ class CUP$Parser$actions {
 		SymbolVarInit varinit = (SymbolVarInit)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
                                                         if(varinit.isIsarray()){
-                                                                //System.out.println("Estic a la decl d'un array");
+                                                                System.out.println("Estic a la decl d'un array");
                                                                 int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0);
-                                                                if(comprovaTipus.gestAsigDecl(iden.toString(),varinit)){
+                                                                if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                                     if(error==1){
-                                                                  RESULT=new SymbolVarDecl(false,t.getTipusSub(),iden.toString(),varinit);
+                                                                        //
+                                                                        RESULT=new SymbolVarDecl(false,t.getTipusSub(),iden.toString(),varinit);
                                                                   }else{
-                                                                    comprovaTipus.addError("ERROR Semántic, la variable array "+iden.toString()+", ja existeix");
+                                                                    comprovaTipus.addError("ERROR Semántic, la variable array "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
                                                                     RESULT=new SymbolVarDecl();
                                                                   }
                                                                   }else{
@@ -673,11 +674,11 @@ class CUP$Parser$actions {
                                                             }else{
                                                                 //System.out.println("No Estic a la decl d'un array");
                                                                 int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.VAR,0);
-                                                                if(comprovaTipus.gestAsigDecl(iden.toString(),varinit)){
+                                                                if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                                 if (error==1){
                                                                     RESULT=new SymbolVarDecl(false,t.getTipusSub(),iden.toString(),varinit);
                                                                     }else{
-                                                                        comprovaTipus.addError("ERROR Semántic, la variable  "+iden.toString()+", ja existeix");
+                                                                        comprovaTipus.addError("ERROR Semántic, la variable  "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
                                                                         RESULT=new SymbolVarDecl();
                                                                     }
                                                                 } else{
@@ -808,7 +809,7 @@ class CUP$Parser$actions {
                                                                                         RESULT=new SymbolFuncDecl();
                                                                                     }
                                                                                 }else{
-                                                                                    comprovaTipus.addError("ERROR Semántic, la funció "+iden.toString()+", ja existeix");
+                                                                                    comprovaTipus.addError("ERROR Semántic, la funció "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
                                                                                     RESULT=new SymbolFuncDecl();
                                                                                 }
                                                                                 
@@ -855,7 +856,7 @@ if(s==null){
     RESULT =new SymbolProcDecl(iden.toString(), stats,funcCap);
     ts.afegeixSimbol(iden.toString(), TipusSub.NULL, Tipus.FUNC, 0);
 }else{
-    comprovaTipus.addError("ERROR Semántic, el procediment "+iden.toString()+", ja existeix");
+    comprovaTipus.addError("ERROR Semántic, el procediment "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
     RESULT=new SymbolProcDecl();
     }
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("procDecl",8, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-6)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -877,7 +878,7 @@ if(s==null){
                                                              if(error==1){
                                                                 RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());
                                                              }else{
-                                                                comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix");
+                                                                comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
                                                                 RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());
                                                              }
                                                              
@@ -902,7 +903,7 @@ if(s==null){
                                                             if(error==1){
                                                                 RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());
                                                             }else{
-                                                               comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix");
+                                                               comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
                                                                 RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());
                                                             }
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("ContCap",22, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1109,21 +1110,24 @@ if(s==null){
 		int operright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		SymbolOperacio oper = (SymbolOperacio)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-                                                            //Simbol s=ts.consulta(val.getIden());
+                                                            //Si el valor es correcte
                                                             if(!val.esBuit()){
                                                                 if(oper.isAssignacio()){
                                                                 //System.out.println("Estic a una assignacio: "+val.getIden());
                                                                     RESULT=new SymbolExpressioSimple(val, oper);
                                                                     if(comprovaTipus.gestAsig(val,oper)){
-                                                                        //System.out.println("Assignacio correcta");
+                                                                        System.out.println("Assignacio correcta");
                                                                        RESULT=new SymbolExpressioSimple(val, oper);
+                                                                       System.out.println("TIPUS EXPRESSIO:"+RESULT.getTipusSubResultat());
                                                                     }else{
-                                                                       // System.out.println("Assignacio incorrecta");
+                                                                       System.out.println("Assignacio incorrecta");
                                                                       RESULT=new SymbolExpressioSimple();
+                                                                      System.out.println("TIPUS EXPRESSIO:"+RESULT.getTipusSubResultat());
                                                                     }
                                                                 }else{
-                                                                    //System.out.println("No estic a una assignacio");
+                                                                    System.out.println("No estic a una assignacio:"+cur_token.left);
                                                                     RESULT=new SymbolExpressioSimple(val,oper);
+                                                                    System.out.println("TIPUS EXPRESSIO:"+RESULT.getTipusSubResultat());
                                                                 }
                                                             }else{
                                                                 RESULT=RESULT=new SymbolExpressioSimple();
@@ -1150,10 +1154,8 @@ if(s==null){
                                                     RESULT=new SymbolValor();
                                                 }
                                             }else{
-                                                comprovaTipus.addError("ERROR Semántic de la taula de simbols, La variable "+iden.toString()+" no existeix");
-                                                //he afegit null perque sinos el confonia amb el constructor de integer!
-                                                //THROWS EXCEPTION??????
-                                                RESULT=new SymbolValor(iden.toString(),TipusSub.INT);
+                                                comprovaTipus.addError("ERROR Semántic de la taula de simbols, La variable "+iden.toString()+" no existeix. Línea: "+cur_token.left);
+                                                RESULT=new SymbolValor(iden.toString(),TipusSub.NULL);
                                             }
                                          
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("valor",26, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1167,7 +1169,14 @@ if(s==null){
 		int arrleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int arrright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		SymbolArray arr = (SymbolArray)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		RESULT=new SymbolValor(arr);
+		
+                                                      Simbol s=ts.consulta(arr.getID());
+                                                      if(s!=null){
+                                                        RESULT=new SymbolValor(arr,s.getTipusSub());
+                                                      }else{
+                                                        RESULT=new SymbolValor();
+                                                      }
+                                                      
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("valor",26, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1204,10 +1213,10 @@ if(s==null){
 		int exprleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
 		int exprright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		SymbolExpressioSimple expr = (SymbolExpressioSimple)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
-		if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
-                                                         RESULT = new SymbolValor(expr);
+		if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN,cur_token.left)){
+                                                         RESULT = new SymbolValor(expr,true);
                                                 }else{
-                                                    comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte al fer la negació");
+                                                    comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte al fer la negació. Línea: "+cur_token.left);
                                                     RESULT=new SymbolValor(expr);
                                                   }
                                                   
@@ -1222,7 +1231,14 @@ if(s==null){
 		int subprogramleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int subprogramright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		SymbolSubProgramCall subprogram = (SymbolSubProgramCall)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		RESULT=new SymbolValor(subprogram);
+		  Simbol s=ts.consultaFunc(subprogram.getId());
+                                                        if(s!=null){
+                                                            RESULT=new SymbolValor(subprogram,s.getTipusSub());
+                                                        }else{
+                                                            System.out.println("No existeix funció");
+                                                            RESULT=new SymbolValor();
+                                                        }
+                                                        
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("valor",26, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1234,10 +1250,11 @@ if(s==null){
 		int exprleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
 		int exprright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		SymbolExpressioSimple expr = (SymbolExpressioSimple)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
-		if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
+		
+                                                    if(comprovaTipus.isExprCorrecta(expr,cur_token.left)){
                                                         RESULT = new SymbolValor(expr);
                                                     }else{
-                                                        comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte ");
+                                                        comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte. Linea: "+cur_token.left);
                                                         RESULT=new SymbolValor(expr);
                                                     }
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("valor",26, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1446,7 +1463,21 @@ if(s==null){
 		int idenleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).left;
 		int idenright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).right;
 		Object iden = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-2)).value;
-		RESULT = new SymbolSubProgramCall(iden.toString());
+		
+                                                      Simbol s= ts.consultaFunc(iden.toString());
+                                                      if(s!=null){
+                                                        //existeix la funció cridada
+                                                        //if necessita paràmetres --->errorSemantic
+
+                                                        //else
+
+                                                        RESULT=new SymbolSubProgramCall(iden.toString());
+                                                      }else{
+                                                        //no existeix la funció cridada
+                                                        System.out.println("No existeix la funció cridada");
+                                                        RESULT=new SymbolSubProgramCall();
+                                                      }
+                                                      
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("subProgramCall",18, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1657,12 +1688,12 @@ if(s==null){
 		int stateleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
 		int stateright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		SymbolStatementList state = (SymbolStatementList)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
-		if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
+		if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN,cur_token.left)){
                                                         RESULT = new SymbolWhileStatement(expr,state);
                                                         //System.out.print("Això ES CORRECTE AL WHILE");
                                                      }else{
                                                           RESULT = new SymbolWhileStatement();
-                                                          comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte a la senténcia WHILE");
+                                                          comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte a la senténcia WHILE. Linea: "+cur_token.left);
                                                     }
                                                     
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("whileStatement",12, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-6)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1679,11 +1710,11 @@ if(s==null){
 		int statesleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
 		int statesright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		SymbolStatementList states = (SymbolStatementList)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
-		if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
+		if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN,cur_token.left)){
                                              RESULT = new SymbolIfStatement(expr,states);
                                            }else{
                                               RESULT = new SymbolIfStatement();
-                                             comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte a la senténcia IF");
+                                             comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte a la senténcia IF. Linea: "+cur_token.left);
                                            }
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("ifStatement",16, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-6)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
@@ -1702,11 +1733,11 @@ if(s==null){
 		int statesleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
 		int statesright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		SymbolStatementList states = (SymbolStatementList)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
-		if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN)){
+		if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN,cur_token.left)){
                                                                       RESULT = new SymbolIfStatement(expr,states);
                                                                   }else{
                                                                        RESULT = new SymbolIfStatement();
-                                                                      comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte a la senténcia IF");
+                                                                      comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte a la senténcia IF. Linea: "+cur_token.left);
                                                                  }
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("ifStatement",16, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-10)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }

@@ -1,4 +1,12 @@
-main() {
-    bool y <- (1 + 2) * 1;
 
+func int hola(){
+    return 2+(2+true)+2+2+2;
+}
+
+main() {
+    int x <- int[2];
+    bool z <- 3<2;
+    bool z <- true;
+    bool y <- (1 + 2) * true;
+    x <- x[2];
 }

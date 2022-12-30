@@ -402,16 +402,20 @@ public class Scanner implements java_cup.runtime.Scanner {
      Construcció d'un symbol sense atribut associat.
      **/
     private ComplexSymbol symbol(int type) {
-        return new ComplexSymbol(ParserSym.terminalNames[type], type);
-    }
-    
-    /**
-     Construcció d'un symbol amb un atribut associat.
-     **/
-    private Symbol symbol(int type, Object value) {
-        return new ComplexSymbol(ParserSym.terminalNames[type], type, value);
-    }
-
+            ComplexSymbol s = new ComplexSymbol(ParserSym.terminalNames[type], type);
+            s.left = yyline;
+            s.right = yycolumn;
+            return s;
+        }
+        /**
+             Construcció d'un symbol amb un atribut associat.
+        **/
+        private ComplexSymbol symbol(int type, Object value) {
+            ComplexSymbol s = new ComplexSymbol(ParserSym.terminalNames[type], type, value);
+            s.left = yyline;
+            s.right = yycolumn;
+            return s;
+}
 
 
   /**

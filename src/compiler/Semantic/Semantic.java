@@ -24,7 +24,7 @@ public class Semantic {
     2. El tipusSub de la expr és diferent a t: s'esperava un valor int per exemple i es retorna boolean.
     3.El tipusSub de la expr
      */
-   public boolean gestExpr(SymbolExpressioSimple expr, TipusSub t){
+   public boolean gestExpr(SymbolExpressioSimple expr, TipusSub t,int posicio){
 //        
 //        //TipusSub tipoExpr = expr.tsOperador();
 //        //System.out.println("TIPUS EXPRESSIO: "+expr.getTipusSubResultat());
@@ -40,6 +40,9 @@ public class Semantic {
 //        }
 //        
     }
+   public boolean isExprCorrecta(SymbolExpressioSimple expr,int posicio){
+       return expr.getTipusSubResultat()!=null;
+   }
     
     public boolean gestFunc(TipusSub tfunc, SymbolReturn exprRtn){
         SymbolExpressioSimple expresioReturn = exprRtn.getExpr();
@@ -56,7 +59,7 @@ public class Semantic {
             return false;
         }
     }
-    public boolean gestAsigDecl(String iden, SymbolVarInit varinit){
+    public boolean gestAsigDecl(String iden, SymbolVarInit varinit,int posicio){
         Simbol id = ts.consulta(iden);
         TipusSub tipusSub = id.getTipusSub();
         Tipus tipus = id.getTipus();
@@ -67,7 +70,7 @@ public class Semantic {
                 //Es una constant
                 //ERROR
                 //System.out.println("La constant s'ha d'assignar quan es declara");
-                errors.add("ERROR Semántic, la constant s'ha d'assignar quan es declara");
+                errors.add("ERROR Semántic, la constant s'ha d'assignar quan es declara. Linea: "+posicio);
                 return false;
             }else{
                 //Es una variable
@@ -113,7 +116,7 @@ public class Semantic {
                 //Comprobar si es null
                 TipusSub exprTsub = expr.getTipusSubResultat();
                 if(exprTsub==null){
-                    errors.add("ERROR Semántic, l'expressió de la declaració és incorrecte");
+                    errors.add("ERROR Semántic, l'expressió de la declaració és incorrecte. Linea: "+posicio);
                     return false;
                 }
                 //S'inicia una variable o constant

@@ -79,6 +79,9 @@ public class SymbolOperacio {
     public TipusSub getTipusSub(){
         return tipusSBAnterior;
     }
+    public SymbolExpressioSimple getExpr(){
+        return this.expressioSimple;
+    }
 
    public boolean isEmpty(){
        return this.isEmpty;
