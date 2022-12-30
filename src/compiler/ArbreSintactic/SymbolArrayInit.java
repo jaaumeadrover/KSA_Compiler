@@ -6,26 +6,24 @@ import compiler.Symbols.TaulaSimbols.TipusSub;
 public class SymbolArrayInit {
 
     private TipusSub t;
-    private SymbolExpressioSimple expr;
+    private int integer;
 
-    public SymbolArrayInit(TipusSub t, SymbolExpressioSimple expr){
+    public SymbolArrayInit(TipusSub t, String integer){
         
         this.t = t;
-        this.expr = expr;
+        this.integer = Integer.parseInt(integer);
 
     }
 
-    public SymbolExpressioSimple getExpr() {
-        return expr;
+    public int getInteger() {
+        return integer;
     }
 
     public TipusSub getT() {
         return t;
     }
 
-    /*
-    public String codiTresAdreces(codiTresAdreces codi){
-        
+    public String codiTresAdreces(codi3A codi){
+        // Generar codi de 3 adreçes amb els mètodes pertinents de codi3A
     }
-    */
 }

@@ -14,13 +14,15 @@ public class Simbol {
     private Tipus tipus;
     private int fila;
     private int nivell;
+    private int dimensionalitat;
 
-    public Simbol(String idAutoIncrement, TipusSub tipoSub, Tipus tipus, int fila, int nivell) {
+    public Simbol(String idAutoIncrement, TipusSub tipoSub, Tipus tipus, int fila, int nivell,int dimensio) {
         this.idAutoIncrement = idAutoIncrement;
         this.tiopusSub = tipoSub;
         this.tipus = tipus;
         this.fila = fila;
         this.nivell = nivell;
+        this.dimensionalitat=dimensio;
     }
 
     public boolean equals(Simbol simbol){

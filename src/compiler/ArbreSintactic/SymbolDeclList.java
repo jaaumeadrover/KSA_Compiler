@@ -8,7 +8,6 @@
 package compiler.ArbreSintactic;
 
 import java_cup.runtime.ComplexSymbolFactory.ComplexSymbol;
-
 import compiler.sintactic.ParserSym;
 import compiler.GeneracioCodiIntermedi.*;
 import compiler.Symbols.TaulaSimbols.Tipus;
@@ -31,12 +30,12 @@ public class SymbolDeclList  {
         //System.out.println("Soc un Declist"); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-//    public void codiTresAdreces(codiTresAdreces codi){
-//        this.declaracio.codiTresAdreces(codi);
-//        //mentre quedin declaracions a generar
-//        if (llistaDecl != null){
-//            this.llistaDecl.codiTresAdreces(codi);
-//        }
-//    }
+    public void codiTresAdreces(codiTresAdreces codi){
+        this.declaracio.codiTresAdreces(codi);
+        //mentre quedin declaracions a generar
+        if (llistaDecl != null){
+            this.llistaDecl.codiTresAdreces(codi);
+        }
+    }
 
 }

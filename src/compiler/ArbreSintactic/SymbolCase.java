@@ -19,4 +19,9 @@ public class SymbolCase  {
     public SymbolExpressioSimple getExpr() {
         return expressioSimple;
     }
+
+    public void codiTresAdreces(codi3A codi){
+        expressioSimple.codiTresAdreces(codi);
+        statementList.codiTresAdreces(codi);
+    }
 }

@@ -20,7 +20,7 @@ public class SymbolProgram {
 //        if (declList != null){
 //            codi.començaDecl();
 //            this.declList.codiTresAdreces(codi);
-//            codi.finaliztaDecl();
+//            codi.acabaDecl();
 //        }
 //        this.statementList.codiTresAdreces(codi);
 //

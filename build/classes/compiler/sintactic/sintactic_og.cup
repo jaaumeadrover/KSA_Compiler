@@ -198,7 +198,7 @@ decl ::= varDecl:var smcol    {:RESULT = new SymbolDecl(var,null,null);:}  //NO 
     ;
 //DECLARACIÓ VARIABLES
 varDecl ::=  r_const type:t id:iden varInit:varinit     {:
-                                                        int error = ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.CONST, 0);
+                                                        int error = ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.CONST, 0, 0);
                                                         //System.out.println("TAMANY TAULA SIMBOLS EXTERNA: "+ts.getMida());
                                                         if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                             if(error==0){
@@ -213,7 +213,8 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
     |type:t id:iden varInit:varinit                    {:
                                                         if(varinit.isIsarray()){
                                                                 //System.out.println("Estic a la decl d'un array");
-                                                                int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0);
+                                                                int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0,varinit.getArray().getInteger());
+                                                                System.out.println("Dimensio: "+varinit.getArray().getInteger());
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                                     if(error==1){
                                                                         //
@@ -227,7 +228,7 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                                   }
                                                             }else{
                                                                 //System.out.println("No Estic a la decl d'un array");
-                                                                int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.VAR,0);
+                                                                int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.VAR,0,0);
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                                     if (error==1){
                                                                         RESULT=new SymbolVarDecl(false,t.getTipusSub(),iden.toString(),varinit);
@@ -248,7 +249,7 @@ varInit ::= asig exprSimple:expr             {:RESULT =new SymbolVarInit(expr);:
     //|asig subProgramCall                 {:RESULT =new SymbolVarInit();:}
     ;
 //ARRAYS!
-arrayInit ::=type:t lop exprSimple:expr lclose {:RESULT =new  SymbolArrayInit(t.getTipusSub(),expr);:}
+arrayInit ::=type:t lop integer:integer lclose {:RESULT =new  SymbolArrayInit(t.getTipusSub(),integer.toString());:}
 ;//inicialització d'un array: 'nom' [arrayEllist]
 
 type ::= r_int                 {:RESULT=new SymbolType(TipusSub.INT);:}
@@ -268,7 +269,7 @@ funcDecl ::= r_function M type:t  id:iden funcCap:funcCap brop statementList:sta
                                                                                     //comporvar si la funció retorna el mateix tipus
                                                                                     if(comprovaTipus.gestFunc(t.getTipusSub(),rtn)){
                                                                                         RESULT=new SymbolFuncDecl(t.getTipusSub(), iden.toString(), stats, rtn,funcCap);
-                                                                                        ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.FUNC, 0);
+                                                                                        ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.FUNC, 0,0);
                                                                                     }else{
                                                                                         RESULT=new SymbolFuncDecl();
                                                                                     }
@@ -285,14 +286,14 @@ procDecl ::= r_procedure M id:iden funcCap:funcCap brop statementList:stats brcl
 {:Simbol s=ts.consultaFunc(iden.toString());
 if(s==null){
     RESULT =new SymbolProcDecl(iden.toString(), stats,funcCap);
-    ts.afegeixSimbol(iden.toString(), TipusSub.NULL, Tipus.FUNC, 0);
+    ts.afegeixSimbol(iden.toString(), TipusSub.NULL, Tipus.FUNC, 0,0);
 }else{
     comprovaTipus.addError("ERROR Semántic, el procediment "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
     RESULT=new SymbolProcDecl();
     }:}; //declaració d'un procediment: proc 'nom' parametres {...}
 
 ContCap ::= lparen type:t id:iden              {:
-                                                             int error= ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0);
+                                                             int error= ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0);
                                                              if(error==1){
                                                                 RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());
                                                              }else{
@@ -300,7 +301,7 @@ ContCap ::= lparen type:t id:iden              {:
                                                                 RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());
                                                              }
                                                              :}//tancam parentesis i definim els paràmetres
-    | ContCap:contcap com  type:t id:iden       {:          int error =  ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0);
+    | ContCap:contcap com  type:t id:iden       {:          int error =  ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0);
                                                             if(error==1){
                                                                 RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());
                                                             }else{

@@ -36,7 +36,7 @@ public class SymbolVarDecl {
     }
 
 
-//    public String codiTresAdreces(CodiTresAdreces codi){
+//    public String codiTresAdreces(codiTresAdreces codi){
 //        //nom=id de la classe
 //        //if (this.varInit != null){
 //           // String inicialitzacio = this.varInit.codiTresAdreces(codi);

@@ -6,6 +6,7 @@ public class SymbolStatement {
 
     private SymbolVarDecl vard;
     private SymbolExpressioSimple expr;
+    private
     private SymbolForIteration f;
     private SymbolWhileStatement w;
     private SymbolInputStatement input;
@@ -52,26 +53,26 @@ public class SymbolStatement {
         this.index=8;
     }
 
-//    public void codiTresAdreces(codiTresAdreces codi) {
-//        switch (index) {
-//            case 0:
-//                break;
-//            case 1:
-//                this.vard.codiTresAdreces(codi);
-//            case 2:
-//                this.expr.codiTresAdreces(codi);
-//            case 3:
-//                this.f.codiTresAdreces(codi);
-//            case 4:
-//                this.w.codiTresAdreces(codi);
-//            case 5:
-//                this.input.codiTresAdreces(codi);
-//            case 6:
-//                this.print.codiTresAdreces(codi);
-//            case 7:
-//                this.i.codiTresAdreces(codi);
-//            case 8:
-//                this.s.codiTresAdreces(codi);
-//        }
-//    }
+    public void codiTresAdreces(codiTresAdreces codi) {
+        switch (index) {
+            case 0:
+                break;
+            case 1:
+                this.vard.codiTresAdreces(codi);
+            case 2:
+                this.expr.codiTresAdreces(codi);
+            case 3:
+                this.f.codiTresAdreces(codi);
+            case 4:
+                this.w.codiTresAdreces(codi);
+            case 5:
+                this.input.codiTresAdreces(codi);
+            case 6:
+                this.print.codiTresAdreces(codi);
+            case 7:
+                this.i.codiTresAdreces(codi);
+            case 8:
+                this.s.codiTresAdreces(codi);
+        }
+    }
 }

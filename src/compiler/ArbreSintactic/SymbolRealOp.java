@@ -5,6 +5,7 @@ import compiler.GeneracioCodiIntermedi.*;
 public class SymbolRealOp  {
     private Operacions realOp;
     private TipusSub tipus;
+
     public SymbolRealOp(Operacions op){
         this.realOp = op;
         this.tipus = TipusSub.BOOLEAN;

@@ -1,0 +1,6 @@
+1.Com es fa l'emmagatzemament dels arrays a la taula de Simbols -> no entenem quins atributs o com
+  s'ha d'especificar
+
+2. Quins tipus d'operands hauríem de tenir per a la gen de codi3A?
+
+3. Premisses bàsiques per a generar. Hem provat lo de sa teoria i no ho entenem.

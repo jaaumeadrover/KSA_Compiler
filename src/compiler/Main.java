@@ -78,6 +78,12 @@ public class Main {
                 lineaerror = br.readLine();
             }
             br.close();
+            ArbreSintactic arbre = parser.getArbreSintac();
+            codiTresAdreces codi = arbre.generarCodiTresAdreces();
+            String codiIntermedi = codi.toString();
+            FileWriter codiIntermediFile = new FileWriter("codiIntermedi.txt");
+            codiIntermediFile.write(codiIntermedi);
+
             
         } catch(Exception e) {
             System.err.println("error: "+e);

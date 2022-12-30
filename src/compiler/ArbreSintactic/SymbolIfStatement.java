@@ -21,7 +21,41 @@ public class SymbolIfStatement {
     public SymbolIfStatement(){
         
     }
-      public SymbolIfStatement( codiTresAdreces codi){
-        
+    public void codiTresAdreces(codiTresAdreces codi) {
+        if (this.statesElse==null){
+            String condicio = this.expr.codiTresAdreces(codi);
+
+            String etiqueta1 = codi.novaEtiqueta();
+            String etiqueta2 = codi.novaEtiqueta();
+
+            codi.generar(TipusInstruccionsCTA.EQ, condicio, Integer.toString(-1), etiqueta1);
+            codi.generar(TipusInstruccionsCTA.GOTO, null, null, etiqueta2);
+            codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta1);
+
+            this.statesIf.codiTresAdreces(codi);
+            codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta2);
+
+    }else {
+            String condicio = this.expr.codiTresAdreces(codi);
+
+            String etiqueta1 = codi.novaEtiqueta();//sentencias if
+            String etiqueta2 = codi.novaEtiqueta();//sentencias else
+            String etiqueta3 = codi.novaEtiqueta();//acaba
+
+            codi.generar(TipusInstruccionsCTA.EQ, condicio, Integer.toString(-1), etiqueta1);
+            codi.generar(TipusInstruccionsCTA.GOTO, null, null, etiqueta2);
+            //IF
+            codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta1);
+            this.statesIf.codiTresAdreces(codi);
+            codi.generar(TipusInstruccionsCTA.GOTO, null, null, etiqueta3);
+
+            //ELSE
+            codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta2);
+            this.statesElse.codiTresAdreces(codi);
+
+            //ACABAMENT
+            codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta3);
+        }
+
     }
 }

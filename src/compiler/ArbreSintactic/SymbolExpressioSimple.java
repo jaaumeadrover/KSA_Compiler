@@ -60,8 +60,9 @@ public class SymbolExpressioSimple {
             return "";
         }
     }
-/*
-    public String codiTresAdreces(codiTresAdreces codi){
+
+    public void codiTresAdreces(codi3A codi){
+        this.valor.codiTresAdreces();
         if (this.expressioSimple != null){
             String desti = codi.novaVariable()
             this.expressioSimple.codiTresAdreces(codi)
@@ -69,6 +70,6 @@ public class SymbolExpressioSimple {
         }else
     }
 
- */
+
 
 }

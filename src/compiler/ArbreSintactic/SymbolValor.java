@@ -11,7 +11,7 @@ public class SymbolValor {
     private boolean esBuit;
     private SymbolSubProgramCall subProgramCall;
     private SymbolExpressioSimple exprSimple;
-
+    private int index;
     private TipusSub tipusSub;
 
     /*
@@ -20,6 +20,7 @@ public class SymbolValor {
    public SymbolValor(String id, TipusSub tipusSub){
         this.iden=id;
         this.tipusSub=tipusSub;
+        this.index = 1;
    }
     /*
     Cas valor en el qual tenim un array
@@ -28,6 +29,7 @@ public class SymbolValor {
         this.array=arr;
         this.iden = arr.getID();
         this.tipusSub=tipusSub;
+        this.index = 2;
     }
 
     /*
@@ -38,6 +40,7 @@ public class SymbolValor {
         iden=integer.toString();
         System.out.println("Soc un integer: "+iden);
         tipusSub=TipusSub.INT;
+        this.index = 3;
     }
     /*
     Cas valor equival a un booleam
@@ -50,6 +53,7 @@ public class SymbolValor {
         }
         System.out.println("He utilitzat el constructor de boolean!");
         this.tipusSub=TipusSub.BOOLEAN;
+        this.index = 4;
     }
 
     /*
@@ -58,6 +62,7 @@ public class SymbolValor {
     public SymbolValor(SymbolSubProgramCall subProgCall,TipusSub tipus){
         this.subProgramCall=subProgCall;
         this.tipusSub=tipus;
+        this.index = 5;
     }
     
     /*
@@ -71,16 +76,19 @@ public class SymbolValor {
         }else{
             this.tipusSub=TipusSub.NULL;
         }
+        this.index = 6;
         
     }
     //Constructor en la produccio lparen exprSimple rparen
     public SymbolValor(SymbolExpressioSimple expr){
         this.exprSimple=expr;
         this.tipusSub=expr.getTipusSubResultat();
+        this.index = 7;
     }
 
     public SymbolValor() {
         this.esBuit=true;
+        this.index = 8;
     }
     
     public int getValorInt(){
@@ -104,5 +112,33 @@ public class SymbolValor {
         s+="id: "+iden+",valor: "+"";
         
         return s;
+    }
+
+    public void codiTresAdreces(codiTresAdreces codi) {
+        switch (index) {
+            case 1:
+                //generar codi de una variable identificador
+            case 2:
+                //generar codi de una variable array
+
+                //x = arr.getIndex();
+                //variable_temporal=(x-1)*(MidaTipusArray);
+                //cas indexat  ->  s'utilitza per assignar valor a altra variable.
+
+                //cas assignat ->  s'hi assigna un valor en operacio
+
+            case 3:
+                //generar codi de un integer
+            case 4:
+                //generar codi de un boolean
+            case 5:
+                //generar crida a subprograma
+            case 6:
+                //generar instruccio not del boolean
+            case 7:
+                //generar codi de una expressió simple
+            case 8:
+                //constructor buit
+        }
     }
 }

@@ -13,4 +13,8 @@ public class SymbolBoolOp {
     public TipusSub getTipus(){
         return tipus;
     }
+
+    public void codiTresAdreces(codi3A codi){
+        // generar codi 3 adreces amb els mètodes de la classe
+    }
 }

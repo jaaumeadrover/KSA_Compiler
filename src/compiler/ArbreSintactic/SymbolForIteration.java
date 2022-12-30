@@ -18,4 +18,29 @@ public class SymbolForIteration {
     public SymbolForIteration(){
         
     }
+
+    public void codiTresAdreces(codi3A codi){
+        String condicio = this.expr.codiTresAdreces(codi);
+
+        String etiqueta1 = codi.novaEtiqueta();//expresion
+        String etiqueta2 = codi.novaEtiqueta();//sentencias
+        String etiqueta3 = codi.novaEtiqueta();//acaba
+
+        init.codiTresAdreces(codi);
+
+        codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta1);
+        String condicio = this.expr.codiTresAdreces(codi);
+
+        codi.generar(TipusInstruccionsCTA.EQ, condicio, Integer.toString(-1), etiqueta2);
+        codi.generar(TipusInstruccionsCTA.GOTO, null, null, etiqueta3);
+
+        codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta2);
+        states.codiTresAdreces(codi);
+
+        postexpression.codiTresAdreces(codi);
+
+        codi.generar(TipusInstruccionsCTA.GOTO, null, null, etiqueta1);
+        codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta3);
+
+    }
 }

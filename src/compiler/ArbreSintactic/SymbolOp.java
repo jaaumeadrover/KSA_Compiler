@@ -32,4 +32,16 @@ public class SymbolOp {
         return tipusOperador;
     }
 
+    public void codiTresAdreces(){
+        if(boolOP != null){
+            boolOP.codiTresAdreces(codi);
+        }
+        if(boolOP != null){
+            aritOp.codiTresAdreces(codi);
+        }
+        if(boolOP != null){
+            realOP.codiTresAdreces(codi);
+        }
+    }
+
 }

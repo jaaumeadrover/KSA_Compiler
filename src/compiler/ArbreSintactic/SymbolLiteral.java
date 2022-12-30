@@ -13,10 +13,10 @@ public class SymbolLiteral  {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-//    public String codiTresAdreces(codiTresAdreces codi){
-//        if(this.valor!=null){
-//            return this.valor.codiTresAdreces(codi);
-//        }
-//        return null;
-//    }
+    public String codiTresAdreces(codiTresAdreces codi){
+        if(this.valor!=null){
+            return this.valor.codiTresAdreces(codi);
+        }
+        return null;
+    }
 }

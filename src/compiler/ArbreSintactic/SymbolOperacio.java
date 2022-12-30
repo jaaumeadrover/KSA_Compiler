@@ -89,7 +89,7 @@ public class SymbolOperacio {
    public boolean isAssignacio(){
        return this.esAssignacio;
    }
-    public SymbolVarInit getVarInit() {
+   public SymbolVarInit getVarInit() {
         return simbol;
     }
 }

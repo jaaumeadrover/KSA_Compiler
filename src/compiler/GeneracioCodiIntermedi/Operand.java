@@ -6,7 +6,6 @@ package compiler.GeneracioCodiIntermedi;
     DATA CREACIÓ: 26/12/2022
  */
 public class Operand {
-
     private OperandsCTA tipus;
     private String operand;
 
@@ -16,7 +15,6 @@ public class Operand {
     }
 
     //GETTERS
-
     public OperandsCTA getTipus() {
         return this.tipus;
     }

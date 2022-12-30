@@ -28,20 +28,22 @@ public class Semantic {
    public boolean gestExpr(SymbolExpressioSimple expr, TipusSub t,int posicio){
         
         TipusSub tipoExpr = expr.getTipusSubResultat();
-        System.out.println("TIPUS EXPRESSIO: "+expr.getTipusSubResultat());
+        //System.out.println("TIPUS EXPRESSIO: "+expr.getTipusSubResultat());
         
         // Cas 1: tipoExpr exp == NULL
         if(tipoExpr == null){
-            System.out.println("ERROR");
+
+            errors.add("ERROR Semàntic: Expressió incorrecte. Linea: "+posicio);
             return false;
         // Cas 2: tipoExpr != t
         }else if(tipoExpr != t){
             System.out.println("EROR: S'esperava trobar un "+ t.toString() +" i s'ha trobat un " + tipoExpr.toString());
+            errors.add("ERROR Semàntic: S'esperava trobar un "+ t.toString() +" i s'ha trobat un " + tipoExpr.toString());
             //Ho afeigm al parser per identificar quin tipus de senténcia es incorrecte
             return false;
         // Cas 3: tipoExpr == t
         }
-        System.out.println("CORRECTE");
+        //System.out.println("CORRECTE");
         return true;
         
     }
@@ -88,32 +90,9 @@ public class Semantic {
             if(varinit.isIsarray()){
                 //S'inicia un array
                 SymbolArrayInit arrayInit = varinit.getArray();
-                SymbolExpressioSimple exprArray = arrayInit.getExpr();
+                //SymbolExpressioSimple exprArray = arrayInit.getExpr();
                 TipusSub arraytsub = arrayInit.getT();
-                //exprArray.setTsResultat();
-                TipusSub exprTsub = exprArray.getTipusSubResultat();
-                if(!(tipus.equals(Tipus.ARRAY))){
-                    errors.add("ERROR Semántic, Aixó no es un array");
-                    return false;
-                }
-                //expressió incorrecta
-                if(exprTsub==null){
-                    errors.add("ERROR Semántic, aquesta expressió es incorrecte");
-                    return false;
-                }else{
-                    //tamany array correcte? [i]
-                    if(exprTsub.equals(TipusSub.INT)){
-                        if(arraytsub.equals(tipusSub)){
-                            return true;
-                        }else{
-                            errors.add("ERROR Semántic, el tipus de l'array no coincideix");
-                            return false;
-                        }
-                    }else{
-                        errors.add("ERROR Semántic, El tamany de l'array ha de ser un integer");
-                        return false;
-                    }
-                }
+                return true;
             //No es array
             }else{
                 SymbolExpressioSimple expr = varinit.getExpr();
@@ -152,36 +131,13 @@ public class Semantic {
         }
         //Es array
         if(varinit.isIsarray()){
+            //s'esta assignant un array a una variable que no ho es
             if(!(tipus.equals(Tipus.ARRAY))){
                 errors.add("ERROR Semántic, la variable no es un array !!");
                 return false;
             }
 
-            //S'inicia un array
-            SymbolArrayInit arrayInit = varinit.getArray();
-            SymbolExpressioSimple exprArray = arrayInit.getExpr();
-            TipusSub arraytsub = arrayInit.getT();
-            //exprArray.setTsResultat();
-            TipusSub exprTsub = exprArray.getTipusSubResultat();
-
-            //expressió incorrecta
-            if(exprTsub==null){
-                errors.add("ERROR Semántic, l'expressió no es correcte");
-                return false;
-            }else{
-                //tamany array correcte? [i]
-                if(exprTsub.equals(TipusSub.INT)){
-                    if(arraytsub.equals(tipusSub)){
-                        return true;
-                    }else{
-                        errors.add("ERROR Semántic, el tipus no coincideix");
-                        return false;
-                    }
-                }else{
-                    errors.add("ERROR Semántic, el tamany de l'array ha de ser un integer");
-                    return false;
-                }
-            }
+            return true;
             //No es array
         }else{
             
@@ -210,6 +166,7 @@ public class Semantic {
         
     }
     }
+    
     public boolean AsigExpr(SymbolOperacio operacio){
         SymbolVarInit varinit = operacio.getVarInit();
         if (varinit == null){

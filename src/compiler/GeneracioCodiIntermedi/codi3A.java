@@ -18,7 +18,7 @@ public class codi3A{
         return "e"+ne;
     }
 
-    public void generar(Operador a,Operand op1,Operand op2,String dest){
+    public void generar(TipusOperacionsCTA a,Operand op1,Operand op2,String dest){
         //si generam una declaració quan no hi ha mètodes actius
         if(esDeclaracio && npa==0){
             constant.add(new Instruccio(a,op1,op2,dest));
@@ -27,6 +27,7 @@ public class codi3A{
             codi.add(new Instruccio(a,op1,op2,dest) );
         }
     }
+
     public void començaDecl(){
         generar(Operador.GOTO, null, null, "run");
         this.esDeclaracio=true;
@@ -46,6 +47,14 @@ public class codi3A{
         } else {
             return TipusSub.BOOLEAN;
         }
+    }
+    @Override
+    public String toString(){
+        s = "";
+        for (int i = 0; i <codi.size(); i++) {
+            s += codi.get(i).toString+"\n";
+        }
+        return s;
     }
 }
 

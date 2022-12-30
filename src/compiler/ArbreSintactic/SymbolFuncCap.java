@@ -13,4 +13,10 @@ public class SymbolFuncCap {
         this.contcap=contcap;
         //System.out.println("soy un SymbolFuncCap");
     }
+
+    public void codiTresAdreces(codi3A codi){
+        if(contcap != null){
+            contcap.codiTresAdreces(codi);
+        }
+    }
 }

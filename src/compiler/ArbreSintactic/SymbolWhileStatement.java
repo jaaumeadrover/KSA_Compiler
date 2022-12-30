@@ -16,22 +16,23 @@ public class SymbolWhileStatement {
     }
 
     public String codiTresAdreces(codiTresAdreces codi){
-       //String etiqueta1=codi.novaEtiqueta;
-        //codi.generar(Operador.SKIP,null,null,etiqueta1)
 
-        //String expr=this.expr.codiTresAdreces(codi) --> treim el codi 3A de la condicio del bucle
-        //String etiqueta2=codi.novaEtiqueta;
-        //codi.generar(Operador.IGUALES, expr, Integer.toString(-1), etiqueta2);
-        //String etiqueta3=codi.novaEtiqueta;
+        String etiqueta1=codi.novaEtiqueta;
+        codi.generar(Operador.SKIP,null,null,etiqueta1)
 
-        //codi.generar(Operador.GOTO, null, null, etiqueta3);
-        //codi.generar(Operador.SKIP, null, null, etiqueta2);
+        String expr = this.expr.codiTresAdreces(codi)
+        String etiqueta2=codi.novaEtiqueta;
+        codi.generar(Operador.IGUALES, expr, Integer.toString(-1), etiqueta2);
+        String etiqueta3=codi.novaEtiqueta;
 
-        //this.state.codiTresAdreces(codi) --> treim el codi 3A de les sentencies dins del bucle
+        codi.generar(Operador.GOTO, null, null, etiqueta3);
+        codi.generar(Operador.SKIP, null, null, etiqueta2);
 
-        // Salto para comprobar la condicion.
-        //codi.generar(Operador.GOTO, null, null, etiqueta1);
-        //ctd.generar(Operador.SKIP, null, null, etiqueta3);
+        this.statementList.codiTresAdreces(codi)
+
+        //Comprovam la condicio
+        codi.generar(Operador.GOTO, null, null, etiqueta1);
+        ctd.generar(Operador.SKIP, null, null, etiqueta3);
         return null;
 
 

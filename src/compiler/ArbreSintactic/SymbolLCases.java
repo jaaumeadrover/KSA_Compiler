@@ -24,4 +24,8 @@ public class SymbolLCases {
     public SymbolLCases getLCases() {
         return lcases;
     }
+
+    public void codiTresAdreces(codi3A codi){
+        cas.codiTresAdreces(codi);
+    }
 }

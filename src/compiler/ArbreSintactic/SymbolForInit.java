@@ -19,4 +19,8 @@ public class SymbolForInit {
     public SymbolVarDecl getVarDecl(){
         return this.declaracioVar;
     }
+
+    public void codiTresAdreces(codi3A codi){
+        this.declaracioVar.codiTresAdreces(codi);
+    }
 }

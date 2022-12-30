@@ -21,4 +21,9 @@ public class SymbolArray {
     /*
     public String codiTresAdreces
      */
+
+    public void codiTresAdreces(codi3A codi){
+        ID.codiTresAdreces(codi);
+        expressioSimple.codiTresAdreces(codi);
+    }
 }

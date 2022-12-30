@@ -14,16 +14,16 @@ public class SymbolDecl  {
         System.out.println("SOC UN SYMBOLDECL");
     }
 
-//    public void codiTresAdreces(codiTresAdreces codi){
-//        //si és variable
-//        if (varDecl != null){
-//            varDecl.codiTresAdreces(codi);
-//        //si és funció
-//        }else if (funcDecl != null){
-//            funcDecl.codiTresAdreces(codi);
-//        //si és procediment
-//        } else if (procDecl != null) {
-//            proDecl.codiTresAdreces(codi);
-//        }
-//    }
+    public void codiTresAdreces(codiTresAdreces codi){
+        //si és variable
+        if (varDecl != null){
+            varDecl.codiTresAdreces(codi);
+        //si és funció
+        }else if (funcDecl != null){
+            funcDecl.codiTresAdreces(codi);
+        //si és procediment
+        } else if (procDecl != null) {
+            proDecl.codiTresAdreces(codi);
+        }
+    }
 }
