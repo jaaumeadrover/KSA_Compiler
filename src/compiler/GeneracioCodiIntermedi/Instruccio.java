@@ -61,7 +61,7 @@ public class Instruccio{
         this.temporal=t;
     }
 
-    //Metode toStrong
+    //Metode toString
     @Override
     public String toString() {
         return "[" + tipoInstruccio.toString() + ", " + param1 +
