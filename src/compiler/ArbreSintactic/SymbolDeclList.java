@@ -27,7 +27,7 @@ public class SymbolDeclList  {
     }
 
     public SymbolDeclList() {
-        //System.out.println("Soc un Declist"); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //System.out.println("Soc un Declist");
     }
 
     public void codiTresAdreces(codiTresAdreces codi){

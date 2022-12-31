@@ -17,4 +17,8 @@ public class SymbolSubProgramContCall{
         this.subProgramContCall=subContCall;
         this.expressioSimple=expr;
     }
+
+    public String codiTresAdreces(){
+
+    }
 }

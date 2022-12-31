@@ -38,7 +38,7 @@ public class SymbolValor {
     public SymbolValor(Object integer){
         inte=Integer.parseInt(integer.toString()); //passam text a int
         iden=integer.toString();
-        System.out.println("Soc un integer: "+iden);
+        //System.out.println("Soc un integer: "+iden);
         tipusSub=TipusSub.INT;
         this.index = 3;
     }
@@ -48,10 +48,12 @@ public class SymbolValor {
     public SymbolValor(String b){
         if(b.equals("true")){
             this.b=true;
+            this.iden = "true";
         }else{
             this.b=false;
+            this.
         }
-        System.out.println("He utilitzat el constructor de boolean!");
+        //System.out.println("He utilitzat el constructor de boolean!");
         this.tipusSub=TipusSub.BOOLEAN;
         this.index = 4;
     }
@@ -114,10 +116,11 @@ public class SymbolValor {
         return s;
     }
 
-    public void codiTresAdreces(codiTresAdreces codi) {
+    public String codiTresAdreces(codi3A codi) {
         switch (index) {
             case 1:
                 //generar codi de una variable identificador
+                return iden;
             case 2:
                 //generar codi de una variable array
 
@@ -129,12 +132,21 @@ public class SymbolValor {
 
             case 3:
                 //generar codi de un integer
+                return iden;
             case 4:
                 //generar codi de un boolean
+                return String.valueOf(this.b);
             case 5:
                 //generar crida a subprograma
+                if(this.subProgramCall.){
+
+                }
+                codi.generar(TipusInstruccionsCTA.CALL,null,null,this.subProgramCall.getId());
+
             case 6:
                 //generar instruccio not del boolean
+                String operand1=this.exprSimple.codiTresAdreces();
+                codi.generar(TipusInstruccionsCTA.NOT,operand1,null,null);
             case 7:
                 //generar codi de una expressió simple
             case 8:

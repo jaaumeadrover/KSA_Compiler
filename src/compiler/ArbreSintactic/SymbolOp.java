@@ -9,7 +9,7 @@ Classe SymbolOperació:
  */
 public class SymbolOp {
     private SymbolBoolOp boolOP;
-    private SymbolAritOp aritOp;
+    private SymbolAritOp aritOP;
     private SymbolRealOp realOP;
     private char tipusOperador;
 
@@ -20,7 +20,7 @@ public class SymbolOp {
     }
 
     public SymbolOp(SymbolAritOp oper){
-        this.aritOp=oper;
+        this.aritOP=oper;
         this.tipusOperador='A';
     }
 
@@ -32,15 +32,13 @@ public class SymbolOp {
         return tipusOperador;
     }
 
-    public void codiTresAdreces(){
+    public TipusInstruccionsCTA codiTresAdreces(codi3A codi){
         if(boolOP != null){
-            boolOP.codiTresAdreces(codi);
-        }
-        if(boolOP != null){
-            aritOp.codiTresAdreces(codi);
-        }
-        if(boolOP != null){
-            realOP.codiTresAdreces(codi);
+            return boolOP.codiTresAdreces(codi);
+        }else if(aritOP != null){
+            return aritOp.codiTresAdreces(codi);
+        }else if(realOP != null){
+            return realOP.codiTresAdreces(codi);
         }
     }
 

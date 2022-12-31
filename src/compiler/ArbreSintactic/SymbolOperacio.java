@@ -15,7 +15,7 @@ public class SymbolOperacio {
 
     private SymbolOp operador;
     private SymbolExpressioSimple expressioSimple;
-    private SymbolVarInit simbol;
+    private SymbolVarInit varInit;
     private TipusSub tipusSBAnterior;
     private boolean isEmpty;
     private boolean esAssignacio;
@@ -24,7 +24,7 @@ public class SymbolOperacio {
     Cas en que symbol operació agafa VarInit que pot ser lambda.
     */
     public SymbolOperacio(SymbolVarInit simbol){
-        this.simbol = simbol;
+        this.varInit = simbol;
         
         if(!simbol.esBuit()){
             this.esAssignacio=true;
@@ -83,13 +83,28 @@ public class SymbolOperacio {
         return this.expressioSimple;
     }
 
-   public boolean isEmpty(){
+    public boolean isEmpty(){
        return this.isEmpty;
    }
-   public boolean isAssignacio(){
+    public boolean isAssignacio(){
        return this.esAssignacio;
    }
-   public SymbolVarInit getVarInit() {
-        return simbol;
+    public SymbolVarInit getVarInit() {
+        return varInit;
     }
+
+    public void codiTresAdreces(codi3A codi){
+        // Cas op expressioSimple
+        if(operador != null){
+            TipusInstruccionsCTA op = operador.codiTresAdreces(codi);
+            //codi.genera(op, null, null, null);
+            expressioSimple.codiTresAdreces(codi);
+            return op;
+        // Cas VARINIT
+        }else{
+            varInit.codiTresAdreces(codi);
+        }
+    }
+
+
 }

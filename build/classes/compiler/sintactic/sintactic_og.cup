@@ -316,7 +316,13 @@ statementList ::= statement:stat statementList:stats {:RESULT= new SymbolStateme
     ;
 
 statement ::= varDecl:vard smcol         {:RESULT=new SymbolStatement(vard);:}
-    |exprSimple:expr smcol               {:RESULT=new SymbolStatement(expr);:}
+    |exprSimple:expr smcol               {:
+    if (expr.getOperacio().isAssignacio()){
+        RESULT=new SymbolStatement(expr);
+    }else{
+        comprovaTipus.addError("ERROR Semántic, senténcia incorrecte Linea: "+cur_token.left);
+        RESULT=new SymbolStatement();
+    }:}
     |forIteration:f                      {:RESULT=new SymbolStatement(f);:}
     |whileStatement:w                    {:RESULT=new SymbolStatement(w);:}
     |inputStatement:input smcol          {:RESULT=new SymbolStatement(input);:}
@@ -337,8 +343,7 @@ literal ::=          string {:RESULT = new SymbolLiteral(null);:}
 
 
 //EXPRESSIONS
-exprSimple ::=valor:val operacio:oper                              {:
-                                                            //Si el valor es correcte
+exprSimple ::=valor:val operacio:oper            {://Si el valor es correcte
                                                             if(!val.esBuit()){
                                                                 if(oper.isAssignacio()){
                                                                 //System.out.println("Estic a una assignacio: "+val.getIden());

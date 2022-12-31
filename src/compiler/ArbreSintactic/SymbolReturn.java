@@ -12,4 +12,10 @@ public class SymbolReturn {
     public SymbolExpressioSimple getExpr() {
         return expr;
     }
+
+    public String codiIntermedi(){
+
+        String rtn = expr.codiIntermedi();
+        return rtn;
+    }
 }

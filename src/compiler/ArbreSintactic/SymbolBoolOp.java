@@ -3,8 +3,10 @@ import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolBoolOp {
+
     private Operacions bool;
     private TipusSub tipus;
+
     public SymbolBoolOp(Operacions b){
         this.bool = b;
         this.tipus = TipusSub.BOOLEAN;
@@ -14,7 +16,8 @@ public class SymbolBoolOp {
         return tipus;
     }
 
-    public void codiTresAdreces(codi3A codi){
+    public TipusInstruccioCTA codiTresAdreces(codi3A codi){
         // generar codi 3 adreces amb els mètodes de la classe
+        return codi3A.transforma(bool);
     }
 }

@@ -14,4 +14,9 @@ public class SymbolRealOp  {
     public TipusSub getTipus() {
         return tipus;
     }
+
+    public TipusInstruccioCTA codiTresAdreces(codi3A codi){
+        // generar codi 3 adreces amb els mètodes de la classe
+        return codi3A.transforma(realOp);
+    }
 }

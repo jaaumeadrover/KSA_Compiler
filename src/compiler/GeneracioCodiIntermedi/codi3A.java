@@ -2,6 +2,7 @@ package compiler.GeneracioCodiIntermedi;
 
 import compiler.Symbols.TaulaSimbols.TipusSub;
 import java.util.ArrayList;
+import compiler.AbreSintactic.Operacions;
 
 public class codi3A{
     private ArrayList<Instruccio> codi = new ArrayList<>();
@@ -17,6 +18,10 @@ public class codi3A{
         nEtiquetes++;
         return "e"+ne;
     }
+    public String novaEtiqueta(String iden){
+        nEtiquetes++;
+        return "e"+iden;
+    }
 
     public void generar(TipusOperacionsCTA a,Operand op1,Operand op2,String dest){
         //si generam una declaració quan no hi ha mètodes actius
@@ -26,6 +31,11 @@ public class codi3A{
             //si no declaració o procediment actius>0
             codi.add(new Instruccio(a,op1,op2,dest) );
         }
+    }
+    public void addParametro(Tipo t, String id) {
+        Parametro p = new Parametro(t, id);
+        newVariable(t, id);
+        param.add(p);
     }
 
     public void començaDecl(){
@@ -48,6 +58,40 @@ public class codi3A{
             return TipusSub.BOOLEAN;
         }
     }
+
+    public static TipusInstruccioCTA tranforma(Operacio o){
+         switch (op) {
+                case Operacions.ADD:
+                    return TipusInstruccionsCTA.SUMA;
+                case Operacions.SUB:
+                    return TipusINstruccionsCTA.RESTA;
+                case Operacions.MUL:
+                    return TipusInstruccionsCTA.PRODUCTE;
+                case Operacions.DIV:
+                    return TipusInstruccionsCTA.DIVISIO;
+                case Operacions.MOD:
+                    return TipusInstruccionsCTA.MODUL;
+                case Operacions.EQ:
+                    return TipusInstruccionsCTA.PRODUCTE;
+                case Operacions.BG:
+                    return TipusInstruccionsCTA.GT;
+                case Operacions.SM:
+                    return TipusInstruccionsCTA.LT;
+                case Operacions.BGEQ:
+                    return TipusInstruccionsCTA.GE;
+                case Operacions.SMEQ:
+                    return TipusInstruccionsCTA.LE;
+                case Operacions.OR:
+                    return TipusInstruccionsCTA.OR;
+                case Operacions.AND:
+                    return TipusInstruccionsCTA.AND;
+                case Operacions.NEG:
+                    return TipusInstruccionsCTA.NOT;
+            }
+            return null;
+        }
+    }
+
     @Override
     public String toString(){
         s = "";

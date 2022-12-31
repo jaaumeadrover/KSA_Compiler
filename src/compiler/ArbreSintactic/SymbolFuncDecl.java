@@ -27,20 +27,23 @@ public class SymbolFuncDecl  {
 
     public String codiIntermedi(){
         //generam codi Intermedi de un id --> és el mateix string de iden
-        //TaulaProcediments.newProc(iden,type.getTipusSub) afegim procediment a la taula de procediments ->(nom,tipusRetorn)
+        TaulaProcediments.newProc(iden,type.getTipusSub)
 
         //if(hiHaParametres()){
             //cream llistaParam=arrayList<>()
             //generam codiIntermedi de SymbolFuncCap(parametre llistaParam)
             //TaulaProcediments.getProcediment(iden).setParametres(llistaParam)
         //}
+        String etiqueta1=codi.novaEtiqueta(iden);
+        codi3Adreces.generar(Operador.SKIP,null,null,etiqueta1);
+        codi3Adreces.generar(Operador.PMB,null,null,iden);
+        if(stat!=null){
+            stat.codi3Adreces();
+        }
+        String rtn_str=rtn.codiIntermedi();
+        codi3Adreces.generar(Operador.RTN,null,null,rtn_str);
 
-        //codi3Adreces.generar(Operador.SKIP,null,null,iden);
-        //codi3Adreces.generar(Operador.PMB,null,null,iden);
-        //STATEMENTLIST.codi3Adreces()
-        //codi3Adreces.generar(Operador.RTN,null,null,null);
-
-        //Codi3Adreces.TaulaProc.tancaProcediment();
+        Codi3Adreces.TaulaProc.tancaProcediment();
 
         return null;
 

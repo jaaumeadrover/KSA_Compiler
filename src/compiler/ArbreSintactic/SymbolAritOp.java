@@ -8,4 +8,9 @@ public class SymbolAritOp {
         this.aritOp=oper;
         //System.out.println("SOC UN SYMBOLARITOP");
     }
+
+    public TipusInstruccioCTA codiTresAdreces(codi3A codi){
+        // generar codi 3 adreces amb els mètodes de la classe
+        return codi3A.transforma(bool);
+    }
 }

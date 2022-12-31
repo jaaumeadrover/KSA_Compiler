@@ -402,9 +402,10 @@ valor::= id:iden                         {:
                                                   :}
     |subProgramCall:subprogram                      {:  Simbol s=ts.consultaFunc(subprogram.getId());
                                                         if(s!=null){
+
                                                             RESULT=new SymbolValor(subprogram,s.getTipusSub());
                                                         }else{
-                                                            System.out.println("No existeix funció");
+                                                            comprovaTipus.addError("ERROR Semántic, No existeix la funció que es crida. Línea: "+cur_token.left);
                                                             RESULT=new SymbolValor();
                                                         }
                                                         :}
@@ -415,6 +416,8 @@ valor::= id:iden                         {:
                                                         comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte. Linea: "+cur_token.left);
                                                         RESULT=new SymbolValor(expr);
                                                     }:}
+
+
     ;
 
 array::=id:iden lop exprSimple:expr lclose {:RESULT=new SymbolArray(iden.toString(),expr);:}
@@ -457,8 +460,12 @@ subProgramCall ::= id:iden lparen rparen            {:
                                                         //if necessita paràmetres --->errorSemantic
 
                                                         //else
+                                                        if(s.getTipusSub().equals(TipusSub.NULL)){
+                                                            RESULT=new SymbolSubProgramCall(iden.toString(),false);
+                                                        }else{
+                                                            RESULT=new SymbolSubProgramCall(iden.toString(),true);
+                                                        }
 
-                                                        RESULT=new SymbolSubProgramCall(iden.toString());
                                                       }else{
                                                         //no existeix la funció cridada
                                                         System.out.println("No existeix la funció cridada");

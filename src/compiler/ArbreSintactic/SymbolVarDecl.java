@@ -36,14 +36,15 @@ public class SymbolVarDecl {
     }
 
 
-//    public String codiTresAdreces(codiTresAdreces codi){
-//        //nom=id de la classe
-//        //if (this.varInit != null){
-//           // String inicialitzacio = this.varInit.codiTresAdreces(codi);
-//          //  codi.genera(Operador.ASIGN, inicialitzacio, null, this.id);
-//      //  }
-//        return null;
-//    }
+    public String codiTresAdreces(codiTresAdreces codi){
+        nom=this.id;
+        //fins que no declaram una variable no l'introduim en el codi de tres adreces
+        if (this.varInit != null){
+            String inicialitzacio = this.varInit.codiTresAdreces(codi);
+            codi.genera(Operador.ASIGN, inicialitzacio, null, this.id);
+        }
+        return null;
+   }
 
 }
         

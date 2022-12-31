@@ -4,6 +4,8 @@
  */
 package compiler;
 
+import compiler.ArbreSintactic.ArbreSintactic;
+import compiler.GeneracioCodiIntermedi.codi3A;
 import compiler.Semantic.Semantic;
 import compiler.sintactic.Parser;
 import compiler.lexic.Scanner;
@@ -77,15 +79,19 @@ public class Main {
                 System.err.println(lineaerror);
                 lineaerror = br.readLine();
             }
+
             br.close();
+
             ArbreSintactic arbre = parser.getArbreSintac();
-            codiTresAdreces codi = arbre.generarCodiTresAdreces();
+            codi3A codi = arbre.generarCodiTresAdreces();
             String codiIntermedi = codi.toString();
+
             FileWriter codiIntermediFile = new FileWriter("codiIntermedi.txt");
+
             codiIntermediFile.write(codiIntermedi);
 
             
-        } catch(Exception e) {
+        }catch(Exception e) {
             System.err.println("error: "+e);
             e.printStackTrace(System.err);
         }

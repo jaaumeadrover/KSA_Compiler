@@ -60,14 +60,19 @@ public class SymbolExpressioSimple {
             return "";
         }
     }
+    /*
+    Aquest mètode retorna un String que sirà utilitzat en altres classes com per exemple SymbolValor.
+     */
+    public String codiTresAdreces(codi3A codi){
+        String value = this.valor.codiTresAdreces();
+        if(operacio != null){
+            TipusInstruccionsCTA t = operacio.codiTresAdreces(codi);
+            String r = genera();
 
-    public void codiTresAdreces(codi3A codi){
-        this.valor.codiTresAdreces();
-        if (this.expressioSimple != null){
-            String desti = codi.novaVariable()
-            this.expressioSimple.codiTresAdreces(codi)
-            this.operacio
-        }else
+        }else{
+            return value;
+        }
+
     }
 
 

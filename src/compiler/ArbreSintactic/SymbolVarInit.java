@@ -37,7 +37,7 @@ public class SymbolVarInit  {
         return arrayinit;
     }
 
-/*
+
     public String codiTresAdreces(codiTresAdreces codi){
       // Un inicialitzaci&oacute; de variable pot ser un array o una Expressi&oacute; Simple
       if (isarray == true){
@@ -48,6 +48,6 @@ public class SymbolVarInit  {
          return this.expr.codiTresAdreces(codi);
       }
     }
-*/
+
 
 }

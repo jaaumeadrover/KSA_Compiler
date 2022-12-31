@@ -11,7 +11,7 @@ public class SymbolDecl  {
         this.varDecl = varDecl;
         this.funcDecl = funcDecl;
         this.procDecl = procDecl;
-        System.out.println("SOC UN SYMBOLDECL");
+        //System.out.println("SOC UN SYMBOLDECL");
     }
 
     public void codiTresAdreces(codiTresAdreces codi){
