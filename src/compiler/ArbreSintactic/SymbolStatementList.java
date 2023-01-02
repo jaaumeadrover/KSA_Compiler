@@ -17,11 +17,11 @@ public class SymbolStatementList  {
 
     }
 
-//    public void codiTresAdreces(codiTresAdreces codi){
-//        this.stat.codiTresAdreces(codi);
-//        //mentre quedin instruccions
-//        if (stats != null){
-//            this.stats.codiTresAdreces(codi);
-//        }
-//    }
+    public void codiTresAdreces(codiTresAdreces codi){
+        this.stat.codiTresAdreces(codi);
+        //mentre quedin instruccions
+        if (stats != null){
+            this.stats.codiTresAdreces(codi);
+        }
+    }
 }

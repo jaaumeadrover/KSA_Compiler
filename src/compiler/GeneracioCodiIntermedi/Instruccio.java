@@ -5,23 +5,20 @@ public class Instruccio{
     private TipusInstruccionsCTA tipusInstruccio;
     private Operand param1;
     private Operand param2;
-    private Operand desti;
-    private boolean temporal;
-
+    private String desti;
     /*
 
      */
-    public Instruccio(TipusInstruccionsCTA tipus, String o1, String o2, String d, boolean t){
+    public Instruccio(TipusInstruccionsCTA tipus, Operand o1, Operand o2, String d){
         this.tipusInstruccio =tipus;
-        this.param1 = new Operand(o1, );
+        this.param1 = o1;
         this.param2 =o2;
         this.desti=d;
-        this.temporal=t;
     }
 
     //GETTERS
-    public OperacionsCTA getOperacions() {
-        return this.tipoInstruccio;
+    public TipusInstruccionsCTA getOperacions() {
+        return this.tipusInstruccio;
     }
 
     public Operand getOperadorEsquerra() {
@@ -32,24 +29,20 @@ public class Instruccio{
         return this.param2;
     }
 
-    public Operand getDesti() {
+    public String getDesti() {
         return this.desti;
     }
 
-    public boolean getTemporal(){
-        return this.temporal;
-    }
-
     //SETTERS
-    public void setOperacions(OperacionsCTA o){
-        this.tipoInstruccio =o;
+    public void setOperacions(TipusInstruccionsCTA o){
+        this.tipusInstruccio =o;
     }
 
-    public void setOperadorEsquerra(String o){
+    public void setOperadorEsquerra(Operand o){
         this.param1 =o;
     }
 
-    public void setOperadorDreta(String o){
+    public void setOperadorDreta(Operand o){
         this.param2 =o;
     }
 
@@ -57,14 +50,11 @@ public class Instruccio{
         this.desti=d;
     }
 
-    public void setTemporal(boolean t){
-        this.temporal=t;
-    }
 
-    //Metode toStrong
+    //Metode toString
     @Override
     public String toString() {
-        return "[" + tipoInstruccio.toString() + ", " + param1 +
+        return "[" + tipusInstruccio.toString() + ", " + param1 +
                 ", " + param2 + ", " + desti + "]";
     }
 }

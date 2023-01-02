@@ -5,7 +5,7 @@
 package compiler;
 
 import compiler.ArbreSintactic.ArbreSintactic;
-import compiler.GeneracioCodiIntermedi.codi3A;
+import compiler.GeneracioCodiIntermedi.codiTresAdreces;
 import compiler.Semantic.Semantic;
 import compiler.sintactic.Parser;
 import compiler.lexic.Scanner;
@@ -83,7 +83,7 @@ public class Main {
             br.close();
 
             ArbreSintactic arbre = parser.getArbreSintac();
-            codi3A codi = arbre.generarCodiTresAdreces();
+            codiTresAdreces codi = arbre.generarCodiTresAdreces();
             String codiIntermedi = codi.toString();
 
             FileWriter codiIntermediFile = new FileWriter("codiIntermedi.txt");

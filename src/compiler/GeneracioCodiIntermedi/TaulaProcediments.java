@@ -30,13 +30,13 @@ public class TaulaProcediments{
     public Procediment eliminarProc(){
         Procediment proc=TP.get(this.numProc-1);
         TP.remove(this.numProc-1);
-        np--;
+        numProc--;
         return proc;
     }
 
     public Procediment getProcediment(String nom){
         for (int i = 0; i < TP.size(); i++) {
-            if(TP.get(i).nomProc==nom){
+            if(TP.get(i).getNomProc().equals(nom)){
                 return TP.get(i);
             }
         }
@@ -45,5 +45,9 @@ public class TaulaProcediments{
     }
     public void tancaProcediment(){
         this.numProcActius=0;
+    }
+
+    public int getNumProcActius(){
+        return numProcActius;
     }
 }

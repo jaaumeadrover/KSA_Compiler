@@ -6,7 +6,7 @@ import compiler.GeneracioCodiIntermedi.*;
 public class ArbreSintactic {
 
     public SymbolProgram root;
-    public static codi3A codi;
+    public static codiTresAdreces codi;
 
     // inicialitzam l'arrel de l'abre sintactic
     public void setRoot(SymbolProgram root){
@@ -15,8 +15,8 @@ public class ArbreSintactic {
 
 
     // Mètode amb el que instanciem el codi de tres adreçes
-    public codi3A generarCodiTresAdreces(){
-        codi = new codi3A();
+    public codiTresAdreces generarCodiTresAdreces(){
+        codi = new codiTresAdreces();
         //root.codiTresAdreces();
         return codi;
     }

@@ -18,7 +18,7 @@ public class SymbolForPostExpression {
         return expressioSimple;
     }
 
-    public void codiTresAdreces(codi3A codi){
+    public void codiTresAdreces(codiTresAdreces codi){
 
         this.expressioSimple.codiTresAdreces(codi);
     }

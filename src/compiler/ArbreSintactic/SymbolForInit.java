@@ -20,7 +20,7 @@ public class SymbolForInit {
         return this.declaracioVar;
     }
 
-    public void codiTresAdreces(codi3A codi){
+    public void codiTresAdreces(codiTresAdreces codi){
         this.declaracioVar.codiTresAdreces(codi);
     }
 }

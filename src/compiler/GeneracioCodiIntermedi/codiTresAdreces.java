@@ -2,9 +2,9 @@ package compiler.GeneracioCodiIntermedi;
 
 import compiler.Symbols.TaulaSimbols.TipusSub;
 import java.util.ArrayList;
-import compiler.AbreSintactic.Operacions;
+import compiler.ArbreSintactic.Operacions;
 
-public class codi3A{
+public class codiTresAdreces{
     private ArrayList<Instruccio> codi = new ArrayList<>();
     private ArrayList<Instruccio> constant = new ArrayList<>(); //Declaracion var.
     private boolean esDeclaracio=false;
@@ -16,87 +16,104 @@ public class codi3A{
 
     public String novaEtiqueta(){
         nEtiquetes++;
-        return "e"+ne;
+        return "e"+nEtiquetes;
     }
     public String novaEtiqueta(String iden){
         nEtiquetes++;
         return "e"+iden;
     }
 
-    public void generar(TipusOperacionsCTA a,Operand op1,Operand op2,String dest){
+    public void generar(TipusInstruccionsCTA a,Operand op1,Operand op2,String dest){
         //si generam una declaració quan no hi ha mètodes actius
-        if(esDeclaracio && npa==0){
+        if(esDeclaracio && tp.getNumProcActius()==0){
             constant.add(new Instruccio(a,op1,op2,dest));
         }else{
             //si no declaració o procediment actius>0
             codi.add(new Instruccio(a,op1,op2,dest) );
         }
     }
-    public void addParametro(Tipo t, String id) {
-        Parametro p = new Parametro(t, id);
-        newVariable(t, id);
-        param.add(p);
+    public void addParametro(TipusSub t, String id) {
+        Parametre p = new Parametre(id,t);
+        tv.novaVariable(id,t);
+        //param.add(p);
     }
 
+
+    public String addVariable(TipusSub t, String id){
+        int size = tv.getNumVar();
+        if(id.equals("t")) {
+            String num = null;
+        }
+        String num = id;
+        tv.novaVariable(num,t);
+        
+        return num;
+    }
+    public Variable getVar(String nom) {
+        Variable v=tv.getVariable(nom);
+        return v;
+    }
+
+
     public void començaDecl(){
-        generar(Operador.GOTO, null, null, "run");
+        generar(TipusInstruccionsCTA.GOTO, null, null, "run");
         this.esDeclaracio=true;
     }
 
     public void acabaDecl(){
         this.esDeclaracio = false;
-        generar(Operador.SKIP, null, null, "run");
-        codi.addAll(constante);
-        constante.clear();
+        generar(TipusInstruccionsCTA.SKIP, null, null, "run");
+        codi.addAll(constant);
+        constant.clear();
     }
     //traduirOperacio a operador??
 
-    public TipusSub getTipusOperacio(){
-        if (op == Operador.MULT || op == Operador.DIV || op == Operador.SUMA || op == Operador.RESTA) {
+    public TipusSub getTipusOperacio(Operacions op){
+        if (op == Operacions.MUL || op == Operacions.DIV || op == Operacions.ADD || op == Operacions.SUB) {
             return TipusSub.INT;
         } else {
             return TipusSub.BOOLEAN;
         }
     }
 
-    public static TipusInstruccioCTA tranforma(Operacio o){
+    public static TipusInstruccionsCTA transforma(Operacions op){
          switch (op) {
-                case Operacions.ADD:
+                case ADD:
                     return TipusInstruccionsCTA.SUMA;
-                case Operacions.SUB:
-                    return TipusINstruccionsCTA.RESTA;
-                case Operacions.MUL:
+                case SUB:
+                    return TipusInstruccionsCTA.RESTA;
+                case MUL:
                     return TipusInstruccionsCTA.PRODUCTE;
-                case Operacions.DIV:
+                case DIV:
                     return TipusInstruccionsCTA.DIVISIO;
-                case Operacions.MOD:
+                case MOD:
                     return TipusInstruccionsCTA.MODUL;
-                case Operacions.EQ:
+                case EQ:
                     return TipusInstruccionsCTA.PRODUCTE;
-                case Operacions.BG:
+                case BG:
                     return TipusInstruccionsCTA.GT;
-                case Operacions.SM:
+                case SM:
                     return TipusInstruccionsCTA.LT;
-                case Operacions.BGEQ:
+                case BGEQ:
                     return TipusInstruccionsCTA.GE;
-                case Operacions.SMEQ:
+                case SMEQ:
                     return TipusInstruccionsCTA.LE;
-                case Operacions.OR:
+                case OR:
                     return TipusInstruccionsCTA.OR;
-                case Operacions.AND:
+                case AND:
                     return TipusInstruccionsCTA.AND;
-                case Operacions.NEG:
+                case NEG:
                     return TipusInstruccionsCTA.NOT;
             }
             return null;
         }
-    }
+    
 
     @Override
     public String toString(){
-        s = "";
+        String s = "";
         for (int i = 0; i <codi.size(); i++) {
-            s += codi.get(i).toString+"\n";
+            s += codi.get(i).toString()+"\n";
         }
         return s;
     }

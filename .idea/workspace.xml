@@ -4,37 +4,47 @@
     <list default="true" id="2b33019b-17bb-49c6-9ad2-0abb86f410ea" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/Parser$CUP$Parser$actions.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/Parser.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic_og.cup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/errors.txt" beforeDir="false" afterPath="$PROJECT_DIR$/errors.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/ArbreSintactic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/ArbreSintactic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolAritOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolAritOp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolArrayInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolArrayInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolBoolOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolBoolOp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolContCap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolContCap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolExpressioSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolExpressioSimple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolForInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolForInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolForIteration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolForIteration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolForPostExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolForPostExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolLCases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolLCases.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOperacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOperacio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolProcDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolProcDecl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolRealOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolRealOp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramCall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramContCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramContCall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codi3A.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codiTresAdreces.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
     </list>
     <list id="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" name="Changes by diegofes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolDecl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolDeclList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolDeclList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolFuncDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolFuncDecl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolReturn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolReturn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOperacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOperacio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramCall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolVarDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolVarDecl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolVarInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolVarInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codi3A.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codi3A.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
     </list>
     <list id="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" name="Changes by Jaume" comment="" />
     <list id="f3e3f014-69ff-42c6-8867-3e0ceac3d885" name="Changes by joanbalaguer" comment="">
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolAritOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolAritOp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolBoolOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolBoolOp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOperacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOperacio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codi3A.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codi3A.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolContCap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolContCap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolFuncCap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolFuncCap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolFuncDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolFuncDecl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/Instruccio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/Instruccio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/TaulaProcediments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/TaulaProcediments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/TipusInstruccionsCTA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/TipusInstruccionsCTA.java" afterDir="false" />
     </list>
     <list id="c03443d2-0747-471b-8137-f2e9e48026f7" name="Changes by marc" comment="">
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolBoolOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolBoolOp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolRealOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolRealOp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolExpressioSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolExpressioSimple.java" afterDir="false" />
     </list>
     <list id="58cceed4-2ebd-4add-94de-92150b1a83c2" name="Changes by messi" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,34 +56,36 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolBoolOp.java">
+    <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramCall.java">
       <ranges>
-        <range start1="5" end1="5" start2="5" end2="6" changelist="c03443d2-0747-471b-8137-f2e9e48026f7" />
-        <range start1="7" end1="7" start2="8" end2="9" changelist="c03443d2-0747-471b-8137-f2e9e48026f7" />
-        <range start1="16" end1="17" start2="18" end2="19" changelist="f3e3f014-69ff-42c6-8867-3e0ceac3d885" />
-        <range start1="18" end1="18" start2="20" end2="21" changelist="f3e3f014-69ff-42c6-8867-3e0ceac3d885" />
+        <range start1="5" end1="5" start2="5" end2="6" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
+        <range start1="7" end1="7" start2="8" end2="9" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
+        <range start1="12" end1="13" start2="14" end2="15" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
+        <range start1="15" end1="16" start2="17" end2="19" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
+        <range start1="18" end1="18" start2="21" end2="26" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="23" end1="23" start2="31" end2="32" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
+        <range start1="26" end1="31" start2="35" end2="38" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
+        <range start1="32" end1="32" start2="39" end2="43" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
+        <range start1="33" end1="34" start2="44" end2="55" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
+        <range start1="35" end1="35" start2="56" end2="58" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
       </ranges>
     </file>
-    <file path="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codi3A.java">
+    <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolExpressioSimple.java">
       <ranges>
-        <range start1="4" end1="4" start2="4" end2="5" changelist="f3e3f014-69ff-42c6-8867-3e0ceac3d885" />
-        <range start1="19" end1="19" start2="20" end2="24" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="29" end1="29" start2="34" end2="39" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="50" end1="50" start2="60" end2="94" changelist="f3e3f014-69ff-42c6-8867-3e0ceac3d885" />
+        <range start1="62" end1="62" start2="62" end2="63" changelist="c03443d2-0747-471b-8137-f2e9e48026f7" />
+        <range start1="65" end1="66" start2="66" end2="97" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
       </ranges>
     </file>
-    <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java">
+    <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOperacio.java">
       <ranges>
-        <range start1="40" end1="41" start2="40" end2="41" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="50" end1="50" start2="50" end2="51" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="52" end1="52" start2="53" end2="54" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="53" end1="54" start2="55" end2="56" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="116" end1="117" start2="118" end2="119" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="120" end1="120" start2="122" end2="123" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="131" end1="131" start2="134" end2="135" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="133" end1="133" start2="137" end2="138" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="135" end1="135" start2="140" end2="145" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="137" end1="137" start2="147" end2="149" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="95" end1="96" start2="95" end2="96" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="104" end1="105" start2="104" end2="105" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolContCap.java">
+      <ranges>
+        <range start1="23" end1="24" start2="23" end2="24" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="25" end1="25" start2="25" end2="26" changelist="f3e3f014-69ff-42c6-8867-3e0ceac3d885" />
       </ranges>
     </file>
   </component>
@@ -142,7 +154,8 @@
       <workItem from="1672354981759" duration="6362000" />
       <workItem from="1672376226886" duration="7069000" />
       <workItem from="1672387480171" duration="12409000" />
-      <workItem from="1672476399617" duration="7320000" />
+      <workItem from="1672476399617" duration="7321000" />
+      <workItem from="1672648615177" duration="7658000" />
     </task>
     <servers />
   </component>

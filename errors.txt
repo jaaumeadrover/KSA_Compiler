@@ -1,2 +1,0 @@
-ERROR Semántic, la variable  z, ja existeix. Linea: 8
-ERROR Semántic, l'expressió de la declaració és incorrecte. Linea: 9

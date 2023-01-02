@@ -17,22 +17,22 @@ public class SymbolWhileStatement {
 
     public String codiTresAdreces(codiTresAdreces codi){
 
-        String etiqueta1=codi.novaEtiqueta;
-        codi.generar(Operador.SKIP,null,null,etiqueta1)
+        String etiqueta1=codi.novaEtiqueta();
+        codi.generar(TipusInstruccionsCTA.SKIP,null,null,etiqueta1);
 
-        String expr = this.expr.codiTresAdreces(codi)
-        String etiqueta2=codi.novaEtiqueta;
-        codi.generar(Operador.IGUALES, expr, Integer.toString(-1), etiqueta2);
-        String etiqueta3=codi.novaEtiqueta;
+        String expr = this.expressio.codiTresAdreces(codi);
+        String etiqueta2=codi.novaEtiqueta();
+        codi.generar(TipusInstruccionsCTA.EQ, expr, Integer.toString(-1), etiqueta2);
+        String etiqueta3=codi.novaEtiqueta();
 
-        codi.generar(Operador.GOTO, null, null, etiqueta3);
-        codi.generar(Operador.SKIP, null, null, etiqueta2);
+        codi.generar(TipusInstruccionsCTA.GOTO, null, null, etiqueta3);
+        codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta2);
 
-        this.statementList.codiTresAdreces(codi)
+        this.statementList.codiTresAdreces(codi);
 
         //Comprovam la condicio
-        codi.generar(Operador.GOTO, null, null, etiqueta1);
-        ctd.generar(Operador.SKIP, null, null, etiqueta3);
+        codi.generar(TipusInstruccionsCTA.GOTO, null, null, etiqueta1);
+        codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta3);
         return null;
 
 

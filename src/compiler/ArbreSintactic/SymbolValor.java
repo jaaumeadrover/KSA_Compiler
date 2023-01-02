@@ -51,7 +51,7 @@ public class SymbolValor {
             this.iden = "true";
         }else{
             this.b=false;
-            this.
+            this.iden="false";
         }
         //System.out.println("He utilitzat el constructor de boolean!");
         this.tipusSub=TipusSub.BOOLEAN;
@@ -116,7 +116,7 @@ public class SymbolValor {
         return s;
     }
 
-    public String codiTresAdreces(codi3A codi) {
+    public String codiTresAdreces(codiTresAdreces codi) {
         switch (index) {
             case 1:
                 //generar codi de una variable identificador
@@ -132,25 +132,57 @@ public class SymbolValor {
 
             case 3:
                 //generar codi de un integer
-                return iden;
+
+                //guardar en variable temporal int
+                String temp = codi.addVariable(TipusSub.INT,"t");
+
+                Operand enter = new Operand(iden,OperandsCTA.enterLit);
+
+                codi.generar(TipusInstruccionsCTA.COPIA,enter,null,temp);
+
+                return temp;
             case 4:
                 //generar codi de un boolean
-                return String.valueOf(this.b);
+                String val="";
+                if(b) {
+                    val =  String.valueOf(-1);
+                }else{
+                    val = String.valueOf(0);
+                }
+                temp = codi.addVariable(TipusSub.BOOLEAN,"t");
+                Operand bool = new Operand(val, OperandsCTA.boolea);
+                codi.generar(TipusInstruccionsCTA.COPIA, bool, null, temp);
+                return temp;
             case 5:
                 //generar crida a subprograma
-                if(this.subProgramCall.){
+                subProgramCall.codiTresAdreces();
 
+                //Dedins subProgramCall es fa aixo
+                /*
+                if(this.subProgramCall.retorna()){
+
+                    Simbol s = ts.consultaFunc(this.subProgramCall.getId());
+
+                    TipusSub tipussub = s.getTipusSub();
+                    String temp = codi.addVariable(tipussub,"t");
+                    subProgramCall.codiTresAdreces();
+                    codi.generar(TipusInstruccionsCTA.CALL,this.subProgramCall.getId(),null,temp);
+
+                }else{
+                    subProgramCall.codiTresAdreces();
+                    codi.generar(TipusInstruccionsCTA.CALL,this.subProgramCall.getId(),null,null);
                 }
-                codi.generar(TipusInstruccionsCTA.CALL,null,null,this.subProgramCall.getId());
+                */
 
             case 6:
                 //generar instruccio not del boolean
-                String operand1=this.exprSimple.codiTresAdreces();
+                String operand1=this.exprSimple.codiTresAdreces(codi);
                 codi.generar(TipusInstruccionsCTA.NOT,operand1,null,null);
             case 7:
                 //generar codi de una expressió simple
             case 8:
                 //constructor buit
         }
+        return null;
     }
 }

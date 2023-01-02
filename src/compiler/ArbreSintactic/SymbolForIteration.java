@@ -19,7 +19,7 @@ public class SymbolForIteration {
         
     }
 
-    public void codiTresAdreces(codi3A codi){
+    public void codiTresAdreces(codiTresAdreces codi){
         String condicio = this.expr.codiTresAdreces(codi);
 
         String etiqueta1 = codi.novaEtiqueta();//expresion

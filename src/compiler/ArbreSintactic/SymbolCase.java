@@ -20,7 +20,7 @@ public class SymbolCase  {
         return expressioSimple;
     }
 
-    public void codiTresAdreces(codi3A codi){
+    public void codiTresAdreces(codiTresAdreces codi){
         expressioSimple.codiTresAdreces(codi);
         statementList.codiTresAdreces(codi);
     }

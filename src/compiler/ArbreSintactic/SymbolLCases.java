@@ -25,7 +25,7 @@ public class SymbolLCases {
         return lcases;
     }
 
-    public void codiTresAdreces(codi3A codi){
+    public void codiTresAdreces(codiTresAdreces codi){
         cas.codiTresAdreces(codi);
     }
 }

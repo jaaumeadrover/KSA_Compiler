@@ -32,7 +32,7 @@ public class SymbolOp {
         return tipusOperador;
     }
 
-    public TipusInstruccionsCTA codiTresAdreces(codi3A codi){
+    public TipusInstruccionsCTA codiTresAdreces(codiTresAdreces codi){
         if(boolOP != null){
             return boolOP.codiTresAdreces(codi);
         }else if(aritOP != null){

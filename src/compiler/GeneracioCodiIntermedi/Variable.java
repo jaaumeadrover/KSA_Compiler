@@ -28,7 +28,7 @@ public class Variable{
         this.procedure = procedure;
     }
 
-    public Variable(tipusSub tipus, int procedure){
+    public Variable(TipusSub tipus, int procedure){
         this.tipusSub = tipus;
         this.procedure = procedure;
     }

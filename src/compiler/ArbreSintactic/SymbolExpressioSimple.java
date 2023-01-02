@@ -60,10 +60,41 @@ public class SymbolExpressioSimple {
             return "";
         }
     }
+
     /*
     Aquest mètode retorna un String que sirà utilitzat en altres classes com per exemple SymbolValor.
      */
-    public String codiTresAdreces(codi3A codi){
+    public String codiTresAdreces(codiTresAdreces codi){
+
+        //Cas assignació [copy,b,null,a]
+        if(this.operacio.isAssignacio()){
+            String valor=this.valor.codiTresAdreces(codi);
+            String oper=this.operacio.getExpr().codiTresAdreces(codi);
+
+            codi.generar(TipusInstruccionsCTA.COPIA,oper,null,valor);
+        }else{
+            //Cas no assignació
+
+
+            String valor=this.valor.codiTresAdreces(codi);
+            //si no es té operador i és un valor simple
+            if(this.operacio.isEmpty()){
+                //retornam la variable temporal
+                return valor;
+            }else{
+                //es té un operador i s'ha de generar codi
+                TipusInstruccionsCTA tipus=this.operacio.getOperador().codiTresAdreces(codi);
+                String op2=this.operacio.getExpr().codiTresAdreces(codi);
+
+                //crear variable temporal
+                String temp = codi.addVariable(tipussub,"t");
+
+                codi.generar(tipus,valor,op2,temp);
+                return temp;
+
+            }
+        }
+
         String value = this.valor.codiTresAdreces();
         if(operacio != null){
             TipusInstruccionsCTA t = operacio.codiTresAdreces(codi);

@@ -14,9 +14,14 @@ public class SymbolFuncCap {
         //System.out.println("soy un SymbolFuncCap");
     }
 
-    public void codiTresAdreces(codi3A codi){
+    public void codiTresAdreces(codiTresAdreces codi){
         if(contcap != null){
+            // Hi ha paràmetres
             contcap.codiTresAdreces(codi);
+        }else{
+            //d = consulta(ts, id.id)
+            // Cas procediment sense paràmetres
+            //codi.generar(TipusInstruccionsCTA.CALL,null,null,null);
         }
     }
 }

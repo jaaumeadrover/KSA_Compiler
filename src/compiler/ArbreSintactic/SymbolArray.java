@@ -22,7 +22,7 @@ public class SymbolArray {
     public String codiTresAdreces
      */
 
-    public void codiTresAdreces(codi3A codi){
+    public void codiTresAdreces(codiTresAdreces codi){
         ID.codiTresAdreces(codi);
         expressioSimple.codiTresAdreces(codi);
     }

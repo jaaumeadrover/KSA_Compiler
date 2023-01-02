@@ -23,7 +23,7 @@ public class SymbolDecl  {
             funcDecl.codiTresAdreces(codi);
         //si és procediment
         } else if (procDecl != null) {
-            proDecl.codiTresAdreces(codi);
+            procDecl.codiTresAdreces(codi);
         }
     }
 }

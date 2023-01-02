@@ -23,7 +23,7 @@ public class SymbolArrayInit {
         return t;
     }
 
-    public String codiTresAdreces(codi3A codi){
+    public String codiTresAdreces(codiTresAdreces codi){
         // Generar codi de 3 adreçes amb els mètodes pertinents de codi3A
     }
 }

@@ -21,8 +21,9 @@ public class SymbolContCap {
         return t;
     }
 
-    public void codiTresAdreces(codi3A codi){
+    public void codiTresAdreces(codiTresAdreces codi){
         // Generar codi tres adreces amb els mètodes
+
     }
 
 }

@@ -93,16 +93,16 @@ public class SymbolOperacio {
         return varInit;
     }
 
-    public void codiTresAdreces(codi3A codi){
+    public String codiTresAdreces(codiTresAdreces codi){
         // Cas op expressioSimple
         if(operador != null){
             TipusInstruccionsCTA op = operador.codiTresAdreces(codi);
             //codi.genera(op, null, null, null);
             expressioSimple.codiTresAdreces(codi);
-            return op;
+            return op.toString();
         // Cas VARINIT
         }else{
-            varInit.codiTresAdreces(codi);
+            return varInit.codiTresAdreces(codi);
         }
     }
 

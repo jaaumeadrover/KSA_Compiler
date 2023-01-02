@@ -25,9 +25,9 @@ public class SymbolFuncDecl  {
    this.funcCap = funcCap;
  }
 
-    public String codiIntermedi(){
+    public String codiTresAdreces(codiTresAdreces codi){
         //generam codi Intermedi de un id --> és el mateix string de iden
-        TaulaProcediments.newProc(iden,type.getTipusSub)
+        TaulaProcediments.afegirProc(iden,type.getTipusSub)
 
         //if(hiHaParametres()){
             //cream llistaParam=arrayList<>()
@@ -35,8 +35,8 @@ public class SymbolFuncDecl  {
             //TaulaProcediments.getProcediment(iden).setParametres(llistaParam)
         //}
         String etiqueta1=codi.novaEtiqueta(iden);
-        codi3Adreces.generar(Operador.SKIP,null,null,etiqueta1);
-        codi3Adreces.generar(Operador.PMB,null,null,iden);
+        codi3Adreces.generar(TuipusInstruccionsCTA.SKIP,null,null,etiqueta1);
+        codi3Adreces.generar(TuipusInstruccionsCTA.PMB,null,null,iden);
         if(stat!=null){
             stat.codi3Adreces();
         }

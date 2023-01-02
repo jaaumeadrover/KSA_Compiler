@@ -19,7 +19,7 @@ public class SymbolProcDecl  {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public void codiTresAdreces(codi3A codi){
+    public void codiTresAdreces(codiTresAdreces codi){
         stat.codiTresAdreces(codi);
         funcCap.codiTresAdreces(codi);
     }

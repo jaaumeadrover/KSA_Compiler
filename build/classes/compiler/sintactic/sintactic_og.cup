@@ -402,9 +402,10 @@ valor::= id:iden                         {:
                                                   :}
     |subProgramCall:subprogram                      {:  Simbol s=ts.consultaFunc(subprogram.getId());
                                                         if(s!=null){
+
                                                             RESULT=new SymbolValor(subprogram,s.getTipusSub());
                                                         }else{
-                                                            System.out.println("No existeix funció");
+                                                            comprovaTipus.addError("ERROR Semántic, No existeix la funció que es crida. Línea: "+cur_token.left);
                                                             RESULT=new SymbolValor();
                                                         }
                                                         :}
@@ -415,6 +416,8 @@ valor::= id:iden                         {:
                                                         comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte. Linea: "+cur_token.left);
                                                         RESULT=new SymbolValor(expr);
                                                     }:}
+
+
     ;
 
 array::=id:iden lop exprSimple:expr lclose {:RESULT=new SymbolArray(iden.toString(),expr);:}
@@ -457,8 +460,7 @@ subProgramCall ::= id:iden lparen rparen            {:
                                                         //if necessita paràmetres --->errorSemantic
 
                                                         //else
-
-                                                        RESULT=new SymbolSubProgramCall(iden.toString());
+                                                        RESULT=new SymbolSubProgramCall(iden.toString(),!(s.getTipusSub().equals(TipusSub.NULL)),s.getTipusSub());
                                                       }else{
                                                         //no existeix la funció cridada
                                                         System.out.println("No existeix la funció cridada");
@@ -468,8 +470,8 @@ subProgramCall ::= id:iden lparen rparen            {:
 |subProgramContCall:subprogcontcall rparen          {:RESULT = new SymbolSubProgramCall(subprogcontcall);:}
 ;
 
-subProgramContCall ::= id:iden lparen exprSimple:expr            {:RESULT = new SymbolSubProgramContCall(iden.toString(), expr);:}
-    |subProgramContCall:subprogcontcall com exprSimple:expr      {:RESULT = new SymbolSubProgramContCall(subprogcontcall, expr);:}
+subProgramContCall ::= id:iden lparen valor:valor            {:RESULT = new SymbolSubProgramContCall(iden.toString(), valor);:}
+    |subProgramContCall:subprogcontcall com valor:valor      {:RESULT = new SymbolSubProgramContCall(subprogcontcall, valor);:}
     ;
 
 SwitchCase ::= r_switch lparen exprSimple:expr rparen brop LCases:lcases Default:defa brcl {:

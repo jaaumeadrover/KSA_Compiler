@@ -14,7 +14,7 @@ public class Procediment{
     private String nomProc;
     private int ocupacio;
     private int numParams;
-    private ArrayList<Variable> parametres;
+    private ArrayList<Parametre> parametres;
     private TipusSub tipus;
 
     // Constructors de la classe
@@ -35,9 +35,9 @@ public class Procediment{
         this.nomProc = nom;
     }
 
-    public Procediment(String nom, ArrayList<Variable> params){
+    public Procediment(String nom, ArrayList<Parametre> params){
         this.nomProc = nom;
-        this.numParams = params;
+        this.parametres = params;
     }
 
 
