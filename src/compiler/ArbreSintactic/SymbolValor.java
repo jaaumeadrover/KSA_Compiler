@@ -177,7 +177,9 @@ public class SymbolValor {
             case 6:
                 //generar instruccio not del boolean
                 String operand1=this.exprSimple.codiTresAdreces(codi);
-                codi.generar(TipusInstruccionsCTA.NOT,operand1,null,null);
+                Operand o = new Operand(operand1, OperandsCTA.boolea);
+                
+                codi.generar(TipusInstruccionsCTA.NOT,o,null,null);
             case 7:
                 //generar codi de una expressió simple
             case 8:

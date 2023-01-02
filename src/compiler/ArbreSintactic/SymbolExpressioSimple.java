@@ -70,13 +70,17 @@ public class SymbolExpressioSimple {
         if(this.operacio.isAssignacio()){
             String valor=this.valor.codiTresAdreces(codi);
             String oper=this.operacio.getExpr().codiTresAdreces(codi);
+            Operand o1 = new Operand(oper, OperandsCTA.variable); // PER REVISAR
 
-            codi.generar(TipusInstruccionsCTA.COPIA,oper,null,valor);
+            codi.generar(TipusInstruccionsCTA.COPIA,o1,null,valor);
+            return null;
         }else{
             //Cas no assignació
 
 
             String valor=this.valor.codiTresAdreces(codi);
+            Operand val = new Operand(valor, OperandsCTA.variable); // PER REVISAR
+            
             //si no es té operador i és un valor simple
             if(this.operacio.isEmpty()){
                 //retornam la variable temporal
@@ -85,25 +89,24 @@ public class SymbolExpressioSimple {
                 //es té un operador i s'ha de generar codi
                 TipusInstruccionsCTA tipus=this.operacio.getOperador().codiTresAdreces(codi);
                 String op2=this.operacio.getExpr().codiTresAdreces(codi);
+                Operand o2 = new Operand(op2, OperandsCTA.variable); // PER REVISAR
 
                 //crear variable temporal
-                String temp = codi.addVariable(tipussub,"t");
+                String temp = codi.addVariable(TipusSub.INT,"t"); // PER REVISAR
 
-                codi.generar(tipus,valor,op2,temp);
+                codi.generar(tipus,val,o2,temp);
                 return temp;
 
             }
         }
-
-        String value = this.valor.codiTresAdreces();
-        if(operacio != null){
-            TipusInstruccionsCTA t = operacio.codiTresAdreces(codi);
-            String r = genera();
-
-        }else{
-            return value;
-        }
-
+//
+//        String value = this.valor.codiTresAdreces(codi);
+//        if(operacio != null){
+//            TipusInstruccionsCTA t = operacio.codiTresAdreces(codi);
+//
+//        }else{
+//            return value;
+//        }
     }
 
 

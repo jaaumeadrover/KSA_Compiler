@@ -23,7 +23,6 @@ public class SymbolArray {
      */
 
     public void codiTresAdreces(codiTresAdreces codi){
-        ID.codiTresAdreces(codi);
         expressioSimple.codiTresAdreces(codi);
     }
 }

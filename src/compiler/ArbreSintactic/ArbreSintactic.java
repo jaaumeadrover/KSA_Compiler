@@ -17,7 +17,7 @@ public class ArbreSintactic {
     // Mètode amb el que instanciem el codi de tres adreçes
     public codiTresAdreces generarCodiTresAdreces(){
         codi = new codiTresAdreces();
-        //root.codiTresAdreces();
+        root.codiTresAdreces(codi);
         return codi;
     }
 }

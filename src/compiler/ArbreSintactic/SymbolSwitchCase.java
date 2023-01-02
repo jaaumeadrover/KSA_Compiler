@@ -12,5 +12,9 @@ public class SymbolSwitchCase {
         this.lcases = lcases;
         this.defa=defa;
     }
+    
+    public void codiTresAdreces(codiTresAdreces codi){
+        
+    }
 
 }

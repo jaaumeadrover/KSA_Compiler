@@ -22,7 +22,11 @@ public class SymbolWhileStatement {
 
         String expr = this.expressio.codiTresAdreces(codi);
         String etiqueta2=codi.novaEtiqueta();
-        codi.generar(TipusInstruccionsCTA.EQ, expr, Integer.toString(-1), etiqueta2);
+        
+        Operand o = new Operand("-1", OperandsCTA.boolea);
+        Operand e = new Operand(expr, OperandsCTA.boolea);
+        codi.generar(TipusInstruccionsCTA.EQ, e, o, etiqueta2);
+        
         String etiqueta3=codi.novaEtiqueta();
 
         codi.generar(TipusInstruccionsCTA.GOTO, null, null, etiqueta3);

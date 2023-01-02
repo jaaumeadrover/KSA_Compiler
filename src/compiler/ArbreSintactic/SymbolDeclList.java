@@ -31,7 +31,9 @@ public class SymbolDeclList  {
     }
 
     public void codiTresAdreces(codiTresAdreces codi){
-        this.declaracio.codiTresAdreces(codi);
+        if (declaracio != null){
+            this.declaracio.codiTresAdreces(codi);
+        }
         //mentre quedin declaracions a generar
         if (llistaDecl != null){
             this.llistaDecl.codiTresAdreces(codi);

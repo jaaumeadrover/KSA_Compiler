@@ -35,15 +35,15 @@ public class TaulaVariables {
     /*
     Mètode per a afegir una nova variable a la llista.
      */
-    public String novaVariable(String nom,TipusSub t) {
+    public String novaVariable(String nom,TipusSub t, TaulaProcediments TP) {
         // Nom diferent de null = variable no temporal
         if (nom != null) {
             int i = 0;
             while (i < TV.size()) {
                 Variable v = TV.get(i);
                 // Cas on variable dins TV
-                if (v.getNom().equals(nom) && v.getProc() == npActius) {
-                    return nom + "_" + npActius;
+                if (v.getNom().equals(nom) && v.getProcedure() == TP.getNumProcActius()) {
+                    return nom + "_" + v.getProcedure();
                 }
                 i++;
 
@@ -52,17 +52,17 @@ public class TaulaVariables {
             // Afegim a la taula de variables una nova varible temporal,
             // ja que com no té nom, no ha estat declarada i sabem que ha estat
             // creada per a la realització del codi de tres adreces
-            Variable novaVar=new Variable("temporal" + nv, t, true, npActius);
+            Variable novaVar=new Variable("temporal" + numVar, t, TP.getNumProcActius());
             TV.add(novaVar);
-            nv++;
-            return "t" + nv;
+            numVar++;
+            return "t" + numVar;
         }
         // Si la nova variable no es temporal (tenia nom) i no es trobava
         // a la taula de variables (no ha fet el return del while) l'afegim a la
         // taula de variables amb el seu nom
-        Variable novaVar=new Variable(nom, t, false, npActius);
+        Variable novaVar=new Variable(nom, t, TP.getNumProcActius());
         TV.add(novaVar);
-        return nom + "_" + npActius;
+        return nom + "_" + TP.getNumProcActius();
     }
 
     public int addVariable(Variable v) {
@@ -77,20 +77,20 @@ public class TaulaVariables {
     public boolean existeix(Variable v) {
 
         if (TV.isEmpty()) {
-            if (v.nom == null) {
+            if (v.getNom() == null) {
                 numVarTemp++;
-                v.nom = "t" + numVarTemp;
+                v.setNom("t" + numVarTemp);
 
             }
         } else {
-            if (v.nom == null) {
+            if (v.getNom() == null) {
                 numVarTemp++;
-                v.nom = "t" + numVarTemp;
+                v.setNom("t" + numVarTemp);
 
             }
         }
         for (int i = 0; i < TV.size(); i++) {
-            if (v.nom.equals(TV.get(i).nom)) {
+            if (v.getNom().equals(TV.get(i).getNom())) {
                 return true;
             }
         }
@@ -118,7 +118,7 @@ public class TaulaVariables {
             int capa = Integer.parseInt(nom.substring(div + 1));
             String n = nom.substring(0, div);
             for (int i = 0; i < TV.size(); i++) {
-                if (TV.get(i).getNom().equals(n) && TV.get(i).getProc() == capa) {
+                if (TV.get(i).getNom().equals(n) && TV.get(i).getProcedure() == capa) {
                     return TV.get(i);
                 }
             }
@@ -134,25 +134,25 @@ public class TaulaVariables {
     /*
     Mètode que retorna el nom d'una variable afegint l'àmbit en el que l'utilitzam
      */
-    public String getNomVariable(String nom) {
+    public String getNomVariable(String nom, TaulaProcediments TP) {
         // Anem iterant sobre tots els elements de la taula de variables
         for (int i = 0 ;i < TV.size(); i++){
             Variable v = TV.get(i);
             // Cas on la variable no té processos actius (no s'està utilitzant)
-            if (v.getNom().equals(nom) && v.getProc() == 0) {
-                if(v.getTemp()){
-                    return nom;
-                }
+            if (v.getNom().equals(nom) && v.getProcedure() == 0) {
+//                if(v.getTemp()){
+//                    return nom;
+//                }
                 return nom + "_" + 0;
 
                 // Cas on la variable té processos actius (s'està utilitzant)
-            }else if (v.getNom().equals(nom) && v.getProc() == npActius){
-                if(v.getTemp()){
-                    // si la variable és temporal tan sols retornam el nom
-                    return nom;
-                }
+            }else if (v.getNom().equals(nom) && v.getProcedure() == TP.getNumProcActius()){
+//                if(v.getTemp()){
+//                    // si la variable és temporal tan sols retornam el nom
+//                    return nom;
+//                }
                 //si no és temporal retornam el nom amb el número de processos actius
-                return nom + "_" + npActius;
+                return nom + "_" + TP.getNumProcActius();
             }
         }
 

@@ -1,0 +1,4 @@
+[GOTO, null, null, run]
+[SKIP, null, null, run]
+[COPIA, 2, null, t]
+[COPIA, t, null, x]

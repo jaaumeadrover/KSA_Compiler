@@ -15,14 +15,14 @@ public class SymbolProgram {
     public SymbolProgram(){
 
     }
-//
-//    public void codiTresAdreces(codiTresAdreces codi){
-//        if (declList != null){
-//            codi.començaDecl();
-//            this.declList.codiTresAdreces(codi);
-//            codi.acabaDecl();
-//        }
-//        this.statementList.codiTresAdreces(codi);
-//
-//    }
+
+    public void codiTresAdreces(codiTresAdreces codi){
+        if (declList != null){
+            codi.començaDecl();
+            this.declList.codiTresAdreces(codi);
+            codi.acabaDecl();
+        }
+        this.statementList.codiTresAdreces(codi);
+
+    }
 }

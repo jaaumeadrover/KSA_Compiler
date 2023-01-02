@@ -6,7 +6,6 @@ public class SymbolStatement {
 
     private SymbolVarDecl vard;
     private SymbolExpressioSimple expr;
-    private
     private SymbolForIteration f;
     private SymbolWhileStatement w;
     private SymbolInputStatement input;
@@ -59,20 +58,28 @@ public class SymbolStatement {
                 break;
             case 1:
                 this.vard.codiTresAdreces(codi);
+                break;
             case 2:
                 this.expr.codiTresAdreces(codi);
+                break;
             case 3:
                 this.f.codiTresAdreces(codi);
+                break;
             case 4:
                 this.w.codiTresAdreces(codi);
+                break;
             case 5:
                 this.input.codiTresAdreces(codi);
+                break;
             case 6:
                 this.print.codiTresAdreces(codi);
+                break;
             case 7:
                 this.i.codiTresAdreces(codi);
+                break;
             case 8:
                 this.s.codiTresAdreces(codi);
+                break;
         }
     }
 }

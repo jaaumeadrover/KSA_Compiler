@@ -27,8 +27,10 @@ public class SymbolIfStatement {
 
             String etiqueta1 = codi.novaEtiqueta();
             String etiqueta2 = codi.novaEtiqueta();
-
-            codi.generar(TipusInstruccionsCTA.EQ, condicio, Integer.toString(-1), etiqueta1);
+            
+            Operand o = new Operand("-1", OperandsCTA.boolea);
+            Operand c = new Operand(condicio, OperandsCTA.boolea);
+            codi.generar(TipusInstruccionsCTA.EQ, c, o, etiqueta1);
             codi.generar(TipusInstruccionsCTA.GOTO, null, null, etiqueta2);
             codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta1);
 
@@ -42,7 +44,10 @@ public class SymbolIfStatement {
             String etiqueta2 = codi.novaEtiqueta();//sentencias else
             String etiqueta3 = codi.novaEtiqueta();//acaba
 
-            codi.generar(TipusInstruccionsCTA.EQ, condicio, Integer.toString(-1), etiqueta1);
+            Operand o = new Operand("-1", OperandsCTA.boolea);
+            Operand c = new Operand(condicio, OperandsCTA.boolea);
+            codi.generar(TipusInstruccionsCTA.EQ, c, o, etiqueta1);
+            
             codi.generar(TipusInstruccionsCTA.GOTO, null, null, etiqueta2);
             //IF
             codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta1);

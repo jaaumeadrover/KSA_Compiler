@@ -20,7 +20,7 @@ public class SymbolForIteration {
     }
 
     public void codiTresAdreces(codiTresAdreces codi){
-        String condicio = this.expr.codiTresAdreces(codi);
+        String condicio = this.expressio.codiTresAdreces(codi);
 
         String etiqueta1 = codi.novaEtiqueta();//expresion
         String etiqueta2 = codi.novaEtiqueta();//sentencias
@@ -29,9 +29,11 @@ public class SymbolForIteration {
         init.codiTresAdreces(codi);
 
         codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta1);
-        String condicio = this.expr.codiTresAdreces(codi);
-
-        codi.generar(TipusInstruccionsCTA.EQ, condicio, Integer.toString(-1), etiqueta2);
+        //String condicio = this.expr.codiTresAdreces(codi);
+        
+        Operand o = new Operand("-1", OperandsCTA.boolea);
+        Operand c = new Operand(condicio, OperandsCTA.boolea);
+        codi.generar(TipusInstruccionsCTA.EQ, c, o, etiqueta2);
         codi.generar(TipusInstruccionsCTA.GOTO, null, null, etiqueta3);
 
         codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta2);
