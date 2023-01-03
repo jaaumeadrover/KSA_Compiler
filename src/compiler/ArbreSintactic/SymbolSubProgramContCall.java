@@ -34,7 +34,7 @@ public class SymbolSubProgramContCall{
 //            codi.genera(TipusInstruccionsCTA.PARAMS,null,null,id);
 //        }
         if(this.subProgramContCall!=null){
-            subProgramContCall.codiTresAdreces();
+            //subProgramContCall.codiTresAdreces();
         }
     }
 }

@@ -1,6 +1,7 @@
 package compiler.GeneracioCodiIntermedi;
+
 import compiler.ArbreSintactic.Operacions;
-import  compiler.Symbols.TaulaSimbols.TipusSub;
+import compiler.Symbols.TaulaSimbols.TipusSub;
 import java.util.ArrayList;
 
 /*
@@ -10,32 +11,33 @@ import java.util.ArrayList;
     DATA CREACIÓ: 26/12/2022
  */
 public class TaulaVariables {
+
     private ArrayList<Variable> TV;
     private int numVar;
     private int numVarTemp;
 
-    public TaulaVariables(){
-        this.TV=new ArrayList<>();
-        this.numVar=0;
-        this.numVarTemp=0;
+    public TaulaVariables() {
+        this.TV = new ArrayList<>();
+        this.numVar = 0;
+        this.numVarTemp = 0;
     }
 
-    public int getNumVar(){
+    public int getNumVar() {
         return this.numVar;
     }
 
-    public int getNumVarTemp(){
+    public int getNumVarTemp() {
         return this.numVarTemp;
     }
 
-    public ArrayList<Variable> getTaulaVariables(){
+    public ArrayList<Variable> getTaulaVariables() {
         return this.TV;
     }
 
     /*
     Mètode per a afegir una nova variable a la llista.
      */
-    public String novaVariable(String nom,TipusSub t, TaulaProcediments TP) {
+    public String novaVariable(String nom, TipusSub t, TaulaProcediments TP) {
         // Nom diferent de null = variable no temporal
         if (nom != null) {
             int i = 0;
@@ -52,7 +54,7 @@ public class TaulaVariables {
             // Afegim a la taula de variables una nova varible temporal,
             // ja que com no té nom, no ha estat declarada i sabem que ha estat
             // creada per a la realització del codi de tres adreces
-            Variable novaVar=new Variable("temporal" + numVar, t, TP.getNumProcActius());
+            Variable novaVar = new Variable("temporal" + numVar, t, TP.getNumProcActius());
             TV.add(novaVar);
             numVar++;
             return "t" + numVar;
@@ -60,7 +62,7 @@ public class TaulaVariables {
         // Si la nova variable no es temporal (tenia nom) i no es trobava
         // a la taula de variables (no ha fet el return del while) l'afegim a la
         // taula de variables amb el seu nom
-        Variable novaVar=new Variable(nom, t, TP.getNumProcActius());
+        Variable novaVar = new Variable(nom, t, TP.getNumProcActius());
         TV.add(novaVar);
         return nom + "_" + TP.getNumProcActius();
     }
@@ -80,7 +82,6 @@ public class TaulaVariables {
             if (v.getNom() == null) {
                 numVarTemp++;
                 v.setNom("t" + numVarTemp);
-
             }
         } else {
             if (v.getNom() == null) {
@@ -109,6 +110,7 @@ public class TaulaVariables {
             }
         }
     }
+
     /*
         Mètode que ens retorna la variable desitjada, passada per parametre.
      */
@@ -131,12 +133,13 @@ public class TaulaVariables {
         }
         return null;
     }
+
     /*
     Mètode que retorna el nom d'una variable afegint l'àmbit en el que l'utilitzam
      */
     public String getNomVariable(String nom, TaulaProcediments TP) {
         // Anem iterant sobre tots els elements de la taula de variables
-        for (int i = 0 ;i < TV.size(); i++){
+        for (int i = 0; i < TV.size(); i++) {
             Variable v = TV.get(i);
             // Cas on la variable no té processos actius (no s'està utilitzant)
             if (v.getNom().equals(nom) && v.getProcedure() == 0) {
@@ -146,7 +149,7 @@ public class TaulaVariables {
                 return nom + "_" + 0;
 
                 // Cas on la variable té processos actius (s'està utilitzant)
-            }else if (v.getNom().equals(nom) && v.getProcedure() == TP.getNumProcActius()){
+            } else if (v.getNom().equals(nom) && v.getProcedure() == TP.getNumProcActius()) {
 //                if(v.getTemp()){
 //                    // si la variable és temporal tan sols retornam el nom
 //                    return nom;

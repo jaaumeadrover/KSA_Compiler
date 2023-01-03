@@ -27,8 +27,6 @@ public class SymbolSubProgramCall{
     }
 
     public SymbolSubProgramCall(SymbolSubProgramContCall subContCall){
-
-        this.tipusSub=t;
         this.subProgramContCall=subContCall;
     }
 
@@ -36,25 +34,25 @@ public class SymbolSubProgramCall{
         return retorna;
     }
 
-    public String codiTresAdreces(){
+    public String codiTresAdreces(codiTresAdreces codi){
         //si hi ha paràmetres, generam el seu codi intermedi
         if(subProgramContCall!=null){
-            subProgramContCall.codiTresAdreces();
+            subProgramContCall.codiTresAdreces(codi);
         }else{
             //si no hi ha paràmetres
             if(this.retorna()){
 
                 String temp = codi.addVariable(this.tipusSub,"t");
-                subProgramCall.codiTresAdreces();
-                codi.generar(TipusInstruccionsCTA.CALL,this.subProgramCall.getId(),null,temp);
+                subProgramContCall.codiTresAdreces(codi);
+                Operand o = new Operand(this.subProgramContCall.getID(), OperandsCTA.procediment);
+                codi.generar(TipusInstruccionsCTA.CALL,o ,null,temp);
 
             }else{
-                subProgramCall.codiTresAdreces();
-                codi.generar(TipusInstruccionsCTA.CALL,this.subProgramCall.getId(),null,null);
+                subProgramContCall.codiTresAdreces(codi);
+                Operand o = new Operand(this.subProgramContCall.getID(), OperandsCTA.procediment);
+                codi.generar(TipusInstruccionsCTA.CALL,o,null,null);
             }
         }
-
-
-
+        return null;
     }
 }

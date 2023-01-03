@@ -13,6 +13,7 @@ public class SymbolValor {
     private SymbolExpressioSimple exprSimple;
     private int index;
     private TipusSub tipusSub;
+    private SymbolInputStatement statement;
 
     /*
     Cas valor equival a una variable i cal consultar el id en la taula de símbols
@@ -87,10 +88,16 @@ public class SymbolValor {
         this.tipusSub=expr.getTipusSubResultat();
         this.index = 7;
     }
+    
+
+    public SymbolValor(SymbolInputStatement s){
+        this.statement = s;
+        this.index = 8;
+    }
 
     public SymbolValor() {
         this.esBuit=true;
-        this.index = 8;
+        this.index = 9;
     }
     
     public int getValorInt(){
@@ -119,7 +126,6 @@ public class SymbolValor {
     public String codiTresAdreces(codiTresAdreces codi) {
         switch (index) {
             case 1:
-                //generar codi de una variable identificador
                 return iden;
             case 2:
                 //generar codi de una variable array
@@ -155,7 +161,7 @@ public class SymbolValor {
                 return temp;
             case 5:
                 //generar crida a subprograma
-                subProgramCall.codiTresAdreces();
+                subProgramCall.codiTresAdreces(codi);
 
                 //Dedins subProgramCall es fa aixo
                 /*
@@ -178,12 +184,22 @@ public class SymbolValor {
                 //generar instruccio not del boolean
                 String operand1=this.exprSimple.codiTresAdreces(codi);
                 Operand o = new Operand(operand1, OperandsCTA.boolea);
-                
-                codi.generar(TipusInstruccionsCTA.NOT,o,null,null);
+                String s=codi.addVariable(TipusSub.BOOLEAN,null);
+                codi.generar(TipusInstruccionsCTA.NOT,o,null,s);
+                return s;
+
+            //
             case 7:
                 //generar codi de una expressió simple
+                String valorExpr=this.exprSimple.codiTresAdreces(codi);
+                return valorExpr;
             case 8:
+                // genram codi de
+                String t = this.statement.codiTresAdreces(codi);
+                return t;
+            case 9:
                 //constructor buit
+            
         }
         return null;
     }

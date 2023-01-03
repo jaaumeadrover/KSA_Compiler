@@ -36,10 +36,11 @@ public class SymbolOp {
         if(boolOP != null){
             return boolOP.codiTresAdreces(codi);
         }else if(aritOP != null){
-            return aritOp.codiTresAdreces(codi);
+            return aritOP.codiTresAdreces(codi);
         }else if(realOP != null){
             return realOP.codiTresAdreces(codi);
         }
+        return null;
     }
 
 }

@@ -16,9 +16,7 @@ public class SymbolDecl  {
 
     public void codiTresAdreces(codiTresAdreces codi){
         //si és variable
-        System.out.println("Holaaaa");
         if (varDecl != null){
-            System.out.println("Vaig a declarar una variable");
             varDecl.codiTresAdreces(codi);
         //si és funció
         }else if (funcDecl != null){

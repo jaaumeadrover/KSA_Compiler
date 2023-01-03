@@ -27,14 +27,12 @@ public class codiTresAdreces{
         //si generam una declaració quan no hi ha mètodes actius
         if(esDeclaracio && tp.getNumProcActius()==0){
             constant.add(new Instruccio(a,op1,op2,dest));
-            System.out.println("Estic a if");
         }else{
             //si no declaració o procediment actius>0
             codi.add(new Instruccio(a,op1,op2,dest) );
-            System.out.println("Estic a l'else");
         }
     }
-    public void addParametro(TipusSub t, String id) {
+    public void addParametre(TipusSub t, String id) {
         Parametre p = new Parametre(id,t);
         tv.novaVariable(id,t,tp);
         //param.add(p);
@@ -43,13 +41,14 @@ public class codiTresAdreces{
 
     public String addVariable(TipusSub t, String id){
         int size = tv.getNumVar();
+        String num="";
         if(id.equals("t")) {
-            String num = null;
+            num = null;
+        }else{
+            num = id;
         }
-        String num = id;
-        tv.novaVariable(num,t, tp);
         
-        return num;
+        return tv.novaVariable(num,t, tp);
     }
     public Variable getVar(String nom) {
         Variable v=tv.getVariable(nom);

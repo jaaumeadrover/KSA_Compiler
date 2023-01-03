@@ -8,7 +8,6 @@ public class SymbolStatement {
     private SymbolExpressioSimple expr;
     private SymbolForIteration f;
     private SymbolWhileStatement w;
-    private SymbolInputStatement input;
     private SymbolPrintStatement print;
     private SymbolIfStatement i;
     private SymbolSwitchCase s;
@@ -34,10 +33,6 @@ public class SymbolStatement {
     public SymbolStatement(SymbolWhileStatement w){
         this.w=w;
         this.index=4;
-    }
-    public SymbolStatement(SymbolInputStatement input){
-        this.input=input;
-        this.index=5;
     }
     public SymbolStatement(SymbolPrintStatement print){
         this.print=print;
@@ -67,9 +62,6 @@ public class SymbolStatement {
                 break;
             case 4:
                 this.w.codiTresAdreces(codi);
-                break;
-            case 5:
-                this.input.codiTresAdreces(codi);
                 break;
             case 6:
                 this.print.codiTresAdreces(codi);

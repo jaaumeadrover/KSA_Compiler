@@ -3,13 +3,14 @@ import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolPrintStatement {
-    private SymbolStringValue string;
+    private SymbolLiteral s;
 
-    public SymbolPrintStatement(SymbolStringValue s){
-        this.string=s;
+    public SymbolPrintStatement(SymbolLiteral s){
+        this.s=s;
     }
 
     public void codiTresAdreces(codiTresAdreces codi){
-        codi.genera(OperacionsCTA.PRINT,s,null,null);
+        Operand o = new Operand(s.toString(), OperandsCTA.stringLit);
+        codi.generar(TipusInstruccionsCTA.PRINT,o,null,null);
     }
 }

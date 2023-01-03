@@ -7,11 +7,13 @@ public class SymbolExpressioSimple {
     private SymbolOperacio operacio;
     private SymbolValor valor;
     private TipusSub tsResultat;
+    private boolean esBuit;
 
     /*
     Constructor buit en cas d'errors
     */
     public SymbolExpressioSimple() {
+        this.esBuit = true;
     }
 
     /*
@@ -26,16 +28,21 @@ public class SymbolExpressioSimple {
         if(oper.isEmpty()){
             this.tsResultat=valor.getTipusSub();
         }else{
-            setTsResultat();
+            //si expressions anteriors son correctes
+            if(!oper.getExpr().esBuit()){
+                setTsResultat();
+            }
         }
     }
     //obtenir tipus resultat si operació no es buit
    private void setTsResultat(){
        if(this.tsResultat==this.operacio.getTipusSub()){
-           if(this.operacio.getOperador().getTipusOperador()!='A'){
-               this.tsResultat=TipusSub.BOOLEAN;
-           }else{
-               this.tsResultat=TipusSub.INT;
+           if(!this.operacio.isAssignacio()) {
+               if (this.operacio.getOperador().getTipusOperador() != 'A') {
+                   this.tsResultat = TipusSub.BOOLEAN;
+               } else {
+                   this.tsResultat = TipusSub.INT;
+               }
            }
        }else{
            this.tsResultat=null;
@@ -50,6 +57,9 @@ public class SymbolExpressioSimple {
     }
     public TipusSub getTipusSubResultat(){
         return this.tsResultat;
+    }
+    public boolean esBuit(){
+        return this.esBuit;
     }
     
     @Override
@@ -69,6 +79,8 @@ public class SymbolExpressioSimple {
         //Cas assignació [copy,b,null,a]
         if(this.operacio.isAssignacio()){
             String valor=this.valor.codiTresAdreces(codi);
+            System.out.println("VALOR ASSIG:"+valor);
+            System.out.println("EXPR: "+this.operacio.getExpr());
             String oper=this.operacio.getExpr().codiTresAdreces(codi);
             Operand o1 = new Operand(oper, OperandsCTA.variable); // PER REVISAR
 
@@ -84,6 +96,7 @@ public class SymbolExpressioSimple {
             //si no es té operador i és un valor simple
             if(this.operacio.isEmpty()){
                 //retornam la variable temporal
+                System.out.println("VALOR: "+valor);
                 return valor;
             }else{
                 //es té un operador i s'ha de generar codi

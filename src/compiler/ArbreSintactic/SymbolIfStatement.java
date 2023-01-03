@@ -30,6 +30,7 @@ public class SymbolIfStatement {
             
             Operand o = new Operand("-1", OperandsCTA.boolea);
             Operand c = new Operand(condicio, OperandsCTA.boolea);
+
             codi.generar(TipusInstruccionsCTA.EQ, c, o, etiqueta1);
             codi.generar(TipusInstruccionsCTA.GOTO, null, null, etiqueta2);
             codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta1);
@@ -46,16 +47,20 @@ public class SymbolIfStatement {
 
             Operand o = new Operand("-1", OperandsCTA.boolea);
             Operand c = new Operand(condicio, OperandsCTA.boolea);
+
             codi.generar(TipusInstruccionsCTA.EQ, c, o, etiqueta1);
             
             codi.generar(TipusInstruccionsCTA.GOTO, null, null, etiqueta2);
             //IF
             codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta1);
+
             this.statesIf.codiTresAdreces(codi);
+
             codi.generar(TipusInstruccionsCTA.GOTO, null, null, etiqueta3);
 
             //ELSE
             codi.generar(TipusInstruccionsCTA.SKIP, null, null, etiqueta2);
+
             this.statesElse.codiTresAdreces(codi);
 
             //ACABAMENT

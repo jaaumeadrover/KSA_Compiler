@@ -25,8 +25,9 @@ public class SymbolOperacio {
     */
     public SymbolOperacio(SymbolVarInit simbol){
         this.varInit = simbol;
-        
+
         if(!simbol.esBuit()){
+            //System.out.println("CONSTRUCTOR VARINIT NO BUIT");
             this.esAssignacio=true;
             this.tipusSBAnterior=simbol.getExpr().getTipusSubResultat();
         }else{
@@ -38,6 +39,7 @@ public class SymbolOperacio {
     Cas en que SymbolOperació utilitza un operador i una altra expressió simple
      */
     public SymbolOperacio(SymbolOp op,SymbolExpressioSimple expr){
+        //System.out.println("CONSTRUCTOR OP EXPR");
         this.operador=op;
         this.expressioSimple=expr;
         setTsResultat();
@@ -80,6 +82,9 @@ public class SymbolOperacio {
         return tipusSBAnterior;
     }
     public SymbolExpressioSimple getExpr(){
+        if(this.varInit!=null){
+            return this.varInit.getExpr();
+        }
         return this.expressioSimple;
     }
 

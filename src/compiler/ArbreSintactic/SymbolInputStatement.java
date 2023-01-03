@@ -9,8 +9,8 @@ public class SymbolInputStatement  {
     }
 
     public String codiTresAdreces(codiTresAdreces codi){
-        String s=codi.novaVariable(TipusSub.NULL,null);
-        codi.genera(OperacionsCTA.INPUT,null,null,s);
+        String s=codi.addVariable(TipusSub.STRING,"t");
+        codi.generar(TipusInstruccionsCTA.INPUT,null,null,s);
         return s;
     }
 }

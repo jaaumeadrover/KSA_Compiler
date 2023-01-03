@@ -38,13 +38,11 @@ public class SymbolVarDecl {
 
     public String codiTresAdreces(codiTresAdreces codi){
         String nom=this.id;
-        System.out.println("Estic declarant una varrrrrr");
         //fins que no declaram una variable no l'introduim en el codi de tres adreces
         if (this.varInit != null){
             String inicialitzacio = this.varInit.codiTresAdreces(codi);
             Operand o = new Operand(inicialitzacio, OperandsCTA.variable);
             codi.generar(TipusInstruccionsCTA.COPIA, o, null, this.id);
-            System.out.println("Estic declarant una var");
         }
         return null;
    }

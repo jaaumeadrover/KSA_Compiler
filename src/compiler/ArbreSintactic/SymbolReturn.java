@@ -8,14 +8,14 @@ public class SymbolReturn {
     public SymbolReturn(SymbolExpressioSimple expr){
         this.expr = expr;
     }
-
+    
     public SymbolExpressioSimple getExpr() {
         return expr;
     }
 
-    public String codiIntermedi(){
+    public String codiTresAdreces(codiTresAdreces codi){
 
-        String rtn = expr.codiIntermedi();
+        String rtn = expr.codiTresAdreces(codi);
         return rtn;
     }
 }
