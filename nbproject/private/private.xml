@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/marcc/OneDrive/Escritorio/GitHub/KSA_Compiler/src/compiler/ArbreSintactic/SymbolExpressioSimple.java</file>
+            <file>file:/C:/Users/marcc/OneDrive/Escritorio/GitHub/KSA_Compiler/src/compiler/ArbreSintactic/SymbolSubProgramCall.java</file>
+            <file>file:/C:/Users/marcc/OneDrive/Escritorio/GitHub/KSA_Compiler/src/compiler/ArbreSintactic/SymbolSubProgramContCall.java</file>
+            <file>file:/C:/Users/marcc/OneDrive/Escritorio/GitHub/KSA_Compiler/src/compiler/Main.java</file>
+            <file>file:/C:/Users/marcc/OneDrive/Escritorio/GitHub/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/Parametre.java</file>
+            <file>file:/C:/Users/marcc/OneDrive/Escritorio/GitHub/KSA_Compiler/src/TESTING/1.Funcions/prova2.txt</file>
+        </group>
     </open-files>
 </project-private>

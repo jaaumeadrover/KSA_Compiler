@@ -660,7 +660,7 @@ class CUP$Parser$actions {
 		SymbolVarInit varinit = (SymbolVarInit)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
                                                         if(varinit.isIsarray()){
-                                                                //System.out.println("Estic a la decl d'un array");
+                                                                System.out.println("Estic a la decl d'un array");
                                                                 int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0,varinit.getArray().getInteger());
                                                                 //System.out.println("Dimensio: "+varinit.getArray().getInteger());
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
@@ -675,7 +675,7 @@ class CUP$Parser$actions {
                                                                   RESULT=new SymbolVarDecl();
                                                                   }
                                                             }else{
-                                                                //System.out.println("No Estic a la decl d'un array");
+                                                                System.out.println("No Estic a la decl d'un array");
                                                                 int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.VAR,0,0);
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                                     if (error==1){
@@ -971,7 +971,8 @@ if(s==null){
 		int vardleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
 		int vardright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		SymbolVarDecl vard = (SymbolVarDecl)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
-		RESULT=new SymbolStatement(vard);
+		
+System.out.println("declara al main");RESULT=new SymbolStatement(vard);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("statement",11, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;

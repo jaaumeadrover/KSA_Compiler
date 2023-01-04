@@ -39,8 +39,19 @@ public class SymbolSubProgramCall{
         //si hi ha paràmetres, generam el seu codi intermedi
         if(subProgramContCall!=null){
             //feim respectiu codi de 3 adreces de parametres
-            subProgramContCall.codiTresAdreces(codi,id);
+            subProgramContCall.codiTresAdreces(codi,id,1);
             //CALL funcio
+            //si no hi ha paràmetres
+            if(this.retorna()){
+                String temp = codi.addVariable(this.tipusSub,"t");
+                Operand op = new Operand(this.subProgramContCall.getID(), OperandsCTA.procediment);
+                codi.generar(TipusInstruccionsCTA.CALL,op ,null,temp);
+                return temp;
+            }else{
+
+                Operand o = new Operand(this.subProgramContCall.getID(), OperandsCTA.procediment);
+                codi.generar(TipusInstruccionsCTA.CALL,o,null,null);
+            }
         }else{
             //si no hi ha paràmetres
             if(this.retorna()){

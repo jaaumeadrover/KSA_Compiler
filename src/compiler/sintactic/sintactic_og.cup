@@ -213,7 +213,7 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                         }:}
     |type:t id:iden varInit:varinit                    {:
                                                         if(varinit.isIsarray()){
-                                                                //System.out.println("Estic a la decl d'un array");
+                                                                System.out.println("Estic a la decl d'un array");
                                                                 int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0,varinit.getArray().getInteger());
                                                                 //System.out.println("Dimensio: "+varinit.getArray().getInteger());
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
@@ -228,7 +228,7 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                                   RESULT=new SymbolVarDecl();
                                                                   }
                                                             }else{
-                                                                //System.out.println("No Estic a la decl d'un array");
+                                                                System.out.println("No Estic a la decl d'un array");
                                                                 int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.VAR,0,0);
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                                     if (error==1){
@@ -319,7 +319,9 @@ statementList ::= statement:stat statementList:stats {:RESULT= new SymbolStateme
     |                                                {:RESULT=new SymbolStatementList();:}
     ;
 
-statement ::= varDecl:vard smcol         {:RESULT=new SymbolStatement(vard);:}
+statement ::= varDecl:vard smcol         {:
+System.out.println("declara al main");
+RESULT=new SymbolStatement(vard);:}
     |exprSimple:expr smcol               {:
                                             //si expressió correcta
                                             if(!expr.esBuit()){

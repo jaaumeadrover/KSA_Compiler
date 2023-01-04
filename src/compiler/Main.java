@@ -42,7 +42,9 @@ public class Main {
                 ///Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova.txt
                 ///home/diegofes/GitHub/KSA_Compiler/src/TESTING/1.Funcions/prova.txt
                 //C:\Users\Jaume\Desktop\UIB\Cursos\TERCER\1r quatri\COMPILADORS\PRÀCTICA KSA\KSA_Compiler\src\TESTING\1.Funcions\prova.txt
-                input = new FileReader("/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova2.txt");
+                //input = new FileReader("/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova2.txt");
+                input = new FileReader("/Users\\marcc\\OneDrive\\Escritorio\\GitHub\\KSA_Compiler/src/TESTING/1.Funcions/prova2.txt");
+                //Users\marcc\OneDrive\Escritorio\GitHub\KSA_Compiler
                 //input = new InputStreamReader(System.in);
             }
             FileWriter writerErrors = new FileWriter("errors.txt");
@@ -82,15 +84,15 @@ public class Main {
 
             br.close();
 
-            //ArbreSintactic arbre = parser.getArbreSintac();
-            //codiTresAdreces codi = arbre.generarCodiTresAdreces();
-            //String codiIntermedi = codi.toString();
+            ArbreSintactic arbre = parser.getArbreSintac();
+            codiTresAdreces codi = arbre.generarCodiTresAdreces();
+            String codiIntermedi = codi.toString();
 
-            //FileWriter codiIntermediFile = new FileWriter("codiIntermedi.txt");
+            FileWriter codiIntermediFile = new FileWriter("codiIntermedi.txt");
             
-            //codiIntermediFile.write(codiIntermedi);
-            //System.out.println(codiIntermedi);
-            //codiIntermediFile.close();
+            codiIntermediFile.write(codiIntermedi);
+            System.out.println(codiIntermedi);
+            codiIntermediFile.close();
             
         }catch(Exception e) {
             System.err.println("error: "+e);

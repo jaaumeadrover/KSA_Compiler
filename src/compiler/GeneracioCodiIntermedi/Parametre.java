@@ -1,5 +1,6 @@
 package compiler.GeneracioCodiIntermedi;
 import  compiler.Symbols.TaulaSimbols.TipusSub;
+import  compiler.Symbols.TaulaSimbols.Tipus;
 
 public class Parametre {
 
