@@ -564,7 +564,13 @@ class CUP$Parser$actions {
           case 2: // declList ::= declList decl 
             {
               SymbolDeclList RESULT =null;
-		RESULT=new SymbolDeclList();
+		int declListleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
+		int declListright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
+		SymbolDeclList declList = (SymbolDeclList)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
+		int declleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
+		int declright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
+		SymbolDecl decl = (SymbolDecl)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		RESULT=new SymbolDeclList(decl,declList);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("declList",2, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -632,7 +638,7 @@ class CUP$Parser$actions {
                                                         int error = ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.CONST, 0, 0);
                                                         //System.out.println("TAMANY TAULA SIMBOLS EXTERNA: "+ts.getMida());
                                                         if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
-                                                            if(error==0){
+                                                            if(error==1){
                                                                 RESULT=new SymbolVarDecl(true, t.getTipusSub(), iden.toString(),varinit);
                                                                 }else{
                                                                     RESULT=new SymbolVarDecl();
@@ -972,7 +978,8 @@ if(s==null){
 		int vardright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		SymbolVarDecl vard = (SymbolVarDecl)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		
-System.out.println("declara al main");RESULT=new SymbolStatement(vard);
+System.out.println("declara al main");
+RESULT=new SymbolStatement(vard);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("statement",11, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1119,18 +1126,18 @@ System.out.println("declara al main");RESULT=new SymbolStatement(vard);
 		//Si el valor es correcte
                                                             if(!val.esBuit()){
                                                                 if(oper.isAssignacio()){
-                                                                System.out.println("Estic a una assignacio: "+val.getIden());
+                                                                    System.out.println("Estic a una assignacio: "+val.getIden());
                                                                     RESULT=new SymbolExpressioSimple(val, oper);
-                                                                    if(comprovaTipus.gestAsig(val,oper)){
-                                                                        System.out.println("Assignacio correcta");
-                                                                       RESULT=new SymbolExpressioSimple(val, oper);
-                                                                       System.out.println("TIPUS EXPRESSIO:"+RESULT.getTipusSubResultat());
-                                                                    }else{
-                                                                       System.out.println("Assignacio incorrecta");
-                                                                       comprovaTipus.addError("ERROR Semántic, assignació incorrecte. Línea: "+cur_token.left);
-                                                                      RESULT=new SymbolExpressioSimple();
-                                                                      //System.out.println("TIPUS EXPRESSIO:"+RESULT.getTipusSubResultat());
-                                                                    }
+                                                                        if(comprovaTipus.gestAsig(val,oper)){
+                                                                            System.out.println("Assignacio correcta");
+                                                                           RESULT=new SymbolExpressioSimple(val, oper);
+                                                                           System.out.println("TIPUS EXPRESSIO:"+RESULT.getTipusSubResultat());
+                                                                        }else{
+                                                                           System.out.println("Assignacio incorrecta");
+                                                                           comprovaTipus.addError("ERROR Semántic, assignació incorrecte. Línea: "+cur_token.left);
+                                                                          RESULT=new SymbolExpressioSimple();
+                                                                          //System.out.println("TIPUS EXPRESSIO:"+RESULT.getTipusSubResultat());
+                                                                        }
                                                                 }else{
                                                                     System.out.println("No estic a una assignacio:"+cur_token.left);
                                                                     RESULT=new SymbolExpressioSimple(val,oper);
@@ -1154,12 +1161,7 @@ System.out.println("declara al main");RESULT=new SymbolStatement(vard);
 		
                                             Simbol s=ts.consulta(iden.toString());
                                             if(s!=null){
-                                                if(comprovaTipus.gestIdArray(iden.toString())){
                                                     RESULT=new SymbolValor(iden.toString(),s.getTipusSub());
-                                                }
-                                                else{
-                                                    RESULT=new SymbolValor();
-                                                }
                                             }else{
                                                 comprovaTipus.addError("ERROR Semántic de la taula de simbols, La variable "+iden.toString()+" no existeix. Línea: "+cur_token.left);
                                                 RESULT=new SymbolValor(iden.toString(),TipusSub.NULL);

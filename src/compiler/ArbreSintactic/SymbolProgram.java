@@ -19,6 +19,7 @@ public class SymbolProgram {
     public void codiTresAdreces(codiTresAdreces codi){
         if (declList != null){
             codi.començaDecl();
+            System.out.println("DECLLIST DESDE SYMPROGRAM");
             this.declList.codiTresAdreces(codi);
             codi.acabaDecl();
         }

@@ -22,7 +22,8 @@ public class SymbolDeclList  {
 
     public SymbolDeclList(SymbolDecl decl,SymbolDeclList declList) {
             //super("DeclList",null);
-
+            this.llistaDecl=declList;
+            this.declaracio=decl;
 
     }
 
@@ -31,7 +32,9 @@ public class SymbolDeclList  {
     }
 
     public void codiTresAdreces(codiTresAdreces codi){
+        System.out.println("HOLAA DECL LIST");
         if (declaracio != null){
+            System.out.println("CODI3A DECL");
             this.declaracio.codiTresAdreces(codi);
         }
         //mentre quedin declaracions a generar

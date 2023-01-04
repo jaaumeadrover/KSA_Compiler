@@ -1,4 +1,5 @@
 package compiler.ArbreSintactic;
+
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
@@ -22,26 +23,33 @@ public class SymbolOperacio {
 
     /*
     Cas en que symbol operació agafa VarInit que pot ser lambda.
-    */
-    public SymbolOperacio(SymbolVarInit simbol){
+     */
+    public SymbolOperacio(SymbolVarInit simbol) {
         this.varInit = simbol;
 
-        if(!simbol.esBuit()){
+        if (!simbol.esBuit()) {
             //System.out.println("CONSTRUCTOR VARINIT NO BUIT");
-            this.esAssignacio=true;
-            this.tipusSBAnterior=simbol.getExpr().getTipusSubResultat();
-        }else{
-            this.isEmpty=true;
+            this.esAssignacio = true;
+            if (simbol.getExpr()!=null) {
+                 this.tipusSBAnterior = simbol.getExpr().getTipusSubResultat();
+            }else{
+                    
+            }
+            //else
+            //Tipus->ARRAY
+            //valor.Tipus==Tipus.ARRAY;
+        } else {
+            this.isEmpty = true;
         }
     }
 
     /*
     Cas en que SymbolOperació utilitza un operador i una altra expressió simple
      */
-    public SymbolOperacio(SymbolOp op,SymbolExpressioSimple expr){
+    public SymbolOperacio(SymbolOp op, SymbolExpressioSimple expr) {
         //System.out.println("CONSTRUCTOR OP EXPR");
-        this.operador=op;
-        this.expressioSimple=expr;
+        this.operador = op;
+        this.expressioSimple = expr;
         setTsResultat();
     }
 
@@ -49,67 +57,71 @@ public class SymbolOperacio {
     Això s'hauria de fer al semàntic????
     VERIFICAR SymbolOperació.
      */
-    private void setTsResultat(){
-        TipusSub x=null;
+    private void setTsResultat() {
+        TipusSub x = null;
 
-        switch(operador.getTipusOperador()) {
+        switch (operador.getTipusOperador()) {
             //Cas 1: Symbol Aritmètic(+,*
             case 'A':
-                if(expressioSimple.getTipusSubResultat()==TipusSub.INT){
-                    x=TipusSub.INT;
+                if (expressioSimple.getTipusSubResultat() == TipusSub.INT) {
+                    x = TipusSub.INT;
                 }
                 break;
             //Cas 2: Symbol Boolean
             case 'B':
-                if(expressioSimple.getTipusSubResultat()==TipusSub.BOOLEAN){
-                    x=TipusSub.BOOLEAN;
+                if (expressioSimple.getTipusSubResultat() == TipusSub.BOOLEAN) {
+                    x = TipusSub.BOOLEAN;
                 }
                 break;
             //Cas 3: Symbol Real
             case 'R':
-                if(expressioSimple.getTipusSubResultat()==TipusSub.INT){
-                    x=TipusSub.INT;
+                if (expressioSimple.getTipusSubResultat() == TipusSub.INT) {
+                    x = TipusSub.INT;
                 }
                 break;
         }
-        this.tipusSBAnterior =x;
+        this.tipusSBAnterior = x;
 
     }
-    public SymbolOp getOperador(){
+
+    public SymbolOp getOperador() {
         return operador;
     }
-    public TipusSub getTipusSub(){
+
+    public TipusSub getTipusSub() {
         return tipusSBAnterior;
     }
-    public SymbolExpressioSimple getExpr(){
-        if(this.varInit!=null){
+
+    public SymbolExpressioSimple getExpr() {
+        if (this.varInit != null) {
             return this.varInit.getExpr();
         }
         return this.expressioSimple;
     }
 
-    public boolean isEmpty(){
-       return this.isEmpty;
-   }
-    public boolean isAssignacio(){
-       return this.esAssignacio;
-   }
+    public boolean isEmpty() {
+        return this.isEmpty;
+    }
+
+    public boolean isAssignacio() {
+        return this.esAssignacio;
+    }
+
     public SymbolVarInit getVarInit() {
         return varInit;
     }
 
-    public TipusInstruccionsCTA codiTresAdreces(codiTresAdreces codi){
+    public TipusInstruccionsCTA codiTresAdreces(codiTresAdreces codi) {
         // Cas op expressioSimple
-        if(operador != null){
+        if (operador != null) {
             TipusInstruccionsCTA op = operador.codiTresAdreces(codi);
             //codi.genera(op, null, null, null);
             expressioSimple.codiTresAdreces(codi);
             return op;
-        // Cas VARINIT
-        }else{
+            // Cas VARINIT
+        } else {
             return null; // PER REVISAR
         }
     }
-
 
 }

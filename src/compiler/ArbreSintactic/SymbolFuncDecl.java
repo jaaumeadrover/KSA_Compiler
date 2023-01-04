@@ -27,9 +27,10 @@ public class SymbolFuncDecl  {
  }
 
     public void codiTresAdreces(codiTresAdreces codi){
+        System.out.println("FUNC DECL");
        //generam codi Intermedi de un id --> és el mateix string de iden
         if(funcCap.hihaParam()){
-
+            System.out.println("        FUNCIO AMB PARAMETRES");
             ArrayList<Parametre> parametres = funcCap.codiTresAdreces(codi);
             codi.getTp().afegirProc(new Procediment(iden,t,parametres));
             String etiqueta1=codi.novaEtiqueta(iden);
@@ -44,7 +45,7 @@ public class SymbolFuncDecl  {
             codi.getTp().tancaProcediment();
 
         }else{
-
+            System.out.println("        FUNCIO SENSE PARAMETRES");
             codi.getTp().afegirProc(new Procediment(iden,t,null));
             String etiqueta1=codi.novaEtiqueta(iden);
             codi.generar(TipusInstruccionsCTA.SKIP,null,null,etiqueta1);

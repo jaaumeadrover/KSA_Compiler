@@ -1,1 +1,2 @@
-ERROR Semántic, Estas assignant un array com una variable 
+ERROR Semántic, la variable no es un array !!
+ERROR Semántic, assignació incorrecte. Línea: 11

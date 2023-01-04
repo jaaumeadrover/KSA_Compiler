@@ -9,12 +9,10 @@ main(){
     //DECLARACIONS
     int l <- 10;
     int acum <- 0;
-
-    int a <- int [10];
     for(int i <- 0; i < l; i <- i + 1){
-        a[i] <- 1;
+        //a[i] <- 1;
     }
     //Cridem la funcio que ens sumarà els nombres de l'array
-    acum <- sumarNombresArray(a,acum,l);
+    //acum <- sumarNombresArray(a,acum,l);
     print(acum);
 }

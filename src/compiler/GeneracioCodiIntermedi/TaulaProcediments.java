@@ -24,6 +24,7 @@ public class TaulaProcediments{
     public void afegirProc(Procediment proc){
         TP.add(proc);
         numProc++;
+        System.out.println("HE AFEGIT PROCEDIMENT:"+proc);
         this.numProcActius=numProc;
     }
 
@@ -36,6 +37,7 @@ public class TaulaProcediments{
 
     public Procediment getProcediment(String nom){
         for (int i = 0; i < TP.size(); i++) {
+            System.out.println("GET PROCEDIMENT");
             if(TP.get(i).getNomProc().equals(nom)){
                 return TP.get(i);
             }
@@ -49,5 +51,13 @@ public class TaulaProcediments{
 
     public int getNumProcActius(){
         return numProcActius;
+    }
+    
+    public String toString(){
+        String s="";
+        for (int i = 0; i < TP.size(); i++) {
+            s+=TP.get(i);
+        }
+        return s;
     }
 }
