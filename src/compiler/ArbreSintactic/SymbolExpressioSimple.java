@@ -78,19 +78,30 @@ public class SymbolExpressioSimple {
 
         //Cas assignació [copy,b,null,a]
         if(this.operacio.isAssignacio()){
-            String valor=this.valor.codiTresAdreces(codi);
+            String valor=this.valor.codiTresAdreces(codi,true);
             System.out.println("VALOR ASSIG:"+valor);
             System.out.println("EXPR: "+this.operacio.getExpr());
             String oper=this.operacio.getExpr().codiTresAdreces(codi);
             Operand o1 = new Operand(oper, OperandsCTA.variable); // PER REVISAR
 
-            codi.generar(TipusInstruccionsCTA.COPIA,o1,null,valor);
+            int pos1=valor.indexOf('[');
+            int pos2=valor.indexOf(']');
+            String index=valor.substring(pos1+1,pos2+1);
+            String iden=valor.substring(0,pos1);
+            Operand o2 = new Operand(index, OperandsCTA.variable);
+                    
+            //Assignació amb variable no array
+            if(pos1==-1) {
+                codi.generar(TipusInstruccionsCTA.COPIA, o1, null, valor);
+            }else{
+                //assignació amb variable array
+                codi.generar(TipusInstruccionsCTA.INDASS,o1,o2,iden);
+            }
             return null;
+
         }else{
             //Cas no assignació
-
-
-            String valor=this.valor.codiTresAdreces(codi);
+            String valor=this.valor.codiTresAdreces(codi,false);
             Operand val = new Operand(valor, OperandsCTA.variable); // PER REVISAR
             
             //si no es té operador i és un valor simple
@@ -109,17 +120,10 @@ public class SymbolExpressioSimple {
 
                 codi.generar(tipus,val,o2,temp);
                 return temp;
-
             }
+
         }
-//
-//        String value = this.valor.codiTresAdreces(codi);
-//        if(operacio != null){
-//            TipusInstruccionsCTA t = operacio.codiTresAdreces(codi);
-//
-//        }else{
-//            return value;
-//        }
+
     }
 
 

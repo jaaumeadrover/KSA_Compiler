@@ -1,0 +1,1 @@
+ERROR Semántic, Estas assignant un array com una variable 

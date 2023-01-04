@@ -26,8 +26,9 @@ public class SymbolSubProgramCall{
         }
     }
 
-    public SymbolSubProgramCall(SymbolSubProgramContCall subContCall){
+    public SymbolSubProgramCall(SymbolSubProgramContCall subContCall,String s){
         this.subProgramContCall=subContCall;
+        this.id=s;
     }
 
     public boolean retorna(){
@@ -37,18 +38,18 @@ public class SymbolSubProgramCall{
     public String codiTresAdreces(codiTresAdreces codi){
         //si hi ha paràmetres, generam el seu codi intermedi
         if(subProgramContCall!=null){
-            subProgramContCall.codiTresAdreces(codi);
+            //feim respectiu codi de 3 adreces de parametres
+            subProgramContCall.codiTresAdreces(codi,id);
+            //CALL funcio
         }else{
             //si no hi ha paràmetres
             if(this.retorna()){
-
                 String temp = codi.addVariable(this.tipusSub,"t");
-                subProgramContCall.codiTresAdreces(codi);
-                Operand o = new Operand(this.subProgramContCall.getID(), OperandsCTA.procediment);
-                codi.generar(TipusInstruccionsCTA.CALL,o ,null,temp);
-
+                Operand op = new Operand(this.subProgramContCall.getID(), OperandsCTA.procediment);
+                codi.generar(TipusInstruccionsCTA.CALL,op ,null,temp);
+                return temp;
             }else{
-                subProgramContCall.codiTresAdreces(codi);
+
                 Operand o = new Operand(this.subProgramContCall.getID(), OperandsCTA.procediment);
                 codi.generar(TipusInstruccionsCTA.CALL,o,null,null);
             }

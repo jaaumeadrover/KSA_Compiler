@@ -2,51 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b33019b-17bb-49c6-9ad2-0abb86f410ea" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/TESTING/1.Funcions/prova2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolArr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/prova.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/TESTING/1.Funcions/prova.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/Scanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/lexic/Scanner.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/lexic/lexic.flex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/ParserSym.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/sintactic/ParserSym.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic_og.cup" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codiIntermedi.txt" beforeDir="false" afterPath="$PROJECT_DIR$/codiIntermedi.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TESTING/1.Funcions/prova.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/TESTING/1.Funcions/prova.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolContCap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolContCap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolExpressioSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolExpressioSimple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolInputStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolInputStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolPrintStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolPrintStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolReturn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolReturn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolStatement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolFuncCap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolFuncCap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolFuncDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolFuncDecl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolLiteral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolLiteral.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolProcDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolProcDecl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codiTresAdreces.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codiTresAdreces.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/Scanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/ParserSym.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/ParserSym.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
+    </list>
+    <list id="56b8fed5-6e88-4e6d-b859-12b899eb3b79" name="Changes by diegofes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolFuncCap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolFuncCap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramCall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramContCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramContCall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/TaulaVariables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/TaulaVariables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/Parametre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/Parametre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/Procediment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/Procediment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codiTresAdreces.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codiTresAdreces.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/Scanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
-    </list>
-    <list id="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" name="Changes by diegofes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolIfStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolIfStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOperacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOperacio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/OperandsCTA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/OperandsCTA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
     </list>
     <list id="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" name="Changes by Jaume" comment="">
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolArray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolExpressioSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolExpressioSimple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolLiteral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolLiteral.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOperacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOperacio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolStringValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramCall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramContCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramContCall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codiTresAdreces.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codiTresAdreces.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
     </list>
     <list id="f3e3f014-69ff-42c6-8867-3e0ceac3d885" name="Changes by joanbalaguer" comment="" />
     <list id="c03443d2-0747-471b-8137-f2e9e48026f7" name="Changes by marc" comment="">
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolDecl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolVarDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolVarDecl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" afterDir="false" />
     </list>
     <list id="58cceed4-2ebd-4add-94de-92150b1a83c2" name="Changes by messi" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,76 +58,110 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolFuncCap.java">
+      <ranges>
+        <range start1="3" end1="3" start2="3" end2="4" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="7" end1="8" start2="8" end2="9" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="9" end1="9" start2="10" end2="12" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="11" end1="12" start2="14" end2="15" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="13" end1="13" start2="16" end2="17" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="16" end1="18" start2="20" end2="26" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="20" end1="24" start2="28" end2="29" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="25" end1="25" start2="30" end2="31" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/compiler/lexic/lexic.flex">
+      <ranges>
+        <range start1="103" end1="103" start2="103" end2="104" changelist="c03443d2-0747-471b-8137-f2e9e48026f7" />
+        <range start1="190" end1="191" start2="191" end2="193" changelist="c03443d2-0747-471b-8137-f2e9e48026f7" />
+        <range start1="192" end1="193" start2="194" end2="194" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+      </ranges>
+    </file>
     <file path="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup">
       <ranges>
-        <range start1="216" end1="217" start2="216" end2="217" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="219" end1="220" start2="219" end2="220" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="319" end1="325" start2="319" end2="331" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
-        <range start1="327" end1="328" start2="333" end2="334" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="333" end1="334" start2="339" end2="340" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="335" end1="336" start2="341" end2="342" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
-        <range start1="337" end1="339" start2="343" end2="343" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
-        <range start1="340" end1="341" start2="344" end2="345" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
-        <range start1="348" end1="349" start2="352" end2="353" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
-        <range start1="356" end1="356" start2="360" end2="361" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="357" end1="358" start2="362" end2="363" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="402" end1="403" start2="407" end2="408" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="418" end1="418" start2="423" end2="424" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="465" end1="466" start2="471" end2="473" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="481" end1="481" start2="488" end2="489" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="482" end1="483" start2="490" end2="491" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="535" end1="536" start2="543" end2="544" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="540" end1="547" start2="548" end2="548" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
+        <range start1="133" end1="134" start2="133" end2="134" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="174" end1="175" start2="174" end2="174" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="176" end1="176" start2="175" end2="176" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="200" end1="200" start2="200" end2="201" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="211" end1="212" start2="212" end2="213" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="280" end1="282" start2="281" end2="283" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="294" end1="295" start2="295" end2="296" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="297" end1="298" start2="298" end2="299" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="300" end1="301" start2="301" end2="302" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="303" end1="304" start2="304" end2="305" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="305" end1="306" start2="306" end2="307" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="308" end1="309" start2="309" end2="310" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="311" end1="311" start2="312" end2="315" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="476" end1="477" start2="480" end2="481" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="479" end1="480" start2="483" end2="484" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
       </ranges>
     </file>
     <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java">
       <ranges>
-        <range start1="15" end1="15" start2="15" end2="16" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="89" end1="89" start2="90" end2="96" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="92" end1="93" start2="99" end2="100" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="121" end1="122" start2="128" end2="128" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
-        <range start1="157" end1="158" start2="163" end2="164" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="180" end1="182" start2="186" end2="191" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="184" end1="184" start2="193" end2="195" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="185" end1="185" start2="196" end2="200" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="186" end1="186" start2="201" end2="202" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="16" end1="16" start2="16" end2="17" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="32" end1="32" start2="33" end2="34" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="124" end1="124" start2="126" end2="130" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="125" end1="126" start2="131" end2="132" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="130" end1="133" start2="136" end2="143" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="134" end1="134" start2="144" end2="152" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="135" end1="137" start2="153" end2="156" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="142" end1="143" start2="161" end2="162" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="146" end1="147" start2="165" end2="166" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="148" end1="149" start2="167" end2="168" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="185" end1="186" start2="204" end2="205" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="187" end1="188" start2="206" end2="207" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
       </ranges>
     </file>
-    <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolStatement.java">
+    <file path="$PROJECT_DIR$/src/compiler/Main.java">
       <ranges>
-        <range start1="10" end1="11" start2="10" end2="10" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
-        <range start1="37" end1="41" start2="36" end2="36" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
-        <range start1="70" end1="73" start2="65" end2="65" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="44" end1="45" start2="44" end2="45" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="84" end1="87" start2="84" end2="87" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="88" end1="89" start2="88" end2="89" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="90" end1="93" start2="90" end2="93" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramCall.java">
+      <ranges>
+        <range start1="28" end1="29" start2="28" end2="29" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="30" end1="30" start2="30" end2="31" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="39" end1="40" start2="40" end2="43" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="43" end1="44" start2="46" end2="46" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="45" end1="49" start2="47" end2="50" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="50" end1="51" start2="51" end2="52" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
       </ranges>
     </file>
     <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolExpressioSimple.java">
       <ranges>
-        <range start1="9" end1="9" start2="9" end2="10" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="14" end1="14" start2="15" end2="16" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="28" end1="29" start2="30" end2="34" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="34" end1="38" start2="39" end2="45" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
-        <range start1="53" end1="53" start2="60" end2="63" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="71" end1="71" start2="81" end2="83" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
-        <range start1="86" end1="86" start2="98" end2="99" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="80" end1="81" start2="80" end2="81" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="86" end1="87" start2="86" end2="99" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="88" end1="88" start2="100" end2="101" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="90" end1="93" start2="103" end2="104" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="111" end1="112" start2="122" end2="122" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="113" end1="113" start2="123" end2="124" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="114" end1="122" start2="125" end2="126" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramContCall.java">
+      <ranges>
+        <range start1="7" end1="8" start2="7" end2="8" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="10" end1="11" start2="10" end2="11" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="12" end1="13" start2="12" end2="13" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="18" end1="18" start2="18" end2="19" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="20" end1="21" start2="21" end2="22" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="23" end1="35" start2="24" end2="27" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="36" end1="37" start2="28" end2="48" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="38" end1="38" start2="49" end2="51" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
       </ranges>
     </file>
     <file path="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codiTresAdreces.java">
       <ranges>
-        <range start1="29" end1="30" start2="29" end2="29" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="33" end1="34" start2="32" end2="32" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="36" end1="37" start2="34" end2="35" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="45" end1="45" start2="43" end2="44" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
-        <range start1="46" end1="47" start2="45" end2="48" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
-        <range start1="48" end1="50" start2="49" end2="49" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
-        <range start1="51" end1="52" start2="50" end2="51" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolOperacio.java">
-      <ranges>
-        <range start1="27" end1="28" start2="27" end2="28" changelist="bfd81aea-45b9-42a8-a7a7-83e285f7c2f9" />
-        <range start1="29" end1="29" start2="29" end2="30" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
-        <range start1="40" end1="40" start2="41" end2="42" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
-        <range start1="82" end1="82" start2="84" end2="87" changelist="c90ba4e9-1260-4f30-ad4b-7cb62c4bdeb6" />
+        <range start1="5" end1="5" start2="5" end2="6" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="9" end1="9" start2="10" end2="11" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="14" end1="14" start2="16" end2="17" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="34" end1="36" start2="37" end2="43" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="37" end1="38" start2="44" end2="45" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="40" end1="40" start2="47" end2="50" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
+        <range start1="57" end1="57" start2="67" end2="70" changelist="56b8fed5-6e88-4e6d-b859-12b899eb3b79" />
       </ranges>
     </file>
   </component>

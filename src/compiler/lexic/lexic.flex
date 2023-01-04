@@ -101,6 +101,7 @@ r_main      = main
 r_print     = print
 r_input     = input
 r_string    = string
+r_array    = array
 
 /* Altres */
 new_line = ([\n\r]|(\n\r))+
@@ -188,9 +189,9 @@ r_comment = "//"([^\n])*
 {r_default}              { return symbol(ParserSym.r_default);}
 {r_case}                 { return symbol(ParserSym.r_case);}
 {r_not}                  { return symbol(ParserSym.r_not);}
-{r_and}                  {return symbol(ParserSym.r_and);}
+{r_and}                  { return symbol(ParserSym.r_and);}
+{r_array}                { return symbol(ParserSym.r_array,this.yytext());}
 {r_comment}              {}
-
 
 {r_procedure}            { return symbol(ParserSym.r_procedure);}
 {r_int}                  { return symbol(ParserSym.r_int);}

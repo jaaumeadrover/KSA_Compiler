@@ -10,56 +10,31 @@ import java.util.ArrayList;
  */
 public class Procediment{
 
-    private int nivell;
+
     private String nomProc;
-    private int ocupacio;
-    private int numParams;
+    private TipusSub tsub;
     private ArrayList<Parametre> parametres;
-    private TipusSub tipus;
+
 
     // Constructors de la classe
-    public Procediment(int nivell, String nom, int ocupacio, int nparams){
-        this.nivell = nivell;
+    public Procediment(String nom, TipusSub tsub, ArrayList<Parametre> parametres){
+
         this.nomProc = nom;
-        this.ocupacio = ocupacio;
-        this.numParams = nparams;
+        this.tsub = tsub;
+        this.parametres = parametres;
+
     }
 
-    public Procediment(int nivell, String nom, int nparams){
-        this.nivell = nivell;
-        this.nomProc = nom;
-        this.numParams = nparams;
-    }
 
-    public Procediment(String nom){
-        this.nomProc = nom;
-    }
-
-    public Procediment(String nom, ArrayList<Parametre> params){
-        this.nomProc = nom;
-        this.parametres = params;
-    }
 
 
     // GETTERS
     public String getNomProc() {
         return this.nomProc;
     }
-
-    public int getNivell() {
-        return this.nivell;
-    }
-
-    public int getNumParametres() {
-        return this.numParams;
-    }
-
-    public int getOcupacio() {
-        return this.ocupacio;
-    }
-
+   
     public TipusSub getTipusSub() {
-        return this.tipus;
+        return this.tsub;
     }
 
     public ArrayList<Parametre> getParametres() {
@@ -71,24 +46,12 @@ public class Procediment{
         this.nomProc = nom;
     }
 
-    public void setNumParametres(int num) {
-        this.numParams = num;
-    }
-
     public void setTipusSub(TipusSub ts) {
-        this.tipus = ts;
+        this.tsub = ts;
     }
 
     public void setParametres(ArrayList<Parametre> params) {
         this.parametres = params;
-    }
-
-    public void setNivell(int n) {
-        this.nivell = n;
-    }
-
-    public void setOcupacio(int o) {
-        this.ocupacio = o;
     }
 
     // Mètode toString
@@ -100,7 +63,7 @@ public class Procediment{
                 s += "\t" + parametres.get(i).toString() + "\n";
             }
         }
-        return this.nomProc + "; " + numParams + "; " + tipus + "; " + s;
+        return this.nomProc + "; " + parametres.size() + "; " + tsub + "; " + s;
     }
 
 }

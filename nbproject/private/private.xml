@@ -2,21 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/TaulaVariables.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolSubProgramContCall.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolStatement.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolProgram.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolVarDecl.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolDeclList.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/Main.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova.txt</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolStatementList.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolDecl.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/Instruccio.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/ArbreSintactic.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/Variable.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/codiTresAdreces.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

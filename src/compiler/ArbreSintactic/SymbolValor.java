@@ -15,6 +15,7 @@ public class SymbolValor {
     private TipusSub tipusSub;
     private SymbolInputStatement statement;
 
+
     /*
     Cas valor equival a una variable i cal consultar el id en la taula de símbols
      */
@@ -30,6 +31,7 @@ public class SymbolValor {
         this.array=arr;
         this.iden = arr.getID();
         this.tipusSub=tipusSub;
+
         this.index = 2;
     }
 
@@ -123,30 +125,47 @@ public class SymbolValor {
         return s;
     }
 
-    public String codiTresAdreces(codiTresAdreces codi) {
+    public boolean isComplex(){
+        return this.index==2;
+    }
+
+    public String codiTresAdreces(codiTresAdreces codi,boolean b) {
         switch (index) {
             case 1:
                 return iden;
             case 2:
-                //generar codi de una variable array
-
-                //x = arr.getIndex();
+                //GENERAR
+                String temp=this.array.codiTresAdreces(codi);
+                Operand o = new Operand(temp, OperandsCTA.variable);
+                //restam 1 a l'index
+                codi.generar(TipusInstruccionsCTA.RESTA,o,new Operand("1", OperandsCTA.constant),temp);//temp=temp-1
+                //multiplicam l'índex
+                codi.generar(TipusInstruccionsCTA.PRODUCTE,o,new Operand("4", OperandsCTA.constant),temp);
                 //variable_temporal=(x-1)*(MidaTipusArray);
-                //cas indexat  ->  s'utilitza per assignar valor a altra variable.
+                //NOVA VARIABLE TEMPORAL
+                String temp2 = codi.addVariable(TipusSub.INT,"t");
 
-                //cas assignat ->  s'hi assigna un valor en operacio
+
+                if(b==true){
+                    //retornam iden[index]
+                    return iden+"["+temp+"]";
+                }
+                //cas indexat  ->  s'utilitza per assignar valor a altra variable.
+                //temp2=iden[temp]
+                codi.generar(TipusInstruccionsCTA.INDVAL,new Operand(this.iden, OperandsCTA.variable),o,temp2);
+                return temp2;//retornam variable temporal
 
             case 3:
                 //generar codi de un integer
 
                 //guardar en variable temporal int
-                String temp = codi.addVariable(TipusSub.INT,"t");
+                String temp1 = codi.addVariable(TipusSub.INT,"t");
 
                 Operand enter = new Operand(iden,OperandsCTA.enterLit);
 
-                codi.generar(TipusInstruccionsCTA.COPIA,enter,null,temp);
+                codi.generar(TipusInstruccionsCTA.COPIA,enter,null,temp1);
 
-                return temp;
+                return temp1;
             case 4:
                 //generar codi de un boolean
                 String val="";
@@ -183,9 +202,9 @@ public class SymbolValor {
             case 6:
                 //generar instruccio not del boolean
                 String operand1=this.exprSimple.codiTresAdreces(codi);
-                Operand o = new Operand(operand1, OperandsCTA.boolea);
+                Operand o3 = new Operand(operand1, OperandsCTA.boolea);
                 String s=codi.addVariable(TipusSub.BOOLEAN,null);
-                codi.generar(TipusInstruccionsCTA.NOT,o,null,s);
+                codi.generar(TipusInstruccionsCTA.NOT,o3,null,s);
                 return s;
 
             //

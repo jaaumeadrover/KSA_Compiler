@@ -21,7 +21,7 @@ public class SymbolLiteral  {
     }
     public String codiTresAdreces(codiTresAdreces codi){
         if(this.valor!=null){
-            return this.valor.codiTresAdreces(codi);
+            return this.valor.codiTresAdreces(codi, false);
         }
         return null;
     }

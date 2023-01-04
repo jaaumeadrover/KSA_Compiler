@@ -22,7 +22,9 @@ public class SymbolArray {
     public String codiTresAdreces
      */
 
-    public void codiTresAdreces(codiTresAdreces codi){
-        expressioSimple.codiTresAdreces(codi);
+    public String codiTresAdreces(codiTresAdreces codi){
+        //generam codi3Adreces de expressio simple i emmagatzemam la variable temporal
+        String temp=expressioSimple.codiTresAdreces(codi);
+        return temp;
     }
 }

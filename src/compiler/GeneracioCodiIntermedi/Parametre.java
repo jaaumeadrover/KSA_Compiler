@@ -5,10 +5,12 @@ public class Parametre {
 
     private String nom;
     private TipusSub tipusSub;
+    private Tipus tipus;
 
-    public Parametre(String n, TipusSub t){
+    public Parametre(String n, TipusSub t, Tipus tipus){
         this.nom=n;
         this.tipusSub=t;
+        this.tipus= tipus;
     }
 
     //GETTERS
@@ -19,6 +21,8 @@ public class Parametre {
     public TipusSub getTipusSub(){
         return this.tipusSub;
     }
+
+    public Tipus getTipus(){return this.tipus;}
 
     //SETTERS
     public void setNom(String n){

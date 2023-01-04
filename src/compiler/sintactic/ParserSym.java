@@ -31,6 +31,7 @@ public class ParserSym {
   public static final int r_input = 46;
   public static final int r_or = 40;
   public static final int r_string = 45;
+  public static final int r_array = 48;
   public static final int smcol = 18;
   public static final int twodots = 19;
   public static final int r_if = 27;
@@ -104,7 +105,8 @@ public class ParserSym {
   "r_main",
   "r_string",
   "r_input",
-  "r_print"
+  "r_print",
+  "r_array"
   };
 }
 

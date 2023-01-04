@@ -131,7 +131,7 @@ terminal add, sub, mul, div, mod;
 terminal asig, smcol, twodots, com, brop, brcl, lop, lclose, lparen, rparen;
 //palabras reservadas
 terminal r_if, r_else, r_switch, r_case, r_default, r_break, r_function, r_procedure, r_return, r_while, r_for, r_const,
-         r_and, r_or, r_not, r_int, r_bool, r_main, r_string,r_input,r_print;
+         r_and, r_or, r_not, r_int, r_bool, r_main, r_string,r_input,r_print, r_array;
 
 non terminal M;
 
@@ -172,8 +172,8 @@ non terminal  SymbolCase Case;
 non terminal  SymbolDefault Default;
 non terminal  SymbolInputStatement inputStatement;
 non terminal  SymbolPrintStatement printStatement;
-non terminal  SymbolStringValue stringValue;
 non terminal  SymbolLiteral literal;
+non terminal  SymbolArr     pars;
 
 precedence right asig;
 precedence left  add, sub;
@@ -198,6 +198,7 @@ decl ::= varDecl:var smcol    {:RESULT = new SymbolDecl(var,null,null);:}  //NO 
     ;
 //DECLARACIÓ VARIABLES
 varDecl ::=  r_const type:t id:iden varInit:varinit     {:
+                                                        //DECLARACIÓ CONSTANT
                                                         int error = ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.CONST, 0, 0);
                                                         //System.out.println("TAMANY TAULA SIMBOLS EXTERNA: "+ts.getMida());
                                                         if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
@@ -209,7 +210,7 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                                 }
                                                         } else{
                                                             RESULT=new SymbolVarDecl();
-                                                        }:}//declaració de una constant
+                                                        }:}
     |type:t id:iden varInit:varinit                    {:
                                                         if(varinit.isIsarray()){
                                                                 //System.out.println("Estic a la decl d'un array");
@@ -278,8 +279,8 @@ funcDecl ::= r_function M type:t  id:iden funcCap:funcCap brop statementList:sta
                                                                                     RESULT=new SymbolFuncDecl();
                                                                                 }
                                                                                 :};
-funcCap ::= ContCap:contcap rparen          {:RESULT=new SymbolFuncCap(contcap);:}
-    | lparen rparen                         {:RESULT=new SymbolFuncCap();:}
+funcCap ::= ContCap:contcap rparen          {:RESULT=new SymbolFuncCap(contcap,true);:}
+    | lparen rparen                         {:RESULT=new SymbolFuncCap(false);:}
     ;
 
 procDecl ::= r_procedure M id:iden funcCap:funcCap brop statementList:stats brcl
@@ -292,23 +293,26 @@ if(s==null){
     RESULT=new SymbolProcDecl();
     }:}; //declaració d'un procediment: proc 'nom' parametres {...}
 
-ContCap ::= lparen type:t id:iden              {:
+ContCap ::= lparen type:t pars:arr id:iden              {:
                                                              int error= ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0);
                                                              if(error==1){
-                                                                RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());
+                                                                RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString());
                                                              }else{
                                                                 comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
-                                                                RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());
+                                                                RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString());
                                                              }
                                                              :}//tancam parentesis i definim els paràmetres
-    | ContCap:contcap com  type:t id:iden       {:          int error =  ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0);
+    | ContCap:contcap com  type:t pars:arr id:iden          {:int error =  ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0);
                                                             if(error==1){
-                                                                RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());
+                                                                RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString());
                                                             }else{
                                                                comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
-                                                                RESULT = new SymbolContCap(t.getTipusSub(), iden.toString());
+                                                                RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr ,iden.toString());
                                                             }:}
     ;
+pars ::= r_array:s                                            {:RESULT = new SymbolArr(s.toString());:}
+|                                                             {:RESULT = new SymbolArr(null);:}
+;
 
 //INSTRUCCIONS
 statementList ::= statement:stat statementList:stats {:RESULT= new SymbolStatementList(stat,stats);:}      //declaració d'una llista
@@ -474,10 +478,10 @@ subProgramCall ::= id:iden lparen rparen            {:
                                                         RESULT=new SymbolSubProgramCall();
                                                       }
                                                       :}
-|subProgramContCall:subprogcontcall rparen          {:RESULT = new SymbolSubProgramCall(subprogcontcall);:}
+|id:iden lparen subProgramContCall:subprogcontcall rparen          {:RESULT = new SymbolSubProgramCall(subprogcontcall,iden.toString());:}
 ;
 
-subProgramContCall ::= id:iden lparen valor:valor            {:RESULT = new SymbolSubProgramContCall(iden.toString(), valor);:}
+subProgramContCall ::= valor:valor                           {:RESULT = new SymbolSubProgramContCall(valor);:}
     |subProgramContCall:subprogcontcall com valor:valor      {:RESULT = new SymbolSubProgramContCall(subprogcontcall, valor);:}
     ;
 

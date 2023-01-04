@@ -2,6 +2,7 @@ package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.Tipus;
 import compiler.Symbols.TaulaSimbols.TipusSub;
 import compiler.GeneracioCodiIntermedi.*;
+import java.util.ArrayList;
 
 public class SymbolFuncDecl  {
 
@@ -25,27 +26,39 @@ public class SymbolFuncDecl  {
    this.funcCap = funcCap;
  }
 
-    public String codiTresAdreces(codiTresAdreces codi){
-//        //generam codi Intermedi de un id --> és el mateix string de iden
-//        TaulaProcediments.afegirProc(iden,type.getTipusSub)
-//
-//        //if(hiHaParametres()){
-//            //cream llistaParam=arrayList<>()
-//            //generam codiIntermedi de SymbolFuncCap(parametre llistaParam)
-//            //TaulaProcediments.getProcediment(iden).setParametres(llistaParam)
-//        //}
-//        String etiqueta1=codi.novaEtiqueta(iden);
-//        codi3Adreces.generar(TuipusInstruccionsCTA.SKIP,null,null,etiqueta1);
-//        codi3Adreces.generar(TuipusInstruccionsCTA.PMB,null,null,iden);
-//        if(stat!=null){
-//            stat.codi3Adreces();
-//        }
-//        String rtn_str=rtn.codiIntermedi();
-//        codi3Adreces.generar(Operador.RTN,null,null,rtn_str);
-//
-//        Codi3Adreces.TaulaProc.tancaProcediment();
+    public void codiTresAdreces(codiTresAdreces codi){
+       //generam codi Intermedi de un id --> és el mateix string de iden
+        if(funcCap.hihaParam()){
 
-        return null;
+            ArrayList<Parametre> parametres = funcCap.codiTresAdreces(codi);
+            codi.getTp().afegirProc(new Procediment(iden,t,parametres));
+            String etiqueta1=codi.novaEtiqueta(iden);
+            codi.generar(TipusInstruccionsCTA.SKIP,null,null,etiqueta1);
+            codi.generar(TipusInstruccionsCTA.PMB,null,null,iden);
+            if(stat!=null){
+                stat.codiTresAdreces(codi);
+            }
+            String rtn_str=rtn.codiTresAdreces(codi);
+            codi.generar(TipusInstruccionsCTA.RTN,null,null,rtn_str);
+
+            codi.getTp().tancaProcediment();
+
+        }else{
+
+            codi.getTp().afegirProc(new Procediment(iden,t,null));
+            String etiqueta1=codi.novaEtiqueta(iden);
+            codi.generar(TipusInstruccionsCTA.SKIP,null,null,etiqueta1);
+            codi.generar(TipusInstruccionsCTA.PMB,null,null,iden);
+            if(stat!=null){
+                stat.codiTresAdreces(codi);
+            }
+            String rtn_str=rtn.codiTresAdreces(codi);
+            codi.generar(TipusInstruccionsCTA.RTN,null,null,rtn_str);
+
+            codi.getTp().tancaProcediment();
+
+        }
+
 
     }
 

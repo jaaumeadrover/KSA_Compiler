@@ -3,14 +3,17 @@ package compiler.GeneracioCodiIntermedi;
 import compiler.Symbols.TaulaSimbols.TipusSub;
 import java.util.ArrayList;
 import compiler.ArbreSintactic.Operacions;
+import compiler.Symbols.TaulaSimbols.Tipus;
 
 public class codiTresAdreces{
     private ArrayList<Instruccio> codi = new ArrayList<>();
     private ArrayList<Instruccio> constant = new ArrayList<>(); //Declaracion var.
+    private ArrayList<Parametre> parametres;
     private boolean esDeclaracio=false;
 
     private TaulaProcediments tp=new TaulaProcediments();
     private TaulaVariables tv=new TaulaVariables();
+
 
     private int nEtiquetes=0;
 
@@ -32,12 +35,19 @@ public class codiTresAdreces{
             codi.add(new Instruccio(a,op1,op2,dest) );
         }
     }
-    public void addParametre(TipusSub t, String id) {
-        Parametre p = new Parametre(id,t);
-        tv.novaVariable(id,t,tp);
-        //param.add(p);
+    public void StartParam(){
+        parametres=new ArrayList<>();
     }
 
+    public void addParametre(String id, TipusSub t, Tipus tipus) {
+        Parametre p = new Parametre(id,t,tipus);
+        tv.novaVariable(id,t,tp);
+        parametres.add(p);
+    }
+
+    public ArrayList<Parametre> getParametres() {
+        return parametres;
+    }
 
     public String addVariable(TipusSub t, String id){
         int size = tv.getNumVar();
@@ -55,6 +65,9 @@ public class codiTresAdreces{
         return v;
     }
 
+    public TaulaProcediments getTp() {
+        return tp;
+    }
 
     public void començaDecl(){
         generar(TipusInstruccionsCTA.GOTO, null, null, "run");
