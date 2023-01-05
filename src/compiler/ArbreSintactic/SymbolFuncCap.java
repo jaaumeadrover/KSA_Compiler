@@ -25,6 +25,7 @@ public class SymbolFuncCap {
     public ArrayList<Parametre> codiTresAdreces(codiTresAdreces codi){
         if(hihaParam){
             // Hi ha paràmetres
+            codi.StartParam();
             contcap.codiTresAdreces(codi);
             return codi.getParametres();
         }

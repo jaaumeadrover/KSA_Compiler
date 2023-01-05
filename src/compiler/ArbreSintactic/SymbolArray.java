@@ -25,6 +25,8 @@ public class SymbolArray {
     public String codiTresAdreces(codiTresAdreces codi){
         //generam codi3Adreces de expressio simple i emmagatzemam la variable temporal
         String temp=expressioSimple.codiTresAdreces(codi);
-        return temp;
+        String temp2=codi.addVariable(TipusSub.INT, "t");
+        codi.generar(TipusInstruccionsCTA.COPIA,new Operand(temp,OperandsCTA.variable),null,temp2);
+        return temp2;
     }
 }

@@ -25,7 +25,14 @@ public class SymbolLCases {
         return lcases;
     }
 
-    public void codiTresAdreces(codiTresAdreces codi){
-        cas.codiTresAdreces(codi);
+    //
+    public void codiTresAdreces(codiTresAdreces codi, String r0, String ef){
+        if(cas!=null){
+            cas.codiTresAdreces(codi, r0, ef);
+        }
+
+        if(lcases!=null){
+            lcases.codiTresAdreces(codi,r0,ef);
+        }
     }
 }

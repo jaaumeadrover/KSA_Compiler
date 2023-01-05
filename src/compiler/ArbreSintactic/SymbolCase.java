@@ -20,8 +20,15 @@ public class SymbolCase  {
         return expressioSimple;
     }
 
-    public void codiTresAdreces(codiTresAdreces codi){
-        expressioSimple.codiTresAdreces(codi);
+    public void codiTresAdreces(codiTresAdreces codi, String r0, String ef){
+        String eCont = codi.novaEtiqueta();
+        String r1 = expressioSimple.codiTresAdreces(codi);
+        Operand op1 = new Operand(r0, OperandsCTA.boolea);
+        Operand op2 = new Operand(r1, OperandsCTA.boolea);
+
+        codi.generar(TipusInstruccionsCTA.NE,op1,op2, eCont);
         statementList.codiTresAdreces(codi);
+        codi.generar(TipusInstruccionsCTA.GOTO,null,null,ef);
+        codi.generar(TipusInstruccionsCTA.SKIP,null,null,eCont);
     }
 }

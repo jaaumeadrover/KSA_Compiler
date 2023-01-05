@@ -12,9 +12,23 @@ public class SymbolSwitchCase {
         this.lcases = lcases;
         this.defa=defa;
     }
-    
-    public void codiTresAdreces(codiTresAdreces codi){
-        
+    public SymbolSwitchCase(){
+
     }
+    
+
+    public void codiTresAdreces(codiTresAdreces codi){
+        String evalua = expressioSimple.codiTresAdreces(codi);
+        String ef=codi.novaEtiqueta();
+        if(lcases!=null){
+            lcases.codiTresAdreces(codi,evalua, ef);
+        }
+        if(defa!=null){
+            defa.codiTresAdreces(codi);
+        }
+        codi.generar(TipusInstruccionsCTA.SKIP, null, null, ef);
+
+    }
+
 
 }

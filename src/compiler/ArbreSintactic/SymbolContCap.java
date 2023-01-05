@@ -41,7 +41,7 @@ public class SymbolContCap {
     public void codiTresAdreces(codiTresAdreces codi){
         // Generar codi tres adreces amb els mètodes
         codi.addParametre(id,t,isarray);
-        while(contCap!=null){
+        if(contCap!=null){
             contCap.codiTresAdreces(codi);
         }
 

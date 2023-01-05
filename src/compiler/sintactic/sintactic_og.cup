@@ -213,7 +213,7 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                         }:}
     |type:t id:iden varInit:varinit                    {:
                                                         if(varinit.isIsarray()){
-                                                                System.out.println("Estic a la decl d'un array");
+                                                                //System.out.println("Estic a la decl d'un array");
                                                                 int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0,varinit.getArray().getInteger());
                                                                 //System.out.println("Dimensio: "+varinit.getArray().getInteger());
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
@@ -228,7 +228,7 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                                   RESULT=new SymbolVarDecl();
                                                                   }
                                                             }else{
-                                                                System.out.println("No Estic a la decl d'un array");
+                                                                //System.out.println("No Estic a la decl d'un array");
                                                                 int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.VAR,0,0);
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                                     if (error==1){
@@ -307,7 +307,7 @@ ContCap ::= lparen type:t pars:arr id:iden              {:
                                                                 RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString());
                                                             }else{
                                                                comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
-                                                                RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr ,iden.toString());
+                                                                RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString());
                                                             }:}
     ;
 pars ::= r_array:s                                            {:RESULT = new SymbolArr(s.toString());:}
@@ -349,29 +349,33 @@ printStatement ::= r_print lparen literal:string rparen {:RESULT = new SymbolPri
 
 
 literal ::=          string:str {:RESULT = new SymbolLiteral(str.toString());:}
-                    | valor:v {:RESULT = new SymbolLiteral(v);:};
+;
 
 
 //EXPRESSIONS
 exprSimple ::=valor:val operacio:oper            {://Si el valor es correcte
                                                             if(!val.esBuit()){
                                                                 if(oper.isAssignacio()){
-                                                                    System.out.println("Estic a una assignacio: "+val.getIden());
-                                                                    RESULT=new SymbolExpressioSimple(val, oper);
-                                                                        if(comprovaTipus.gestAsig(val,oper)){
-                                                                            System.out.println("Assignacio correcta");
-                                                                           RESULT=new SymbolExpressioSimple(val, oper);
-                                                                           System.out.println("TIPUS EXPRESSIO:"+RESULT.getTipusSubResultat());
+                                                                    //System.out.println("Estic a una assignacio: "+val.getIden());
+                                                                    RESULT=null;
+                                                                    if(comprovaTipus.gestIdArray(val.getIden(),val.isArrayElement())){
+                                                                            if(comprovaTipus.gestAsig(val,oper)){
+                                                                                //System.out.println("Assignacio correcta");
+                                                                               RESULT=new SymbolExpressioSimple(val, oper);
+                                                                               //System.out.println("TIPUS EXPRESSIO:"+RESULT.getTipusSubResultat());
+                                                                            }else{
+                                                                               //System.out.println("Assignacio incorrecta");
+                                                                               comprovaTipus.addError("ERROR Semántic, assignació incorrecte. Línea: "+cur_token.left);
+                                                                              RESULT=new SymbolExpressioSimple();
+                                                                              //System.out.println("TIPUS EXPRESSIO:"+RESULT.getTipusSubResultat());
+                                                                            }
                                                                         }else{
-                                                                           System.out.println("Assignacio incorrecta");
-                                                                           comprovaTipus.addError("ERROR Semántic, assignació incorrecte. Línea: "+cur_token.left);
-                                                                          RESULT=new SymbolExpressioSimple();
-                                                                          //System.out.println("TIPUS EXPRESSIO:"+RESULT.getTipusSubResultat());
+                                                                            RESULT=new SymbolExpressioSimple();
                                                                         }
                                                                 }else{
                                                                     System.out.println("No estic a una assignacio:"+cur_token.left);
                                                                     RESULT=new SymbolExpressioSimple(val,oper);
-                                                                    System.out.println("TIPUS EXPRESSIO:"+RESULT.getTipusSubResultat());
+                                                                    //System.out.println("TIPUS EXPRESSIO:"+RESULT.getTipusSubResultat());
                                                                 }
                                                             }else{
                                                                 RESULT=RESULT=new SymbolExpressioSimple();
@@ -463,19 +467,24 @@ realOp::= neg {:RESULT = new SymbolRealOp(Operacions.NEG);:}
 subProgramCall ::= id:iden lparen rparen            {:
                                                       Simbol s= ts.consultaFunc(iden.toString());
                                                       if(s!=null){
-                                                        //existeix la funció cridada
-                                                        //if necessita paràmetres --->errorSemantic
-
                                                         //else
                                                         RESULT=new SymbolSubProgramCall(iden.toString(),!(s.getTipusSub().equals(TipusSub.NULL)),s.getTipusSub());
                                                       }else{
                                                         //no existeix la funció cridada
-
-                                                        //System.out.println("No existeix la funció cridada");
+                                                        comprovaTipus.addError("ERROR Semántic, ela funció/procediment "+iden+" no esta declarat. Linea: "+cur_token.left);
                                                         RESULT=new SymbolSubProgramCall();
                                                       }
                                                       :}
-|id:iden lparen subProgramContCall:subprogcontcall rparen          {:RESULT = new SymbolSubProgramCall(subprogcontcall,iden.toString());:}
+|id:iden lparen subProgramContCall:subprogcontcall rparen          {:
+                                                                        Simbol s= ts.consultaFunc(iden.toString());
+                                                      if(s!=null){
+                                                        //else
+                                                        RESULT=new SymbolSubProgramCall(subprogcontcall,iden.toString(),!(s.getTipusSub().equals(TipusSub.NULL)),s.getTipusSub());
+                                                      }else{
+                                                        //no existeix la funció cridada
+                                                        comprovaTipus.addError("ERROR Semántic, ela funció/procediment "+iden+" no esta declarat. Linea: "+cur_token.left);
+                                                        RESULT=new SymbolSubProgramCall();
+                                                      } :}
 ;
 
 subProgramContCall ::= valor:valor                           {:RESULT = new SymbolSubProgramContCall(valor);:}
@@ -496,7 +505,7 @@ SwitchCase ::= r_switch lparen exprSimple:expr rparen brop LCases:lcases Default
 LCases ::= Case:c LCases:lcases         {:RESULT = new SymbolLCases(c,lcases);:}
     |                                   {:RESULT = new SymbolLCases();:};
 
-Case ::= r_case exprSimple:expr twodots statementList:state r_break smcol{:RESULT = new SymbolCase(expr,state);:};
+Case ::= r_case exprSimple:expr twodots statementList:state {:RESULT = new SymbolCase(expr,state);:};
 
 Default ::= r_default twodots statementList:state               {:RESULT = new SymbolDefault(state);:}
     |                                                           {:RESULT = new SymbolDefault();:}

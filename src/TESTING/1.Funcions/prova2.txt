@@ -1,18 +1,35 @@
 func int sumarNombresArray(int array a, int b, int longitud){
+    switch(b+1){
+        case 2:
+            b <- a[1];
+        case false:
+            b <- 3;
+    }
+
     for(int i <- 0; i < longitud; i <- i + 1){
         b <- a[i] + b;
     }
     return b;
 }
 
+proc ferPrints(int array a, int longitud){
+    print("Els elements del array son els seguents ");
+    for(int i <- 0; i < longitud; i <- i + 1){
+            print(a[i]);
+    }
+}
+
 main(){
     //DECLARACIONS
     int l <- 10;
     int acum <- 0;
+    int a <- int[10];
+    //a<-3;
     for(int i <- 0; i < l; i <- i + 1){
-        //a[i] <- 1;
+        a[i] <- 1;
     }
     //Cridem la funcio que ens sumarà els nombres de l'array
-    //acum <- sumarNombresArray(a,acum,l);
+    acum <- sumarNombresArray(a,acum,l);
+    ferPrints(a, l);
     print(acum);
 }

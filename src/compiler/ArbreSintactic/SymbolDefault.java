@@ -12,6 +12,8 @@ public class SymbolDefault {
     public SymbolDefault(){
         //System.out.println("SOC UN SYMBOLDEFAULT");
     }
-
+    public void codiTresAdreces(codiTresAdreces codi){
+        this.statementList.codiTresAdreces(codi);
+    }
 
 }

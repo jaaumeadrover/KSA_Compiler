@@ -28,7 +28,7 @@ public class SymbolSubProgramContCall{
         System.out.println("TP: "+codi.getTp().toString());
         ArrayList<Parametre> params= proc.getParametres();
         TipusInstruccionsCTA tipus;
-        String valor=null;
+        String valor=this.valor.codiTresAdreces(codi,false);
         String idx=null;
         String iden=null;
         Operand o2=null;
@@ -47,7 +47,7 @@ public class SymbolSubProgramContCall{
             o2 = new Operand(idx, OperandsCTA.variable);
         }else{
             tipus=TipusInstruccionsCTA.PARAMS;
-            valor=this.valor.codiTresAdreces(codi,false); //valor id[indx]
+            iden=this.valor.codiTresAdreces(codi,false); //valor id[indx]
         }
 
         codi.generar(tipus,o2,null,iden);

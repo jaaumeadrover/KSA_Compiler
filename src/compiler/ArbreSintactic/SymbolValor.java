@@ -62,7 +62,7 @@ public class SymbolValor {
     }
 
     /*
-    Cas valor el qual equival a una cridada del subprograma
+    Cas valor el qual equival a una cridada del subprograma.
      */
     public SymbolValor(SymbolSubProgramCall subProgCall,TipusSub tipus){
         this.subProgramCall=subProgCall;
@@ -128,16 +128,21 @@ public class SymbolValor {
     public boolean isComplex(){
         return this.index==2;
     }
+    public boolean isArrayElement(){
+        return this.array!=null;
+    }
 
     public String codiTresAdreces(codiTresAdreces codi,boolean b) {
         switch (index) {
             case 1:
+                //CAS VARIABLE
                 return iden;
             case 2:
-                //GENERAR
+                //GAS ARRAYS
                 String temp=this.array.codiTresAdreces(codi);
                 Operand o = new Operand(temp, OperandsCTA.variable);
                 //restam 1 a l'index
+                //TEMP RETORNA VARIABLE i -> hauria d ser variable TEMPORAL
                 codi.generar(TipusInstruccionsCTA.RESTA,o,new Operand("1", OperandsCTA.constant),temp);//temp=temp-1
                 //multiplicam l'índex
                 codi.generar(TipusInstruccionsCTA.PRODUCTE,o,new Operand("4", OperandsCTA.constant),temp);
@@ -169,7 +174,7 @@ public class SymbolValor {
             case 4:
                 //generar codi de un boolean
                 String val="";
-                if(b) {
+                if(this.b) {
                     val =  String.valueOf(-1);
                 }else{
                     val = String.valueOf(0);
@@ -179,26 +184,8 @@ public class SymbolValor {
                 codi.generar(TipusInstruccionsCTA.COPIA, bool, null, temp);
                 return temp;
             case 5:
-                //generar crida a subprograma
-                subProgramCall.codiTresAdreces(codi);
-
-                //Dedins subProgramCall es fa aixo
-                /*
-                if(this.subProgramCall.retorna()){
-
-                    Simbol s = ts.consultaFunc(this.subProgramCall.getId());
-
-                    TipusSub tipussub = s.getTipusSub();
-                    String temp = codi.addVariable(tipussub,"t");
-                    subProgramCall.codiTresAdreces();
-                    codi.generar(TipusInstruccionsCTA.CALL,this.subProgramCall.getId(),null,temp);
-
-                }else{
-                    subProgramCall.codiTresAdreces();
-                    codi.generar(TipusInstruccionsCTA.CALL,this.subProgramCall.getId(),null,null);
-                }
-                */
-
+                //generar crida a subprogram
+                return subProgramCall.codiTresAdreces(codi);
             case 6:
                 //generar instruccio not del boolean
                 String operand1=this.exprSimple.codiTresAdreces(codi);

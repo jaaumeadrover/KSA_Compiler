@@ -86,8 +86,8 @@ public class SymbolExpressioSimple {
         //Cas assignació [copy,b,null,a]
         if (this.operacio.isAssignacio()) {
             String valor = this.valor.codiTresAdreces(codi, true);
-            System.out.println("VALOR ASSIG:" + valor);
-            System.out.println("EXPR: " + this.operacio.getExpr());
+            //System.out.println("VALOR ASSIG:" + valor);
+            //System.out.println("EXPR: " + this.operacio.getExpr());
             String oper = this.operacio.getExpr().codiTresAdreces(codi);
             Operand o1 = new Operand(oper, OperandsCTA.variable); // PER REVISAR
 
@@ -99,7 +99,7 @@ public class SymbolExpressioSimple {
                 codi.generar(TipusInstruccionsCTA.COPIA, o1, null, valor);
             } else {
                 //assignació amb variable array
-                String index = valor.substring(pos1 + 1, pos2 + 1);
+                String index = valor.substring(pos1 + 1, pos2);
                 String iden = valor.substring(0, pos1);
                 Operand o2 = new Operand(index, OperandsCTA.variable);
                 codi.generar(TipusInstruccionsCTA.INDASS, o1, o2, iden);
@@ -114,7 +114,7 @@ public class SymbolExpressioSimple {
             //si no es té operador i és un valor simple
             if (this.operacio.isEmpty()) {
                 //retornam la variable temporal
-                System.out.println("VALOR: " + valor);
+                //System.out.println("VALOR: " + valor);
                 return valor;
             } else {
                 //es té un operador i s'ha de generar codi
