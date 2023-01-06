@@ -47,7 +47,6 @@ public class SymbolOperacio {
     Cas en que SymbolOperació utilitza un operador i una altra expressió simple
      */
     public SymbolOperacio(SymbolOp op, SymbolExpressioSimple expr) {
-        //System.out.println("CONSTRUCTOR OP EXPR");
         this.operador = op;
         this.expressioSimple = expr;
         setTsResultat();

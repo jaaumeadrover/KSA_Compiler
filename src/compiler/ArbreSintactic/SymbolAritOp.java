@@ -6,7 +6,6 @@ public class SymbolAritOp {
     private Operacions aritOp;
     public SymbolAritOp(Operacions oper){
         this.aritOp=oper;
-        //System.out.println("SOC UN SYMBOLARITOP");
     }
 
     public TipusInstruccionsCTA codiTresAdreces(codiTresAdreces codi){

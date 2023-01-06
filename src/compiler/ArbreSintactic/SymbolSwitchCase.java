@@ -23,7 +23,7 @@ public class SymbolSwitchCase {
         if(lcases!=null){
             lcases.codiTresAdreces(codi,evalua, ef);
         }
-        if(defa!=null){
+        if(!defa.esBuit()){
             defa.codiTresAdreces(codi);
         }
         codi.generar(TipusInstruccionsCTA.SKIP, null, null, ef);

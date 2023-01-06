@@ -70,7 +70,7 @@ public class SymbolStatement {
                 this.i.codiTresAdreces(codi);
                 break;
             case 8:
-                //this.s.codiTresAdreces(codi);
+                this.s.codiTresAdreces(codi);
                 break;
         }
     }

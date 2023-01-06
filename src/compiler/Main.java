@@ -78,19 +78,23 @@ public class Main {
                 System.err.println(lineaerror);
                 lineaerror = br.readLine();
             }
-
             br.close();
 
-            ArbreSintactic arbre = parser.getArbreSintac();
-            codiTresAdreces codi = arbre.generarCodiTresAdreces();
-            String codiIntermedi = codi.toString();
 
-            FileWriter codiIntermediFile = new FileWriter("codiIntermedi.txt");
-            
-            codiIntermediFile.write(codiIntermedi);
-            System.out.println(codiIntermedi);
-            codiIntermediFile.close();
-            
+            //if(errorsSem.isEmpty() && errorsSint.isEmpty()) {
+                ArbreSintactic arbre = parser.getArbreSintac();
+                codiTresAdreces codi = arbre.generarCodiTresAdreces();
+                String codiIntermedi = codi.toString();
+
+                FileWriter codiIntermediFile = new FileWriter("codiIntermedi.txt");
+
+                codiIntermediFile.write(codiIntermedi);
+                System.out.println(codiIntermedi);
+                codiIntermediFile.close();
+           // }else{
+               System.err.println("Programa incompilable per errors"); 
+            //}
+
         }catch(Exception e) {
             System.err.println("error: "+e);
             e.printStackTrace(System.err);

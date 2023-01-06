@@ -52,7 +52,7 @@ La línia anterior és una alternativa a la indicació element a element:
 
 id		= [A-Za-z_][A-Za-z0-9_]*
 integer  = [0-9][0-9]*
-string  = [\"](([A-Za-z0-9_)])|({blank}))*[\"]
+string  = [\"](([A-Za-z0-9_)]) | ({blank}))*[\"]
 
 
 //simbolos operadores

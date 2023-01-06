@@ -105,7 +105,9 @@ public class SymbolValor {
     public int getValorInt(){
         return inte;
     }
-
+    public SymbolSubProgramCall getSubProgCall(){
+        return this.subProgramCall;
+    }
     public TipusSub getTipusSub() {
         return tipusSub;
     }

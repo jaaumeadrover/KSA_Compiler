@@ -17,7 +17,7 @@ public class SymbolProcDecl  {
     }
 
     public SymbolProcDecl() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
     }
 
     public void codiTresAdreces(codiTresAdreces codi){
@@ -42,6 +42,7 @@ public class SymbolProcDecl  {
             if(stat!=null) {
                 stat.codiTresAdreces(codi);
             }
+            codi.generar(TipusInstruccionsCTA.RTN,null,null,null);
             codi.getTp().tancaProcediment();
         }
     }

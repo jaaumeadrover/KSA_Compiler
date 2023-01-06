@@ -8,7 +8,6 @@ public class SymbolProgram {
     SymbolStatementList statementList;
 
     public SymbolProgram(SymbolDeclList declList, SymbolStatementList statementList) {
-        //super("DeclList",null);
         this.declList = declList;
         this.statementList = statementList;
     }
@@ -19,7 +18,6 @@ public class SymbolProgram {
     public void codiTresAdreces(codiTresAdreces codi){
         if (declList != null){
             codi.començaDecl();
-            System.out.println("DECLLIST DESDE SYMPROGRAM");
             this.declList.codiTresAdreces(codi);
             codi.acabaDecl();
         }

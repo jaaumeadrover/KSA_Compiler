@@ -21,7 +21,12 @@ public class Procediment{
 
         this.nomProc = nom;
         this.tsub = tsub;
-        this.parametres = parametres;
+        if(parametres!=null){
+            this.parametres = parametres;
+        }else{
+            this.parametres= new ArrayList<>();
+        }
+        
 
     }
 

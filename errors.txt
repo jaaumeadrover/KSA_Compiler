@@ -1,2 +1,2 @@
-ERROR Semántic, el tipus del case no coincideix amb l'expressió inicial.
-ERROR Semántic, senténcia incorrecte Linea: 33
+ERROR Semántic, l'expressió no es correcte
+ERROR Semántic, assignació incorrecte. Línea: 29

@@ -10,12 +10,10 @@ public class SymbolFuncCap {
 
     public SymbolFuncCap(boolean param){
         this.hihaParam=param;
-        //System.out.println("soy un SymbolFuncCap");
     }
     public SymbolFuncCap(SymbolContCap contcap,boolean param){
         this.contcap=contcap;
         this.hihaParam=param;
-        //System.out.println("soy un SymbolFuncCap");
     }
 
     public boolean hihaParam() {

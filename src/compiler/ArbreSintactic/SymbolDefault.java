@@ -4,13 +4,17 @@ import compiler.GeneracioCodiIntermedi.*;
 
 public class SymbolDefault {
     private SymbolStatementList statementList;
+    private boolean esBuit;
     public SymbolDefault(SymbolStatementList state){
         this.statementList=state;
-        //System.out.println("SOC UN SYMBOLDEFAULT");
+        this.esBuit=false;
     }
 
     public SymbolDefault(){
-        //System.out.println("SOC UN SYMBOLDEFAULT");
+        this.esBuit=true;
+    }
+    public boolean esBuit(){
+        return this.esBuit;
     }
     public void codiTresAdreces(codiTresAdreces codi){
         this.statementList.codiTresAdreces(codi);

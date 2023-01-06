@@ -17,6 +17,10 @@ public class codiTresAdreces{
 
     private int nEtiquetes=0;
 
+    public int getSize(){
+        return this.codi.size();
+    }
+
     public String novaEtiqueta(){
         nEtiquetes++;
         return "e"+nEtiquetes;
@@ -130,6 +134,13 @@ public class codiTresAdreces{
             s += codi.get(i).toString()+"\n";
         }
         return s;
+    }
+
+    public TaulaVariables getTv() {
+        return tv;
+    }
+    public ArrayList<Instruccio> Instruccions(){
+        return codi;
     }
 }
 

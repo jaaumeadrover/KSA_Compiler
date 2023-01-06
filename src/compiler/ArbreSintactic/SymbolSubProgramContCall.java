@@ -24,8 +24,8 @@ public class SymbolSubProgramContCall{
 
     public void codiTresAdreces(codiTresAdreces codi, String id,int index){
         Procediment proc=codi.getTp().getProcediment(id);
-        System.out.println("ID PROC: "+id);
-        System.out.println("TP: "+codi.getTp().toString());
+        //System.out.println("ID PROC: "+id);
+        //System.out.println("TP: "+codi.getTp().toString());
         ArrayList<Parametre> params= proc.getParametres();
         TipusInstruccionsCTA tipus;
         String valor=this.valor.codiTresAdreces(codi,false);

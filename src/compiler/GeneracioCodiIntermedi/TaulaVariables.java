@@ -25,7 +25,10 @@ public class TaulaVariables {
     public int getNumVar() {
         return this.numVar;
     }
-
+    
+    public Variable get(int i){
+        return this.TV.get(i);
+    }
     public int getNumVarTemp() {
         return this.numVarTemp;
     }
@@ -161,6 +164,9 @@ public class TaulaVariables {
 
         // si no hem trobat la variabe a la taula de variables retornam 'null'
         return null;
+    }
+    public int getSize(){
+        return TV.size();
     }
 
 }

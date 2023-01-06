@@ -11,17 +11,11 @@ public class SymbolArray {
     public SymbolArray(String iden, SymbolExpressioSimple expr){
         this.ID=iden;
         this.expressioSimple=expr;
-        //System.out.println("SOC UN SYMBOLARRAY");
     }
 
     public String getID() {
         return ID;
     }
-
-    /*
-    public String codiTresAdreces
-     */
-
     public String codiTresAdreces(codiTresAdreces codi){
         //generam codi3Adreces de expressio simple i emmagatzemam la variable temporal
         String temp=expressioSimple.codiTresAdreces(codi);
