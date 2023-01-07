@@ -11,28 +11,29 @@ import java.util.ArrayList;
     DATA CREACIÓ: 26/12/2022
  */
 public class TaulaVariables {
-
+    
     private ArrayList<Variable> TV;
     private int numVar;
     private int numVarTemp;
-
+    
     public TaulaVariables() {
         this.TV = new ArrayList<>();
         this.numVar = 0;
         this.numVarTemp = 0;
     }
-
+    
     public int getNumVar() {
         return this.numVar;
     }
     
-    public Variable get(int i){
+    public Variable get(int i) {
         return this.TV.get(i);
     }
+    
     public int getNumVarTemp() {
         return this.numVarTemp;
     }
-
+    
     public ArrayList<Variable> getTaulaVariables() {
         return this.TV;
     }
@@ -40,7 +41,7 @@ public class TaulaVariables {
     /*
     Mètode per a afegir una nova variable a la llista.
      */
-    public String novaVariable(String nom, TipusSub t, TaulaProcediments TP, boolean esConst,int valor) {
+    public String novaVariable(String nom, TipusSub t, TaulaProcediments TP, boolean esConst, int valor, int dim) {
         // Nom diferent de null = variable no temporal
         if (nom != null) {
             int i = 0;
@@ -51,8 +52,29 @@ public class TaulaVariables {
                     return nom + "_" + v.getProcedure();
                 }
                 i++;
-
+                
             }
+
+            // Si la nova variable no es temporal (tenia nom) i no es trobava
+            // a la taula de variables (no ha fet el return del while) l'afegim a la
+            // taula de variables amb el seu nom
+            if (esConst) {
+                Variable novaVar = new Variable(nom, t, valor, TP.getNumProcActius());
+                TV.add(novaVar);
+                return nom + "_" + TP.getNumProcActius();
+            } else {
+                if (dim == 0) {
+                    Variable novaVar = new Variable(nom, t, TP.getNumProcActius());
+                    TV.add(novaVar);
+                    return nom + "_" + TP.getNumProcActius();
+                } else {
+                    //cas array
+                    Variable var = new Variable(t, nom, TP.getNumProcActius(), dim);
+                    this.TV.add(var);
+                    return "array: " + nom + "_" + TP.getNumProcActius() + "_dim=" + dim;
+                }
+            }
+            
         } else {
             // Afegim a la taula de variables una nova varible temporal,
             // ja que com no té nom, no ha estat declarada i sabem que ha estat
@@ -62,30 +84,20 @@ public class TaulaVariables {
             numVar++;
             return "t" + numVar;
         }
-        // Si la nova variable no es temporal (tenia nom) i no es trobava
-        // a la taula de variables (no ha fet el return del while) l'afegim a la
-        // taula de variables amb el seu nom
-        if(esConst){
-            Variable novaVar = new Variable(nom, t, valor,TP.getNumProcActius());
-            TV.add(novaVar);
-            return nom + "_" + TP.getNumProcActius();
-        }
-        Variable novaVar = new Variable(nom, t, TP.getNumProcActius());
-        TV.add(novaVar);
-        return nom + "_" + TP.getNumProcActius();
+        
     }
-
+    
     public int addVariable(Variable v) {
-
+        
         if (!existeix(v)) {
             numVar++;
             TV.add(v); //mirar que no este duplicada esta variable
         }
         return numVar;
     }
-
+    
     public boolean existeix(Variable v) {
-
+        
         if (TV.isEmpty()) {
             if (v.getNom() == null) {
                 numVarTemp++;
@@ -95,7 +107,7 @@ public class TaulaVariables {
             if (v.getNom() == null) {
                 numVarTemp++;
                 v.setNom("t" + numVarTemp);
-
+                
             }
         }
         for (int i = 0; i < TV.size(); i++) {
@@ -170,8 +182,19 @@ public class TaulaVariables {
         // si no hem trobat la variabe a la taula de variables retornam 'null'
         return null;
     }
-    public int getSize(){
+    
+    public int getSize() {
         return TV.size();
     }
-
+    
+    @Override
+    public String toString() {
+        String s = "";
+        for (int i = 0; i < this.getSize(); i++) {
+            s += this.TV.get(i)+"\n";
+            
+        }
+        return s;
+    }
+    
 }

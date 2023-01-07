@@ -45,14 +45,15 @@ public class codiTresAdreces{
 
     public void addParametre(String id, TipusSub t, Tipus tipus) {
         Parametre p = new Parametre(id,t,tipus);
-        tv.novaVariable(id,t,tp);
+        tv.novaVariable(id,t,tp,false,1,0);
         parametres.add(p);
     }
 
     public ArrayList<Parametre> getParametres() {
         return parametres;
     }
-
+    
+    //MÈTODE PER AFEGIR UNA VARIABLE
     public String addVariable(TipusSub t, String id){
         int size = tv.getNumVar();
         String num="";
@@ -62,8 +63,10 @@ public class codiTresAdreces{
             num = id;
         }
         
-        return tv.novaVariable(num,t, tp);
+        return tv.novaVariable(num,t, tp,false,1,0);
     }
+    
+    //MÈTODE PER A AFEGIR UNA CONSTANT
     public String addVariable(TipusSub t, String id, int valor){
         int size = tv.getNumVar();
         String num="";
@@ -73,8 +76,19 @@ public class codiTresAdreces{
             num = id;
         }
 
-        return tv.novaVariable(num,t, tp,true,int valor);
+        return tv.novaVariable(num,t, tp,true,valor,0);
     }
+    /*
+    Mètode per a afegir una variable Array.
+        tipus,string,procedure,dimensio
+    */
+    public String addVariableArray(TipusSub t,String str,int procedure,int dim){
+        String s="";
+        Variable var=new Variable(t,str,procedure,dim);
+        tv.addVariable(var);
+        return s;
+    }
+    
     public Variable getVar(String nom) {
         Variable v=tv.getVariable(nom);
         return v;
@@ -118,7 +132,7 @@ public class codiTresAdreces{
                 case MOD:
                     return TipusInstruccionsCTA.MODUL;
                 case EQ:
-                    return TipusInstruccionsCTA.PRODUCTE;
+                    return TipusInstruccionsCTA.EQ;
                 case BG:
                     return TipusInstruccionsCTA.GT;
                 case SM:

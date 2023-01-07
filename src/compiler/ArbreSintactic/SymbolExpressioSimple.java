@@ -36,10 +36,12 @@ public class SymbolExpressioSimple {
                 }
             }
         }
+        System.out.println("TIPUS SUB EXPRSIMPLE: "+this.tsResultat);
     }
 
     //obtenir tipus resultat si operació no es buit
     private void setTsResultat() {
+        System.out.println("RESULTAT: "+this.tsResultat);
         if (this.tsResultat == this.operacio.getTipusSub()) {
             if (!this.operacio.isAssignacio()) {
                 if (this.operacio.getOperador().getTipusOperador() != 'A') {
@@ -49,6 +51,7 @@ public class SymbolExpressioSimple {
                 }
             }
         } else {
+            System.out.println("POS A NULL EXPR SIMPLE");
             this.tsResultat = null;
         }
     }
@@ -86,8 +89,6 @@ public class SymbolExpressioSimple {
         //Cas assignació [copy,b,null,a]
         if (this.operacio.isAssignacio()) {
             String valor = this.valor.codiTresAdreces(codi, true);
-            //System.out.println("VALOR ASSIG:" + valor);
-            //System.out.println("EXPR: " + this.operacio.getExpr());
             String oper = this.operacio.getExpr().codiTresAdreces(codi);
             Operand o1 = new Operand(oper, OperandsCTA.variable); // PER REVISAR
 

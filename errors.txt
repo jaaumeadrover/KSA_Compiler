@@ -1,2 +1,0 @@
-ERROR Semántic, l'expressió no es correcte
-ERROR Semántic, assignació incorrecte. Línea: 29

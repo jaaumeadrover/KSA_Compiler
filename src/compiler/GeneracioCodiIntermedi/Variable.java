@@ -18,21 +18,31 @@ public class Variable{
     private int procedure;
     private boolean constant = false;
     private int valor;
+    private int dimensio;
 
-
+    /*
+    Constructor per afegir variable simple
+    */
     public Variable(String s, TipusSub tipusSub,  int procedure){
         this.idV = contadorVars;
         contadorVars++;
         this.nom = s;
         this.tipusSub = tipusSub;
         this.procedure = procedure;
-
+        dimensio=0;
     }
 
+    /*
+    Constructor variables temporals 
+    */
     public Variable(TipusSub tipus, int procedure){
         this.tipusSub = tipus;
         this.procedure = procedure;
     }
+    
+    /*
+    Constructor per una constant, afegim valor
+    */
     public Variable(String s, TipusSub tipusSub, int valor,int procedure){
         this.idV = contadorVars;
         contadorVars++;
@@ -41,8 +51,20 @@ public class Variable{
         this.procedure = procedure;
         this.valor=valor;
         this.constant=true;
+        dimensio=0;
     }
-
+    
+    /*
+    Constructor per un array, afegim dimensió
+    */
+    public Variable( TipusSub tipusSub,String s, int procedure,int dimensio){
+        this.idV = contadorVars;
+        contadorVars++;
+        this.nom = s;
+        this.tipusSub = tipusSub;
+        this.procedure = procedure;
+        this.dimensio=dimensio;
+    }
 
     //GETTERS
     public int getId(){
@@ -97,7 +119,7 @@ public class Variable{
     // Mètode toString
     @Override
     public String toString(){
-        return "Nom: "+this.nom+"; Tipus: "+this.tipusSub+"; Procediment: "+this.procedure;
+        return "Nom: "+this.nom+"; Tipus: "+this.tipusSub+";Valor: "+this.valor+" Procediment: "+this.procedure;
     }
 
 }

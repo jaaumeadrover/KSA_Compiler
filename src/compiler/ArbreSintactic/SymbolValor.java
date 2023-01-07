@@ -1,4 +1,5 @@
 package compiler.ArbreSintactic;
+
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
 
@@ -19,18 +20,19 @@ public class SymbolValor {
     /*
     Cas valor equival a una variable i cal consultar el id en la taula de símbols
      */
-   public SymbolValor(String id, TipusSub tipusSub){
-        this.iden=id;
-        this.tipusSub=tipusSub;
+    public SymbolValor(String id, TipusSub tipusSub) {
+        this.iden = id;
+        this.tipusSub = tipusSub;
         this.index = 1;
-   }
+    }
+
     /*
     Cas valor en el qual tenim un array
      */
-    public SymbolValor(SymbolArray arr,TipusSub tipusSub){
-        this.array=arr;
+    public SymbolValor(SymbolArray arr, TipusSub tipusSub) {
+        this.array = arr;
         this.iden = arr.getID();
-        this.tipusSub=tipusSub;
+        this.tipusSub = tipusSub;
 
         this.index = 2;
     }
@@ -38,76 +40,79 @@ public class SymbolValor {
     /*
     Cas valor el qual és un integer directe.
      */
-    public SymbolValor(Object integer){
-        inte=Integer.parseInt(integer.toString()); //passam text a int
-        iden=integer.toString();
+    public SymbolValor(Object integer) {
+        inte = Integer.parseInt(integer.toString()); //passam text a int
+        iden = integer.toString();
         //System.out.println("Soc un integer: "+iden);
-        tipusSub=TipusSub.INT;
+        tipusSub = TipusSub.INT;
         this.index = 3;
     }
+
     /*
     Cas valor equival a un booleam
      */
-    public SymbolValor(String b){
-        if(b.equals("true")){
-            this.b=true;
+    public SymbolValor(String b) {
+        if (b.equals("true")) {
+            this.b = true;
             this.iden = "true";
-        }else{
-            this.b=false;
-            this.iden="false";
+        } else {
+            this.b = false;
+            this.iden = "false";
         }
         //System.out.println("He utilitzat el constructor de boolean!");
-        this.tipusSub=TipusSub.BOOLEAN;
+        this.tipusSub = TipusSub.BOOLEAN;
         this.index = 4;
     }
 
     /*
     Cas valor el qual equival a una cridada del subprograma.
      */
-    public SymbolValor(SymbolSubProgramCall subProgCall,TipusSub tipus){
-        this.subProgramCall=subProgCall;
-        this.tipusSub=tipus;
+    public SymbolValor(SymbolSubProgramCall subProgCall, TipusSub tipus) {
+        this.subProgramCall = subProgCall;
+        this.tipusSub = tipus;
         this.index = 5;
     }
-    
+
     /*
     Producció on es posa not (ExprSimple)
-    */
-    public SymbolValor(SymbolExpressioSimple expr,boolean b){
-        this.exprSimple=expr;
-        this.tipusSub=TipusSub.BOOLEAN;
-        if(this.exprSimple.getTipusSubResultat()==this.tipusSub){
-            this.tipusSub=TipusSub.BOOLEAN;
-        }else{
-            this.tipusSub=TipusSub.NULL;
+     */
+    public SymbolValor(SymbolExpressioSimple expr, boolean b) {
+        this.exprSimple = expr;
+        this.tipusSub = TipusSub.BOOLEAN;
+        if (this.exprSimple.getTipusSubResultat() == this.tipusSub) {
+            this.tipusSub = TipusSub.BOOLEAN;
+        } else {
+            this.tipusSub = TipusSub.NULL;
         }
         this.index = 6;
-        
+
     }
+
     //Constructor en la produccio lparen exprSimple rparen
-    public SymbolValor(SymbolExpressioSimple expr){
-        this.exprSimple=expr;
-        this.tipusSub=expr.getTipusSubResultat();
+    public SymbolValor(SymbolExpressioSimple expr) {
+        this.exprSimple = expr;
+        this.tipusSub = expr.getTipusSubResultat();
         this.index = 7;
     }
-    
 
-    public SymbolValor(SymbolInputStatement s){
+    public SymbolValor(SymbolInputStatement s) {
         this.statement = s;
         this.index = 8;
     }
 
     public SymbolValor() {
-        this.esBuit=true;
+        this.esBuit = true;
         this.index = 9;
     }
-    
-    public int getValorInt(){
+
+    public int getValorInt() {
         return inte;
     }
-    public SymbolSubProgramCall getSubProgCall(){
+
+    public SymbolSubProgramCall getSubProgCall() {
         return this.subProgramCall;
     }
+
     public TipusSub getTipusSub() {
         return tipusSub;
     }
@@ -115,71 +120,78 @@ public class SymbolValor {
     public String getIden() {
         return iden;
     }
-    public boolean esBuit(){
+
+    public boolean esBuit() {
         return this.esBuit;
     }
-    
+
     @Override
-    public String toString(){
-        String s="";
-        s+="id: "+iden+",valor: "+"";
-        
-        return s;
+    public String toString() {
+        String s = "";
+        s += "id: " + iden + ",valor: " + "";
+
+        return iden;
     }
 
-    public boolean isComplex(){
-        return this.index==2;
+    public boolean isComplex() {
+        return this.index == 2;
     }
-    public boolean isArrayElement(){
-        return this.array!=null;
-    }
-    public int getIndex{return this.index;}
 
-    public String codiTresAdreces(codiTresAdreces codi,boolean b) {
+    public boolean isArrayElement() {
+        return this.array != null;
+    }
+
+    public int getIndex() {
+        return this.index;
+    }
+    
+    //Si paràmetre b és true, retornam el valor sense variable temporal
+    public String codiTresAdreces(codiTresAdreces codi, boolean b) {
         switch (index) {
             case 1:
                 //CAS VARIABLE
                 return iden;
             case 2:
                 //GAS ARRAYS
-                String temp=this.array.codiTresAdreces(codi);
+                String temp = this.array.codiTresAdreces(codi);
                 Operand o = new Operand(temp, OperandsCTA.variable);
                 //restam 1 a l'index
                 //TEMP RETORNA VARIABLE i -> hauria d ser variable TEMPORAL
-                codi.generar(TipusInstruccionsCTA.RESTA,o,new Operand("1", OperandsCTA.constant),temp);//temp=temp-1
+                codi.generar(TipusInstruccionsCTA.RESTA, o, new Operand("1", OperandsCTA.constant), temp);//temp=temp-1
                 //multiplicam l'índex
-                codi.generar(TipusInstruccionsCTA.PRODUCTE,o,new Operand("4", OperandsCTA.constant),temp);
+                codi.generar(TipusInstruccionsCTA.PRODUCTE, o, new Operand("4", OperandsCTA.constant), temp);
                 //variable_temporal=(x-1)*(MidaTipusArray);
                 //NOVA VARIABLE TEMPORAL
-                String temp2 = codi.addVariable(TipusSub.INT,"t");
+                String temp2 = codi.addVariable(TipusSub.INT, "t");
 
-
-                if(b==true){
+                if (b == true) {
                     //retornam iden[index]
-                    return iden+"["+temp+"]";
+                    return iden + "[" + temp + "]";
                 }
                 //cas indexat  ->  s'utilitza per assignar valor a altra variable.
                 //temp2=iden[temp]
-                codi.generar(TipusInstruccionsCTA.INDVAL,new Operand(this.iden, OperandsCTA.variable),o,temp2);
+                codi.generar(TipusInstruccionsCTA.INDVAL, new Operand(this.iden, OperandsCTA.variable), o, temp2);
                 return temp2;//retornam variable temporal
 
             case 3:
                 //generar codi de un integer
 
                 //guardar en variable temporal int
-                String temp1 = codi.addVariable(TipusSub.INT,"t");
+                String temp1 = codi.addVariable(TipusSub.INT, "t");
 
-                Operand enter = new Operand(iden,OperandsCTA.enterLit);
+                Operand enter = new Operand(iden, OperandsCTA.enterLit);
 
-                codi.generar(TipusInstruccionsCTA.COPIA,enter,null,temp1);
-
+                codi.generar(TipusInstruccionsCTA.COPIA, enter, null, temp1);
+                if(b){
+                    return String.valueOf(inte);
+                }
                 return temp1;
             case 4:
                 //generar codi de un boolean
-                String val="";
-                if(this.b) {
-                    val =  String.valueOf(-1);
-                }else{
+                String val = "";
+                if (this.b) {
+                    val = String.valueOf(-1);
+                } else {
                     val = String.valueOf(0);
                 }
                 return val;
@@ -188,24 +200,24 @@ public class SymbolValor {
                 return subProgramCall.codiTresAdreces(codi);
             case 6:
                 //generar instruccio not del boolean
-                String operand1=this.exprSimple.codiTresAdreces(codi);
+                String operand1 = this.exprSimple.codiTresAdreces(codi);
                 Operand o3 = new Operand(operand1, OperandsCTA.boolea);
-                String s=codi.addVariable(TipusSub.BOOLEAN,null);
-                codi.generar(TipusInstruccionsCTA.NOT,o3,null,s);
+                String s = codi.addVariable(TipusSub.BOOLEAN, null);
+                codi.generar(TipusInstruccionsCTA.NOT, o3, null, s);
                 return s;
 
             //
             case 7:
                 //generar codi de una expressió simple
-                String valorExpr=this.exprSimple.codiTresAdreces(codi);
+                String valorExpr = this.exprSimple.codiTresAdreces(codi);
                 return valorExpr;
             case 8:
                 // genram codi de
                 String t = this.statement.codiTresAdreces(codi);
                 return t;
             case 9:
-                //constructor buit
-            
+            //constructor buit
+
         }
         return null;
     }

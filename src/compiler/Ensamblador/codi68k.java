@@ -71,7 +71,7 @@ public class codi68k {
 
             case SUMA:
                 if (instruccio.getOperadorEsquerra().getTipus()==OperandsCTA.enterLit)) {  // el primer operant es un enter
-                    if (instruccio.getOperadorDret().getTipus()==OperandsCTA.enterLit)) { // el segon operand també és un enter
+                    if (instruccio.getOperadorDreta().getTipus()==OperandsCTA.enterLit)) { // el segon operand també és un enter
                         f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorEsquerra() + ",D0");
                         f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorDreta() + ",D1");
                         f.escriureFitxer("\tADD.L D0,D1"); // sumam els dos operands
@@ -85,11 +85,11 @@ public class codi68k {
                         f.escriureFitxer("\tMOVE.L D1," + instruccio.getDesti());
                     }
                 } else { // el primer operand no és un enter literal
-                    if (instruccio.getOperadorDret().getTipus().equals(OperandsCTA.enterLit)) { //el segon operand és un enter literal
+                    if (instruccio.getOperadorDreta().getTipus().equals(OperandsCTA.enterLit)) { //el segon operand és un enter literal
                         f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),D0");
-                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorDret() + ",D1");
+                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorDreta() + ",D1");
                         f.escriureFitxer("\tADD.L D0,D1");
-                        f.escriureFitxer("\tMOVE.L D1," + inst.destino);
+                        f.escriureFitxer("\tMOVE.L D1," + instruccio.getDesti());
 
                     } else { // els dos operands no son enters
                         f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),D0");
@@ -101,53 +101,208 @@ public class codi68k {
                 break;
 
             case RESTA:
-                if (inst.param1.type.equals(TiposOperandoC3A.enteroLit)) {  //x=#*?
-                    if (inst.param2.type.equals(TiposOperandoC3A.enteroLit)) { //x= #*#
-                        f.escribirFichero("\tMOVE.L #" + inst.param1 + ",D0");
-                        f.escribirFichero("\tMOVE.L #" + inst.param2 + ",D1");
-                        f.escribirFichero("\tSUB.L D1, D0");
-                        f.escribirFichero("\tMOVE.L D0, " + inst.destino);
-                    } else { //x=#*v
-                        f.escribirFichero("\tMOVE.L #" + inst.param1 + ",D0");
-                        f.escribirFichero("\tMOVE.L (" + inst.param2 + "),D1");
-                        f.escribirFichero("\tSUB.L D1, D0");
-                        f.escribirFichero("\tMOVE.L D0, " + inst.destino);
+                if (instruccio.getOperadorEsquerra().getTipus()==OperandsCTA.enterLit) {  //el primer operand es un enter
+                    if (instruccio.getOperadorDreta().getTipus()==OperandsCTA.enterLit) { //el segon operand tambe es un enter
+                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorEsquerra() + ",D0");
+                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorDreta() + ",D1");
+                        f.escriureFitxer("\tSUB.L D1, D0");
+                        f.escriureFitxer("\tMOVE.L D0, " + instruccio.getDesti());
+                        f.escriureFitxer("\tMOVE.L D0, " + instruccio.getDesti());
+                    } else { //el segon operan no és un enter
+                        f.escriureFitxer("\tMOVE.L #" + inst.param1 + ",D0");
+                        f.escriureFitxer("\tMOVE.L (" + inst.param2 + "),D1");
+                        f.escriureFitxer("\tSUB.L D1, D0");
+                        f.escriureFitxer("\tMOVE.L D0, " + inst.destino);
                     }
-                } else { //x = v*?
-                    if (inst.param2.type.equals(TiposOperandoC3A.enteroLit)) { //x= v*#
-                        f.escribirFichero("\tMOVE.L (" + inst.param1 + "),D0");
-                        f.escribirFichero("\tMOVE.L #" + inst.param2 + ",D1");
-                        f.escribirFichero("\tSUB.L D1, D0");
-                        f.escribirFichero("\tMOVE.L D0, " + inst.destino);
-                    } else { //x=v*v
-                        f.escribirFichero("\tMOVE.L (" + inst.param1 + "),D0");
-                        f.escribirFichero("\tMOVE.L (" + inst.param2 + "),D1");
-                        f.escribirFichero("\tSUB.L D1, D0");
-                        f.escribirFichero("\tMOVE.L D0, " + inst.destino);
+                } else { //el primer operand no es un enter
+                    if (instruccio.getOperadorDreta().tipus==OperandsCTA.enterLit) { //el segon operand es un enter
+                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),D0");
+                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorDreta() + ",D1");
+                        f.escriureFitxer("\tSUB.L D1, D0");
+                        f.escriureFitxer("\tMOVE.L D0, " + instruccio.getDesti());
+                    } else { //cap operand es un enter
+                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),D0");
+                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta() + "),D1");
+                        f.escriureFitxer("\tSUB.L D1, D0");
+                        f.escriureFitxer("\tMOVE.L D0, " + instruccio.getDesti());
                     }
                 }
                 break;
 
             case PRODUCTE:
+                if (instruccio.getOperadorEsquerra().getTipus() == OperandsCTA.enterLit) { // El primer operand es un ernter
+                    if (instruccio.getOperadorDreta().getTipus().equals(OperandsCTA.enterLit)) { //el segon operan també és un enter
+                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorEsquerra() + ",D0");
+                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorDreta() + ",D1");
+                        f.escriureFitxer("\tSUB.L #1, D1");
+                        f.escriureFitxer("\tCLR.L D2");
+                        f.escriureFitxer("LOOP\n\tADD.L D0,D2\n");
+                        f.escriureFitxer("\tDBRA D1,LOOP");
+                        f.escriureFitxer("\tMOVE.L D2," + instruccio.getDesti());
+                    } else { //el segon operador és una variable
+                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorEsquerra() + ",D0");
+                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta() + "),D1");
+                        f.escriureFitxer("\tSUB.L #1, D1");
+                        f.escriureFitxer("\tCLR.L D2");
+                        f.escriureFitxer("LOOP\n\tADD.L D0,D2\n");
+                        f.escriureFitxer("\tDBRA D1,LOOP");
+                        f.escriureFitxer("\tMOVE.L D2," + instruccio.getDesti());
+                    }
+                } else { //el primer operador és una variable
+                    if (instruccio.getParametreDreta().getTipus() == OperandsCTA.enterLit) { //el segon operador és un enter literal
+                        f.escribirFichero("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),D0");
+                        f.escribirFichero("\tMOVE.L #" + instruccio.getOperadorDreta() + ",D1");
+                        f.escribirFichero("\tSUB.L #1, D1");
+                        f.escribirFichero("\tCLR.L D2");
+                        f.escribirFichero("LOOP\n\tADD.L D0,D2\n");
+                        f.escribirFichero("\tDBRA D1,LOOP");
+                        f.escribirFichero("\tMOVE.L D2," + instruccio.getDesti());
+                    } else { //el segon operador també és una variable
+                        f.escribirFichero("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),D0");
+                        f.escribirFichero("\tMOVE.L (" + instruccio.getOperadorDreta() + "),D1");
+                        f.escribirFichero("\tSUB.L #1, D1");
+                        f.escribirFichero("\tCLR.L D2");
+                        f.escribirFichero("LOOP\n\tADD.L D0,D2\n");
+                        f.escribirFichero("\tDBRA D1,LOOP");
+                        f.escribirFichero("\tMOVE.L D2," + instruccio.getDesti());
+                    }
+                }
                 break;
 
             case DIVISIO:
+                if (instruccio.getOperadorEsquerra().getTipus()==OperadosCTA.enterLit) {  //el primer operand es un enter
+                    if (instruccio.getOperadorDreta().getTipus()==OperadosCTA.enterLit) { //els dos operands son enters
+                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorEsquerra() + ",D0");
+                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorDreta() + ",D1");
+                        f.escriureFitxer("\tCLR.L D2"); // utilitzam D2 per el resultat
+                        // feim un bucle fins que l'operador de l'esquerra sigui 0, i botam a ENDLOOP
+                        f.escriureFitxer("LOOP\n\tCMP.L #0,D0\n\tBEQ ENDLOOP\n")
+                        f.escriureFitxer("\tSUB.L D1,D0\n\tADD.L #1,D2\n"); //es compten a D2 quants de pics podem restar D0 i D1
+                        f.escriureFitxer("\tJMP LOOP"); // tornam al bucle
+                        f.escriureFitxer("ENDLOOP\n\tMOVE.L D2," + instruccio.getDesti());
+
+                    } else { //el segon operand no es enter
+                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorEsquerra() + ",D0");
+                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta() + "),D1");
+                        f.escriureFitxer("\tCLR.L D2"); // utilitzam D2 per el resultat
+                        // feim un bucle fins que l'operador de l'esquerra sigui 0, i botam a ENDLOOP
+                        f.escriureFitxer("LOOP\n\tCMP.L #0,D0\n\tBEQ ENDLOOP\n")
+                        f.escriureFitxer("\tSUB.L D1,D0\n\tADD.L #1,D2\n"); //es compten a D2 quants de pics podem restar D0 i D1
+                        f.escriureFitxer("\tJMP LOOP"); // tornam al bucle
+                        f.escriureFitxer("ENDLOOP\n\tMOVE.L D2," + instruccio.getDesti());
+                    }
+
+                } else { //el primer operador no es enter
+
+                    if (instruccio.getOperadorDreta().getTipus()==OperadosCTA.enterLit) { //el segon operand es enter
+                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),D0");
+                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorDreta() + ",D1");
+                        f.escriureFitxer("\tCLR.L D2"); // utilitzam D2 per el resultat
+                        // feim un bucle fins que l'operador de l'esquerra sigui 0, i botam a ENDLOOP
+                        f.escriureFitxer("LOOP\n\tCMP.L #0,D0\n\tBEQ ENDLOOP\n")
+                        f.escriureFitxer("\tSUB.L D1,D0\n\tADD.L #1,D2\n"); //es compten a D2 quants de pics podem restar D0 i D1
+                        f.escriureFitxer("\tJMP LOOP"); // tornam al bucle
+                        f.escriureFitxer("ENDLOOP\n\tMOVE.L D2," + instruccio.getDesti());
+
+                    } else { //cap operand es enter
+                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),D0");
+                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta() + "),D1");
+                        f.escriureFitxer("\tCLR.L D2"); // utilitzam D2 per el resultat
+                        // feim un bucle fins que l'operador de l'esquerra sigui 0, i botam a ENDLOOP
+                        f.escriureFitxer("LOOP\n\tCMP.L #0,D0\n\tBEQ ENDLOOP\n")
+                        f.escriureFitxer("\tSUB.L D1,D0\n\tADD.L #1,D2\n"); //es compten a D2 quants de pics podem restar D0 i D1
+                        f.escriureFitxer("\tJMP LOOP"); // tornam al bucle
+                        f.escriureFitxer("ENDLOOP\n\tMOVE.L D2," + instruccio.getDesti());
+                    }
+                }
                 break;
 
             case MODUL:
+                if (instruccio.getOperadorEsquerra().getTipus() == OperandsCTA.enterLit) {  //el primer operand es enter
+                    if (instruccio.getOperadorDreta().getTipus() == OperandsCTA.enterLit) { //els dos son enters
+                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorEsquerra() + ",D1");
+                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorDreta() + ",D0");
+                        f.escriureFitxer("\tDIVU D0,D1");
+                        f.escriureFitxer("\tASR.L #4,D1");
+                        f.escriureFitxer("\tASR.L #4,D1");
+                        f.escriureFitxer("\tASR.L #4,D1");
+                        f.escriureFitxer("\tASR.L #4,D1");
+                        f.escriureFitxer("\tMOVE.L D1," + instruccio.getDesti());
+                    } else { //el segon no es enter
+                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorEsquerra() + ",D1");
+                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta() + "),D0");
+                        f.escriureFitxer("\tDIVU D0,D1");
+                        f.escriureFitxer("\tASR.L #4,D1");
+                        f.escriureFitxer("\tASR.L #4,D1");
+                        f.escriureFitxer("\tASR.L #4,D1");
+                        f.escriureFitxer("\tASR.L #4,D1");
+                        f.escriureFitxer("\tMOVE.L D1," + instruccio.getDesti());
+                    }
+                } else { //el primer operand no es enter
+                    if (instruccio.getOperadorDreta().getTipus() == OperandsCTA.enterLit) { //el segon operand és un enter
+                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),D1");
+                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorDreta() + ",D0");
+                        f.escriureFitxer("\tDIVU D0,D1");
+                        f.escriureFitxer("\tASR.L #4,D1");
+                        f.escriureFitxer("\tASR.L #4,D1");
+                        f.escriureFitxer("\tASR.L #4,D1");
+                        f.escriureFitxer("\tASR.L #4,D1");
+                        f.escriureFitxer("\tMOVE.L D1," + instruccio.getDesti());
+                    } else { //el segon operan també és una variable
+                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),D1");
+                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta() + "),D0");
+                        f.escriureFitxer("\tDIVU D0,D1");
+                        f.escriureFitxer("\tASR.L #4,D1");
+                        f.escriureFitxer("\tASR.L #4,D1");
+                        f.escriureFitxer("\tASR.L #4,D1");
+                        f.escriureFitxer("\tASR.L #4,D1");
+                        f.escriureFitxer("\tMOVE.L D1," + instruccio.getDesti());
+                    }
+                }
                 break;
 
-            case MENYS:
+            case MENYS: // Fem com que restam en 0
+                if (instruccio.getOperadorDreta().getTipus()==OperandsCTA.enterLit) {  //operand es un enter
+                        f.escriureFitxer("\tMOVE.L #0,D0");
+                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorDreta() + ",D1");
+                        f.escriureFitxer("\tSUB.L D1, D0");
+                        f.escriureFitxer("\tMOVE.L D0, " + instruccio.getDesti());
+
+                } else { //no es enter
+                        f.escriureFitxer("\tMOVE.L 0,D0");
+                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta() + "),D1");
+                        f.escriureFitxer("\tSUB.L D1, D0");
+                        f.escriureFitxer("\tMOVE.L D0, " + instruccio.getDesti());
+                    }
                 break;
 
             case AND:
+                f.escribirFichero("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "), D0");
+                f.escribirFichero("\tMOVE.L (" + codi.getTaulaVariables().get(Interger.parseInt(instruccio.getOperadorDreta().getOperand())).getNom() + "), D1");
+                f.escribirFichero("\tAND.L D0,D1");
+                f.escribirFichero("\tMOVE.L D1," + instruccio.getDesti());
                 break;
 
             case OR:
+                f.escribirFichero("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "), D0");
+                f.escribirFichero("\tMOVE.L (" + codi.getTaulaVariables().get(Integer.parseInt(instruccio.getOperadorDreta().getOperand())).getNom() + "), D1");
+                f.escribirFichero("\tOR.L D0,D1");
+                f.escribirFichero("\tMOVE.L D1," + instruccio.getDesti());
                 break;
 
             case NOT:
+                if (instruccio.getOperadorDreta().getTipus()==OperandsCTA.enterLit) {  //operand es un enter
+                    f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorDreta() + ",D0");
+                    f.escriureFitxer("\tNOT.L D0");
+                    f.escriureFitxer("\tMOVE.L D0, " + instruccio.getDesti());
+                } else { //no es enter
+                    f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta() + "),D0");
+                    f.escriureFitxer("\tNOT.L D0");
+                    f.escriureFitxer("\tMOVE.L D0, " + instruccio.getDesti());
+                }
+
                 break;
+
 
             // OPERACIONS INDEXACIÓ
             case INDVAL:
@@ -161,7 +316,8 @@ public class codi68k {
                 f.escriureFitxer(instruccio.getDesti() + " :");
                 break;
 
-            case GO:
+            case GOTO:
+                f.escriureFitxer("\tJMP " + instruccio.getDesti());
                 break;
 
             case IF:
@@ -187,25 +343,66 @@ public class codi68k {
 
             // CRIDES A PROCEDIMENTS
             case PMB:
+                //feim un recorregut per la taula de procediments per obtenir tots els parametres, començant per el final
+                for (int i = this.codi.getTp().getTaulaProc.get(this.codi.getTp().getTaulaProc.size() - 1).getParametres().size() - 1; i >= 0; i--) {
+                    //obtenim la posicio del parametre a la pila
+                    int posPila = ((this.codi.getTp().getTaulaProc.get(this.codi.getTp().getTaulaProc.size() - 1).getParametres().size() - i) * 4) + 4;
+                    f.escriureFitxer("\tMOVE.L " + posicionPila + "(A7)," +
+                            TablaProcedimientos.tablaP.get(this.codi.getTp().getTaulaProc.size() - 1).getParametres().get(i).getNom());
+                }
+                f.escriureFitxer("\tMOVEM.L D0-D2,-(A7)");
                 break;
 
             case CALL:
+
                 break;
 
             case RTN:
+                if (instruccio.getDesti != null) { // si hi ha desti movem la instruccio a una posicio de memoria
+                    f.escriureFitxer("\tMOVE.L #" + instruccio.getDesti + ",A0");
+                }
+                f.escriureFitxer("\tMOVEM.L (A7)+,D0-D2");
+                f.escriureFitxer("\tRTS");
                 break;
 
             case PARAMS:
+                this.parametres.add(instruccio.getDesti());
+                f.escribirFichero("\tMOVE.L (" + instruccio.getDesti() + "),-(A7)");
                 break;
 
             case PARAMC:
+
                 break;
 
             // MOSTRAR PER PANTALLA I DEMANAR ENTRADA PER TECLAT
             case PRINT:
+                if (instruccio.getOperadorEsquerra() != null) {
+                    if (instruccio.getOperadorEsquerra().getTipus() == TipusSub.INT) {
+                        f.escriureFitxer("\tMOVE.L " + identificador(op) + ",-(A7)");
+                    } else {
+                        f.escriureFitxer("\tCLR.L D0");
+                        f.escriureFitxer("\tMOVE.L " + instruccio.getOperadorEsquerra().getOperand() + ",D0");
+                        f.escriureFitxer("\tEXT.L D0");
+                        f.escriureFitxer("\tMOVE.L D0,-(A7)");
+                    }
+                } else {
+                    f.escriureFitxer("\tMOVE.L " + instruccio.getOperadorEsquerra() + ",-(A7)");
+                }
+                f.escriureFitxer("\tJSR PRINTINT");
+                f.escriureFitxer("\tADDA.L #2,A7");
                 break;
 
             case INPUT:
+                Variable d = instruccio.getDesti();
+                f.escriureFitxer("\tSUBA.L #2,A7");
+                f.escriureFitxer("\tJSR GETINT");
+                if (d.getTipus() == TipusSub.INT) {
+                    f.escriureFitxer("\tMOVE.W (A7)+," + d().getOperand());
+                } else {
+                    f.escriureFitxer("\tMOVE.W (A7)+,D0");
+                    f.escriureFitxer("\tMOVE.B D0," + d().getOperand());
+                }
+
                 break;
 
         }

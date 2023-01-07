@@ -1020,9 +1020,9 @@ public class Scanner implements java_cup.runtime.Scanner {
             }
             // fall through
           case 85: break;
-          case 39:
-            { return symbol(ParserSym.r_break);
-            }
+//          case 39:
+//            { return symbol(ParserSym.r_break);
+//            }
             // fall through
           case 86: break;
           case 40:

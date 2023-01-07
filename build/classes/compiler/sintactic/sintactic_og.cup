@@ -209,6 +209,7 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                                     comprovaTipus.addError("ERROR Semántic, la constant  "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
                                                                 }
                                                         } else{
+                                                            System.out.println("ERROR ELSE GESTASIGDECL");
                                                             RESULT=new SymbolVarDecl();
                                                         }:}
     |type:t id:iden varInit:varinit                    {:
@@ -223,6 +224,7 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                                     RESULT=new SymbolVarDecl();
                                                                   }
                                                                   }else{
+                                                                  System.out.println("ERROR ELSE GESTASIGDECL");
                                                                   RESULT=new SymbolVarDecl();
                                                                   }
                                                             }else{
@@ -236,6 +238,7 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                                         RESULT=new SymbolVarDecl();
                                                                     }
                                                                 } else{
+                                                                System.out.println("ERROR ELSE GESTASIGDECL");
                                                                     RESULT=new SymbolVarDecl();
                                                                 }
                                                             }
@@ -556,7 +559,8 @@ rparen brop statementList:state brcl                {:if(comprovaTipus.gestExpr(
 
 
 ifStatement ::= r_if lparen exprSimple:expr
-rparen brop statementList:states brcl   {:if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN,cur_token.left)){
+rparen brop statementList:states brcl   {:
+                                            if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN,cur_token.left)){
                                              RESULT = new SymbolIfStatement(expr,states);
                                            }else{
                                               RESULT = new SymbolIfStatement();

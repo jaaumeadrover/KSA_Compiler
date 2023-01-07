@@ -27,7 +27,7 @@ public class Semantic {
     public boolean gestExpr(SymbolExpressioSimple expr, TipusSub t, int posicio) {
 
         TipusSub tipoExpr = expr.getTipusSubResultat();
-        //System.out.println("TIPUS EXPRESSIO: "+expr.getTipusSubResultat());
+        System.out.println("TIPUS EXPRESSIO: "+expr.getTipusSubResultat());
 
         // Cas 1: tipoExpr exp == NULL
         if (tipoExpr == null) {
@@ -108,14 +108,18 @@ public class Semantic {
                 if (exprTsub.equals(tipusSub)) {
                     //CORRECTE
                     if(tipus == Tipus.CONST){
-                        if((varinit.getExpr().getOperacio()==null)&&
-                                ((varinit.getExpr().getValor().getIndex == 3) || (varinit.getExpr().getValor().getIndex == 3))){
+                        if((varinit.getExpr().getOperacio().isEmpty())&&
+                                ((varinit.getExpr().getValor().getIndex() == 3) || (varinit.getExpr().getValor().getIndex() == 4))){
                             return true;
 
                         }else{
+                            System.out.println("CONDICIO ERROR VARINIT.getExpr.getOperacio: "+(varinit.getExpr().getOperacio()==null));
+                            System.out.println("CONDICIÓ ERROR INDEX:"+varinit.getExpr().getValor().getIndex());
                             errors.add("ERROR Semántic, La constant "+id+ " s'ha d'inicialitzar amb un valor enter BOOLEAN o INT. Linia: "+posicio);
                             return false;
                         }
+                    }else{
+                        return true;
                     }
                 } else {
                     //ERROR
@@ -125,6 +129,7 @@ public class Semantic {
 
             }
         }
+        
     }
 
     public boolean gestAsig(SymbolValor valor, SymbolOperacio operacio) {
@@ -228,6 +233,7 @@ public class Semantic {
             errors.add("ERROR Semántic, al for " + msg_Errors[0]);
             hiHaError = true;
         }
+        
         //Corregir Expressió intermitja
         if (expr.getTipusSubResultat() != TipusSub.BOOLEAN) {
             errors.add("ERROR Semántic, al for " + msg_Errors[1]);

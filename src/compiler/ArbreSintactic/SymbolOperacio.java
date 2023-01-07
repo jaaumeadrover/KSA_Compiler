@@ -69,6 +69,7 @@ public class SymbolOperacio {
             //Cas 2: Symbol Boolean
             case 'B':
                 if (expressioSimple.getTipusSubResultat() == TipusSub.BOOLEAN) {
+                    System.out.println("SET TS RESULTAT SYMBOLOPERACIO");
                     x = TipusSub.BOOLEAN;
                 }
                 break;

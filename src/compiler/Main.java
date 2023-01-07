@@ -70,17 +70,6 @@ public class Main {
             }
             writerErrors.close();
 
-            FileReader readerErrors = new FileReader("errors.txt");
-            BufferedReader br = new BufferedReader(readerErrors);
-            String lineaerror = br.readLine();
-
-            while(lineaerror!=null){
-                System.err.println(lineaerror);
-                lineaerror = br.readLine();
-            }
-            br.close();
-
-
             //if(errorsSem.isEmpty() && errorsSint.isEmpty()) {
                 ArbreSintactic arbre = parser.getArbreSintac();
                 codiTresAdreces codi = arbre.generarCodiTresAdreces();
@@ -94,6 +83,7 @@ public class Main {
            // }else{
                System.err.println("Programa incompilable per errors"); 
             //}
+                System.out.println("TAULA VARIABLES: "+codi.getTv());
 
         }catch(Exception e) {
             System.err.println("error: "+e);

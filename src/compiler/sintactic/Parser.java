@@ -635,7 +635,7 @@ class CUP$Parser$actions {
 		
                                                         //DECLARACIÓ CONSTANT
                                                         int error = ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.CONST, 0, 0);
-                                                        //System.out.println("TAMANY TAULA SIMBOLS EXTERNA: "+ts.getMida());
+
                                                         if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                             if(error==1){
                                                                 RESULT=new SymbolVarDecl(true, t.getTipusSub(), iden.toString(),varinit);
@@ -644,6 +644,7 @@ class CUP$Parser$actions {
                                                                     comprovaTipus.addError("ERROR Semántic, la constant  "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
                                                                 }
                                                         } else{
+                                                            System.out.println("ERROR ELSE GESTASIGDECL");
                                                             RESULT=new SymbolVarDecl();
                                                         }
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("varDecl",4, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -665,9 +666,7 @@ class CUP$Parser$actions {
 		SymbolVarInit varinit = (SymbolVarInit)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
                                                         if(varinit.isIsarray()){
-                                                                //System.out.println("Estic a la decl d'un array");
                                                                 int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0,varinit.getArray().getInteger());
-                                                                //System.out.println("Dimensio: "+varinit.getArray().getInteger());
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                                     if(error==1){
 
@@ -677,10 +676,11 @@ class CUP$Parser$actions {
                                                                     RESULT=new SymbolVarDecl();
                                                                   }
                                                                   }else{
+                                                                  System.out.println("ERROR ELSE GESTASIGDECL");
                                                                   RESULT=new SymbolVarDecl();
                                                                   }
                                                             }else{
-                                                                //System.out.println("No Estic a la decl d'un array");
+
                                                                 int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.VAR,0,0);
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                                     if (error==1){
@@ -690,6 +690,7 @@ class CUP$Parser$actions {
                                                                         RESULT=new SymbolVarDecl();
                                                                     }
                                                                 } else{
+                                                                System.out.println("ERROR ELSE GESTASIGDECL");
                                                                     RESULT=new SymbolVarDecl();
                                                                 }
                                                             }
@@ -976,9 +977,7 @@ if(s==null){
 		int vardleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
 		int vardright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		SymbolVarDecl vard = (SymbolVarDecl)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
-		
-System.out.println("declara al main");
-RESULT=new SymbolStatement(vard);
+		RESULT=new SymbolStatement(vard);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("statement",11, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1140,26 +1139,20 @@ RESULT=new SymbolStatement(vard);
 		//Si el valor es correcte
                                                             if(!val.esBuit()){
                                                                 if(oper.isAssignacio()){
-                                                                    //System.out.println("Estic a una assignacio: "+val.getIden());
+
                                                                     RESULT=null;
                                                                     if(comprovaTipus.gestIdArray(val.getIden(),val.isArrayElement())){
                                                                             if(comprovaTipus.gestAsig(val,oper)){
-                                                                                //System.out.println("Assignacio correcta");
                                                                                RESULT=new SymbolExpressioSimple(val, oper);
-                                                                               //System.out.println("TIPUS EXPRESSIO:"+RESULT.getTipusSubResultat());
                                                                             }else{
-                                                                               //System.out.println("Assignacio incorrecta");
                                                                                comprovaTipus.addError("ERROR Semántic, assignació incorrecte. Línea: "+cur_token.left);
                                                                               RESULT=new SymbolExpressioSimple();
-                                                                              //System.out.println("TIPUS EXPRESSIO:"+RESULT.getTipusSubResultat());
                                                                             }
                                                                         }else{
                                                                             RESULT=new SymbolExpressioSimple();
                                                                         }
                                                                 }else{
-                                                                    System.out.println("No estic a una assignacio:"+cur_token.left);
                                                                     RESULT=new SymbolExpressioSimple(val,oper);
-                                                                    //System.out.println("TIPUS EXPRESSIO:"+RESULT.getTipusSubResultat());
                                                                 }
                                                             }else{
                                                                 RESULT=RESULT=new SymbolExpressioSimple();
@@ -1227,8 +1220,7 @@ RESULT=new SymbolStatement(vard);
 		int bleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		 //System.out.println("He trobat valoor boolea "+b.toString());
-                                                        RESULT=new SymbolValor(b.toString());
+		RESULT=new SymbolValor(b.toString());
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("valor",26, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1260,7 +1252,6 @@ RESULT=new SymbolStatement(vard);
 		SymbolSubProgramCall subprogram = (SymbolSubProgramCall)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		  Simbol s=ts.consultaFunc(subprogram.getID());
                                                         if(s!=null){
-
                                                             RESULT=new SymbolValor(subprogram,s.getTipusSub());
                                                         }else{
                                                             comprovaTipus.addError("ERROR Semántic, No existeix la funció que es crida. Línea: "+cur_token.left);
@@ -1673,7 +1664,6 @@ RESULT=new SymbolStatement(vard);
 		
                                                         if(comprovaTipus.gestForLoop(forinit,expr,forpost)){
                                                                RESULT = new SymbolForIteration(forinit,expr,forpost,state);
-                                                               //System.out.print("Això ES CORRECTE AL FOR");
                                                          }else{
                                                               RESULT = new SymbolForIteration();
 
@@ -1736,7 +1726,6 @@ RESULT=new SymbolStatement(vard);
 		SymbolStatementList state = (SymbolStatementList)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN,cur_token.left)){
                                                         RESULT = new SymbolWhileStatement(expr,state);
-                                                        //System.out.print("Això ES CORRECTE AL WHILE");
                                                      }else{
                                                           RESULT = new SymbolWhileStatement();
                                                           comprovaTipus.addError("ERROR Semántic, expressió de tipus incorrecte a la senténcia WHILE. Linea: "+cur_token.left);

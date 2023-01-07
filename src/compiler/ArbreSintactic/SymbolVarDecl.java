@@ -12,7 +12,7 @@ public class SymbolVarDecl {
     private SymbolVarInit varInit;
 
     public SymbolVarDecl() {
-        this.isEmpty=true;
+        this.isEmpty = true;
     }
 
     public SymbolVarDecl(boolean esConst, TipusSub t, String id, SymbolVarInit simbol) {
@@ -20,7 +20,6 @@ public class SymbolVarDecl {
         this.tipus = t;
         this.id = id;
         this.varInit = simbol;
-
     }
 
     public TipusSub getTipusSub() {
@@ -31,23 +30,35 @@ public class SymbolVarDecl {
         return esConst;
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return this.isEmpty;
     }
 
-
-    public String codiTresAdreces(codiTresAdreces codi){
-        String nom=this.id;
+    public String codiTresAdreces(codiTresAdreces codi) {
+        String nom = this.id;
         String inicialitzacio = this.varInit.codiTresAdreces(codi);
+        System.out.println("VARINIT 3A:" + inicialitzacio);
         //fins que no declaram una variable no l'introduim en el codi de tres adreces
-        if (this.varInit != null){
-            if(varinit.isIsarray()){
-
+        if (this.varInit != null) {
+            if (varInit.isIsarray()) {
+                //procedure, dim?
+                int dim=varInit.getArray().getInteger();
+                int proc=codi.getTp().getNumProcActius();
+                codi.addVariableArray(tipus, nom,proc,dim);
             }
-            if(esConst){
-                codi.addVariable(t,nom,inicialitzacio);
-            }
-            else{
+            if (esConst) {
+                this.varInit.getExpr().getValor();
+                System.out.println("VALOR: " + this.varInit.getExpr().getValor());
+                int n = 0;
+                if (varInit.getExpr().getValor().toString().equals("false")) {
+                    n = 0;
+                } else if (varInit.getExpr().getValor().toString().equals("true")) {
+                    n = -1;
+                } else {
+                    n = Integer.parseInt(this.varInit.getExpr().getValor().toString());
+                }
+                codi.addVariable(tipus, nom, n);
+            }else {
 
             }
 
@@ -55,8 +66,6 @@ public class SymbolVarDecl {
             codi.generar(TipusInstruccionsCTA.COPIA, o, null, this.id);
         }
         return null;
-   }
+    }
 
 }
-        
- 

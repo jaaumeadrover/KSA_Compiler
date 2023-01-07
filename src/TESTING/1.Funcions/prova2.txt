@@ -1,21 +1,11 @@
 func int sumarNombresArray(int array a, int b, int longitud){
-    
-    while(3>1){
-        
-    }
+    const int final<-3;
+    const bool tre<-true;
+    const bool treu<-false;
 
-    for(int i <- 0; i < longitud; i <- i + 1){
-        b <- a[i] + b;
-    }
     return b;
 }
-proc ferPrint(){
-    int sum;
-    print("ATA2 aprova la practica");
-    for(int i <-0;i<10;i<-i+1){
-        sum <- i*3;
-    }
-}
+
 main(){
     //DECLARACIONS
     int l <- 10;
@@ -27,5 +17,5 @@ main(){
     }
     //Cridem la funcio que ens sumarà els nombres de l'array
     acum <- sumarNombresArray(a,acum,l);
-    l<-sumarNombresArray(a,acum,l)+true;
+    l<-sumarNombresArray(a,acum,l);
 }
