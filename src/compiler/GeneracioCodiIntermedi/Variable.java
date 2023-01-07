@@ -20,18 +20,29 @@ public class Variable{
     private int valor;
 
 
-    public Variable(String s, TipusSub tipusSub, int procedure){
+    public Variable(String s, TipusSub tipusSub,  int procedure){
         this.idV = contadorVars;
         contadorVars++;
         this.nom = s;
         this.tipusSub = tipusSub;
         this.procedure = procedure;
+
     }
 
     public Variable(TipusSub tipus, int procedure){
         this.tipusSub = tipus;
         this.procedure = procedure;
     }
+    public Variable(String s, TipusSub tipusSub, int valor,int procedure){
+        this.idV = contadorVars;
+        contadorVars++;
+        this.nom = s;
+        this.tipusSub = tipusSub;
+        this.procedure = procedure;
+        this.valor=valor;
+        this.constant=true;
+    }
+
 
     //GETTERS
     public int getId(){

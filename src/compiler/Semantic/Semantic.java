@@ -36,7 +36,7 @@ public class Semantic {
             return false;
             // Cas 2: tipoExpr != t
         } else if (tipoExpr != t) {
-            System.out.println("EROR: S'esperava trobar un " + t.toString() + " i s'ha trobat un " + tipoExpr.toString());
+            System.out.println("ERROR: S'esperava trobar un " + t.toString() + " i s'ha trobat un " + tipoExpr.toString());
             errors.add("ERROR Semàntic: S'esperava trobar un " + t.toString() + " i s'ha trobat un " + tipoExpr.toString());
             //Ho afeigm al parser per identificar quin tipus de senténcia es incorrecte
             return false;
@@ -107,10 +107,19 @@ public class Semantic {
                 //S'inicia una variable o constant
                 if (exprTsub.equals(tipusSub)) {
                     //CORRECTE
-                    return true;
+                    if(tipus == Tipus.CONST){
+                        if((varinit.getExpr().getOperacio()==null)&&
+                                ((varinit.getExpr().getValor().getIndex == 3) || (varinit.getExpr().getValor().getIndex == 3))){
+                            return true;
+
+                        }else{
+                            errors.add("ERROR Semántic, La constant "+id+ " s'ha d'inicialitzar amb un valor enter BOOLEAN o INT. Linia: "+posicio);
+                            return false;
+                        }
+                    }
                 } else {
                     //ERROR
-                    errors.add("ERROR Semántic, El tipus de la declaració no és correcte");
+                    errors.add("ERROR Semántic, El tipus de la declaració no és correcte. Linia: "+posicio);
                     return false;
                 }
 
@@ -168,6 +177,8 @@ public class Semantic {
 
         }
     }
+
+
 
     public boolean AsigExpr(SymbolOperacio operacio) {
         SymbolVarInit varinit = operacio.getVarInit();

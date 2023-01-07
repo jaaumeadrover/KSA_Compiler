@@ -64,6 +64,17 @@ public class codiTresAdreces{
         
         return tv.novaVariable(num,t, tp);
     }
+    public String addVariable(TipusSub t, String id, int valor){
+        int size = tv.getNumVar();
+        String num="";
+        if(id.equals("t")) {
+            num = null;
+        }else{
+            num = id;
+        }
+
+        return tv.novaVariable(num,t, tp,true,int valor);
+    }
     public Variable getVar(String nom) {
         Variable v=tv.getVariable(nom);
         return v;

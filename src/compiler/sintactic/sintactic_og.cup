@@ -203,7 +203,11 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
 
                                                         if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                             if(error==1){
+                                                            if(comprovaTipus.gestConstLit(iden.toString(),varinit,cur_token.left)){
                                                                 RESULT=new SymbolVarDecl(true, t.getTipusSub(), iden.toString(),varinit);
+                                                            }else{
+                                                                RESULT=new SymbolVarDecl();
+                                                            }
                                                                 }else{
                                                                     RESULT=new SymbolVarDecl();
                                                                     comprovaTipus.addError("ERROR Semántic, la constant  "+iden.toString()+", ja existeix. Linea: "+cur_token.left);

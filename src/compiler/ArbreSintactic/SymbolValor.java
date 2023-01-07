@@ -133,6 +133,7 @@ public class SymbolValor {
     public boolean isArrayElement(){
         return this.array!=null;
     }
+    public int getIndex{return this.index;}
 
     public String codiTresAdreces(codiTresAdreces codi,boolean b) {
         switch (index) {
@@ -181,10 +182,7 @@ public class SymbolValor {
                 }else{
                     val = String.valueOf(0);
                 }
-                temp = codi.addVariable(TipusSub.BOOLEAN,"t");
-                Operand bool = new Operand(val, OperandsCTA.boolea);
-                codi.generar(TipusInstruccionsCTA.COPIA, bool, null, temp);
-                return temp;
+                return val;
             case 5:
                 //generar crida a subprogram
                 return subProgramCall.codiTresAdreces(codi);
