@@ -32,7 +32,7 @@ public class Semantic {
         // Cas 1: tipoExpr exp == NULL
         if (tipoExpr == null) {
 
-            errors.add("ERROR Semàntic: Expressió incorrecte. Linea: " + posicio);
+            errors.add("ERROR Semàntic: Expressió incorrecte. Linea: " + (posicio+1));
             return false;
             // Cas 2: tipoExpr != t
         } else if (tipoExpr != t) {
@@ -78,7 +78,7 @@ public class Semantic {
                 //Es una constant
                 //ERROR
                 //System.out.println("La constant s'ha d'assignar quan es declara");
-                errors.add("ERROR Semántic, la constant s'ha d'assignar quan es declara. Linea: " + posicio);
+                errors.add("ERROR Semántic, la constant s'ha d'assignar quan es declara. Linea: " + (posicio+1));
                 return false;
             } else {
                 //Es una variable
@@ -101,7 +101,7 @@ public class Semantic {
                 //Comprobar si es null
                 TipusSub exprTsub = expr.getTipusSubResultat();
                 if (exprTsub == null) {
-                    errors.add("ERROR Semántic, l'expressió de la declaració és incorrecte. Linea: " + posicio);
+                    errors.add("ERROR Semántic, l'expressió de la declaració és incorrecte. Linea: " + (posicio+1));
                     return false;
                 }
                 //S'inicia una variable o constant
@@ -115,7 +115,7 @@ public class Semantic {
                         }else{
                             System.out.println("CONDICIO ERROR VARINIT.getExpr.getOperacio: "+(varinit.getExpr().getOperacio()==null));
                             System.out.println("CONDICIÓ ERROR INDEX:"+varinit.getExpr().getValor().getIndex());
-                            errors.add("ERROR Semántic, La constant "+id+ " s'ha d'inicialitzar amb un valor enter BOOLEAN o INT. Linia: "+posicio);
+                            errors.add("ERROR Semántic, La constant "+id+ " s'ha d'inicialitzar amb un valor enter BOOLEAN o INT. Linia: "+(posicio+1));
                             return false;
                         }
                     }else{
@@ -123,7 +123,7 @@ public class Semantic {
                     }
                 } else {
                     //ERROR
-                    errors.add("ERROR Semántic, El tipus de la declaració no és correcte. Linia: "+posicio);
+                    errors.add("ERROR Semántic, El tipus de la declaració no és correcte. Linia: "+(posicio+1));
                     return false;
                 }
 

@@ -119,7 +119,8 @@ public class Variable{
     // Mètode toString
     @Override
     public String toString(){
-        return "Nom: "+this.nom+"; Tipus: "+this.tipusSub+";Valor: "+this.valor+" Procediment: "+this.procedure;
+        return "Nom: "+this.nom+"; Tipus: "+this.tipusSub+";" +
+                "Valor: "+this.valor+" Dimensió: "+dimensio+" Procediment: "+this.procedure;
     }
 
 }

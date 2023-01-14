@@ -59,7 +59,7 @@ public class SymbolVarDecl {
                 }
                 codi.addVariable(tipus, nom, n);
             }else {
-
+                codi.addVariable(tipus,nom);
             }
 
             Operand o = new Operand(inicialitzacio, OperandsCTA.variable);

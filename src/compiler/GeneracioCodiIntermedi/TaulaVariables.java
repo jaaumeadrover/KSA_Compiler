@@ -79,7 +79,7 @@ public class TaulaVariables {
             // Afegim a la taula de variables una nova varible temporal,
             // ja que com no té nom, no ha estat declarada i sabem que ha estat
             // creada per a la realització del codi de tres adreces
-            Variable novaVar = new Variable("temporal" + numVar, t, TP.getNumProcActius());
+            Variable novaVar = new Variable("t" + (numVar+1), t, TP.getNumProcActius());
             TV.add(novaVar);
             numVar++;
             return "t" + numVar;

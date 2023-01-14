@@ -5,6 +5,7 @@
 package compiler;
 
 import compiler.ArbreSintactic.ArbreSintactic;
+import compiler.Ensamblador.codi68k;
 import compiler.GeneracioCodiIntermedi.codiTresAdreces;
 import compiler.Semantic.Semantic;
 import compiler.sintactic.Parser;
@@ -40,7 +41,7 @@ public class Main {
                 ///home/diegofes/GitHub/KSA_Compiler/src/TESTING/1.Funcions/prova.txt
                 //C:\Users\Jaume\Desktop\UIB\Cursos\TERCER\1r quatri\COMPILADORS\PRÀCTICA KSA\KSA_Compiler\src\TESTING\1.Funcions\prova.txt
                 //input = new FileReader("/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova2.txt");
-                input = new FileReader("C:\\Users\\Jaume\\Desktop\\UIB\\Cursos\\TERCER\\1r quatri\\COMPILADORS\\PRÀCTICA KSA\\KSA_Compiler\\src\\TESTING\\1.Funcions\\prova2.txt");
+                input = new FileReader("/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova2.txt");
                 //Users\marcc\OneDrive\Escritorio\GitHub\KSA_Compiler
                 //input = new InputStreamReader(System.in);
             }
@@ -53,9 +54,9 @@ public class Main {
             Semantic sem = parser.getComprovaTipus();
             
             ArrayList<String> errorsSem = sem.geterrorsSemantic();
-            //System.out.println("Smeantic: "+errorsSem);
+            System.out.println("Semeantic: "+errorsSem);
             ArrayList<String> errorsSint = parser.geterrorsSintactic();
-            //System.out.println("Sintactic: "+errorsSint);
+            System.out.println("Sintactic: "+errorsSint);
 
             //Escriu errors al fitxer
             for (int i = 0; i < errorsSint.size(); i++) {
@@ -69,10 +70,11 @@ public class Main {
                 writerErrors.write(element+ "\n");
             }
             writerErrors.close();
-
-            //if(errorsSem.isEmpty() && errorsSint.isEmpty()) {
+            codiTresAdreces codi = null;
+            
+            if(errorsSem.isEmpty() && errorsSint.isEmpty()) {
                 ArbreSintactic arbre = parser.getArbreSintac();
-                codiTresAdreces codi = arbre.generarCodiTresAdreces();
+                codi = arbre.generarCodiTresAdreces();
                 String codiIntermedi = codi.toString();
 
                 FileWriter codiIntermediFile = new FileWriter("codiIntermedi.txt");
@@ -80,9 +82,15 @@ public class Main {
                 codiIntermediFile.write(codiIntermedi);
                 System.out.println(codiIntermedi);
                 codiIntermediFile.close();
-           // }else{
+                
+                // CODI ENSSAMBLADOR
+                codi68k c = new codi68k("exe", codi);
+                c.generaAssembly();
+                       
+
+            }else{
                System.err.println("Programa incompilable per errors"); 
-            //}
+            }
                 System.out.println("TAULA VARIABLES: "+codi.getTv());
 
         }catch(Exception e) {

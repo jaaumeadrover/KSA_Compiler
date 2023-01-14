@@ -51,7 +51,7 @@ La línia anterior és una alternativa a la indicació element a element:
 // Declaracions
 
 id		= [A-Za-z_][A-Za-z0-9_]*
-integer  = [0-9][0-9]*
+integer  = {sub}?[0-9][0-9]*
 string  = [\"](([A-Za-z0-9_)]) | ({blank}))*[\"]
 
 
@@ -85,7 +85,6 @@ r_else      = else
 r_switch    = switch
 r_case      = case
 r_default   = default
-r_break     = break
 r_function  = func
 r_procedure = proc
 r_return    = return
@@ -101,7 +100,7 @@ r_main      = main
 r_print     = print
 r_input     = input
 r_string    = string
-r_array    = array
+r_array     = array
 
 /* Altres */
 new_line = ([\n\r]|(\n\r))+
@@ -179,7 +178,6 @@ r_comment = "//"([^\n])*
 
 {r_if}                   { return symbol(ParserSym.r_if);}
 {r_while}                { return symbol(ParserSym.r_while);}
-{r_break}                { return symbol(ParserSym.r_break);}
 {r_for}                  { return symbol(ParserSym.r_for);}
 {r_switch}               { return symbol(ParserSym.r_switch);}
 {r_else}                 { return symbol(ParserSym.r_else);}

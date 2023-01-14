@@ -20,6 +20,10 @@ public class TaulaProcediments{
     public ArrayList<Procediment> getTaulaProc(){
         return this.TP;
     }
+    
+    public int getTaulaSize(){
+        return this.TP.size();
+    }
 
     public void afegirProc(Procediment proc){
         TP.add(proc);
@@ -52,6 +56,8 @@ public class TaulaProcediments{
     public int getNumProcActius(){
         return numProcActius;
     }
+    
+    
     
     public String toString(){
         String s="";

@@ -1,0 +1,25 @@
+	ORG $700
+t1 DS.L 1
+i DS.L 1
+t2 DS.L 1
+j DS.L 1
+k DS.L 1
+t3 DS.L 1
+t4 DS.L 1
+t5 DS.L 1
+	ORG $1000
+START:
+	JMP run
+run:
+	MOVE.L (j),D0
+	MOVE.L (i),D1
+	CMP.L  D1,D0
+	BLT t3
+	JMP e2
+e1:
+	JMP e3
+e2:
+e3:
+	JMP FINAL
+FINAL:
+	END START

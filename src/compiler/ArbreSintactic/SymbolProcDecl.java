@@ -23,9 +23,12 @@ public class SymbolProcDecl  {
     public void codiTresAdreces(codiTresAdreces codi){
 
         if(funcCap.hihaParam()){
-
+            //Afegim procediment amb parametres buits(per a tenir parametres amb numProc!=0)
+            codi.getTp().afegirProc(new Procediment(iden,null,null));
+            //Generam el codi de 3 adreces i el guardam a un arrayList
             ArrayList<Parametre> parametres = funcCap.codiTresAdreces(codi);
-            codi.getTp().afegirProc(new Procediment(iden,null,parametres));
+            //Afegir paràmetres al procediment
+            codi.getTp().getProcediment(iden).setParametres(parametres);
             String etiqueta1=codi.novaEtiqueta(iden);
             codi.generar(TipusInstruccionsCTA.SKIP,null,null,etiqueta1);
             codi.generar(TipusInstruccionsCTA.PMB,null,null,iden);

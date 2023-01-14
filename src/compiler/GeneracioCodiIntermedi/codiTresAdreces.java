@@ -94,10 +94,6 @@ public class codiTresAdreces{
         return v;
     }
 
-    public TaulaProcediments getTp() {
-        return tp;
-    }
-
     public void començaDecl(){
         generar(TipusInstruccionsCTA.GOTO, null, null, "run");
         this.esDeclaracio=true;
@@ -164,9 +160,15 @@ public class codiTresAdreces{
     public TaulaVariables getTv() {
         return tv;
     }
+    
+    public TaulaProcediments getTp() {
+        return tp;
+    }
+    
     public ArrayList<Instruccio> Instruccions(){
         return codi;
     }
+    
 }
 
 

@@ -641,7 +641,7 @@ class CUP$Parser$actions {
                                                                 RESULT=new SymbolVarDecl(true, t.getTipusSub(), iden.toString(),varinit);
                                                                 }else{
                                                                     RESULT=new SymbolVarDecl();
-                                                                    comprovaTipus.addError("ERROR Semántic, la constant  "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
+                                                                    comprovaTipus.addError("ERROR Semántic, la constant  "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
                                                                 }
                                                         } else{
                                                             System.out.println("ERROR ELSE GESTASIGDECL");
@@ -672,7 +672,7 @@ class CUP$Parser$actions {
 
                                                                         RESULT=new SymbolVarDecl(false,t.getTipusSub(),iden.toString(),varinit);
                                                                   }else{
-                                                                    comprovaTipus.addError("ERROR Semántic, la variable array "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
+                                                                    comprovaTipus.addError("ERROR Semántic, la variable array "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
                                                                     RESULT=new SymbolVarDecl();
                                                                   }
                                                                   }else{
@@ -686,7 +686,7 @@ class CUP$Parser$actions {
                                                                     if (error==1){
                                                                         RESULT=new SymbolVarDecl(false,t.getTipusSub(),iden.toString(),varinit);
                                                                     }else{
-                                                                        comprovaTipus.addError("ERROR Semántic, la variable  "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
+                                                                        comprovaTipus.addError("ERROR Semántic, la variable  "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
                                                                         RESULT=new SymbolVarDecl();
                                                                     }
                                                                 } else{
@@ -818,7 +818,7 @@ class CUP$Parser$actions {
                                                                                         RESULT=new SymbolFuncDecl();
                                                                                     }
                                                                                 }else{
-                                                                                    comprovaTipus.addError("ERROR Semántic, la funció "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
+                                                                                    comprovaTipus.addError("ERROR Semántic, la funció "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
                                                                                     RESULT=new SymbolFuncDecl();
                                                                                 }
                                                                                 
@@ -865,7 +865,7 @@ if(s==null){
     RESULT =new SymbolProcDecl(iden.toString(), stats,funcCap);
     ts.afegeixSimbol(iden.toString(), TipusSub.NULL, Tipus.FUNC, 0,0);
 }else{
-    comprovaTipus.addError("ERROR Semántic, el procediment "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
+    comprovaTipus.addError("ERROR Semántic, el procediment "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
     RESULT=new SymbolProcDecl();
     }
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("procDecl",8, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-6)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -890,7 +890,7 @@ if(s==null){
                                                              if(error==1){
                                                                 RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString());
                                                              }else{
-                                                                comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
+                                                                comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
                                                                 RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString());
                                                              }
                                                              
@@ -918,7 +918,7 @@ if(s==null){
                                                             if(error==1){
                                                                 RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString());
                                                             }else{
-                                                               comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix. Linea: "+cur_token.left);
+                                                               comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
                                                                 RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString());
                                                             }
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("ContCap",22, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -1001,7 +1001,7 @@ if(s==null){
                                                             RESULT=new SymbolStatement(expr);
                                                         }else{
                                                             //cas assignam procediment---> error
-                                                            comprovaTipus.addError("ERROR Semántic, No pots assignar un procediment Linea: "+cur_token.left);
+                                                            comprovaTipus.addError("ERROR Semántic, No pots assignar un procediment Linea: "+(cur_token.left+1));
                                                             RESULT=new SymbolStatement();
                                                         }
 
@@ -1011,14 +1011,14 @@ if(s==null){
                                                 }else{
                                                     //si no és crida a un subprograma
                                                     if(expr.getValor().getSubProgCall()==null){
-                                                        comprovaTipus.addError("ERROR Semántic, senténcia incorrecte Linea: "+cur_token.left);
+                                                        comprovaTipus.addError("ERROR Semántic, senténcia incorrecte Linea: "+(cur_token.left+1));
                                                         RESULT=new SymbolStatement();
                                                     }else{
                                                         //si és procediment és correcte
                                                         if(!expr.getValor().getSubProgCall().retorna()){
                                                             RESULT=new SymbolStatement(expr);
                                                         }else{
-                                                            comprovaTipus.addError("ERROR Semántic, assigna el resultat de la funció! Linea: "+cur_token.left);
+                                                            comprovaTipus.addError("ERROR Semántic, assigna el resultat de la funció! Linea: "+(cur_token.left+1));
                                                             RESULT=new SymbolStatement();
                                                         }
 
@@ -1745,7 +1745,8 @@ if(s==null){
 		int statesleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).left;
 		int statesright = ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)).right;
 		SymbolStatementList states = (SymbolStatementList)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
-		if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN,cur_token.left)){
+		
+                                            if(comprovaTipus.gestExpr(expr,TipusSub.BOOLEAN,cur_token.left)){
                                              RESULT = new SymbolIfStatement(expr,states);
                                            }else{
                                               RESULT = new SymbolIfStatement();
