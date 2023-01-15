@@ -118,12 +118,12 @@ public class Scanner implements java_cup.runtime.Scanner {
     "\1\0\3\1\2\0\1\2\1\3\1\4\1\5\1\6"+
     "\1\7\1\10\1\11\1\12\1\13\1\14\1\15\1\16"+
     "\1\17\1\20\1\21\1\22\17\20\1\23\1\24\1\25"+
-    "\1\26\1\1\1\27\1\30\1\17\12\20\1\31\3\20"+
-    "\1\32\6\20\1\33\7\20\1\34\2\20\1\35\1\20"+
-    "\1\36\10\20\1\37\1\40\2\20\1\41\1\42\1\20"+
-    "\1\43\1\20\1\44\3\20\1\45\1\20\1\46\1\47"+
-    "\1\20\1\50\1\51\3\20\1\52\1\20\1\53\1\54"+
-    "\1\55\1\56";
+    "\1\26\1\1\1\27\1\30\1\31\12\20\1\32\3\20"+
+    "\1\33\6\20\1\34\7\20\1\35\2\20\1\36\1\20"+
+    "\1\37\10\20\1\40\1\41\2\20\1\42\1\43\1\20"+
+    "\1\44\1\20\1\45\3\20\1\46\1\20\1\47\1\50"+
+    "\1\20\1\51\1\52\3\20\1\53\1\20\1\54\1\55"+
+    "\1\56\1\57";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[118];
@@ -830,232 +830,237 @@ public class Scanner implements java_cup.runtime.Scanner {
             { 
             }
             // fall through
-          case 47: break;
+          case 48: break;
           case 2:
             { return symbol(ParserSym.mod);
             }
             // fall through
-          case 48: break;
+          case 49: break;
           case 3:
             { return symbol(ParserSym.lparen);
             }
             // fall through
-          case 49: break;
+          case 50: break;
           case 4:
             { return symbol(ParserSym.rparen);
             }
             // fall through
-          case 50: break;
+          case 51: break;
           case 5:
             { return symbol(ParserSym.mul);
             }
             // fall through
-          case 51: break;
+          case 52: break;
           case 6:
             { return symbol(ParserSym.add);
             }
             // fall through
-          case 52: break;
+          case 53: break;
           case 7:
             { return symbol(ParserSym.com);
             }
             // fall through
-          case 53: break;
+          case 54: break;
           case 8:
             { return symbol(ParserSym.sub);
             }
             // fall through
-          case 54: break;
+          case 55: break;
           case 9:
             { return symbol(ParserSym.div);
             }
             // fall through
-          case 55: break;
+          case 56: break;
           case 10:
             { return symbol(ParserSym.integer,this.yytext());
             }
             // fall through
-          case 56: break;
+          case 57: break;
           case 11:
             { return symbol(ParserSym.twodots);
             }
             // fall through
-          case 57: break;
+          case 58: break;
           case 12:
             { return symbol(ParserSym.smcol);
             }
             // fall through
-          case 58: break;
+          case 59: break;
           case 13:
             { return symbol(ParserSym.sm);
             }
             // fall through
-          case 59: break;
+          case 60: break;
           case 14:
             { return symbol(ParserSym.eq);
             }
             // fall through
-          case 60: break;
+          case 61: break;
           case 15:
             { return symbol(ParserSym.bg);
             }
             // fall through
-          case 61: break;
+          case 62: break;
           case 16:
             { return symbol(ParserSym.id,this.yytext());
             }
             // fall through
-          case 62: break;
+          case 63: break;
           case 17:
             { return symbol(ParserSym.lop);
             }
             // fall through
-          case 63: break;
+          case 64: break;
           case 18:
             { return symbol(ParserSym.lclose);
             }
             // fall through
-          case 64: break;
+          case 65: break;
           case 19:
             { return symbol(ParserSym.brop);
             }
             // fall through
-          case 65: break;
+          case 66: break;
           case 20:
             { return symbol(ParserSym.brcl);
             }
             // fall through
-          case 66: break;
+          case 67: break;
           case 21:
-            { return symbol(ParserSym.neg);
+            { return symbol(ParserSym.neq);
             }
             // fall through
-          case 67: break;
+          case 68: break;
           case 22:
             { return symbol(ParserSym.string,this.yytext());
             }
             // fall through
-          case 68: break;
+          case 69: break;
           case 23:
             { return symbol(ParserSym.asig);
             }
             // fall through
-          case 69: break;
+          case 70: break;
           case 24:
             { return symbol(ParserSym.sm_eq);
             }
             // fall through
-          case 70: break;
-          case 25:
-            { return symbol(ParserSym.r_if);
-            }
-            // fall through
           case 71: break;
-          case 26:
-            { return symbol(ParserSym.r_or);
+          case 25:
+            { return symbol(ParserSym.bg_eq);
             }
             // fall through
           case 72: break;
-          case 27:
-            { return symbol(ParserSym.r_and);
+          case 26:
+            { return symbol(ParserSym.r_if);
             }
             // fall through
           case 73: break;
-          case 28:
-            { return symbol(ParserSym.r_for);
+          case 27:
+            { return symbol(ParserSym.r_or);
             }
             // fall through
           case 74: break;
-          case 29:
-            { return symbol(ParserSym.r_int);
+          case 28:
+            { return symbol(ParserSym.r_and);
             }
             // fall through
           case 75: break;
-          case 30:
-            { return symbol(ParserSym.r_not);
+          case 29:
+            { return symbol(ParserSym.r_for);
             }
             // fall through
           case 76: break;
-          case 31:
-            { return symbol(ParserSym.r_bool);
+          case 30:
+            { return symbol(ParserSym.r_int);
             }
             // fall through
           case 77: break;
-          case 32:
-            { return symbol(ParserSym.r_case);
+          case 31:
+            { return symbol(ParserSym.r_not);
             }
             // fall through
           case 78: break;
-          case 33:
-            { return symbol(ParserSym.r_else);
+          case 32:
+            { return symbol(ParserSym.r_bool);
             }
             // fall through
           case 79: break;
-          case 34:
-            { return symbol(ParserSym.r_function);
+          case 33:
+            { return symbol(ParserSym.r_case);
             }
             // fall through
           case 80: break;
-          case 35:
-            { return symbol(ParserSym.r_main);
+          case 34:
+            { return symbol(ParserSym.r_else);
             }
             // fall through
           case 81: break;
-          case 36:
-            { return symbol(ParserSym.r_procedure);
+          case 35:
+            { return symbol(ParserSym.r_function);
             }
             // fall through
           case 82: break;
-          case 37:
-            { return symbol(ParserSym.bool,this.yytext());
+          case 36:
+            { return symbol(ParserSym.r_main);
             }
             // fall through
           case 83: break;
-          case 38:
-            { return symbol(ParserSym.r_array,this.yytext());
+          case 37:
+            { return symbol(ParserSym.r_procedure);
             }
             // fall through
           case 84: break;
-          case 39:
-            { return symbol(ParserSym.r_const);
+          case 38:
+            { return symbol(ParserSym.bool,this.yytext());
             }
             // fall through
           case 85: break;
-          case 40:
-            { return symbol(ParserSym.r_input);
+          case 39:
+            { return symbol(ParserSym.r_array,this.yytext());
             }
             // fall through
           case 86: break;
-          case 41:
-            { return symbol(ParserSym.r_print);
+          case 40:
+            { return symbol(ParserSym.r_const);
             }
             // fall through
           case 87: break;
-          case 42:
-            { return symbol(ParserSym.r_while);
+          case 41:
+            { return symbol(ParserSym.r_input);
             }
             // fall through
           case 88: break;
-          case 43:
-            { return symbol(ParserSym.r_return);
+          case 42:
+            { return symbol(ParserSym.r_print);
             }
             // fall through
           case 89: break;
-          case 44:
-            { return symbol(ParserSym.r_string);
+          case 43:
+            { return symbol(ParserSym.r_while);
             }
             // fall through
           case 90: break;
-          case 45:
-            { return symbol(ParserSym.r_switch);
+          case 44:
+            { return symbol(ParserSym.r_return);
             }
             // fall through
           case 91: break;
-          case 46:
-            { return symbol(ParserSym.r_default);
+          case 45:
+            { return symbol(ParserSym.r_string);
             }
             // fall through
           case 92: break;
+          case 46:
+            { return symbol(ParserSym.r_switch);
+            }
+            // fall through
+          case 93: break;
+          case 47:
+            { return symbol(ParserSym.r_default);
+            }
+            // fall through
+          case 94: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

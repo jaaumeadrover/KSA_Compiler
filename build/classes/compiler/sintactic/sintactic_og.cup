@@ -124,7 +124,7 @@ terminal id,bool,string;
 //enteros
 terminal integer;
 //operadors
-terminal bg, sm, bg_eq, sm_eq, eq, neg;
+terminal bg, sm, bg_eq, sm_eq, eq, neq;
 //operaciones
 terminal add, sub, mul, div, mod;
 //caracteres suplementarios
@@ -473,12 +473,13 @@ aritOp ::= add {:RESULT = new SymbolAritOp(Operacions.ADD);:}
 |mod           {:RESULT = new SymbolAritOp(Operacions.MOD);:}
 ;
 
-realOp::= neg {:RESULT = new SymbolRealOp(Operacions.NEG);:}
-|eq           {:RESULT = new SymbolRealOp(Operacions.EQ);:}
-|bg           {:RESULT = new SymbolRealOp(Operacions.BG);:}
-|sm           {:RESULT = new SymbolRealOp(Operacions.SM);:}
-|bg_eq        {:RESULT = new SymbolRealOp(Operacions.BGEQ);:}
-|sm_eq        {:RESULT = new SymbolRealOp(Operacions.SMEQ);:}
+realOp::= neq {:RESULT = new SymbolRealOp(Operacions.NEQ);:}//NOT EQUALS
+|eq           {:RESULT = new SymbolRealOp(Operacions.EQ);:}//EQUALS
+|bg           {:System.out.println("HE AGAFAT bg");
+                RESULT = new SymbolRealOp(Operacions.BG);:}//BIGGER THAN
+|sm           {:RESULT = new SymbolRealOp(Operacions.SM);:}//SMALLER THAN
+|bg_eq        {:RESULT = new SymbolRealOp(Operacions.BGEQ);:}//BIGGER EQUAL
+|sm_eq        {:RESULT = new SymbolRealOp(Operacions.SMEQ);:}//SMALLER EQUAL
 ;
 
 

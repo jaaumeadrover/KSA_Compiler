@@ -202,7 +202,7 @@ public class SymbolValor {
                 //generar instruccio not del boolean
                 String operand1 = this.exprSimple.codiTresAdreces(codi);
                 Operand o3 = new Operand(operand1, OperandsCTA.boolea);
-                String s = codi.addVariable(TipusSub.BOOLEAN, null);
+                String s = codi.addVariable(TipusSub.BOOLEAN, "t");
                 codi.generar(TipusInstruccionsCTA.NOT, o3, null, s);
                 return s;
 

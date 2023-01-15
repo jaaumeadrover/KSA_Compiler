@@ -14,6 +14,7 @@ public class ParserSym {
   public static final int add = 12;
   public static final int lop = 23;
   public static final int mod = 16;
+  public static final int neq = 11;
   public static final int sm_eq = 9;
   public static final int r_procedure = 33;
   public static final int asig = 17;
@@ -22,7 +23,6 @@ public class ParserSym {
   public static final int r_function = 32;
   public static final int r_else = 28;
   public static final int r_switch = 29;
-  public static final int neg = 11;
   public static final int r_default = 31;
   public static final int string = 4;
   public static final int r_const = 37;
@@ -68,7 +68,7 @@ public class ParserSym {
   "bg_eq",
   "sm_eq",
   "eq",
-  "neg",
+  "neq",
   "add",
   "sub",
   "mul",

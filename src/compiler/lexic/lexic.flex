@@ -61,7 +61,7 @@ sm      = \<                //verificat
 bg_eq   = >=               //verificat
 sm_eq   = <=              //verificat
 eq      = =              //verificat
-neg     = \!=           //verificat
+neq     = \!=           //verificat
 
 add          = \+
 sub          = \-
@@ -158,10 +158,10 @@ r_comment = "//"([^\n])*
 {sm}                     { return symbol(ParserSym.sm);}
 {sm_eq}                  { return symbol(ParserSym.sm_eq);}
 {eq}                     { return symbol(ParserSym.eq);}
-{neg}                    { return symbol(ParserSym.neg);}
+{neq}                    { return symbol(ParserSym.neq);}
 
 {asig}                   { return symbol(ParserSym.asig);}
-{bg_eq}                  { return symbol(ParserSym.bg);}
+{bg_eq}                  { return symbol(ParserSym.bg_eq);}
 
 
 {smcol}                  { return symbol(ParserSym.smcol);}

@@ -6,21 +6,28 @@
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/errors.txt</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/Symbols/TaulaSimbols/Tipus.java</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/codiIntermedi.txt</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/Parametre.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/Variable.java</file>
+            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolOp.java</file>
+            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/TipusInstruccionsCTA.java</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/exe.68K</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/codiTresAdreces.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/Instruccio.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolFuncDecl.java</file>
+            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolOperacio.java</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/Main.java</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/Symbols/TaulaSimbols/TipusSub.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/Ensamblador/codi68k.java</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/TaulaProcediments.java</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/Symbols/TaulaSimbols/TaulaSimbols.java</file>
+            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/lexic/Scanner.java</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova2.txt</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/Ensamblador/Writer.java</file>
-            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/Operand.java</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/TaulaVariables.java</file>
+            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/Parametre.java</file>
+            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolValor.java</file>
+            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/Variable.java</file>
+            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolRealOp.java</file>
+            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/Instruccio.java</file>
+            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolFuncDecl.java</file>
+            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolExpressioSimple.java</file>
+            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/Ensamblador/codi68k.java</file>
+            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/Operand.java</file>
         </group>
     </open-files>
 </project-private>

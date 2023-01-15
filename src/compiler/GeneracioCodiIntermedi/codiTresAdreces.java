@@ -129,6 +129,8 @@ public class codiTresAdreces{
                     return TipusInstruccionsCTA.MODUL;
                 case EQ:
                     return TipusInstruccionsCTA.EQ;
+                case NEQ:
+                    return TipusInstruccionsCTA.NE;
                 case BG:
                     return TipusInstruccionsCTA.GT;
                 case SM:

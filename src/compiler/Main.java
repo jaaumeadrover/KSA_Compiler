@@ -34,6 +34,10 @@ public class Main {
         try {
             if (args.length > 0) {
                 input = new FileReader(args[0]);
+//                if (!input.endsWith(".ksa")) {
+//                    System.err.println("-> el archivo del programa tiene que acabar en .ksa");
+//                    System.exit(0);
+//                }
             } else {
                 //System.out.println("Escriu l'expressió que vols calcular (help; per ajuda):");
                 //System.out.print(">>> ");
@@ -45,6 +49,7 @@ public class Main {
                 //Users\marcc\OneDrive\Escritorio\GitHub\KSA_Compiler
                 //input = new InputStreamReader(System.in);
             }
+
             FileWriter writerErrors = new FileWriter("errors.txt");
 
             Scanner scanner = new Scanner(input);
@@ -54,19 +59,19 @@ public class Main {
             Semantic sem = parser.getComprovaTipus();
             
             ArrayList<String> errorsSem = sem.geterrorsSemantic();
-            System.out.println("Semeantic: "+errorsSem);
+            //System.out.println("Semantic: "+errorsSem);
             ArrayList<String> errorsSint = parser.geterrorsSintactic();
-            System.out.println("Sintactic: "+errorsSint);
+            //System.out.println("Sintactic: "+errorsSint);
 
             //Escriu errors al fitxer
             for (int i = 0; i < errorsSint.size(); i++) {
                 String element = errorsSint.get(i);
-
+                System.err.println(element);
                 writerErrors.write(element+ "\n");
             }
             for (int i = 0; i < errorsSem.size(); i++) {
                 String element = errorsSem.get(i);
-
+                System.err.println(element);
                 writerErrors.write(element+ "\n");
             }
             writerErrors.close();
@@ -91,7 +96,7 @@ public class Main {
             }else{
                System.err.println("Programa incompilable per errors"); 
             }
-                System.out.println("TAULA VARIABLES: "+codi.getTv());
+                //System.out.println("TAULA VARIABLES: "+codi.getTv());
 
         }catch(Exception e) {
             System.err.println("error: "+e);
