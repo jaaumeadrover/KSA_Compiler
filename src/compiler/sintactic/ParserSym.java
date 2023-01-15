@@ -24,7 +24,6 @@ public class ParserSym {
   public static final int r_else = 28;
   public static final int r_switch = 29;
   public static final int r_default = 31;
-  public static final int string = 4;
   public static final int r_const = 37;
   public static final int bg_eq = 8;
   public static final int sm = 7;
@@ -45,6 +44,7 @@ public class ParserSym {
   public static final int brcl = 22;
   public static final int r_not = 40;
   public static final int r_and = 38;
+  public static final int str = 4;
   public static final int brop = 21;
   public static final int integer = 5;
   public static final int r_case = 30;
@@ -61,7 +61,7 @@ public class ParserSym {
   "error",
   "id",
   "bool",
-  "string",
+  "str",
   "integer",
   "bg",
   "sm",

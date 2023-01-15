@@ -120,7 +120,7 @@ parser code {:
 //TERMINALS
 
 //identificadores
-terminal id,bool,string;
+terminal id,bool,str;
 //enteros
 terminal integer;
 //operadors
@@ -374,7 +374,8 @@ inputStatement ::=  r_input lparen rparen {:RESULT = new SymbolInputStatement();
 printStatement ::= r_print lparen literal:string rparen {:RESULT = new SymbolPrintStatement(string);:};
 
 
-literal ::=          string:str {:RESULT = new SymbolLiteral(str.toString());:}
+literal ::=          str:str {:RESULT = new SymbolLiteral(str.toString());:}
+                    | id:id     {:RESULT = new SymbolLiteral(id.toString(),true);:}
 ;
 
 
@@ -445,8 +446,7 @@ valor::= id:iden                         {:
                                                         RESULT=new SymbolValor(expr);
                                                     }:}
     |inputStatement:input                           {: RESULT=new SymbolValor(input);:}
-
-
+    |str:str                                         {:RESULT = new SymbolValor(str.toString(),true);:}
     ;
 
 array::=id:iden lop exprSimple:expr lclose {:RESULT=new SymbolArray(iden.toString(),expr);:}
@@ -475,7 +475,7 @@ aritOp ::= add {:RESULT = new SymbolAritOp(Operacions.ADD);:}
 
 realOp::= neq {:RESULT = new SymbolRealOp(Operacions.NEQ);:}//NOT EQUALS
 |eq           {:RESULT = new SymbolRealOp(Operacions.EQ);:}//EQUALS
-|bg           {:System.out.println("HE AGAFAT bg");
+|bg           {:
                 RESULT = new SymbolRealOp(Operacions.BG);:}//BIGGER THAN
 |sm           {:RESULT = new SymbolRealOp(Operacions.SM);:}//SMALLER THAN
 |bg_eq        {:RESULT = new SymbolRealOp(Operacions.BGEQ);:}//BIGGER EQUAL

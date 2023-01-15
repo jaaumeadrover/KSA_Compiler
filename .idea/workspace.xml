@@ -2,37 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b33019b-17bb-49c6-9ad2-0abb86f410ea" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/pseudocodi.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/Scanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/lexic/Scanner.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/lexic/lexic.flex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/ParserSym.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/sintactic/ParserSym.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic_og.cup" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/codiIntermedi.txt" beforeDir="false" afterPath="$PROJECT_DIR$/codiIntermedi.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/errors.txt" beforeDir="false" afterPath="$PROJECT_DIR$/errors.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exe.68K" beforeDir="false" afterPath="$PROJECT_DIR$/exe.68K" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/Operacions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/Operacions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TESTING/1.Funcions/prova2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/TESTING/1.Funcions/prova2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolLiteral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolLiteral.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Ensamblador/codi68k.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Ensamblador/codi68k.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/TaulaVariables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/TaulaVariables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codiTresAdreces.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codiTresAdreces.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/lexic/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/Scanner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/ParserSym.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/ParserSym.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
     </list>
-    <list id="7db931dc-745a-4fff-9c13-60f4dde5cdee" name="Changes by diegofes" comment="">
+    <list id="3602276d-8d44-4939-b00a-3ef6d34e3167" name="Changes by diegofes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/TaulaVariables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/TaulaVariables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/Variable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codiTresAdreces.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codiTresAdreces.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
     </list>
-    <list id="ce40e9da-ac16-4d57-b6a2-ef098e4793d6" name="Changes by Jaume" comment="">
-      <change beforePath="$PROJECT_DIR$/src/TESTING/1.Funcions/prova2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/TESTING/1.Funcions/prova2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolExpressioSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolExpressioSimple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolRealOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolRealOp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
-    </list>
+    <list id="4955b825-4eb6-4ab5-8ecf-e0875ee9063a" name="Changes by Jaume" comment="" />
     <list id="f34a3507-579c-49d2-851d-d35c65502ec0" name="Changes by joanbalaguer" comment="" />
+    <list id="8f2d4e2c-bfcf-4a55-a4b8-517ac24c4fdf" name="Changes by marc" comment="" />
     <list id="58cceed4-2ebd-4add-94de-92150b1a83c2" name="Changes by messi" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,28 +43,39 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/compiler/Main.java">
-      <ranges>
-        <range start1="36" end1="36" start2="36" end2="40" changelist="7db931dc-745a-4fff-9c13-60f4dde5cdee" />
-        <range start1="47" end1="47" start2="51" end2="52" changelist="7db931dc-745a-4fff-9c13-60f4dde5cdee" />
-        <range start1="56" end1="57" start2="61" end2="62" changelist="7db931dc-745a-4fff-9c13-60f4dde5cdee" />
-        <range start1="58" end1="59" start2="63" end2="64" changelist="7db931dc-745a-4fff-9c13-60f4dde5cdee" />
-        <range start1="63" end1="64" start2="68" end2="69" changelist="7db931dc-745a-4fff-9c13-60f4dde5cdee" />
-        <range start1="68" end1="69" start2="73" end2="74" changelist="7db931dc-745a-4fff-9c13-60f4dde5cdee" />
-        <range start1="93" end1="94" start2="98" end2="99" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-      </ranges>
-    </file>
     <file path="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup">
       <ranges>
-        <range start1="126" end1="127" start2="126" end2="127" changelist="7db931dc-745a-4fff-9c13-60f4dde5cdee" />
-        <range start1="475" end1="481" start2="475" end2="482" changelist="ce40e9da-ac16-4d57-b6a2-ef098e4793d6" />
+        <range start1="122" end1="123" start2="122" end2="123" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
+        <range start1="376" end1="377" start2="376" end2="378" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="447" end1="449" start2="448" end2="449" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
+        <range start1="477" end1="478" start2="477" end2="478" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
       </ranges>
     </file>
-    <file path="$PROJECT_DIR$/src/compiler/lexic/lexic.flex">
+    <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java">
       <ranges>
-        <range start1="63" end1="64" start2="63" end2="64" changelist="7db931dc-745a-4fff-9c13-60f4dde5cdee" />
-        <range start1="160" end1="161" start2="160" end2="161" changelist="ce40e9da-ac16-4d57-b6a2-ef098e4793d6" />
-        <range start1="163" end1="164" start2="163" end2="164" changelist="ce40e9da-ac16-4d57-b6a2-ef098e4793d6" />
+        <range start1="17" end1="17" start2="17" end2="18" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
+        <range start1="28" end1="28" start2="29" end2="37" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="104" end1="105" start2="113" end2="114" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="217" end1="217" start2="226" end2="227" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="218" end1="218" start2="228" end2="229" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="219" end1="219" start2="230" end2="231" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/TaulaVariables.java">
+      <ranges>
+        <range start1="43" end1="44" start2="43" end2="44" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
+        <range start1="56" end1="57" start2="56" end2="61" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
+        <range start1="61" end1="62" start2="65" end2="72" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="70" end1="70" start2="80" end2="81" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/compiler/GeneracioCodiIntermedi/codiTresAdreces.java">
+      <ranges>
+        <range start1="47" end1="48" start2="47" end2="48" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
+        <range start1="65" end1="66" start2="65" end2="66" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
+        <range start1="69" end1="70" start2="69" end2="70" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
+        <range start1="78" end1="79" start2="78" end2="79" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
+        <range start1="90" end1="90" start2="90" end2="101" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
       </ranges>
     </file>
   </component>
@@ -82,22 +93,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "last_opened_file_path": "/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "PLAIN_TEXT"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PLAIN_TEXT&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Jaume\Desktop\UIB\Cursos\TERCER\1r quatri\COMPILADORS\PRÀCTICA KSA\KSA_Compiler\src\compiler\GeneracioCodiIntermedi\Puji" />

@@ -41,7 +41,7 @@ public class TaulaVariables {
     /*
     Mètode per a afegir una nova variable a la llista.
      */
-    public String novaVariable(String nom, TipusSub t, TaulaProcediments TP, boolean esConst, int valor, int dim) {
+    public String novaVariable(String nom, TipusSub t, TaulaProcediments TP, boolean esConst, int valor, int dim, String value) {
         // Nom diferent de null = variable no temporal
         if (nom != null) {
             int i = 0;
@@ -54,12 +54,22 @@ public class TaulaVariables {
                 i++;
                 
             }
-
+            if(value!=null){
+                Variable novaVar = new Variable(nom, t, TP.getNumProcActius(),value);
+                TV.add(novaVar);
+                return nom + "_" + TP.getNumProcActius();
+            }
             // Si la nova variable no es temporal (tenia nom) i no es trobava
             // a la taula de variables (no ha fet el return del while) l'afegim a la
             // taula de variables amb el seu nom
             if (esConst) {
-                Variable novaVar = new Variable(nom, t, valor, TP.getNumProcActius());
+                Variable novaVar = null;
+                //cas string
+                if(value!=null){
+                     novaVar = new Variable(nom, t, TP.getNumProcActius(),value);
+                }else{//cas constant int
+                     novaVar = new Variable(nom, t, valor, TP.getNumProcActius());
+                }
                 TV.add(novaVar);
                 return nom + "_" + TP.getNumProcActius();
             } else {
@@ -68,6 +78,7 @@ public class TaulaVariables {
                     TV.add(novaVar);
                     return nom + "_" + TP.getNumProcActius();
                 } else {
+
                     //cas array
                     Variable var = new Variable(t, nom, TP.getNumProcActius(), dim);
                     this.TV.add(var);

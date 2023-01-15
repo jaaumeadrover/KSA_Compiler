@@ -152,7 +152,7 @@ r_comment = "//"([^\n])*
 "true"                   { return symbol(ParserSym.bool,this.yytext());}
 "false"                  { return symbol(ParserSym.bool,this.yytext());}
 {bg}                     { return symbol(ParserSym.bg);}
-{string}                 { return symbol(ParserSym.string,this.yytext());}
+{str}                 { return symbol(ParserSym.str,this.yytext());}
 {r_string}               { return symbol(ParserSym.r_string);}
 
 {sm}                     { return symbol(ParserSym.sm);}

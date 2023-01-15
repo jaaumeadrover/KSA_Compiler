@@ -45,7 +45,7 @@ public class codiTresAdreces{
 
     public void addParametre(String id, TipusSub t, Tipus tipus) {
         Parametre p = new Parametre(id,t,tipus);
-        tv.novaVariable(id,t,tp,false,1,0);
+        tv.novaVariable(id,t,tp,false,1,0,null);
         parametres.add(p);
     }
 
@@ -63,11 +63,11 @@ public class codiTresAdreces{
             num = id;
         }
         
-        return tv.novaVariable(num,t, tp,false,1,0);
+        return tv.novaVariable(num,t, tp,false,1,0,null);
     }
     
     //MÈTODE PER A AFEGIR UNA CONSTANT
-    public String addVariable(TipusSub t, String id, int valor){
+    public String addVariable(TipusSub t, String id, String value){
         int size = tv.getNumVar();
         String num="";
         if(id.equals("t")) {
@@ -76,7 +76,7 @@ public class codiTresAdreces{
             num = id;
         }
 
-        return tv.novaVariable(num,t, tp,true,valor,0);
+        return tv.novaVariable(num,t, tp,true,0,0,value);
     }
     /*
     Mètode per a afegir una variable Array.
@@ -87,6 +87,17 @@ public class codiTresAdreces{
         Variable var=new Variable(t,str,procedure,dim);
         tv.addVariable(var);
         return s;
+    }
+    public String addVariable(TipusSub t, String id, int valor){
+        int size = tv.getNumVar();
+        String num="";
+        if(id.equals("t")) {
+            num = null;
+        }else{
+            num = id;
+        }
+
+        return tv.novaVariable(num,t, tp,true,valor,0,null);
     }
     
     public Variable getVar(String nom) {

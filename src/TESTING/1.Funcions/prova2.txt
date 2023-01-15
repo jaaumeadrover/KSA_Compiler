@@ -1,5 +1,6 @@
 main(){
     bool j <- false;
+    string s <- "hola com va";
     int k <- 0;
     int z <- 2;
 

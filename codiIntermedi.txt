@@ -1,6 +1,7 @@
 [GOTO, null, null, run]
 [SKIP, null, null, run]
 [COPIA, 0, null, j]
+[COPIA, "hola com va", null, s]
 [COPIA, 0, null, t1]
 [COPIA, t1, null, k]
 [COPIA, 2, null, t2]

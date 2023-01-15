@@ -15,6 +15,7 @@ public class SymbolValor {
     private int index;
     private TipusSub tipusSub;
     private SymbolInputStatement statement;
+    private String str;
 
 
     /*
@@ -26,6 +27,14 @@ public class SymbolValor {
         this.index = 1;
     }
 
+    /*
+    Constructor en el cas de tenir un string
+     */
+    public SymbolValor(String str,boolean b){
+        this.str=str;
+        this.tipusSub = TipusSub.STRING;
+        this.index = 9;
+    }
     /*
     Cas valor en el qual tenim un array
      */
@@ -102,7 +111,7 @@ public class SymbolValor {
 
     public SymbolValor() {
         this.esBuit = true;
-        this.index = 9;
+        this.index = 10;
     }
 
     public int getValorInt() {
@@ -215,8 +224,11 @@ public class SymbolValor {
                 // genram codi de
                 String t = this.statement.codiTresAdreces(codi);
                 return t;
+            //CAS STRING
             case 9:
+                return this.str;
             //constructor buit
+            case 10:
 
         }
         return null;

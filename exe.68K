@@ -1,5 +1,6 @@
 	ORG $700
 j DS.L 1
+s DS.L 1
 t1 DS.L 1
 k DS.L 1
 t2 DS.L 1
@@ -17,6 +18,7 @@ START:
 	JMP run
 run:
 	MOVE.L (0),j
+	MOVE.L ("hola com va"),s
 	MOVE.L #0,t1
 	MOVE.L (t1),k
 	MOVE.L #2,t2

@@ -19,6 +19,7 @@ public class Variable{
     private boolean constant = false;
     private int valor;
     private int dimensio;
+    private String value;
 
     /*
     Constructor per afegir variable simple
@@ -65,7 +66,17 @@ public class Variable{
         this.procedure = procedure;
         this.dimensio=dimensio;
     }
-
+    //Constructor per a strings
+    public Variable(String s, TipusSub tipusSub,int procedure,String value){
+        this.idV = contadorVars;
+        contadorVars++;
+        this.nom = s;
+        this.tipusSub = tipusSub;
+        this.procedure = procedure;
+        this.value=value;
+        this.constant=true;
+        dimensio=0;
+    }
     //GETTERS
     public int getId(){
         return this.idV;
