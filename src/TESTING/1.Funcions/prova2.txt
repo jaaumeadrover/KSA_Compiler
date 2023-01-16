@@ -9,5 +9,5 @@ main(){
     string n;
     n <- input();
     //print(n);
-    j <- params(i, j, k);
+    j <- params();
 }

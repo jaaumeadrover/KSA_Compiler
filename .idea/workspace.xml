@@ -2,44 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b33019b-17bb-49c6-9ad2-0abb86f410ea" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/ant.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Prova.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Prova.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/lexic/lexic.flex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/Prova.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/Prova.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/lexic/Scanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/lexic/Scanner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/ParserSym.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/sintactic/ParserSym.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/compiler/sintactic/sintactic_og.cup" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codiIntermedi.txt" beforeDir="false" afterPath="$PROJECT_DIR$/codiIntermedi.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exe.68K" beforeDir="false" afterPath="$PROJECT_DIR$/exe.68K" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TESTING/1.Funcions/prova2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/TESTING/1.Funcions/prova2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolPrintStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolPrintStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Ensamblador/codi68k.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Ensamblador/codi68k.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramContCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramContCall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Symbols/TaulaSimbols/Simbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Symbols/TaulaSimbols/Simbol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/lexic.flex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/Semantic/Semantic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Semantic/Semantic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/lexic/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/lexic/Scanner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
     </list>
-    <list id="3602276d-8d44-4939-b00a-3ef6d34e3167" name="Changes by diegofes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolContCap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolContCap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolFuncCap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolFuncCap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolLiteral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolLiteral.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramContCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolSubProgramContCall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Semantic/Semantic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Semantic/Semantic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Symbols/TaulaSimbols/Simbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Symbols/TaulaSimbols/Simbol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Symbols/TaulaSimbols/TaulaSimbols.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Symbols/TaulaSimbols/TaulaSimbols.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
-    </list>
-    <list id="4955b825-4eb6-4ab5-8ecf-e0875ee9063a" name="Changes by Jaume" comment="">
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolLiteral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolLiteral.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolPrintStatement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolPrintStatement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Ensamblador/codi68k.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Ensamblador/codi68k.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pseudocodi.txt" beforeDir="false" />
-    </list>
+    <list id="3602276d-8d44-4939-b00a-3ef6d34e3167" name="Changes by diegofes" comment="" />
+    <list id="4955b825-4eb6-4ab5-8ecf-e0875ee9063a" name="Changes by Jaume" comment="" />
     <list id="f34a3507-579c-49d2-851d-d35c65502ec0" name="Changes by joanbalaguer" comment="" />
-    <list id="0871010c-68d3-4bd7-8c15-0b85e4a39e26" name="Changes by marc" comment="">
-      <change beforePath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup" afterDir="false" />
-    </list>
+    <list id="0871010c-68d3-4bd7-8c15-0b85e4a39e26" name="Changes by marc" comment="" />
     <list id="58cceed4-2ebd-4add-94de-92150b1a83c2" name="Changes by messi" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,111 +33,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/compiler/Ensamblador/codi68k.java">
-      <ranges>
-        <range start1="67" end1="67" start2="67" end2="68" changelist="4955b825-4eb6-4ab5-8ecf-e0875ee9063a" />
-        <range start1="70" end1="71" start2="71" end2="94" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="330" end1="331" start2="353" end2="354" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="332" end1="333" start2="355" end2="356" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="337" end1="343" start2="360" end2="366" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="347" end1="352" start2="370" end2="375" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="354" end1="355" start2="377" end2="378" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="361" end1="366" start2="384" end2="389" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="371" end1="376" start2="394" end2="399" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="381" end1="382" start2="404" end2="405" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="383" end1="384" start2="406" end2="407" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="388" end1="394" start2="411" end2="417" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="398" end1="403" start2="421" end2="426" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="405" end1="406" start2="428" end2="429" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="412" end1="417" start2="435" end2="440" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="422" end1="427" start2="445" end2="450" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="435" end1="436" start2="458" end2="459" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="437" end1="438" start2="460" end2="461" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="442" end1="448" start2="465" end2="471" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="452" end1="457" start2="475" end2="480" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="459" end1="460" start2="482" end2="483" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="462" end1="471" start2="485" end2="494" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="476" end1="481" start2="499" end2="504" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="484" end1="485" start2="507" end2="508" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="487" end1="488" start2="510" end2="511" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="489" end1="490" start2="512" end2="513" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="493" end1="494" start2="516" end2="517" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="495" end1="496" start2="518" end2="519" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="500" end1="501" start2="523" end2="524" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="504" end1="505" start2="527" end2="527" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="509" end1="510" start2="531" end2="532" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="511" end1="512" start2="533" end2="534" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="516" end1="522" start2="538" end2="544" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="526" end1="531" start2="548" end2="553" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="533" end1="534" start2="555" end2="556" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="540" end1="545" start2="562" end2="567" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="550" end1="555" start2="572" end2="577" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="560" end1="561" start2="582" end2="583" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="562" end1="563" start2="584" end2="585" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="567" end1="573" start2="589" end2="595" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="577" end1="582" start2="599" end2="604" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="584" end1="585" start2="606" end2="607" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="591" end1="596" start2="613" end2="618" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="601" end1="606" start2="623" end2="628" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="612" end1="613" start2="634" end2="635" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="614" end1="615" start2="636" end2="637" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="619" end1="625" start2="641" end2="647" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="629" end1="634" start2="651" end2="656" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="636" end1="637" start2="658" end2="659" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="643" end1="648" start2="665" end2="670" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="653" end1="658" start2="675" end2="680" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="675" end1="676" start2="697" end2="735" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="695" end1="723" start2="754" end2="784" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/compiler/sintactic/sintactic_og.cup">
-      <ranges>
-        <range start1="201" end1="202" start2="201" end2="202" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
-        <range start1="216" end1="217" start2="216" end2="217" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
-        <range start1="231" end1="232" start2="231" end2="232" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
-        <range start1="272" end1="272" start2="272" end2="273" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
-        <range start1="273" end1="274" start2="274" end2="276" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
-        <range start1="278" end1="279" start2="280" end2="281" changelist="0871010c-68d3-4bd7-8c15-0b85e4a39e26" />
-        <range start1="290" end1="291" start2="292" end2="293" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
-        <range start1="297" end1="298" start2="299" end2="300" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
-        <range start1="305" end1="306" start2="307" end2="308" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
-        <range start1="371" end1="372" start2="373" end2="375" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="373" end1="374" start2="376" end2="389" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
-        <range start1="500" end1="501" start2="515" end2="521" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
-        <range start1="509" end1="510" start2="529" end2="530" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolPrintStatement.java">
-      <ranges>
-        <range start1="11" end1="11" start2="11" end2="14" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-        <range start1="12" end1="13" start2="15" end2="18" changelist="4955b825-4eb6-4ab5-8ecf-e0875ee9063a" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolLiteral.java">
-      <ranges>
-        <range start1="16" end1="16" start2="16" end2="18" changelist="4955b825-4eb6-4ab5-8ecf-e0875ee9063a" />
-        <range start1="19" end1="19" start2="21" end2="26" changelist="4955b825-4eb6-4ab5-8ecf-e0875ee9063a" />
-        <range start1="20" end1="23" start2="27" end2="33" changelist="4955b825-4eb6-4ab5-8ecf-e0875ee9063a" />
-        <range start1="24" end1="26" start2="34" end2="34" changelist="4955b825-4eb6-4ab5-8ecf-e0875ee9063a" />
-        <range start1="28" end1="28" start2="36" end2="37" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/compiler/Symbols/TaulaSimbols/Simbol.java">
-      <ranges>
-        <range start1="5" end1="5" start2="5" end2="8" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
-        <range start1="17" end1="17" start2="20" end2="22" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
-        <range start1="26" end1="26" start2="31" end2="41" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
-        <range start1="55" end1="55" start2="70" end2="78" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/compiler/ArbreSintactic/SymbolValor.java">
-      <ranges>
-        <range start1="108" end1="108" start2="108" end2="109" changelist="3602276d-8d44-4939-b00a-3ef6d34e3167" />
-        <range start1="135" end1="135" start2="136" end2="144" changelist="2b33019b-17bb-49c6-9ad2-0abb86f410ea" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -172,9 +52,10 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "last_opened_file_path": "/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler",
+    "last_opened_file_path": "/home/diegofes/GitHub/KSA_Compiler",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "editor.preferences.tabs"
   },
@@ -225,6 +106,7 @@
       <workItem from="1672907825121" duration="8487000" />
       <workItem from="1672995136634" duration="6542000" />
       <workItem from="1673080881328" duration="3123000" />
+      <workItem from="1673872798106" duration="1183000" />
     </task>
     <servers />
   </component>

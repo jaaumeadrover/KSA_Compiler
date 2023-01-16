@@ -444,6 +444,7 @@ public class Parser extends java_cup.runtime.lr_parser {
     private Semantic comprovaTipus=new Semantic(ts);
     private ArbreSintactic arbre=new ArbreSintactic();
     ArrayList<String> errorsSintactic = new ArrayList<>();
+    private ArrayList<SymbolValor> p = new ArrayList<SymbolValor>();
     //CodiTresAdreces codi3A;
     /*
     public Parser(Scanner scanner){
@@ -457,6 +458,7 @@ public class Parser extends java_cup.runtime.lr_parser {
     public ArbreSintactic getArbreSintac(){
         return arbre;
     }
+
 
     /**
      * Variable utilitzada per emmagatzemar el darrer valor calculat.
@@ -832,7 +834,7 @@ class CUP$Parser$actions {
                                                                                         RESULT=new SymbolFuncDecl();
                                                                                     }
                                                                                 }else{
-                                                                                    comprovaTipus.addError("ERROR Semántic, la funció "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
+                                                                                    comprovaTipus.addError("ERROR Semàntic, la funció "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
                                                                                     RESULT=new SymbolFuncDecl();
                                                                                 }
                                                                                 
@@ -1596,7 +1598,9 @@ if(s==null){
 		int valorleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int valorright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		SymbolValor valor = (SymbolValor)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		RESULT = new SymbolSubProgramContCall(valor);
+		
+p.add(valor);
+RESULT = new SymbolSubProgramContCall(valor,p);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("subProgramContCall",19, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
@@ -1611,7 +1615,9 @@ if(s==null){
 		int valorleft = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).left;
 		int valorright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		SymbolValor valor = (SymbolValor)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		RESULT = new SymbolSubProgramContCall(subprogcontcall, valor);
+		
+    p.add(valor);
+    RESULT = new SymbolSubProgramContCall(subprogcontcall, valor, p);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("subProgramContCall",19, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;

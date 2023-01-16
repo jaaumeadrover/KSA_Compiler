@@ -13,7 +13,7 @@ public class SymbolSubProgramContCall{
     public SymbolSubProgramContCall(SymbolValor expr, ArrayList<SymbolValor> values){
         this.valor=expr;
         this.valoresParam = values;
-        this.valoresParam.add(expr);
+
     }
 
     public String getID(){
@@ -25,7 +25,7 @@ public class SymbolSubProgramContCall{
         this.subProgramContCall=subContCall;
         this.valor=expr;
         this.valoresParam = values;
-        this.valoresParam.add(expr);
+
 
     }
     public ArrayList<SymbolValor> getValoresParam(){

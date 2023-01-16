@@ -60,9 +60,15 @@ public class Semantic {
     }
     
     public boolean paramCall(String iden, ArrayList<SymbolValor> values){
+
         Simbol func = ts.consultaFunc(iden);
         ArrayList<TipusSub>tipussubparam= func.getTipusSubParam();
         ArrayList<Tipus> tipusparam= func.getTipusParam();
+
+        if(values==null && tipusparam.size()>0){
+            errors.add("ERROR Semàntic: La funció "+iden+" necesita arguments");
+            return false;
+        }
         ArrayList<SymbolValor> valoresParam = values;
         if(valoresParam.size()>tipusparam.size()){
             errors.add("ERROR Semàntic: Falten arguments en la crida a la funció de"+iden+" ");

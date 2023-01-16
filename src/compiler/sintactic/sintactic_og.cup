@@ -46,6 +46,7 @@ parser code {:
     private Semantic comprovaTipus=new Semantic(ts);
     private ArbreSintactic arbre=new ArbreSintactic();
     ArrayList<String> errorsSintactic = new ArrayList<>();
+    private ArrayList<SymbolValor> p = new ArrayList<SymbolValor>();
     //CodiTresAdreces codi3A;
     /*
     public Parser(Scanner scanner){
@@ -59,6 +60,7 @@ parser code {:
     public ArbreSintactic getArbreSintac(){
         return arbre;
     }
+
 
     /**
      * Variable utilitzada per emmagatzemar el darrer valor calculat.
@@ -502,7 +504,10 @@ subProgramCall ::= id:iden lparen rparen            {:
                                                       Simbol s= ts.consultaFunc(iden.toString());
                                                       if(s!=null){
                                                         //else
-                                                        RESULT=new SymbolSubProgramCall(iden.toString(),!(s.getTipusSub().equals(TipusSub.NULL)),s.getTipusSub());
+                                                        if(comprovaTipus.paramCall(iden.toString(),null)){
+                                                                    RESULT=new SymbolSubProgramCall(iden.toString(),!(s.getTipusSub().equals(TipusSub.NULL)),s.getTipusSub());                                                        }else{
+                                                           RESULT=new SymbolSubProgramCall();
+                                                        }
                                                       }else{
                                                         //no existeix la funció cridada
                                                         comprovaTipus.addError("ERROR Semántic, ela funció/procediment "+iden+" no esta declarat. Linea: "+cur_token.left);
@@ -526,8 +531,12 @@ subProgramCall ::= id:iden lparen rparen            {:
                                                       } :}
 ;
 
-subProgramContCall ::= valor:valor                           {:RESULT = new SymbolSubProgramContCall(valor);:}
-    |subProgramContCall:subprogcontcall com valor:valor      {:RESULT = new SymbolSubProgramContCall(subprogcontcall, valor, subprogcontcall.getValoresParam());:}
+subProgramContCall ::= valor:valor                           {:
+p.add(valor);
+RESULT = new SymbolSubProgramContCall(valor,p);:}
+    |subProgramContCall:subprogcontcall com valor:valor      {:
+    p.add(valor);
+    RESULT = new SymbolSubProgramContCall(subprogcontcall, valor, p);:}
     ;
 
 SwitchCase ::= r_switch lparen exprSimple:expr rparen brop LCases:lcases Default:defa brcl {:
