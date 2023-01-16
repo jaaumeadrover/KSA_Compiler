@@ -445,6 +445,8 @@ public class Parser extends java_cup.runtime.lr_parser {
     private ArbreSintactic arbre=new ArbreSintactic();
     ArrayList<String> errorsSintactic = new ArrayList<>();
     private ArrayList<SymbolValor> p = new ArrayList<SymbolValor>();
+    private ArrayList<TipusSub> tips = new ArrayList<TipusSub>();
+    private ArrayList<Tipus> tip = new ArrayList<Tipus>();
     //CodiTresAdreces codi3A;
     /*
     public Parser(Scanner scanner){
@@ -828,7 +830,8 @@ class CUP$Parser$actions {
                                                                                     if(comprovaTipus.gestFunc(t.getTipusSub(),rtn)){
 
                                                                                         RESULT=new SymbolFuncDecl(t.getTipusSub(), iden.toString(), stats, rtn,funcCap);
-
+tips=null;
+tip=null;
                                                                                         ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.FUNC, 0,0,funcCap.getTipusSub(),funcCap.getTipus());
                                                                                     }else{
                                                                                         RESULT=new SymbolFuncDecl();
@@ -879,6 +882,8 @@ class CUP$Parser$actions {
 		Simbol s=ts.consultaFunc(iden.toString());
 if(s==null){
     RESULT =new SymbolProcDecl(iden.toString(), stats,funcCap);
+tips=null;
+tip=null;
     ts.afegeixSimbol(iden.toString(), TipusSub.NULL, Tipus.FUNC, 0,0,funcCap.getTipusSub(),funcCap.getTipus());
 }else{
     comprovaTipus.addError("ERROR Semántic, el procediment "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
@@ -904,10 +909,15 @@ if(s==null){
 		
                                                              int error= ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0,null,null);
                                                              if(error==1){
-                                                                RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString());
+                                                                tips.add(t.getTipusSub());
+                                                               if(arr.getString()!=null){
+                                                                       tip.add(Tipus.ARRAY);
+                                                                       }else{
+                                                                       tip.add(Tipus.VAR);}
+                                                                RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString(),tips,tip);
                                                              }else{
                                                                 comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
-                                                                RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString());
+                                                                RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString(),tips,tip);
                                                              }
                                                              
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("ContCap",22, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-3)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
@@ -932,10 +942,16 @@ if(s==null){
 		Object iden = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		int error =  ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0,null,null);
                                                             if(error==1){
-                                                                RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString());
+                                                               tips.add(t.getTipusSub());
+                                                               if(arr.getString()!=null){
+                                                                       tip.add(Tipus.ARRAY);
+                                                                       }else{
+                                                                       tip.add(Tipus.VAR);}
+                                                               
+                                                                RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString(),tips,tip);
                                                             }else{
                                                                comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
-                                                                RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString());
+                                                                RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString(),tips,tip);
                                                             }
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("ContCap",22, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-4)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
@@ -1293,6 +1309,7 @@ if(s==null){
 		  Simbol s=ts.consultaFunc(subprogram.getID());
                                                         if(s!=null){
                                                             RESULT=new SymbolValor(subprogram,s.getTipusSub());
+                                                             p=null;
                                                         }else{
                                                             comprovaTipus.addError("ERROR Semántic, No existeix la funció que es crida. Línea: "+cur_token.left);
                                                             RESULT=new SymbolValor();
@@ -1551,7 +1568,10 @@ if(s==null){
                                                       Simbol s= ts.consultaFunc(iden.toString());
                                                       if(s!=null){
                                                         //else
-                                                        RESULT=new SymbolSubProgramCall(iden.toString(),!(s.getTipusSub().equals(TipusSub.NULL)),s.getTipusSub());
+                                                        if(comprovaTipus.paramCall(iden.toString(),null)){
+                                                            RESULT=new SymbolSubProgramCall(iden.toString(),!(s.getTipusSub().equals(TipusSub.NULL)),s.getTipusSub());                                                        }else{
+                                                           RESULT=new SymbolSubProgramCall();
+                                                        }
                                                       }else{
                                                         //no existeix la funció cridada
                                                         comprovaTipus.addError("ERROR Semántic, ela funció/procediment "+iden+" no esta declarat. Linea: "+cur_token.left);
@@ -1601,6 +1621,7 @@ if(s==null){
 		
 p.add(valor);
 RESULT = new SymbolSubProgramContCall(valor,p);
+
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("subProgramContCall",19, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;

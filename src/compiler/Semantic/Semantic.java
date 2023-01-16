@@ -64,23 +64,24 @@ public class Semantic {
         Simbol func = ts.consultaFunc(iden);
         ArrayList<TipusSub>tipussubparam= func.getTipusSubParam();
         ArrayList<Tipus> tipusparam= func.getTipusParam();
-
+        System.out.println("    "+tipussubparam.size());
         if(values==null && tipusparam.size()>0){
             errors.add("ERROR Semàntic: La funció "+iden+" necesita arguments");
             return false;
         }
         ArrayList<SymbolValor> valoresParam = values;
         if(valoresParam.size()>tipusparam.size()){
-            errors.add("ERROR Semàntic: Falten arguments en la crida a la funció de"+iden+" ");
+            errors.add("ERROR Semàntic: Sobren arguments en la crida a la funció de "+iden+" ");
             return false;
         }else if(valoresParam.size()<tipusparam.size()){
-            errors.add("ERROR Semàntic: Sobren arguments en la crida a la funció de"+iden+" ");
+            errors.add("ERROR Semàntic: Falten arguments en la crida a la funció de "+iden+" ");
             return false;
         }else{
             for (int i = 0; i < valoresParam.size(); i++) {
                Tipus tipusvalor = valoresParam.get(i).getTipus();
                TipusSub tipussubvalor = valoresParam.get(i).getTipusSub();
                if(tipusparam.get(i)!=tipusvalor|| tipussubparam.get(i)!=tipussubvalor){
+                   System.out.println(tipusvalor+" "+tipusparam.get(i));
                    errors.add("ERROR Semàntic: El tipus dels parametres son incorrectesen la crida a la funció de "+iden);
                    return false;
                }

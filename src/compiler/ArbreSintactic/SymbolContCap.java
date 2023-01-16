@@ -14,33 +14,33 @@ public class SymbolContCap {
     private ArrayList<TipusSub> tipusSub = new ArrayList<TipusSub>();
     private ArrayList<Tipus> tipus = new ArrayList<Tipus>();
 
-    public SymbolContCap(TipusSub t, String arr, String id){
+    public SymbolContCap(TipusSub t, String arr, String id,ArrayList<TipusSub> tipusSub,ArrayList<Tipus> tipus){
         this.t=t;
         this.arr = arr;
         this.id=id;
         if(arr==null){
             this.isarray = Tipus.VAR;
-            tipus.add(Tipus.VAR);
-            tipusSub.add(t);
+            this.tipus=tipus;
+            this.tipusSub=tipusSub;
         }else{
-            tipusSub.add(t);
-            tipus.add(Tipus.ARRAY);
+            this.tipus=tipus;
+            this.tipusSub=tipusSub;
             this.isarray=Tipus.ARRAY;
         }
     }
 
-    public SymbolContCap(SymbolContCap contcap, TipusSub t, String arr, String id){
+    public SymbolContCap(SymbolContCap contcap, TipusSub t, String arr, String id, ArrayList<TipusSub> tipusSub,ArrayList<Tipus> tipus){
         this.contCap = contcap;
         this.t=t;
         this.arr = arr;
         this.id=id;
         if(arr==null){
             this.isarray= Tipus.VAR;
-            tipus.add(Tipus.VAR);
-            tipusSub.add(t);
+            this.tipus=tipus;
+            this.tipusSub=tipusSub;
         }else{
-            tipusSub.add(t);
-            tipus.add(Tipus.ARRAY);
+            this.tipus=tipus;
+            this.tipusSub=tipusSub;
             this.isarray=Tipus.ARRAY;
         }
     }

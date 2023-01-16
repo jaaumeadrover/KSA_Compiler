@@ -47,6 +47,8 @@ parser code {:
     private ArbreSintactic arbre=new ArbreSintactic();
     ArrayList<String> errorsSintactic = new ArrayList<>();
     private ArrayList<SymbolValor> p = new ArrayList<SymbolValor>();
+    private ArrayList<TipusSub> tips = new ArrayList<TipusSub>();
+    private ArrayList<Tipus> tip = new ArrayList<Tipus>();
     //CodiTresAdreces codi3A;
     /*
     public Parser(Scanner scanner){
@@ -274,7 +276,8 @@ funcDecl ::= r_function M type:t  id:iden funcCap:funcCap brop statementList:sta
                                                                                     if(comprovaTipus.gestFunc(t.getTipusSub(),rtn)){
 
                                                                                         RESULT=new SymbolFuncDecl(t.getTipusSub(), iden.toString(), stats, rtn,funcCap);
-
+tips=null;
+tip=null;
                                                                                         ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.FUNC, 0,0,funcCap.getTipusSub(),funcCap.getTipus());
                                                                                     }else{
                                                                                         RESULT=new SymbolFuncDecl();
@@ -292,6 +295,8 @@ procDecl ::= r_procedure M id:iden funcCap:funcCap brop statementList:stats brcl
 {:Simbol s=ts.consultaFunc(iden.toString());
 if(s==null){
     RESULT =new SymbolProcDecl(iden.toString(), stats,funcCap);
+tips=null;
+tip=null;
     ts.afegeixSimbol(iden.toString(), TipusSub.NULL, Tipus.FUNC, 0,0,funcCap.getTipusSub(),funcCap.getTipus());
 }else{
     comprovaTipus.addError("ERROR Semántic, el procediment "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
@@ -301,18 +306,29 @@ if(s==null){
 ContCap ::= lparen type:t pars:arr id:iden              {:
                                                              int error= ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0,null,null);
                                                              if(error==1){
-                                                                RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString());
+                                                                tips.add(t.getTipusSub());
+                                                               if(arr.getString()!=null){
+                                                                       tip.add(Tipus.ARRAY);
+                                                                       }else{
+                                                                       tip.add(Tipus.VAR);}
+                                                                RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString(),tips,tip);
                                                              }else{
                                                                 comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
-                                                                RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString());
+                                                                RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString(),tips,tip);
                                                              }
                                                              :}//tancam parentesis i definim els paràmetres
     | ContCap:contcap com  type:t pars:arr id:iden          {:int error =  ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0,null,null);
                                                             if(error==1){
-                                                                RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString());
+                                                               tips.add(t.getTipusSub());
+                                                               if(arr.getString()!=null){
+                                                                       tip.add(Tipus.ARRAY);
+                                                                       }else{
+                                                                       tip.add(Tipus.VAR);}
+                                                               
+                                                                RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString(),tips,tip);
                                                             }else{
                                                                comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
-                                                                RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString());
+                                                                RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString(),tips,tip);
                                                             }:}
     ;
 pars ::= r_array:s                                            {:RESULT = new SymbolArr(s.toString());:}
@@ -450,6 +466,7 @@ valor::= id:iden                         {:
     |subProgramCall:subprogram                      {:  Simbol s=ts.consultaFunc(subprogram.getID());
                                                         if(s!=null){
                                                             RESULT=new SymbolValor(subprogram,s.getTipusSub());
+                                                             p=null;
                                                         }else{
                                                             comprovaTipus.addError("ERROR Semántic, No existeix la funció que es crida. Línea: "+cur_token.left);
                                                             RESULT=new SymbolValor();
@@ -505,7 +522,7 @@ subProgramCall ::= id:iden lparen rparen            {:
                                                       if(s!=null){
                                                         //else
                                                         if(comprovaTipus.paramCall(iden.toString(),null)){
-                                                                    RESULT=new SymbolSubProgramCall(iden.toString(),!(s.getTipusSub().equals(TipusSub.NULL)),s.getTipusSub());                                                        }else{
+                                                            RESULT=new SymbolSubProgramCall(iden.toString(),!(s.getTipusSub().equals(TipusSub.NULL)),s.getTipusSub());                                                        }else{
                                                            RESULT=new SymbolSubProgramCall();
                                                         }
                                                       }else{
@@ -533,7 +550,8 @@ subProgramCall ::= id:iden lparen rparen            {:
 
 subProgramContCall ::= valor:valor                           {:
 p.add(valor);
-RESULT = new SymbolSubProgramContCall(valor,p);:}
+RESULT = new SymbolSubProgramContCall(valor,p);
+:}
     |subProgramContCall:subprogcontcall com valor:valor      {:
     p.add(valor);
     RESULT = new SymbolSubProgramContCall(subprogcontcall, valor, p);:}
