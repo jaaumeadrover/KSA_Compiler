@@ -199,7 +199,7 @@ decl ::= varDecl:var smcol    {:RESULT = new SymbolDecl(var,null,null);:}  //NO 
 //DECLARACIÓ VARIABLES
 varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                         //DECLARACIÓ CONSTANT
-                                                        int error = ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.CONST, 0, 0);
+                                                        int error = ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.CONST, 0, 0,null,null);
 
                                                         if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                             if(error==1){
@@ -214,7 +214,7 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                         }:}
     |type:t id:iden varInit:varinit                    {:
                                                         if(varinit.isIsarray()){
-                                                                int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0,varinit.getArray().getInteger());
+                                                                int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0,varinit.getArray().getInteger(),null,null);
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                                     if(error==1){
 
@@ -229,7 +229,7 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                                   }
                                                             }else{
 
-                                                                int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.VAR,0,0);
+                                                                int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.VAR,0,0,null,null);
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                                     if (error==1){
                                                                         RESULT=new SymbolVarDecl(false,t.getTipusSub(),iden.toString(),varinit);
@@ -270,13 +270,15 @@ funcDecl ::= r_function M type:t  id:iden funcCap:funcCap brop statementList:sta
                                                                                 if(s == null){
                                                                                     //comporvar si la funció retorna el mateix tipus
                                                                                     if(comprovaTipus.gestFunc(t.getTipusSub(),rtn)){
+
                                                                                         RESULT=new SymbolFuncDecl(t.getTipusSub(), iden.toString(), stats, rtn,funcCap);
-                                                                                        ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.FUNC, 0,0);
+
+                                                                                        ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.FUNC, 0,0,funcCap.getTipusSub(),funcCap.getTipus());
                                                                                     }else{
                                                                                         RESULT=new SymbolFuncDecl();
                                                                                     }
                                                                                 }else{
-                                                                                    comprovaTipus.addError("ERROR Semántic, la funció "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
+                                                                                    comprovaTipus.addError("ERROR Semàntic, la funció "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
                                                                                     RESULT=new SymbolFuncDecl();
                                                                                 }
                                                                                 :};
@@ -288,14 +290,14 @@ procDecl ::= r_procedure M id:iden funcCap:funcCap brop statementList:stats brcl
 {:Simbol s=ts.consultaFunc(iden.toString());
 if(s==null){
     RESULT =new SymbolProcDecl(iden.toString(), stats,funcCap);
-    ts.afegeixSimbol(iden.toString(), TipusSub.NULL, Tipus.FUNC, 0,0);
+    ts.afegeixSimbol(iden.toString(), TipusSub.NULL, Tipus.FUNC, 0,0,funcCap.getTipusSub(),funcCap.getTipus());
 }else{
     comprovaTipus.addError("ERROR Semántic, el procediment "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
     RESULT=new SymbolProcDecl();
     }:}; //declaració d'un procediment: proc 'nom' parametres {...}
 
 ContCap ::= lparen type:t pars:arr id:iden              {:
-                                                             int error= ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0);
+                                                             int error= ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0,null,null);
                                                              if(error==1){
                                                                 RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString());
                                                              }else{
@@ -303,7 +305,7 @@ ContCap ::= lparen type:t pars:arr id:iden              {:
                                                                 RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString());
                                                              }
                                                              :}//tancam parentesis i definim els paràmetres
-    | ContCap:contcap com  type:t pars:arr id:iden          {:int error =  ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0);
+    | ContCap:contcap com  type:t pars:arr id:iden          {:int error =  ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0,null,null);
                                                             if(error==1){
                                                                 RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString());
                                                             }else{
@@ -369,9 +371,22 @@ statement ::= varDecl:vard smcol         {:RESULT=new SymbolStatement(vard);:}
     |SwitchCase:s                        {:RESULT=new SymbolStatement(s);:}
     ;
 
-inputStatement ::=  r_input lparen rparen {:RESULT = new SymbolInputStatement();:};
+inputStatement ::=  r_input lparen rparen {:RESULT = new SymbolInputStatement();
+                                            :};
 
-printStatement ::= r_print lparen literal:string rparen {:RESULT = new SymbolPrintStatement(string);:};
+printStatement ::= r_print lparen literal:str rparen {:
+                                                        if(str.isVariable()){
+                                                            if(comprovaTipus.gestPrint(str)){
+                                                                RESULT = new SymbolPrintStatement(str);
+                                                            }else{
+                                                                comprovaTipus.addError("ERROR Semàntic, la variable  "+str.toString()+" al print no es del tipus string. Linea: "+(cur_token.left+1));
+                                                                RESULT = new SymbolPrintStatement();
+                                                            }
+                                                        }else{
+                                                            System.out.print("soy string literal en el print");
+                                                            RESULT = new SymbolPrintStatement(str);
+                                                        }:}
+;
 
 
 literal ::=          str:str {:RESULT = new SymbolLiteral(str.toString());:}
@@ -498,7 +513,12 @@ subProgramCall ::= id:iden lparen rparen            {:
                                                                         Simbol s= ts.consultaFunc(iden.toString());
                                                       if(s!=null){
                                                         //else
-                                                        RESULT=new SymbolSubProgramCall(subprogcontcall,iden.toString(),!(s.getTipusSub().equals(TipusSub.NULL)),s.getTipusSub());
+                                                        if(comprovaTipus.paramCall(iden.toString(),subprogcontcall.getValoresParam())){
+                                                            RESULT=new SymbolSubProgramCall(subprogcontcall,iden.toString(),!(s.getTipusSub().equals(TipusSub.NULL)),s.getTipusSub());
+                                                        }else{
+                                                            RESULT=new SymbolSubProgramCall();
+                                                        }
+
                                                       }else{
                                                         //no existeix la funció cridada
                                                         comprovaTipus.addError("ERROR Semántic, ela funció/procediment "+iden+" no esta declarat. Linea: "+cur_token.left);
@@ -507,7 +527,7 @@ subProgramCall ::= id:iden lparen rparen            {:
 ;
 
 subProgramContCall ::= valor:valor                           {:RESULT = new SymbolSubProgramContCall(valor);:}
-    |subProgramContCall:subprogcontcall com valor:valor      {:RESULT = new SymbolSubProgramContCall(subprogcontcall, valor);:}
+    |subProgramContCall:subprogcontcall com valor:valor      {:RESULT = new SymbolSubProgramContCall(subprogcontcall, valor, subprogcontcall.getValoresParam());:}
     ;
 
 SwitchCase ::= r_switch lparen exprSimple:expr rparen brop LCases:lcases Default:defa brcl {:

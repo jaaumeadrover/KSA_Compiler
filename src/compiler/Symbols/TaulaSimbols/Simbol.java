@@ -3,6 +3,9 @@
 package compiler.Symbols.TaulaSimbols;
 
 //import ArbolSintactico.Tipo;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author Ata2
@@ -15,6 +18,8 @@ public class Simbol {
     private int fila;
     private int nivell;
     private int dimensionalitat;
+    private ArrayList<TipusSub> tipusSubParam = new ArrayList<TipusSub>();
+    private ArrayList<Tipus> tipusParam = new ArrayList<Tipus>();
 
     public Simbol(String idAutoIncrement, TipusSub tipoSub, Tipus tipus, int fila, int nivell,int dimensio) {
         this.idAutoIncrement = idAutoIncrement;
@@ -23,6 +28,16 @@ public class Simbol {
         this.fila = fila;
         this.nivell = nivell;
         this.dimensionalitat=dimensio;
+    }
+    public Simbol(String idAutoIncrement, TipusSub tipoSub, Tipus tipus, int fila, int nivell,int dimensio,ArrayList<TipusSub> tsubparam,ArrayList<Tipus> tipusParam) {
+        this.idAutoIncrement = idAutoIncrement;
+        this.tiopusSub = tipoSub;
+        this.tipus = tipus;
+        this.fila = fila;
+        this.nivell = nivell;
+        this.dimensionalitat=dimensio;
+        this.tipusSubParam=tsubparam;
+        this.tipusParam=tipusParam;
     }
 
     public boolean equals(Simbol simbol){
@@ -52,5 +67,13 @@ public class Simbol {
 
     public TipusSub getTipusSub() {
         return tiopusSub;
+    }
+
+    public ArrayList<TipusSub> getTipusSubParam(){
+        return this.tipusSubParam;
+    }
+
+    public ArrayList<Tipus> getTipusParam(){
+        return this.tipusParam;
     }
 }

@@ -106,6 +106,7 @@ public class SymbolValor {
 
     public SymbolValor(SymbolInputStatement s) {
         this.statement = s;
+        this.tipusSub = TipusSub.STRING;
         this.index = 8;
     }
 
@@ -132,6 +133,14 @@ public class SymbolValor {
 
     public boolean esBuit() {
         return this.esBuit;
+    }
+    
+    public Tipus getTipus(){
+        if(array != null){
+            return Tipus.ARRAY;
+        }else{
+            return Tipus.VAR;
+        }
     }
 
     @Override

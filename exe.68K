@@ -1,61 +1,47 @@
 	ORG $700
-j DS.L 1
-s DS.L 1
+i DS.L 1
 t1 DS.L 1
-k DS.L 1
 t2 DS.L 1
-z DS.L 1
 t3 DS.L 1
 i DS.L 1
 t4 DS.L 1
+j DS.L 1
 t5 DS.L 1
+k DS.L 1
+n DS.L 1
 t6 DS.L 1
 t7 DS.L 1
-t8 DS.L 1
-t9 DS.L 1
 	ORG $1000
 START:
 	JMP run
+eparams:
+	MOVE.L 8(A7),i
+	MOVEM.L D0-D2,-(A7)
+	MOVE.L #1,t1
+	MOVE.L (i),D0
+	MOVE.L (t1),D1
+	ADD.L D0, D1
+	MOVE.L D1, t2
+	MOVE.L #t2,A0
+	MOVEM.L (A7)+,D0-D2
+	RTS
 run:
-	MOVE.L (0),j
-	MOVE.L ("hola com va"),s
-	MOVE.L #0,t1
-	MOVE.L (t1),k
-	MOVE.L #2,t2
-	MOVE.L (t2),z
-	MOVE.L #0,t3
+	MOVE.L #2,t3
 	MOVE.L (t3),i
-e1:
-	MOVE.L #5,t4
-	MOVE.L (i),D0
-	MOVE.L (t4),D1
-	CMP.L  D1,D0
-	BLE e_t5
+	MOVE.L #3,t4
+	MOVE.L (t4),j
 	MOVE.L #0,t5
-	JMP ef_t5
-e_t5:
-	MOVE.L #-1,t5
-ef_t5:
-	MOVE.L (t5),D0
-	MOVE.L #-1,D1
-	CMP.L  D1,D0
-	BEQ e2
-	JMP e3
-e2:
-	MOVE.L #2,t6
-	MOVE.L (k),D0
-	MOVE.L (t6),D1
-	ADD.L D0, D1
-	MOVE.L D1, t7
-	MOVE.L (t7),k
-	MOVE.L #1,t8
-	MOVE.L (i),D0
-	MOVE.L (t8),D1
-	ADD.L D0, D1
-	MOVE.L D1, t9
-	MOVE.L (t9),i
-	JMP e1
-e3:
+	MOVE.L (t5),k
+	MOVE.L (null),n
+	MOVE.L D0,-(A7)
+	MOVE.L A1,-(A7)
+	MOVE.W #2,D0
+	LEA t6,A1
+	TRAP #15
+	MOVE.L (A7)+,A1
+	MOVE.L (A7)+,D0
+	MOVE.L (t6),n
+	MOVE.L (t7),j
 	JMP FINAL
 FINAL:
 	END START

@@ -9,8 +9,13 @@ public class SymbolPrintStatement {
         this.s=s;
     }
 
+    public SymbolPrintStatement(){
+
+    }
     public void codiTresAdreces(codiTresAdreces codi){
-        Operand o = new Operand(s.toString(), OperandsCTA.stringLit);
+        //s pot ser variable temporal o variable
+        Operand o = new Operand(s.codiTresAdreces(codi), OperandsCTA.variable);
+
         codi.generar(TipusInstruccionsCTA.PRINT,o,null,null);
     }
 }

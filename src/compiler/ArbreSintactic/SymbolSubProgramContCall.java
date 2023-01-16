@@ -8,18 +8,28 @@ public class SymbolSubProgramContCall{
     private String id;
     private SymbolValor valor;
     private SymbolSubProgramContCall subProgramContCall;
+    private ArrayList<SymbolValor> valoresParam = new ArrayList<SymbolValor>();
 
-    public SymbolSubProgramContCall(SymbolValor expr){
+    public SymbolSubProgramContCall(SymbolValor expr, ArrayList<SymbolValor> values){
         this.valor=expr;
+        this.valoresParam = values;
+        this.valoresParam.add(expr);
     }
 
     public String getID(){
         return this.id;
     }
 
-    public SymbolSubProgramContCall(SymbolSubProgramContCall subContCall, SymbolValor expr){
+    public SymbolSubProgramContCall(SymbolSubProgramContCall subContCall, SymbolValor expr, ArrayList<SymbolValor> values){
+
         this.subProgramContCall=subContCall;
         this.valor=expr;
+        this.valoresParam = values;
+        this.valoresParam.add(expr);
+
+    }
+    public ArrayList<SymbolValor> getValoresParam(){
+        return valoresParam;
     }
 
     public void codiTresAdreces(codiTresAdreces codi, String id,int index){

@@ -7,13 +7,30 @@ public class SymbolFuncCap {
 
     private SymbolContCap contcap;
     private boolean hihaParam;
+    private ArrayList<TipusSub> tipusSub = new ArrayList<TipusSub>();
+    private ArrayList<Tipus> tipus = new ArrayList<Tipus>();
 
     public SymbolFuncCap(boolean param){
+
         this.hihaParam=param;
+
     }
+
     public SymbolFuncCap(SymbolContCap contcap,boolean param){
         this.contcap=contcap;
         this.hihaParam=param;
+        if(hihaParam){
+            tipus=contcap.getTipusParam();
+            tipusSub=contcap.getTipusSubParam();
+        }
+    }
+
+    public ArrayList<TipusSub> getTipusSub() {
+        return tipusSub;
+    }
+
+    public ArrayList<Tipus> getTipus() {
+        return tipus;
     }
 
     public boolean hihaParam() {
