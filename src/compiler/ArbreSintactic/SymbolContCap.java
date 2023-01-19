@@ -11,46 +11,46 @@ public class SymbolContCap {
     private String id;
     private String arr;
     private Tipus isarray;
-    private ArrayList<TipusSub> tipusSub = new ArrayList<TipusSub>();
-    private ArrayList<Tipus> tipus = new ArrayList<Tipus>();
+//    private ArrayList<TipusSub> tipusSub = new ArrayList<TipusSub>();
+  //  private ArrayList<Tipus> tipus = new ArrayList<Tipus>();
 
-    public SymbolContCap(TipusSub t, String arr, String id,ArrayList<TipusSub> tipusSub,ArrayList<Tipus> tipus){
+    public SymbolContCap(TipusSub t, String arr, String id){
         this.t=t;
         this.arr = arr;
         this.id=id;
         if(arr==null){
             this.isarray = Tipus.VAR;
-            this.tipus=tipus;
-            this.tipusSub=tipusSub;
+            //this.tipus=tipus;
+            //this.tipusSub=tipusSub;
         }else{
-            this.tipus=tipus;
-            this.tipusSub=tipusSub;
+           // this.tipus=tipus;
+            //this.tipusSub=tipusSub;
             this.isarray=Tipus.ARRAY;
         }
     }
 
-    public SymbolContCap(SymbolContCap contcap, TipusSub t, String arr, String id, ArrayList<TipusSub> tipusSub,ArrayList<Tipus> tipus){
+    public SymbolContCap(SymbolContCap contcap, TipusSub t, String arr, String id){
         this.contCap = contcap;
         this.t=t;
         this.arr = arr;
         this.id=id;
         if(arr==null){
             this.isarray= Tipus.VAR;
-            this.tipus=tipus;
-            this.tipusSub=tipusSub;
+            //this.tipus=tipus;
+            //this.tipusSub=tipusSub;
         }else{
-            this.tipus=tipus;
-            this.tipusSub=tipusSub;
+           //this.tipus=tipus;
+            //this.tipusSub=tipusSub;
             this.isarray=Tipus.ARRAY;
         }
     }
 
-    public ArrayList<Tipus> getTipusParam() {
-        return tipus;
-    }
-    public ArrayList<TipusSub> getTipusSubParam(){
-        return tipusSub;
-    }
+  //  public ArrayList<Tipus> getTipusParam() {
+  //      return tipus;
+   // }
+    //public ArrayList<TipusSub> getTipusSubParam(){
+   //     return tipusSub;
+  //  }
 
     public TipusSub getTipusSub() {
         return t;

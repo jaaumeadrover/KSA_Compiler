@@ -18,8 +18,7 @@ public class Simbol {
     private int fila;
     private int nivell;
     private int dimensionalitat;
-    private ArrayList<TipusSub> tipusSubParam = new ArrayList<TipusSub>();
-    private ArrayList<Tipus> tipusParam = new ArrayList<Tipus>();
+
 
     public Simbol(String idAutoIncrement, TipusSub tipoSub, Tipus tipus, int fila, int nivell,int dimensio) {
         this.idAutoIncrement = idAutoIncrement;
@@ -29,16 +28,15 @@ public class Simbol {
         this.nivell = nivell;
         this.dimensionalitat=dimensio;
     }
-    public Simbol(String idAutoIncrement, TipusSub tipoSub, Tipus tipus, int fila, int nivell,int dimensio,ArrayList<TipusSub> tsubparam,ArrayList<Tipus> tipusParam) {
-        this.idAutoIncrement = idAutoIncrement;
-        this.tiopusSub = tipoSub;
-        this.tipus = tipus;
-        this.fila = fila;
-        this.nivell = nivell;
-        this.dimensionalitat=dimensio;
-        this.tipusSubParam=tsubparam;
-        this.tipusParam=tipusParam;
-    }
+//    public Simbol(String idAutoIncrement, TipusSub tipoSub, Tipus tipus, int fila, int nivell,int dimensio) {
+//        this.idAutoIncrement = idAutoIncrement;
+//        this.tiopusSub = tipoSub;
+//        this.tipus = tipus;
+//        this.fila = fila;
+//        this.nivell = nivell;
+//        this.dimensionalitat=dimensio;
+//
+//    }
 
     public boolean equals(Simbol simbol){
         return ( ( this.idAutoIncrement==simbol.getIdAutoIncrement() ) && ( this.nivell == simbol.getNivell() ) );
@@ -69,11 +67,11 @@ public class Simbol {
         return tiopusSub;
     }
 
-    public ArrayList<TipusSub> getTipusSubParam(){
-        return this.tipusSubParam;
-    }
-
-    public ArrayList<Tipus> getTipusParam(){
-        return this.tipusParam;
-    }
+//    public ArrayList<TipusSub> getTipusSubParam(){
+//        return this.tipusSubParam;
+//    }
+//
+//    public ArrayList<Tipus> getTipusParam(){
+//        return this.tipusParam;
+//    }
 }

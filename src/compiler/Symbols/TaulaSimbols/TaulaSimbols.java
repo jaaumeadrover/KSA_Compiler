@@ -33,13 +33,13 @@ public class TaulaSimbols {
         Params: id,tipus variable, tipus subàmbit, posició.
         Return: 0 si no ha funcionat, 1 si funciona
      */
-    public int afegeixSimbol(String id, TipusSub tSub,Tipus t,int pos, int dimensio,ArrayList<TipusSub> tipussubParam,ArrayList<Tipus> tipusParam){
+    public int afegeixSimbol(String id, TipusSub tSub,Tipus t,int pos, int dimensio){
         if(t==Tipus.FUNC){//si símbol està dins una funció
             if(consultaFunc(id) != null){ //si no existeix la funció retorna 0
                 //System.out.println("simbol ja existeix"+id);
                 return 0;
             }
-            Simbol sym=new Simbol(id,tSub, t, pos,nivell,dimensio,tipussubParam,tipusParam);
+            Simbol sym=new Simbol(id,tSub, t, pos,nivell,dimensio);
             ta.put(nivell,sym);
             ts.add(punterInici,sym);
             //System.out.println("        simbol afegit"+id);

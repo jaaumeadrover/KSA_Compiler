@@ -22,7 +22,6 @@ public class Semantic {
     1. El tipusSub de la expr és NULL: la expressió conté errors (ERROS DE QUÈ??? LEXICS??)
     2. El tipusSub de la expr és diferent a t: s'esperava un valor int per exemple i es retorna boolean.
     3. El tipusSub de la expr és el mateix que t.
-    
      */
     public boolean gestExpr(SymbolExpressioSimple expr, TipusSub t, int posicio) {
 
@@ -58,41 +57,41 @@ public class Semantic {
             return true;
         }
     }
-    
-    public boolean paramCall(String iden, ArrayList<SymbolValor> values){
 
-        Simbol func = ts.consultaFunc(iden);
-        ArrayList<TipusSub>tipussubparam= func.getTipusSubParam();
-        ArrayList<Tipus> tipusparam= func.getTipusParam();
-        System.out.println("    "+tipussubparam.size());
-        if(values==null && tipusparam.size()>0){
-            errors.add("ERROR Semàntic: La funció "+iden+" necesita arguments");
-            return false;
-        }
-        ArrayList<SymbolValor> valoresParam = values;
-        if(valoresParam.size()>tipusparam.size()){
-            errors.add("ERROR Semàntic: Sobren arguments en la crida a la funció de "+iden+" ");
-            return false;
-        }else if(valoresParam.size()<tipusparam.size()){
-            errors.add("ERROR Semàntic: Falten arguments en la crida a la funció de "+iden+" ");
-            return false;
-        }else{
-            for (int i = 0; i < valoresParam.size(); i++) {
-               Tipus tipusvalor = valoresParam.get(i).getTipus();
-               TipusSub tipussubvalor = valoresParam.get(i).getTipusSub();
-               if(tipusparam.get(i)!=tipusvalor|| tipussubparam.get(i)!=tipussubvalor){
-                   System.out.println(tipusvalor+" "+tipusparam.get(i));
-                   errors.add("ERROR Semàntic: El tipus dels parametres son incorrectesen la crida a la funció de "+iden);
-                   return false;
-               }
-            }
-        }
-        for (int i = 0; i <valoresParam.size(); i++) {
-                System.out.println("    parametros"     +valoresParam.get(i));
-        }
-        System.out.println(iden+"   "+tipusparam.size()+": "+valoresParam.size());
-        return true;
-    }
+//    public boolean paramCall(String iden, ArrayList<SymbolValor> values){
+//
+//        Simbol func = ts.consultaFunc(iden);
+////        ArrayList<TipusSub>tipussubparam= func.getTipusSubParam();
+////        ArrayList<Tipus> tipusparam= func.getTipusParam();
+//        System.out.println("    "+tipussubparam.size());
+//        if(values==null && tipusparam.size()>0){
+//            errors.add("ERROR Semàntic: La funció "+iden+" necesita arguments");
+//            return false;
+//        }
+//        ArrayList<SymbolValor> valoresParam = values;
+//        if(valoresParam.size()>tipusparam.size()){
+//            errors.add("ERROR Semàntic: Sobren arguments en la crida a la funció de "+iden+" ");
+//            return false;
+//        }else if(valoresParam.size()<tipusparam.size()){
+//            errors.add("ERROR Semàntic: Falten arguments en la crida a la funció de "+iden+" ");
+//            return false;
+//        }else{
+//            for (int i = 0; i < valoresParam.size(); i++) {
+//               Tipus tipusvalor = valoresParam.get(i).getTipus();
+//               TipusSub tipussubvalor = valoresParam.get(i).getTipusSub();
+//               if(tipusparam.get(i)!=tipusvalor|| tipussubparam.get(i)!=tipussubvalor){
+//                   System.out.println(tipusvalor+" "+tipusparam.get(i));
+//                   errors.add("ERROR Semàntic: El tipus dels parametres son incorrectesen la crida a la funció de "+iden);
+//                   return false;
+//               }
+//            }
+//        }
+//        for (int i = 0; i <valoresParam.size(); i++) {
+//                System.out.println("    parametros"     +valoresParam.get(i));
+//        }
+//        System.out.println(iden+"   "+tipusparam.size()+": "+valoresParam.size());
+//        return true;
+//    }
 
     public boolean isExprCorrecta(SymbolExpressioSimple expr, int posicio) {
         return expr.getTipusSubResultat() != null;

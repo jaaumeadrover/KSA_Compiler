@@ -1,4 +1,0 @@
-ERROR Semàntic: El tipus dels parametres son incorrectesen la crida a la funció de params
-ERROR Semántic, No existeix la funció que es crida. Línea: 13
-ERROR Semántic, l'expressió no es correcte
-ERROR Semántic, assignació incorrecte. Línea: 13

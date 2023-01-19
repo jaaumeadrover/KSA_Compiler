@@ -44,7 +44,7 @@ public class Main {
                 ///home/diegofes/GitHub/KSA_Compiler/src/TESTING/1.Funcions/prova.txt
                 //C:\Users\Jaume\Desktop\UIB\Cursos\TERCER\1r quatri\COMPILADORS\PRÀCTICA KSA\KSA_Compiler\src\TESTING\1.Funcions\prova.txt
                 //input = new FileReader("/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova2.txt");
-                input = new FileReader("/home/diegofes/GitHub/KSA_Compiler/src/TESTING/1.Funcions/prova2.txt");
+                input = new FileReader("/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/parametresArrays.txt");
                 //Users\marcc\OneDrive\Escritorio\GitHub\KSA_Compiler
                 //input = new InputStreamReader(System.in);
             }
