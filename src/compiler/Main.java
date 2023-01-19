@@ -44,7 +44,7 @@ public class Main {
                 ///home/diegofes/GitHub/KSA_Compiler/src/TESTING/1.Funcions/prova.txt
                 //C:\Users\Jaume\Desktop\UIB\Cursos\TERCER\1r quatri\COMPILADORS\PRÀCTICA KSA\KSA_Compiler\src\TESTING\1.Funcions\prova.txt
                 //input = new FileReader("/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova2.txt");
-                input = new FileReader("/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/parametresArrays.txt");
+                input = new FileReader("/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova2.txt");
                 //Users\marcc\OneDrive\Escritorio\GitHub\KSA_Compiler
                 //input = new InputStreamReader(System.in);
             }
@@ -56,7 +56,7 @@ public class Main {
             Parser parser = new Parser(scanner, sf);
             parser.parse();
             Semantic sem = parser.getComprovaTipus();
-            
+
             ArrayList<String> errorsSem = sem.geterrorsSemantic();
             //System.out.println("Semantic: "+errorsSem);
             ArrayList<String> errorsSint = parser.geterrorsSintactic();
@@ -79,6 +79,7 @@ public class Main {
             if(errorsSem.isEmpty() && errorsSint.isEmpty()) {
                 ArbreSintactic arbre = parser.getArbreSintac();
                 codi = arbre.generarCodiTresAdreces();
+                //codi.getTv().eliminaRepetits();
                 String codiIntermedi = codi.toString();
 
                 FileWriter codiIntermediFile = new FileWriter("codiIntermedi.txt");
@@ -95,7 +96,7 @@ public class Main {
             }else{
                System.err.println("Programa incompilable per errors"); 
             }
-                //System.out.println("TAULA VARIABLES: "+codi.getTv());
+            System.out.println("TAULA VARIABLES: "+codi.getTv());
 
         }catch(Exception e) {
             System.err.println("error: "+e);

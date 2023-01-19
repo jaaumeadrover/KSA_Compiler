@@ -9,6 +9,7 @@
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/sintactic/Parser.java</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/codiIntermedi.txt</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolOp.java</file>
+            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/parametresArrays.txt</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/TipusInstruccionsCTA.java</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/exe.68K</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/codiTresAdreces.java</file>
@@ -30,6 +31,8 @@
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolFuncDecl.java</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolExpressioSimple.java</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/Ensamblador/codi68k.java</file>
+            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolFuncCap.java</file>
+            <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/ArbreSintactic/SymbolProgram.java</file>
             <file>file:/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/compiler/GeneracioCodiIntermedi/Operand.java</file>
         </group>
     </open-files>

@@ -1,15 +1,11 @@
-func int params(int i,int z,bool array si){
-    return i +1;
+func int suma(int a,int b){
+    return a+b;
 }
 
 main(){
     int i <- 2;
     int j <- 3;
-    int k <- 0;
-    int pres <- bool[5];
-    bool z <- true;
-    string n;
-    n <- input();
-    //print(n);
-    j<-params(k,k,pres[2]);
+    int a <-1;
+    int k;
+    k<-suma(a,j);
 }

@@ -19,10 +19,10 @@ public class SymbolFuncCap {
     public SymbolFuncCap(SymbolContCap contcap,boolean param){
         this.contcap=contcap;
         this.hihaParam=param;
-        if(hihaParam){
-            tipus=contcap.getTipusParam();
-            tipusSub=contcap.getTipusSubParam();
-        }
+//        if(hihaParam){
+//            tipus=contcap.getTipusParam();
+//            tipusSub=contcap.getTipusSubParam();
+//        }
     }
 
     public ArrayList<TipusSub> getTipusSub() {

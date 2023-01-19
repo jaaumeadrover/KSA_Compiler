@@ -44,8 +44,8 @@ public class codiTresAdreces{
     }
 
     public void addParametre(String id, TipusSub t, Tipus tipus) {
-        Parametre p = new Parametre(id,t,tipus);
-        tv.novaVariable(id,t,tp,false,1,0,null);
+        Parametre p = new Parametre(id+tp.getNumProc(),t,tipus);
+        tv.novaVariable(id+tp.getNumProc(),t,tp,false,1,0,null);
         parametres.add(p);
     }
 
@@ -106,13 +106,13 @@ public class codiTresAdreces{
     }
 
     public void començaDecl(){
-        generar(TipusInstruccionsCTA.GOTO, null, null, "run");
+        generar(TipusInstruccionsCTA.GOTO, null, null, "main");
         this.esDeclaracio=true;
     }
 
     public void acabaDecl(){
         this.esDeclaracio = false;
-        generar(TipusInstruccionsCTA.SKIP, null, null, "run");
+        generar(TipusInstruccionsCTA.SKIP, null, null, "main");
         codi.addAll(constant);
         constant.clear();
     }

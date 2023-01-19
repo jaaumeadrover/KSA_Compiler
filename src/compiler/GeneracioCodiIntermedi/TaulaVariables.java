@@ -3,6 +3,7 @@ package compiler.GeneracioCodiIntermedi;
 import compiler.ArbreSintactic.Operacions;
 import compiler.Symbols.TaulaSimbols.TipusSub;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /*
     CLASSE: TaulaVariables
@@ -110,10 +111,7 @@ public class TaulaVariables {
     public boolean existeix(Variable v) {
         
         if (TV.isEmpty()) {
-            if (v.getNom() == null) {
-                numVarTemp++;
-                v.setNom("t" + numVarTemp);
-            }
+            return false;
         } else {
             if (v.getNom() == null) {
                 numVarTemp++;
@@ -128,6 +126,20 @@ public class TaulaVariables {
         }
         return false;
     }
+    public boolean existeix(String nom) {
+
+        if (TV.isEmpty()) {
+            return false;
+        } else {
+            for (int i = 0; i < TV.size(); i++) {
+                if (nom.equals(TV.get(i).getNom())) {
+                    System.out.println("ja existeix"+nom);
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
 
     /*
         Mètode que ens permet borrar la variable de la taula de variables amb el nom que
@@ -140,6 +152,11 @@ public class TaulaVariables {
                 break;
             }
         }
+    }
+    public void eliminaRepetits(){
+        HashSet<Variable> set = new HashSet<Variable>(TV);
+        TV.clear();
+        TV.addAll(set);
     }
 
     /*

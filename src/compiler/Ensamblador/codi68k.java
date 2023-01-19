@@ -48,7 +48,7 @@ public class codi68k {
     }
 
     public void generaVariable(Variable var) throws IOException {
-        f.escriureFitxer(var.getNom() + " DS.L 1");
+        f.escriureFitxer(var.getNom() + " DS.L "+var.getDimensio());
     }
 
     private void generaInstruccio(Instruccio instruccio) throws IOException {
@@ -74,7 +74,7 @@ public class codi68k {
                                 //GUARDAM DINS PILA A1
                                 f.escriureFitxer("\tMOVE.L A1,-(A7)");
                                 //String txt = instruccio.getOperadorEsquerra().getOperand().substring(1, longitud);
-                                f.escriureFitxer("\tLEA "+instruccio.getDesti()+",A1");
+                                f.escriureFitxer("\tLEA " + instruccio.getDesti() + ",A1");
                                 String txt = instruccio.getOperadorEsquerra().getOperand().replaceAll(Character.toString('"'), "");
                                 int longitud = txt.length();
                                 int i = 0;
@@ -184,7 +184,7 @@ public class codi68k {
                         f.escriureFitxer("\tSUB.L #1, D1");
                         f.escriureFitxer("\tCLR.L D2");
                         f.escriureFitxer(".LOOP" + numLoops + "\n\tADD.L D0,D2\n");
-                        f.escriureFitxer("\t.DBRA D1,.LOOP" + numLoops);
+                        f.escriureFitxer("\tDBRA D1,.LOOP" + numLoops);
                         f.escriureFitxer("\tMOVE.L D2," + instruccio.getDesti());
                     } else { //el segon operador també és una variable
                         f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),D0");
@@ -336,9 +336,21 @@ public class codi68k {
 
             // OPERACIONS INDEXACIÓ
             case INDVAL:
+                f.escriureFitxer("\tLEA.L " + instruccio.getOperadorEsquerra() + ",A0");
+                f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta() + "),D0");
+                f.escriureFitxer("\tMOVE.L A0,D1");
+                f.escriureFitxer("\tADD.L A0,D0");
+                f.escriureFitxer("\tMOVE.L D0,A0");
+                f.escriureFitxer("\tMOVE.L (A0),(" + instruccio.getDesti() + ")");
                 break;
 
             case INDASS:
+                f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta() + "),D0");
+                f.escriureFitxer("\tLEA.L " + instruccio.getDesti() + ",A0");
+                f.escriureFitxer("\tMOVE.L A0,D1");
+                f.escriureFitxer("\tADD.L A0,D0");
+                f.escriureFitxer("\tMOVE.L D0,A0");
+                f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),(A0)");
                 break;
 
             // OPERACIONS DE BIFURCACIÓ
@@ -694,62 +706,36 @@ public class codi68k {
                 f.escriureFitxer("\tMOVEM.L D0-D2,-(A7)");
                 break;
 
+
             case CALL:
-//                if (instruccio.getDesti() != null) { // CAS FUNCIO
-//                    f.escribirFichero("\tJSR " + inst.getDesti()); //subrutina per el CALL
-//                    f.escribirFichero("\tMOVE.L (A7)+,(" + parametros.get(0) + ")");//Recuperació de parámetros
-//                    f.escribirFichero("\tADD.L #1,SL"); //Aumentro SL
-//                    parametros.clear();
-//                    break;
-//
-//                } else { //CAS PROCEDIMENT
-//                    if ("escriure".equals(inst.destino.toString())) {
-//
-//                        f.escribirFichero("\tJSR " + inst.destino);// CALL
-//                        f.escribirFichero("\tMOVE.L D2,-(A7)");
-//                        f.escribirFichero("\tMOVE.L D2," + parametros.get(0));
-//                        f.escribirFichero("\tMOVE.L (A7)+,D2");
-//                        f.escribirFichero("\tMOVE.L (A7)+," + parametros.get(0));
-//                        f.escribirFichero("\tADD.L #1,SL");
-//                        parametros.clear();
-//                        break;
-//                    } else {
-//                        if ("neg".equals(inst.destino.toString())) {
-//                            f.escribirFichero("\tMOVE.L D1,-(A7)");
-//                            f.escribirFichero("\tJSR " + inst.destino);// CALL
-//                            f.escribirFichero("\tMOVE.L D1," + inst.param2);
-//                            f.escribirFichero("    MOVE.L (A7)+,D1\n\tMOVE.L (A7)+," + parametros.get(0));
-//                            parametros.clear();
-//                        } else {
-//                            f.escribirFichero("\tMOVE.L A0,-(A7)");// CALL
-//                            f.escribirFichero("\tJSR " + inst.destino);// CALL
-//                            if (TablaProcedimientos.getProcedimiento2(inst.destino.toString()).tipo == tipoSub.tipoSubVoid) {
-//                                f.escribirFichero("\tMOVE.L (A7)+,A0");
-//                                for (int i = parametros.size() - 1; i >= 0; i--) {
-//                                    f.escribirFichero("\tMOVE.L (A7)+," + parametros.get(i));
-//                                }
-//                                parametros.clear();
-//                            }
-//                        }
-//                    }
-//                }
+                f.escriureFitxer("\tJSR e" + instruccio.getOperadorEsquerra().getOperand());
+                if (instruccio.getDesti()!=null){
+
+                    f.escriureFitxer("\tMOVE.L (A7)+,(" + instruccio.getDesti() + ")");
+
+                }
+
                 break;
 
             case RTN:
                 if (instruccio.getDesti() != null) { // si hi ha desti movem la instruccio a una posicio de memoria
-                    f.escriureFitxer("\tMOVE.L #" + instruccio.getDesti() + ",A0");
+
+                    f.escriureFitxer("\tMOVE.L (" + instruccio.getDesti() + "),(A0)");
                 }
                 f.escriureFitxer("\tMOVEM.L (A7)+,D0-D2");
                 f.escriureFitxer("\tRTS");
                 break;
 
             case PARAMS:
-                this.parametres.add(instruccio.getDesti());
-                f.escriureFitxer("\tMOVE.L (" + instruccio.getDesti() + "),-(A7)");
+                this.parametres.add(instruccio.getOperadorEsquerra().getOperand());
+                f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),-(A7)");
                 break;
 
             case PARAMC:
-
+                f.escriureFitxer("\tMOVE.L (" + instruccio.getDesti() + "),D0");
+                f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),D1");
+                f.escriureFitxer("\tADD.L D1,D0");
+                f.escriureFitxer("\tMOVE.L D0,-(A7)");
                 break;
 
             //MOSTRAR PER PANTALLA I DEMANAR ENTRADA PER TECLAT
@@ -784,5 +770,6 @@ public class codi68k {
                 break;
         }
     }
+
 
 }

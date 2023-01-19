@@ -42,6 +42,7 @@ public class SymbolFuncDecl  {
                 stat.codiTresAdreces(codi);
             }
             String rtn_str=rtn.codiTresAdreces(codi);
+
             codi.generar(TipusInstruccionsCTA.RTN,null,null,rtn_str);
 
             codi.getTp().tancaProcediment();

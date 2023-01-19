@@ -61,9 +61,10 @@ public class SymbolVarDecl {
             }else {
                 codi.addVariable(tipus,nom);
             }
-
-            Operand o = new Operand(inicialitzacio, OperandsCTA.variable);
-            codi.generar(TipusInstruccionsCTA.COPIA, o, null, this.id);
+            if(inicialitzacio!=null) {
+                Operand o = new Operand(inicialitzacio, OperandsCTA.variable);
+                codi.generar(TipusInstruccionsCTA.COPIA, o, null, this.id);
+            }
         }
         return null;
     }

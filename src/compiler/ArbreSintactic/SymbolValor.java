@@ -9,7 +9,9 @@ public class SymbolValor {
     private SymbolArray array;
     private int inte;
     private boolean b;
+    private int paramc =0;
     private boolean esBuit;
+    private boolean isarray=false;
     private SymbolSubProgramCall subProgramCall;
     private SymbolExpressioSimple exprSimple;
     private int index;
@@ -18,9 +20,13 @@ public class SymbolValor {
     private String str;
 
 
+    public boolean isIsarray() {
+        return isarray;
+    }
+
     /*
-    Cas valor equival a una variable i cal consultar el id en la taula de símbols
-     */
+        Cas valor equival a una variable i cal consultar el id en la taula de símbols
+         */
     public SymbolValor(String id, TipusSub tipusSub) {
         this.iden = id;
         this.tipusSub = tipusSub;
@@ -42,7 +48,8 @@ public class SymbolValor {
         this.array = arr;
         this.iden = arr.getID();
         this.tipusSub = tipusSub;
-
+        this.isarray=true;
+        this.b=b;
         this.index = 2;
     }
 
@@ -168,24 +175,31 @@ public class SymbolValor {
         switch (index) {
             case 1:
                 //CAS VARIABLE
-                return iden;
+
+                if(codi.getTp().getNumProcActius()!=0){
+                    return iden+codi.getTp().getNumProcActius();
+                }else{
+                    return iden;
+                }
+
             case 2:
                 //GAS ARRAYS
-                String temp = this.array.codiTresAdreces(codi);
-                Operand o = new Operand(temp, OperandsCTA.variable);
-                //restam 1 a l'index
-                //TEMP RETORNA VARIABLE i -> hauria d ser variable TEMPORAL
-                codi.generar(TipusInstruccionsCTA.RESTA, o, new Operand("1", OperandsCTA.constant), temp);//temp=temp-1
-                //multiplicam l'índex
-                codi.generar(TipusInstruccionsCTA.PRODUCTE, o, new Operand("4", OperandsCTA.constant), temp);
+
                 //variable_temporal=(x-1)*(MidaTipusArray);
+
                 //NOVA VARIABLE TEMPORAL
                 String temp2 = codi.addVariable(TipusSub.INT, "t");
-
+                String temp = this.array.codiTresAdreces(codi);
                 if (b == true) {
                     //retornam iden[index]
                     return iden + "[" + temp + "]";
                 }
+                Operand o = new Operand(temp, OperandsCTA.variable);
+                //restam 1 a l'index
+                //TEMP RETORNA VARIABLE i -> hauria d ser variable TEMPORAL
+                //codi.generar(TipusInstruccionsCTA.RESTA, o, new Operand("1", OperandsCTA.constant), temp);//temp=temp-1
+                //multiplicam l'índex
+                codi.generar(TipusInstruccionsCTA.PRODUCTE, o, new Operand("4", OperandsCTA.enterLit), temp);
                 //cas indexat  ->  s'utilitza per assignar valor a altra variable.
                 //temp2=iden[temp]
                 codi.generar(TipusInstruccionsCTA.INDVAL, new Operand(this.iden, OperandsCTA.variable), o, temp2);

@@ -55,13 +55,13 @@ integer  = {sub}?[0-9][0-9]*
 str  = [\"](([A-Za-z0-9_)]) | ({blank}))*[\"]
 
 
-//simbolos operadores
-bg      = \>                 //verificat
-sm      = \<                //verificat
-bg_eq   = >=               //verificat
-sm_eq   = <=              //verificat
-eq      = =              //verificat
-neq     = \!=           //verificat
+//Simbols Operadors
+bg      = \>
+sm      = \<
+bg_eq   = >=
+sm_eq   = <=
+eq      = =
+neq     = \!=
 
 add          = \+
 sub          = \-
@@ -79,7 +79,7 @@ lclose       = \]
 lparen       = \(
 rparen       = \)
 
-//Palabras reservadas
+//Paraules reservades
 r_if        = if
 r_else      = else
 r_switch    = switch

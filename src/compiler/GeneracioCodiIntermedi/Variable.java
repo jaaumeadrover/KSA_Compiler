@@ -30,7 +30,7 @@ public class Variable{
         this.nom = s;
         this.tipusSub = tipusSub;
         this.procedure = procedure;
-        dimensio=0;
+        dimensio=1;
     }
 
     /*
@@ -52,7 +52,7 @@ public class Variable{
         this.procedure = procedure;
         this.valor=valor;
         this.constant=true;
-        dimensio=0;
+        dimensio=1;
     }
     
     /*
@@ -75,7 +75,7 @@ public class Variable{
         this.procedure = procedure;
         this.value=value;
         this.constant=true;
-        dimensio=0;
+        dimensio=1;
     }
     //GETTERS
     public int getId(){
@@ -101,6 +101,7 @@ public class Variable{
     public int getValor(){
         return this.valor;
     }
+    public int getDimensio(){return this.dimensio;}
 
     //SETTERS
     public void setNom(String n){
@@ -130,8 +131,7 @@ public class Variable{
     // Mètode toString
     @Override
     public String toString(){
-        return "Nom: "+this.nom+"; Tipus: "+this.tipusSub+";" +
-                "Valor: "+this.valor+" Dimensió: "+dimensio+" Procediment: "+this.procedure;
+        return this.nom;
     }
 
 }

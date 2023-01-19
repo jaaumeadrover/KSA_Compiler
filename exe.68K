@@ -1,94 +1,41 @@
 	ORG $700
-si DS.L 1
-z DS.L 1
-i DS.L 1
+b1 DS.L 1
+a1 DS.L 1
 t1 DS.L 1
 t2 DS.L 1
-t3 DS.L 1
 i DS.L 1
-t4 DS.L 1
+t3 DS.L 1
 j DS.L 1
-t5 DS.L 1
+t4 DS.L 1
+a DS.L 1
 k DS.L 1
-pres DS.L 1
-z DS.L 1
-n DS.L 1
-t7 DS.L 1
-t8 DS.L 1
-t9 DS.L 1
-t10 DS.L 1
-t11 DS.L 1
-t12 DS.L 1
-t13 DS.L 1
-t14 DS.L 1
+t5 DS.L 1
 	ORG $1000
 START:
-	JMP run
-eparams:
-	MOVE.L 8(A7),i
-	MOVE.L 12(A7),z
-	MOVE.L 16(A7),si
+	JMP main
+esuma:
+	MOVE.L 8(A7),a1
+	MOVE.L 12(A7),b1
 	MOVEM.L D0-D2,-(A7)
-	MOVE.L #1,t1
-	MOVE.L (i),D0
-	MOVE.L (t1),D1
+	MOVE.L (a1),D0
+	MOVE.L (b1),D1
 	ADD.L D0, D1
-	MOVE.L D1, t2
-	MOVE.L #t2,A0
+	MOVE.L D1, t1
+	MOVE.L (t1),(A0)
 	MOVEM.L (A7)+,D0-D2
 	RTS
-run:
-	MOVE.L #2,t3
-	MOVE.L (t3),i
-	MOVE.L #3,t4
-	MOVE.L (t4),j
-	MOVE.L #0,t5
+main:
+	MOVE.L #2,t2
+	MOVE.L (t2),i
+	MOVE.L #3,t3
+	MOVE.L (t3),j
+	MOVE.L #1,t4
+	MOVE.L (t4),a
+	MOVE.L (j),-(A7)
+	MOVE.L (a),-(A7)
+	JSR esuma
+	MOVE.L (A7)+,(t5)
 	MOVE.L (t5),k
-	MOVE.L (null),pres
-	MOVE.L (-1),z
-	MOVE.L (null),n
-	MOVE.L D0,-(A7)
-	MOVE.L A1,-(A7)
-	MOVE.W #2,D0
-	LEA t7,A1
-	TRAP #15
-	MOVE.L (A7)+,A1
-	MOVE.L (A7)+,D0
-	MOVE.L (t7),n
-	MOVE.L #2,t9
-	MOVE.L (t9),t10
-	MOVE.L (t10),D0
-	MOVE.L (1),D1
-	SUB.L D1, D0
-	MOVE.L D0, t10
-	MOVE.L (t10),D0
-	MOVE.L (4),D1
-	SUB.L #1, D1
-	CLR.L D2
-.LOOP0
-	ADD.L D0,D2
-
-	DBRA D1,.LOOP0
-	MOVE.L D2,t10
-	MOVE.L #2,t12
-	MOVE.L (t12),t13
-	MOVE.L (t13),D0
-	MOVE.L (1),D1
-	SUB.L D1, D0
-	MOVE.L D0, t13
-	MOVE.L (t13),D0
-	MOVE.L (4),D1
-	SUB.L #1, D1
-	CLR.L D2
-.LOOP1
-	ADD.L D0,D2
-
-	DBRA D1,.LOOP1
-	MOVE.L D2,t13
-	MOVE.L (t14),-(A7)
-	MOVE.L (k),-(A7)
-	MOVE.L (k),-(A7)
-	MOVE.L (t8),j
 	JMP FINAL
 FINAL:
 	END START
