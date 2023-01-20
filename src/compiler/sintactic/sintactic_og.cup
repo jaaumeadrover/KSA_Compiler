@@ -46,9 +46,9 @@ parser code {:
     private Semantic comprovaTipus=new Semantic(ts);
     private ArbreSintactic arbre=new ArbreSintactic();
     ArrayList<String> errorsSintactic = new ArrayList<>();
-    private ArrayList<SymbolValor> p = new ArrayList<SymbolValor>();
-    private ArrayList<TipusSub> tips = new ArrayList<TipusSub>();
-    private ArrayList<Tipus> tip = new ArrayList<Tipus>();
+    //private ArrayList<SymbolValor> p = new ArrayList<SymbolValor>();
+    //private ArrayList<TipusSub> tips = new ArrayList<TipusSub>();
+    //private ArrayList<Tipus> tip = new ArrayList<Tipus>();
     //CodiTresAdreces codi3A;
     /*
     public Parser(Scanner scanner){
@@ -125,15 +125,15 @@ parser code {:
 
 //identificadores
 terminal id,bool,str;
-//enteros
+//enters
 terminal integer;
 //operadors
 terminal bg, sm, bg_eq, sm_eq, eq, neq;
-//operaciones
+//operacions
 terminal add, sub, mul, div, mod;
-//caracteres suplementarios
+//caracters suplementaris
 terminal asig, smcol, twodots, com, brop, brcl, lop, lclose, lparen, rparen;
-//palabras reservadas
+//paraules reservades
 terminal r_if, r_else, r_switch, r_case, r_default, r_function, r_procedure, r_return, r_while, r_for, r_const,
          r_and, r_or, r_not, r_int, r_bool, r_main, r_string,r_input,r_print, r_array;
 
@@ -313,11 +313,11 @@ ContCap ::= lparen type:t pars:arr id:iden              {:
                                                              :}//tancam parentesis i definim els paràmetres
     | ContCap:contcap com  type:t pars:arr id:iden          {:int error =  ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0);
                                                             if(error==1){
-                                                               tips.add(t.getTipusSub());
-                                                               if(arr.getString()!=null){
-                                                                       tip.add(Tipus.ARRAY);
-                                                                       }else{
-                                                                       tip.add(Tipus.VAR);}
+                                                               //tips.add(t.getTipusSub());
+                                                               //if(arr.getString()!=null){
+                                                                 //      tip.add(Tipus.ARRAY);
+                                                                   //    }else{
+                                                                     //  tip.add(Tipus.VAR);}
                                                                
                                                                 RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString());
                                                             }else{
@@ -460,7 +460,7 @@ valor::= id:iden                         {:
     |subProgramCall:subprogram                      {:  Simbol s=ts.consultaFunc(subprogram.getID());
                                                         if(s!=null){
                                                             RESULT=new SymbolValor(subprogram,s.getTipusSub());
-                                                             p=null;
+                                                             //p=null;
                                                         }else{
                                                             comprovaTipus.addError("ERROR Semántic, No existeix la funció que es crida. Línea: "+cur_token.left);
                                                             RESULT=new SymbolValor();
@@ -503,8 +503,7 @@ aritOp ::= add {:RESULT = new SymbolAritOp(Operacions.ADD);:}
 
 realOp::= neq {:RESULT = new SymbolRealOp(Operacions.NEQ);:}//NOT EQUALS
 |eq           {:RESULT = new SymbolRealOp(Operacions.EQ);:}//EQUALS
-|bg           {:
-                RESULT = new SymbolRealOp(Operacions.BG);:}//BIGGER THAN
+|bg           {:RESULT = new SymbolRealOp(Operacions.BG);:}//BIGGER THAN
 |sm           {:RESULT = new SymbolRealOp(Operacions.SM);:}//SMALLER THAN
 |bg_eq        {:RESULT = new SymbolRealOp(Operacions.BGEQ);:}//BIGGER EQUAL
 |sm_eq        {:RESULT = new SymbolRealOp(Operacions.SMEQ);:}//SMALLER EQUAL
@@ -541,12 +540,12 @@ subProgramCall ::= id:iden lparen rparen            {:
 ;
 
 subProgramContCall ::= valor:valor                           {:
-p.add(valor);
-RESULT = new SymbolSubProgramContCall(valor,p);
+//p.add(valor);
+RESULT = new SymbolSubProgramContCall(valor);
 :}
     |subProgramContCall:subprogcontcall com valor:valor      {:
-    p.add(valor);
-    RESULT = new SymbolSubProgramContCall(subprogcontcall, valor, p);:}
+    //p.add(valor);
+    RESULT = new SymbolSubProgramContCall(subprogcontcall, valor);:}
     ;
 
 SwitchCase ::= r_switch lparen exprSimple:expr rparen brop LCases:lcases Default:defa brcl {:

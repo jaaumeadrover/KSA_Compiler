@@ -1,5 +1,0 @@
-elseIfstatement eliminar symbol y clase
-aritmetical expresion y boolexp fuera
-
-
-FuncContCap i ProcContCap son iguals

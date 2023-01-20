@@ -177,7 +177,7 @@ public class SymbolValor {
                 //CAS VARIABLE
 
                 if(codi.getTp().getNumProcActius()!=0){
-                    return iden+codi.getTp().getNumProcActius();
+                    return iden+"_"+codi.getTp().getNumProcActius();
                 }else{
                     return iden;
                 }

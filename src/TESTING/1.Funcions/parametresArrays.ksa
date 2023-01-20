@@ -1,0 +1,23 @@
+func int suma(int i,int j){
+    return i+j;
+}
+
+main(){
+    int i <- 2;
+    int j <- 3;
+    int a <-1;
+    int vector <- int[7];
+    int k;
+    for (int indice<-0;indice<7;indice<-indice+1){
+        vector[indice]<-i;
+    }
+    k<-suma(i,vector[i]);
+
+    //k ha de valer 4
+
+    if(k=4){
+        print ("k vale 4 ");
+    }else{
+        print("problema");
+    }
+}

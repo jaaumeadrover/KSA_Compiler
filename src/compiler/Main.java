@@ -44,7 +44,8 @@ public class Main {
                 ///home/diegofes/GitHub/KSA_Compiler/src/TESTING/1.Funcions/prova.txt
                 //C:\Users\Jaume\Desktop\UIB\Cursos\TERCER\1r quatri\COMPILADORS\PRÀCTICA KSA\KSA_Compiler\src\TESTING\1.Funcions\prova.txt
                 //input = new FileReader("/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova2.txt");
-                input = new FileReader("/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova2.txt");
+                //input = new FileReader("/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova2.txt");
+                input = new FileReader("/Users\\marcc\\OneDrive\\Escritorio\\GitHub\\KSA_Compiler/src/TESTING/3.Operands lògics/test1.ksa");
                 //Users\marcc\OneDrive\Escritorio\GitHub\KSA_Compiler
                 //input = new InputStreamReader(System.in);
             }
@@ -62,24 +63,14 @@ public class Main {
             ArrayList<String> errorsSint = parser.geterrorsSintactic();
             //System.out.println("Sintactic: "+errorsSint);
 
-            //Escriu errors al fitxer
-            for (int i = 0; i < errorsSint.size(); i++) {
-                String element = errorsSint.get(i);
-                System.err.println(element);
-                writerErrors.write(element+ "\n");
-            }
-            for (int i = 0; i < errorsSem.size(); i++) {
-                String element = errorsSem.get(i);
-                System.err.println(element);
-                writerErrors.write(element+ "\n");
-            }
-            writerErrors.close();
+
             codiTresAdreces codi = null;
             
             if(errorsSem.isEmpty() && errorsSint.isEmpty()) {
+                //Si no hi ha errors generam el codi
                 ArbreSintactic arbre = parser.getArbreSintac();
                 codi = arbre.generarCodiTresAdreces();
-                //codi.getTv().eliminaRepetits();
+
                 String codiIntermedi = codi.toString();
 
                 FileWriter codiIntermediFile = new FileWriter("codiIntermedi.txt");
@@ -94,9 +85,30 @@ public class Main {
                        
 
             }else{
+                //Escriu errors al fitxer
+                if(!errorsSint.isEmpty()) {
+                    for (int i = 0; i < errorsSint.size(); i++) {
+                        String element = errorsSint.get(i);
+                        if (i == 0) {
+                            System.err.println(element);
+                        }
+
+                        writerErrors.write(element + "\n");
+                    }
+                }
+                if(!errorsSem.isEmpty()) {
+                    for (int i = 0; i < errorsSem.size(); i++) {
+                        String element = errorsSem.get(i);
+                        if (i == 0) {
+                            System.err.println(element);
+                        }
+                        writerErrors.write(element + "\n");
+                    }
+                }
+                writerErrors.close();
                System.err.println("Programa incompilable per errors"); 
             }
-            System.out.println("TAULA VARIABLES: "+codi.getTv());
+          //  System.out.println("TAULA VARIABLES: "+codi.getTv());
 
         }catch(Exception e) {
             System.err.println("error: "+e);

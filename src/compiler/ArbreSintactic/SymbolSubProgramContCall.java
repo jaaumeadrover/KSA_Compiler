@@ -9,11 +9,11 @@ public class SymbolSubProgramContCall {
     private String id;
     private SymbolValor value;
     private SymbolSubProgramContCall subProgramContCall;
-    private ArrayList<SymbolValor> valoresParam = new ArrayList<SymbolValor>();
+    //private ArrayList<SymbolValor> valoresParam = new ArrayList<SymbolValor>();
 
-    public SymbolSubProgramContCall(SymbolValor expr, ArrayList<SymbolValor> values) {
+    public SymbolSubProgramContCall(SymbolValor expr) {
         this.value = expr;
-        this.valoresParam = values;
+        //this.valoresParam = values;
 
     }
 
@@ -21,22 +21,23 @@ public class SymbolSubProgramContCall {
         return this.id;
     }
 
-    public SymbolSubProgramContCall(SymbolSubProgramContCall subContCall, SymbolValor expr, ArrayList<SymbolValor> values) {
+    public SymbolSubProgramContCall(SymbolSubProgramContCall subContCall, SymbolValor expr) {
 
         this.subProgramContCall = subContCall;
         this.value = expr;
-        this.valoresParam = values;
+        //this.valoresParam = values;
 
     }
 
-    public ArrayList<SymbolValor> getValoresParam() {
-        return valoresParam;
-    }
+//    public ArrayList<SymbolValor> getValoresParam() {
+//        return valoresParam;
+//    }
 
     public void codiTresAdreces(codiTresAdreces codi, String id, int index) {
         Procediment proc = codi.getTp().getProcediment(id);
         //System.out.println("ID PROC: "+id);
-        //System.out.println("TP: "+codi.getTp().toString());
+        System.out.println("TP: "+codi.getTp().toString());
+        System.out.println("id: "+id);
         ArrayList<Parametre> params = proc.getParametres();
         TipusInstruccionsCTA tipus;
         String valor;
@@ -62,6 +63,7 @@ public class SymbolSubProgramContCall {
                 idx = valor.substring(pos1 + 1, pos2 );
                 iden = valor.substring(0, pos1);
                 o2 = new Operand(idx, OperandsCTA.variable);
+                codi.generar(TipusInstruccionsCTA.PRODUCTE, o2, new Operand("4", OperandsCTA.enterLit), idx);
             } else {
 
                 o2 = new Operand(valor, OperandsCTA.variable);

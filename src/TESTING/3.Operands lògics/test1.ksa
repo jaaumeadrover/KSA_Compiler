@@ -1,0 +1,15 @@
+
+main() {
+    bool x <- true;
+    bool y <- false;
+    bool z <- false;
+    int prova <- 3;
+    bool h<-z;
+    string hola <- "hola";
+
+    if (((not(y) and x) or z) or true){
+        print("Veritat");
+    }else{
+        print("Mentira");
+    }
+}

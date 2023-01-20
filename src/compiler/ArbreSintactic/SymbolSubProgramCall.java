@@ -62,7 +62,7 @@ public class SymbolSubProgramCall{
                 return temp;
             }else{
                 Operand o = new Operand(this.id, OperandsCTA.procediment);
-                codi.generar(TipusInstruccionsCTA.CALL,o,null,this.id);
+                codi.generar(TipusInstruccionsCTA.CALL,o,null,null);
             }
         }
         return null;

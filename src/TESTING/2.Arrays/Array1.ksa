@@ -5,5 +5,6 @@ main(){
         a[i]<-i;
         b[i]<-2;
     }
+    //Guardam un valor 5 a la posició de la variable c
     int c <- a[3]+b[3];
 }

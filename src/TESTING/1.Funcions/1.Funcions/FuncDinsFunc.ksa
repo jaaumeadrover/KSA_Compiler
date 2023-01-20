@@ -1,0 +1,16 @@
+func int dobla(int a){
+    a <- a*2;
+    return a;
+}
+
+func int suma2iDobla2(int i){
+    i <- i+2;
+    int a <- dobla(i);
+    return a;
+}
+
+main(){
+    int valor <- 4;
+    int final <- suma2iDobla2(valor);
+    print("final");
+}

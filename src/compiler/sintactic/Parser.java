@@ -444,9 +444,9 @@ public class Parser extends java_cup.runtime.lr_parser {
     private Semantic comprovaTipus=new Semantic(ts);
     private ArbreSintactic arbre=new ArbreSintactic();
     ArrayList<String> errorsSintactic = new ArrayList<>();
-    private ArrayList<SymbolValor> p = new ArrayList<SymbolValor>();
-    private ArrayList<TipusSub> tips = new ArrayList<TipusSub>();
-    private ArrayList<Tipus> tip = new ArrayList<Tipus>();
+    //private ArrayList<SymbolValor> p = new ArrayList<SymbolValor>();
+    //private ArrayList<TipusSub> tips = new ArrayList<TipusSub>();
+    //private ArrayList<Tipus> tip = new ArrayList<Tipus>();
     //CodiTresAdreces codi3A;
     /*
     public Parser(Scanner scanner){
@@ -936,11 +936,11 @@ if(s==null){
 		Object iden = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		int error =  ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0);
                                                             if(error==1){
-                                                               tips.add(t.getTipusSub());
-                                                               if(arr.getString()!=null){
-                                                                       tip.add(Tipus.ARRAY);
-                                                                       }else{
-                                                                       tip.add(Tipus.VAR);}
+                                                               //tips.add(t.getTipusSub());
+                                                               //if(arr.getString()!=null){
+                                                                 //      tip.add(Tipus.ARRAY);
+                                                                   //    }else{
+                                                                     //  tip.add(Tipus.VAR);}
                                                                
                                                                 RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString());
                                                             }else{
@@ -1303,7 +1303,7 @@ if(s==null){
 		  Simbol s=ts.consultaFunc(subprogram.getID());
                                                         if(s!=null){
                                                             RESULT=new SymbolValor(subprogram,s.getTipusSub());
-                                                             p=null;
+                                                             //p=null;
                                                         }else{
                                                             comprovaTipus.addError("ERROR Semántic, No existeix la funció que es crida. Línea: "+cur_token.left);
                                                             RESULT=new SymbolValor();
@@ -1611,8 +1611,8 @@ if(s==null){
 		int valorright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		SymbolValor valor = (SymbolValor)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-p.add(valor);
-RESULT = new SymbolSubProgramContCall(valor,p);
+//p.add(valor);
+RESULT = new SymbolSubProgramContCall(valor);
 
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("subProgramContCall",19, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
@@ -1629,8 +1629,8 @@ RESULT = new SymbolSubProgramContCall(valor,p);
 		int valorright = ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()).right;
 		SymbolValor valor = (SymbolValor)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		
-    p.add(valor);
-    RESULT = new SymbolSubProgramContCall(subprogcontcall, valor, p);
+    //p.add(valor);
+    RESULT = new SymbolSubProgramContCall(subprogcontcall, valor);
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("subProgramContCall",19, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;

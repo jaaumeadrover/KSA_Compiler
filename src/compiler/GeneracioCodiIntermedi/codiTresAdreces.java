@@ -44,15 +44,15 @@ public class codiTresAdreces{
     }
 
     public void addParametre(String id, TipusSub t, Tipus tipus) {
-        Parametre p = new Parametre(id+tp.getNumProc(),t,tipus);
-        tv.novaVariable(id+tp.getNumProc(),t,tp,false,1,0,null);
+        Parametre p = new Parametre(id+"_"+tp.getNumProc(),t,tipus);
+        tv.novaVariable(id+"_"+tp.getNumProc(),t,tp,false,1,0,null);
         parametres.add(p);
     }
 
     public ArrayList<Parametre> getParametres() {
         return parametres;
     }
-    
+
     //MÈTODE PER AFEGIR UNA VARIABLE
     public String addVariable(TipusSub t, String id){
         int size = tv.getNumVar();

@@ -90,19 +90,29 @@ public class SymbolExpressioSimple {
         if (this.operacio.isAssignacio()) {
             String valor = this.valor.codiTresAdreces(codi, true);
             String oper = this.operacio.getExpr().codiTresAdreces(codi);
-            Operand o1 = new Operand(oper, OperandsCTA.variable); // PER REVISAR
+            Operand o1;
+            if(Character.isAlphabetic(oper.charAt(0))){
+                 o1 = new Operand(oper, OperandsCTA.variable); // PER REVISAR
+            }else{
+                 o1 = new Operand(oper, OperandsCTA.enterLit); // PER REVISAR
+            }
 
             int pos1 = valor.indexOf('[');
             int pos2 = valor.indexOf(']');
 
             //Assignació amb variable no array
             if (pos1 == -1) {
+                //mirar tipus o1
                 codi.generar(TipusInstruccionsCTA.COPIA, o1, null, valor);
             } else {
-                //assignació amb variable array
+
                 String index = valor.substring(pos1 + 1, pos2);
                 String iden = valor.substring(0, pos1);
                 Operand o2 = new Operand(index, OperandsCTA.variable);
+
+                codi.generar(TipusInstruccionsCTA.PRODUCTE, o2, new Operand("4", OperandsCTA.enterLit), index);
+
+
                 codi.generar(TipusInstruccionsCTA.INDASS, o1, o2, iden);
             }
             return null;

@@ -1,41 +1,89 @@
 	ORG $700
-b1 DS.L 1
-a1 DS.L 1
+input DS.L 15
+x DS.L 1
+y DS.L 1
+z DS.L 1
 t1 DS.L 1
+prova DS.L 1
+h DS.L 1
+hola DS.L 15
 t2 DS.L 1
-i DS.L 1
 t3 DS.L 1
-j DS.L 1
 t4 DS.L 1
-a DS.L 1
-k DS.L 1
 t5 DS.L 1
+t6 DS.L 15
+t7 DS.L 15
 	ORG $1000
 START:
 	JMP main
-esuma:
-	MOVE.L 8(A7),a1
-	MOVE.L 12(A7),b1
-	MOVEM.L D0-D2,-(A7)
-	MOVE.L (a1),D0
-	MOVE.L (b1),D1
-	ADD.L D0, D1
-	MOVE.L D1, t1
-	MOVE.L (t1),(A0)
-	MOVEM.L (A7)+,D0-D2
-	RTS
 main:
-	MOVE.L #2,t2
-	MOVE.L (t2),i
-	MOVE.L #3,t3
-	MOVE.L (t3),j
-	MOVE.L #1,t4
-	MOVE.L (t4),a
-	MOVE.L (j),-(A7)
-	MOVE.L (a),-(A7)
-	JSR esuma
-	MOVE.L (A7)+,(t5)
-	MOVE.L (t5),k
+	MOVE.L #-1,x
+	MOVE.L #0,y
+	MOVE.L #0,z
+	MOVE.L #3,t1
+	MOVE.L (t1),prova
+	MOVE.L (z),h
+	MOVE.L A1,-(A7)
+	LEA hola,A1
+	MOVE.L #'hola',(A1)+
+	MOVE.L #0,(A1)
+	MOVE.L (A7)+,A1
+	MOVE.L (y),D0
+	NOT.L D0
+	MOVE.L D0, t2
+	MOVE.L (t2), D0
+	MOVE.L (x), D1
+	AND.L D0,D1
+	MOVE.L D1,t3
+	MOVE.L (t3), D0
+	MOVE.L (z), D1
+	OR.L D0,D1
+	MOVE.L D1,t4
+	MOVE.L (t4), D0
+	MOVE.L #-1, D0
+	OR.L D0,D1
+	MOVE.L D1,t5
+	MOVE.L (t5),D0
+	MOVE.L #-1,D1
+	CMP.L  D1,D0
+	BEQ e1
+	JMP e2
+e1:
+	MOVE.L A1,-(A7)
+	LEA t6,A1
+	MOVE.L #'Veri',(A1)+
+	MOVE.B #'t',(A1)+
+	MOVE.B #'a',(A1)+
+	MOVE.B #'t',(A1)+
+	MOVE.B #0,(A1)+
+	MOVE.L #0,(A1)
+	MOVE.L (A7)+,A1
+	MOVE.L D0,-(A7)
+	MOVE.L A1,-(A7)
+	LEA t6,A1
+	MOVE.W #14,D0
+	TRAP #15
+	MOVE.L (A7)+,A1
+	MOVE.L (A7)+,D0
+	JMP e3
+e2:
+	MOVE.L A1,-(A7)
+	LEA t7,A1
+	MOVE.L #'Ment',(A1)+
+	MOVE.B #'i',(A1)+
+	MOVE.B #'r',(A1)+
+	MOVE.B #'a',(A1)+
+	MOVE.B #0,(A1)+
+	MOVE.L #0,(A1)
+	MOVE.L (A7)+,A1
+	MOVE.L D0,-(A7)
+	MOVE.L A1,-(A7)
+	LEA t7,A1
+	MOVE.W #14,D0
+	TRAP #15
+	MOVE.L (A7)+,A1
+	MOVE.L (A7)+,D0
+e3:
 	JMP FINAL
 FINAL:
 	END START

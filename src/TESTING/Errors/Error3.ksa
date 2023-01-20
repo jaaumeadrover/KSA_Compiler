@@ -1,0 +1,23 @@
+func int suma(int a, int b){
+    return a+b;
+}
+
+main(){
+    int a;
+    a<-0;
+    int b<-1;
+    int c;
+
+    //La funció que es crida no existeix
+
+    //Aixó també es comproba amb variables, teniu llibertat per probar-ho
+
+    int c <- resta(a,b);
+
+    //Com es pot veure els parametres de la funció poden tenir el mateix identificador
+    //ja que no son al mateix NumProcActius()
+
+    suma(a,b);
+    //Aixó no funciona perque es una funció que retorna i has de assignar-ho a una variable
+    //Ex: c<-suma(a,b);
+}

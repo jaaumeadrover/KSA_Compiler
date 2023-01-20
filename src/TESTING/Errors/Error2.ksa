@@ -1,0 +1,8 @@
+main(){
+    int a <- 0;
+    int c <- 2;
+    //Error de tipus al while
+    while(a+1){
+        c<-c+1;
+    }
+}

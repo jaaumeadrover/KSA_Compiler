@@ -159,8 +159,8 @@ public class Semantic {
                             return true;
 
                         }else{
-                            System.out.println("CONDICIO ERROR VARINIT.getExpr.getOperacio: "+(varinit.getExpr().getOperacio()==null));
-                            System.out.println("CONDICIÓ ERROR INDEX:"+varinit.getExpr().getValor().getIndex());
+                            //System.out.println("CONDICIO ERROR VARINIT.getExpr.getOperacio: "+(varinit.getExpr().getOperacio()==null));
+                            //System.out.println("CONDICIÓ ERROR INDEX:"+varinit.getExpr().getValor().getIndex());
                             errors.add("ERROR Semántic, La constant "+id+ " s'ha d'inicialitzar amb un valor enter BOOLEAN o INT. Linia: "+(posicio+1));
                             return false;
                         }
