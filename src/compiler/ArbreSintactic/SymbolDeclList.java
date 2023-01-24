@@ -39,6 +39,8 @@ public class SymbolDeclList  {
         if (llistaDecl != null){
             this.llistaDecl.codiTresAdreces(codi);
         }
+
+
     }
 
 }

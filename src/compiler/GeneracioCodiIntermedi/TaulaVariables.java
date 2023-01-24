@@ -56,7 +56,7 @@ public class TaulaVariables {
                 
             }
             if(value!=null){
-                Variable novaVar = new Variable(nom, t, TP.getNumProcActius(),value);
+                Variable novaVar = new Variable(nom + "_" + TP.getNumProcActius(), t, TP.getNumProcActius(),value);
                 TV.add(novaVar);
                 return nom + "_" + TP.getNumProcActius();
             }
@@ -67,21 +67,21 @@ public class TaulaVariables {
                 Variable novaVar = null;
                 //cas string
                 if(value!=null){
-                     novaVar = new Variable(nom, t, TP.getNumProcActius(),value);
+                     novaVar = new Variable(nom + "_" + TP.getNumProcActius(), t, TP.getNumProcActius(),value);
                 }else{//cas constant int
-                     novaVar = new Variable(nom, t, valor, TP.getNumProcActius());
+                     novaVar = new Variable(nom + "_" + TP.getNumProcActius(), t, valor, TP.getNumProcActius());
                 }
                 TV.add(novaVar);
                 return nom + "_" + TP.getNumProcActius();
             } else {
                 if (dim == 0) {
-                    Variable novaVar = new Variable(nom, t, TP.getNumProcActius());
+                    Variable novaVar = new Variable(nom+ "_" + TP.getNumProcActius(), t, TP.getNumProcActius());
                     TV.add(novaVar);
                     return nom + "_" + TP.getNumProcActius();
                 } else {
 
                     //cas array
-                    Variable var = new Variable(t, nom, TP.getNumProcActius(), dim);
+                    Variable var = new Variable(t, nom + "_" + TP.getNumProcActius(), TP.getNumProcActius(), dim);
                     this.TV.add(var);
                     return "array: " + nom + "_" + TP.getNumProcActius() + "_dim=" + dim;
                 }
@@ -165,14 +165,18 @@ public class TaulaVariables {
     public Variable getVariable(String nom) {
         int div = nom.lastIndexOf("_");
         if (div >= 0) {
+            System.out.println("div>=0");
             int capa = Integer.parseInt(nom.substring(div + 1));
+            System.out.println("CAPA: "+capa);
             String n = nom.substring(0, div);
             for (int i = 0; i < TV.size(); i++) {
-                if (TV.get(i).getNom().equals(n) && TV.get(i).getProcedure() == capa) {
+                System.out.println("nom:"+TV.get(i).getNom()+",proc:"+TV.get(i).getProcedure());
+                if (TV.get(i).getNom().equals(nom) && TV.get(i).getProcedure() == capa) {
                     return TV.get(i);
                 }
             }
         } else {
+            System.out.println("div<0");
             for (int i = 0; i < TV.size(); i++) {
                 if (TV.get(i).getNom().equals(nom)) {
                     return TV.get(i);

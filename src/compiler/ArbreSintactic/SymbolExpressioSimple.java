@@ -113,7 +113,7 @@ public class SymbolExpressioSimple {
                 codi.generar(TipusInstruccionsCTA.PRODUCTE, o2, new Operand("4", OperandsCTA.enterLit), index);
 
 
-                codi.generar(TipusInstruccionsCTA.INDASS, o1, o2, iden);
+                codi.generar(TipusInstruccionsCTA.INDASS, o1, o2, iden+"_"+codi.getTp().getNumProcActius());
             }
             return null;
 

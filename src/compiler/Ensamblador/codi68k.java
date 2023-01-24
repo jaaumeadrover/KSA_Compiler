@@ -386,12 +386,21 @@ public class codi68k {
                 break;
 
             case INDASS:
+                String str=instruccio.getDesti();
+                f.escriureFitxer("\tMOVEM.L D0-D2/A0,-(A7)");
                 f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta() + "),D0");
-                f.escriureFitxer("\tLEA.L " + instruccio.getDesti() + ",A0");
+                //cas programa principal
+
+                if(str.charAt(str.length()-1)=='0'){
+                    f.escriureFitxer("\tLEA.L " + instruccio.getDesti() + ",A0");
+                }else{//cas subprograma
+                    f.escriureFitxer("\tMOVE.L " + instruccio.getDesti() + ",A0");
+                }
                 f.escriureFitxer("\tMOVE.L A0,D1");
                 f.escriureFitxer("\tADD.L A0,D0");
                 f.escriureFitxer("\tMOVE.L D0,A0");
                 f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),(A0)");
+                f.escriureFitxer("\tMOVEM.L (A7)+,D0-D2/A0");
                 break;
 
             // OPERACIONS DE BIFURCACIÓ
@@ -768,8 +777,18 @@ public class codi68k {
                 break;
 
             case PARAMS:
+                System.out.println("                            PARAM:s");
                 this.parametres.add(instruccio.getOperadorEsquerra().getOperand());
-                f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),-(A7)");
+                Variable var = codi.getTv().getVariable(instruccio.getOperadorEsquerra().getOperand());
+                System.out.println(instruccio.getOperadorEsquerra());
+                System.out.println("TaulaVariables: "+codi.getTv());
+                if(var.getDimensio()>1){
+                    f.escriureFitxer("\tLEA " + instruccio.getOperadorEsquerra() + ",A0");
+                    f.escriureFitxer("\tMOVE.L A0,-(A7)");
+                }else{
+                    f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),-(A7)");
+                }
+
                 break;
 
             case PARAMC:

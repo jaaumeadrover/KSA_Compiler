@@ -176,11 +176,9 @@ public class SymbolValor {
             case 1:
                 //CAS VARIABLE
 
-                if(codi.getTp().getNumProcActius()!=0){
-                    return iden+"_"+codi.getTp().getNumProcActius();
-                }else{
-                    return iden;
-                }
+
+                return iden+"_"+codi.getTp().getNumProcActius();
+
 
             case 2:
                 //GAS ARRAYS

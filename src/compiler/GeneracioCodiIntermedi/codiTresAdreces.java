@@ -44,8 +44,8 @@ public class codiTresAdreces{
     }
 
     public void addParametre(String id, TipusSub t, Tipus tipus) {
-        Parametre p = new Parametre(id+"_"+tp.getNumProc(),t,tipus);
-        tv.novaVariable(id+"_"+tp.getNumProc(),t,tp,false,1,0,null);
+        Parametre p = new Parametre(id+"_"+tp.getNumProcActius(),t,tipus);
+        tv.novaVariable(id,t,tp,false,1,0,null);
         parametres.add(p);
     }
 
@@ -59,11 +59,15 @@ public class codiTresAdreces{
         String num="";
         if(id.equals("t")) {
             num = null;
+            return tv.novaVariable(num,t, tp,false,1,0,null);
         }else{
-            num = id;
+            if(tp.getNumProcActius()>0){
+                return tv.novaVariable(id,t, tp,false,1,0,null);
+            }
+            return tv.novaVariable(id,t, tp,false,1,0,null);
         }
         
-        return tv.novaVariable(num,t, tp,false,1,0,null);
+        //return tv.novaVariable(id,t, tp,false,1,0,null);
     }
     
     //MÈTODE PER A AFEGIR UNA CONSTANT
@@ -84,7 +88,7 @@ public class codiTresAdreces{
     */
     public String addVariableArray(TipusSub t,String str,int procedure,int dim){
         String s="";
-        Variable var=new Variable(t,str,procedure,dim);
+        Variable var=new Variable(t,str+"_"+tp.getNumProcActius(),procedure,dim);
         tv.addVariable(var);
         return s;
     }

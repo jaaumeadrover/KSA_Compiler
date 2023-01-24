@@ -45,25 +45,28 @@ public class SymbolVarDecl {
                 int dim=varInit.getArray().getInteger();
                 int proc=codi.getTp().getNumProcActius();
                 codi.addVariableArray(tipus, nom,proc,dim);
-            }
-            if (esConst) {
-                this.varInit.getExpr().getValor();
-                System.out.println("VALOR: " + this.varInit.getExpr().getValor());
-                int n = 0;
-                if (varInit.getExpr().getValor().toString().equals("false")) {
-                    n = 0;
-                } else if (varInit.getExpr().getValor().toString().equals("true")) {
-                    n = -1;
-                } else {
-                    n = Integer.parseInt(this.varInit.getExpr().getValor().toString());
-                }
-                codi.addVariable(tipus, nom, n);
             }else {
-                codi.addVariable(tipus,nom);
+                if (esConst) {
+                    this.varInit.getExpr().getValor();
+                    System.out.println("VALOR: " + this.varInit.getExpr().getValor());
+                    int n = 0;
+                    if (varInit.getExpr().getValor().toString().equals("false")) {
+                        n = 0;
+                    } else if (varInit.getExpr().getValor().toString().equals("true")) {
+                        n = -1;
+                    } else {
+                        n = Integer.parseInt(this.varInit.getExpr().getValor().toString());
+                    }
+                    nom = codi.addVariable(tipus, nom, n);
+                } else {
+                    System.out.println("                            NOM VARIABLE: " + id);
+                    nom = codi.addVariable(tipus, nom);
+                }
             }
             if(inicialitzacio!=null) {
+                System.out.println("NOM VARIABLE: "+nom);
                 Operand o = new Operand(inicialitzacio, OperandsCTA.variable);
-                codi.generar(TipusInstruccionsCTA.COPIA, o, null, this.id);
+                codi.generar(TipusInstruccionsCTA.COPIA, o, null,nom);
             }
         }
         return null;
