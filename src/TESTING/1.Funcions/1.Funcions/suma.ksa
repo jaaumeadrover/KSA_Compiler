@@ -1,11 +1,10 @@
 //1__Funció de sumar dos variables
-
+ func int sumar(int a, int b) {
+    return a + b;
+}
 main() {
     int c;
     int a <- 2;
     int b <- 1;
     c <- sumar(a,b);
-}
- func int sumar(int a, int b) {
-    return a + b;
 }

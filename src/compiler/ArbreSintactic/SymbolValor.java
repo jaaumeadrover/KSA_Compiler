@@ -221,19 +221,24 @@ public class SymbolValor {
                 String val = "";
                 if (this.b) {
                     val = String.valueOf(-1);
+
                 } else {
                     val = String.valueOf(0);
+
                 }
-                return val;
+                String temp5 = codi.addVariable(TipusSub.BOOLEAN, "t");
+                Operand o3 = new Operand(val, OperandsCTA.boolea);
+                codi.generar(TipusInstruccionsCTA.COPIA, o3, null, temp5);
+                return temp5;
             case 5:
                 //generar crida a subprogram
                 return subProgramCall.codiTresAdreces(codi);
             case 6:
                 //generar instruccio not del boolean
                 String operand1 = this.exprSimple.codiTresAdreces(codi);
-                Operand o3 = new Operand(operand1+"_"+codi.getTp().getNumProcActius(), OperandsCTA.boolea);
+                Operand o5 = new Operand(operand1+"_"+codi.getTp().getNumProcActius(), OperandsCTA.boolea);
                 String s = codi.addVariable(TipusSub.BOOLEAN, "t");
-                codi.generar(TipusInstruccionsCTA.NOT, o3, null, s);
+                codi.generar(TipusInstruccionsCTA.NOT, o5, null, s);
                 return s;
 
             //

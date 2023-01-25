@@ -1,0 +1,140 @@
+	ORG $700
+input DS.L 15
+n_1 DS.L 1
+dim_1 DS.L 1
+a_1 DS.L 1
+t1 DS.L 1
+j_1 DS.L 1
+t2 DS.L 1
+t3 DS.L 1
+t4 DS.L 1
+t5 DS.L 1
+t6 DS.L 1
+b_2 DS.L 1
+a_2 DS.L 1
+t7 DS.L 1
+t8 DS.L 1
+t9 DS.L 1
+t10 DS.L 1
+t11 DS.L 1
+t12 DS.L 1
+t13 DS.L 1
+t14 DS.L 1
+a_0 DS.L 5
+t16 DS.L 1
+t17 DS.L 1
+t18 DS.L 1
+t19 DS.L 1
+c_0 DS.L 1
+	ORG $1000
+START:
+	JMP main
+einicialitza:
+	MOVE.L 12(A7),n_1
+	MOVE.L 8(A7),dim_1
+	MOVE.L 4(A7),a_1
+	MOVEM.L D0-D2,-(A7)
+	MOVE.L #0,t1
+	MOVE.L (t1),j_1
+e2:
+	MOVE.L (j_1),D0
+	MOVE.L (dim_1),D1
+	CMP.L  D1,D0
+	BLT e_t2
+	MOVE.L #0,t2
+	JMP ef_t2
+e_t2:
+	MOVE.L #-1,t2
+ef_t2:
+	MOVE.L (t2),D0
+	MOVE.L #-1,D1
+	CMP.L  D1,D0
+	BEQ e3
+	JMP e4
+e3:
+	MOVE.L (j_1),t4
+	MOVE.L (t4),D0
+	MOVE.L #4,D1
+	SUB.L #1, D1
+	CLR.L D2
+.LOOP0
+	ADD.L D0,D2
+
+	DBRA D1,.LOOP0
+	MOVE.L D2,t4
+	MOVEM.L D0-D2/A0,-(A7)
+	MOVE.L (t4),D0
+	MOVE.L a_1,A0
+	MOVE.L A0,D1
+	ADD.L A0,D0
+	MOVE.L D0,A0
+	MOVE.L (n_1),(A0)
+	MOVEM.L (A7)+,D0-D2/A0
+	MOVE.L #1,t5
+	MOVE.L (j_1),D0
+	MOVE.L (t5),D1
+	ADD.L D0, D1
+	MOVE.L D1, t6
+	MOVE.L (t6),j_1
+	JMP e2
+e4:
+	MOVEM.L (A7)+,D0-D2
+	RTS
+emult:
+	MOVE.L 8(A7),b_2
+	MOVE.L 4(A7),a_2
+	MOVEM.L D0-D2,-(A7)
+	MOVE.L (a_2),D0
+	MOVE.L (b_2),D1
+	SUB.L #1, D1
+	CLR.L D2
+.LOOP1
+	ADD.L D0,D2
+
+	DBRA D1,.LOOP1
+	MOVE.L D2,t7
+	MOVE.L (t7),(A2)
+	MOVEM.L (A7)+,D0-D2
+	RTS
+esuma:
+	MOVEM.L D0-D2,-(A7)
+	MOVE.L #3,t9
+	MOVE.L (t9),-(A7)
+	MOVE.L #2,t10
+	MOVE.L (t10),-(A7)
+	JSR emult
+	MOVE.L (A2),(t8)
+	MOVE.L (A7)+,D7
+	MOVE.L (A7)+,D7
+	MOVE.L #4,t12
+	MOVE.L (t12),-(A7)
+	MOVE.L #3,t13
+	MOVE.L (t13),-(A7)
+	JSR emult
+	MOVE.L (A2),(t11)
+	MOVE.L (A7)+,D7
+	MOVE.L (A7)+,D7
+	MOVE.L (t8),D0
+	MOVE.L (t11),D1
+	ADD.L D0, D1
+	MOVE.L D1, t14
+	MOVE.L (t14),(A2)
+	MOVEM.L (A7)+,D0-D2
+	RTS
+main:
+	MOVE.L #1,t17
+	MOVE.L (t17),-(A7)
+	MOVE.L #5,t18
+	MOVE.L (t18),-(A7)
+	LEA a_0,A0
+	MOVE.L A0,-(A7)
+	JSR einicialitza
+	MOVE.L (A7)+,D7
+	MOVE.L (A7)+,D7
+	MOVE.L (A7)+,D7
+	JSR esuma
+	MOVE.L (A2),(t19)
+	MOVE.L (t19),c_0
+	JMP FINAL
+FINAL:
+	END START

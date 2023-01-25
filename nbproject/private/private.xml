@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/lexic/Scanner.java</file>
-            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/TESTING/1.Funcions/parametresArrays.ksa</file>
-            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/ArbreSintactic/SymbolSubProgramContCall.java</file>
-            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/Ensamblador/codi68k.java</file>
-            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/Main.java</file>
-            <file>file:/C:/Users/Jaume/Desktop/UIB/Cursos/TERCER/1r%20quatri/COMPILADORS/PRÀCTICA%20KSA/KSA_Compiler/src/compiler/sintactic/sintactic_og.cup</file>
+            <file>file:/C:/Users/marcc/OneDrive/Escritorio/GitHub/KSA_Compiler/src/TESTING/1.Funcions/parametresArrays.ksa</file>
+            <file>file:/C:/Users/marcc/OneDrive/Escritorio/GitHub/KSA_Compiler/src/TESTING/1.Funcions/1.Funcions/provaReferencia.ksa</file>
+            <file>file:/C:/Users/marcc/OneDrive/Escritorio/GitHub/KSA_Compiler/src/TESTING/1.Funcions/1.Funcions/FuncDinsFunc.ksa</file>
+            <file>file:/C:/Users/marcc/OneDrive/Escritorio/GitHub/KSA_Compiler/src/compiler/Main.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,8 +1,11 @@
 INT: a, tipo: ARRAY, nivel: 0
-NULL: bubbleSort, tipo: FUNC, nivel: 1
+INT: c, tipo: VAR, nivel: 0
+NULL: inicialitza, tipo: FUNC, nivel: 1
 	INT: n, tipo: PARAM, nivel: 1
-	INT: A, tipo: PARAM, nivel: 1
-	INT: aux, tipo: VAR, nivel: 1
-	INT: i, tipo: VAR, nivel: 1
+	INT: dim, tipo: PARAM, nivel: 1
+	INT: a, tipo: PARAM, nivel: 1
 	INT: j, tipo: VAR, nivel: 1
-	INT: c, tipo: VAR, nivel: 1
+INT: mult, tipo: FUNC, nivel: 2
+	INT: b, tipo: PARAM, nivel: 2
+	INT: a, tipo: PARAM, nivel: 2
+INT: suma, tipo: FUNC, nivel: 3

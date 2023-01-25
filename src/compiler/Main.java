@@ -31,7 +31,8 @@ public class Main {
         Reader input = null;
 
         try {
-            input = new FileReader("C:\\Users\\Jaume\\Desktop\\UIB\\Cursos\\TERCER\\1r quatri\\COMPILADORS\\PRÀCTICA KSA\\KSA_Compiler\\src\\TESTING\\1.Funcions\\1.Funcions\\bubbleSortError.ksa");
+            //input = new FileReader("C:\\Users\\Jaume\\Desktop\\UIB\\Cursos\\TERCER\\1r quatri\\COMPILADORS\\PRÀCTICA KSA\\KSA_Compiler\\src\\TESTING\\1.Funcions\\1.Funcions\\bubbleSortError.ksa");
+            input = new FileReader("C:\\Users\\marcc\\OneDrive\\Escritorio\\GitHub\\KSA_Compiler\\src\\TESTING\\1.Funcions\\provaReferencia.ksa");
 
             FileWriter writerErrors = new FileWriter("errors.txt");
 

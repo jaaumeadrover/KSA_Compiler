@@ -1,3 +1,8 @@
-bubbleSort; 2; null; 
+inicialitza; 3; null; 
 	TipusSub: INT --> n_1
-	TipusSub: INT --> A_1
+	TipusSub: INT --> dim_1
+	TipusSub: INT --> a_1
+mult; 2; INT; 
+	TipusSub: INT --> b_2
+	TipusSub: INT --> a_2
+suma; 0; INT; 
