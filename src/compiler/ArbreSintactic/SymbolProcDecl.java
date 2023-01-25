@@ -35,6 +35,8 @@ public class SymbolProcDecl  {
             if(stat!=null){
                 stat.codiTresAdreces(codi);
             }
+            Operand o2 = new Operand(iden, OperandsCTA.procediment);
+            codi.generar(TipusInstruccionsCTA.RTN,o2,null,null);
             codi.getTp().tancaProcediment();
         }else{
 
@@ -45,7 +47,8 @@ public class SymbolProcDecl  {
             if(stat!=null) {
                 stat.codiTresAdreces(codi);
             }
-            codi.generar(TipusInstruccionsCTA.RTN,null,null,null);
+            Operand o2 = new Operand(iden, OperandsCTA.procediment);
+            codi.generar(TipusInstruccionsCTA.RTN,o2,null,null);
             codi.getTp().tancaProcediment();
         }
     }

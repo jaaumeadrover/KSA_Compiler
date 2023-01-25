@@ -46,10 +46,10 @@ parser code {:
     private Semantic comprovaTipus=new Semantic(ts);
     private ArbreSintactic arbre=new ArbreSintactic();
     ArrayList<String> errorsSintactic = new ArrayList<>();
-    //private ArrayList<SymbolValor> p = new ArrayList<SymbolValor>();
-    //private ArrayList<TipusSub> tips = new ArrayList<TipusSub>();
-    //private ArrayList<Tipus> tip = new ArrayList<Tipus>();
+
+    private ArrayList<SymbolValor> p = new ArrayList<SymbolValor>();
     //CodiTresAdreces codi3A;
+    ArrayList<String> paramCrida = new ArrayList<String>();
     /*
     public Parser(Scanner scanner){
         this.scanner = scanner;
@@ -85,7 +85,7 @@ parser code {:
 
         @Override
         public void syntax_error(Symbol cur_token) {
-            report_error("de sintàxis ",cur_token);
+            report_error("de sintàxis. Linea: " +(cur_token.left+1),cur_token);
         }
 
         @Override
@@ -111,7 +111,7 @@ parser code {:
 
         @Override
         public void report_fatal_error(String message, Object info) throws Exception {
-            report_error(" sintàctic catastròfic",cur_token);
+            report_error(" sintàctic catastròfic. Linea: "+(cur_token.left+1),cur_token);
             done_parsing();
         }
         public ArrayList<String> geterrorsSintactic(){
@@ -301,10 +301,13 @@ if(s==null){
     RESULT=new SymbolProcDecl();
     }:}; //declaració d'un procediment: proc 'nom' parametres {...}
 
-ContCap ::= lparen type:t pars:arr id:iden              {:
-                                                             int error= ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0);
-                                                             if(error==1){
+ContCap ::= lparen type:t pars:arr id:iden              {:      int dimensio=0;
+                                                             if(arr.getString()!=null){
+                                                                dimensio=2;
+                                                             }
 
+                                                             int error= ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,dimensio);
+                                                             if(error==1){
                                                                 RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString());
                                                              }else{
                                                                 comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
@@ -432,7 +435,7 @@ exprSimple ::=valor:val operacio:oper            {://Si el valor es correcte
     ;
 
 valor::= id:iden                         {:
-                                            Simbol s=ts.consulta(iden.toString());
+                                            Simbol s=ts.consultaSimbol(iden.toString());
                                             if(s!=null){
                                                     RESULT=new SymbolValor(iden.toString(),s.getTipusSub());
                                             }else{
@@ -441,7 +444,7 @@ valor::= id:iden                         {:
                                             }
                                          :}
     |array:arr                                      {:
-                                                      Simbol s=ts.consulta(arr.getID());
+                                                      Simbol s=ts.consultaSimbol(arr.getID());
                                                       if(s!=null){
                                                         RESULT=new SymbolValor(arr,s.getTipusSub());
                                                       }else{
@@ -458,9 +461,10 @@ valor::= id:iden                         {:
                                                   }
                                                   :}
     |subProgramCall:subprogram                      {:  Simbol s=ts.consultaFunc(subprogram.getID());
+                                                        System.out.println("ID:"+subprogram.getID());
+                                                        p.clear();
                                                         if(s!=null){
                                                             RESULT=new SymbolValor(subprogram,s.getTipusSub());
-                                                             //p=null;
                                                         }else{
                                                             comprovaTipus.addError("ERROR Semántic, No existeix la funció que es crida. Línea: "+cur_token.left);
                                                             RESULT=new SymbolValor();
@@ -512,11 +516,24 @@ realOp::= neq {:RESULT = new SymbolRealOp(Operacions.NEQ);:}//NOT EQUALS
 
 subProgramCall ::= id:iden lparen rparen            {:
                                                       Simbol s= ts.consultaFunc(iden.toString());
+                                                      ArrayList<Simbol> llista=ts.nParametresFunc(s);
+                                                      String msg="";
+                                                      for(int i=llista.size()-1;i>=0;i--){
+                                                        msg+="{";
+                                                          if(llista.get(i).getDimensio()>1){
+                                                                msg+="array:";
+                                                          }
+                                                        msg+=llista.get(i).getTipusSub()+"} ";
+                                                      }
+                                                      //la funció existeix
                                                       if(s!=null){
-                                                        //else
-                                                        //if(comprovaTipus.paramCall(iden.toString(),null)){
+                                                      //si necessita paràmetres
+                                                        if(llista.size()>0){
+                                                            comprovaTipus.addError("ERROR Semántic: funció/procediment "+iden+" esperava aquests paràmetres: "+msg+". Linea: "+cur_token.left);
+                                                            RESULT=new SymbolSubProgramCall();
+                                                        }else{//si no necessita paràmetres
                                                             RESULT=new SymbolSubProgramCall(iden.toString(),!(s.getTipusSub().equals(TipusSub.NULL)),s.getTipusSub());
-                                                            //}else{
+                                                        }
 
                                                       }else{
                                                         //no existeix la funció cridada
@@ -525,12 +542,14 @@ subProgramCall ::= id:iden lparen rparen            {:
                                                       }
                                                       :}
 |id:iden lparen subProgramContCall:subprogcontcall rparen          {:
-                                                                        Simbol s= ts.consultaFunc(iden.toString());
+                                                      Simbol s= ts.consultaFunc(iden.toString());
                                                       if(s!=null){
                                                         //else
-                                                       //if(comprovaTipus.paramCall(iden.toString(),subprogcontcall.getValoresParam())){
+                                                       if(comprovaTipus.paramCall(s,p,cur_token.left)){
                                                             RESULT=new SymbolSubProgramCall(subprogcontcall,iden.toString(),!(s.getTipusSub().equals(TipusSub.NULL)),s.getTipusSub());
-
+                                                        }else{
+                                                            RESULT=new SymbolSubProgramCall();
+                                                        }
 
                                                       }else{
                                                         //no existeix la funció cridada
@@ -539,12 +558,12 @@ subProgramCall ::= id:iden lparen rparen            {:
                                                       } :}
 ;
 
-subProgramContCall ::= valor:valor                           {:
-//p.add(valor);
+subProgramContCall ::= valor:valor                           {: p.add(valor);
+
 RESULT = new SymbolSubProgramContCall(valor);
 :}
-    |subProgramContCall:subprogcontcall com valor:valor      {:
-    //p.add(valor);
+    |subProgramContCall:subprogcontcall com valor:valor      {: p.add(valor);
+
     RESULT = new SymbolSubProgramContCall(subprogcontcall, valor);:}
     ;
 

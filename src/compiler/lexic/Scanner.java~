@@ -398,24 +398,37 @@ public class Scanner implements java_cup.runtime.Scanner {
        Mecanismes de gestió de símbols basat en ComplexSymbol. Tot i que en
        aquest cas potser no és del tot necessari.
      ***/
+    FileWriter fitxerTokens;
+    
+    public void initFitxer()throws IOException{
+         // Cream el fitxer de tokens
+         fitxerTokens = new FileWriter("tokens.txt");
+    }
+     public void tancaFitxer() throws IOException{
+         fitxerTokens.close();
+     }
     /**
      Construcció d'un symbol sense atribut associat.
      **/
-    private ComplexSymbol symbol(int type) {
+    private ComplexSymbol symbol(int type) throws IOException{
             ComplexSymbol s = new ComplexSymbol(ParserSym.terminalNames[type], type);
             s.left = yyline;
             s.right = yycolumn;
+            // Escrivim el token generat al fitxer
+            fitxerTokens.write(s.toString() + "\n");
             return s;
-        }
-        /**
-             Construcció d'un symbol amb un atribut associat.
-        **/
-        private ComplexSymbol symbol(int type, Object value) {
+    }
+    /**
+        Construcció d'un symbol amb un atribut associat.
+    **/
+    private ComplexSymbol symbol(int type, Object value) throws IOException{
             ComplexSymbol s = new ComplexSymbol(ParserSym.terminalNames[type], type, value);
             s.left = yyline;
             s.right = yycolumn;
+            // Escrivim el token generat al fitxer
+            fitxerTokens.write(s.toString() + "\n");
             return s;
-}
+    }
 
 
   /**

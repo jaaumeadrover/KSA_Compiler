@@ -1,0 +1,3 @@
+ERROR Semàntic: La funció bubbleSort té 3paràmetres i en necessita 2.
+S'esperen: {array:INT} {INT} . S'ha trobat {BOOLEAN} {INT} {BOOLEAN} . Línea: 23
+ERROR Semántic, No existeix la funció que es crida. Línea: 23

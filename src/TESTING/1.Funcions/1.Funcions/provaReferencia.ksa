@@ -1,13 +1,18 @@
-proc prova(int array a, int dim){
+//Aquesta funció inicialitza l'array amb n per referència
+proc inicialitza(int array a, int dim,int n){
     for(int j <- 0; j < dim;j <- j + 1){
-        a[j] <- 1;
+        a[j] <- n;
     }
 }
+func int mult(int a,int b){
+    return a*b;
+}
+func int suma(){
+    return mult(2,3)+mult(3,4);
+}
+
 main(){
 int a <- int[5];
-int b <-int[5];
-for(int i <-0;i<5;i<-i+1){
-    a[i]<-2;
-}
-prova(a,5);
+inicialitza(a,5,1);
+int c<-suma();
 }

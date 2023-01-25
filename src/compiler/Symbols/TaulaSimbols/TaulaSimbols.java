@@ -47,7 +47,7 @@ public class TaulaSimbols {
             punterInici =0;
             //System.out.println("HE AFEGIT SIMBOL FUNCIO: "+id);
         }else{
-            if(consulta(id) != null){   //si ja existeix
+            if(consultaSimbol(id) != null){   //si ja existeix
                 //System.out.println("        simbol ja existeix"+id);
                 return 0;
             }
@@ -94,12 +94,26 @@ public class TaulaSimbols {
         }
         return null;
     }
+    /*
+    Mètode per a retornar el nombre de parametres que té una func
+     */
+    public ArrayList<Simbol> nParametresFunc(Simbol func){
+        int nivell=func.getNivell();
+        ArrayList<Simbol> params = new ArrayList<>();
+        for (int i = 1; i < ts.size(); i++) {
+            Simbol s=ts.get(i);
+            if(s.getNivell()==nivell && s.getTipus().equals(Tipus.PARAM)){
+                params.add(s);
+            }
+        }
+        return params;
+    }
 
     /*
     Mètode per a obtenir un Símbol, si no el troba retorna null.
     També ens serveix per a mirar si un Símbol ha estat creat.
-     */
-    public Simbol consulta(String identificador){
+    */
+    public Simbol consultaSimbol(String identificador){
         //si estam dedins una funció
         if(nivell != 0){
             for (int i = punterInici; i<ts.size();i++){

@@ -31,58 +31,57 @@ public class Main {
         Reader input = null;
 
         try {
-            if (args.length > 0) {
-                input = new FileReader(args[0]);
-//                if (!input.endsWith(".ksa")) {
-//                    System.err.println("-> el archivo del programa tiene que acabar en .ksa");
-//                    System.exit(0);
-//                }
-            } else {
-                //System.out.println("Escriu l'expressió que vols calcular (help; per ajuda):");
-                //System.out.print(">>> ");
-                ///Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova.txt
-                ///home/diegofes/GitHub/KSA_Compiler/src/TESTING/1.Funcions/prova.txt
-                //C:\Users\Jaume\Desktop\UIB\Cursos\TERCER\1r quatri\COMPILADORS\PRÀCTICA KSA\KSA_Compiler\src\TESTING\1.Funcions\prova.txt
-                //input = new FileReader("/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova2.txt");
-                //input = new FileReader("/Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/prova2.txt");
-                input = new FileReader("/Users\\marcc\\OneDrive\\Escritorio\\GitHub\\KSA_Compiler/src/TESTING/1.Funcions/1.Funcions/provaReferencia.ksa");
-                //Users\marcc\OneDrive\Escritorio\GitHub\KSA_Compiler
-                //input = new InputStreamReader(System.in);
-            }
-            
+            input = new FileReader("C:\\Users\\Jaume\\Desktop\\UIB\\Cursos\\TERCER\\1r quatri\\COMPILADORS\\PRÀCTICA KSA\\KSA_Compiler\\src\\TESTING\\1.Funcions\\1.Funcions\\bubbleSortError.ksa");
+
             FileWriter writerErrors = new FileWriter("errors.txt");
 
+            // LÈXIC
             Scanner scanner = new Scanner(input);
+            scanner.initFitxer();
             SymbolFactory sf = new ComplexSymbolFactory();
+
+            // SINTACTIC
             Parser parser = new Parser(scanner, sf);
             parser.parse();
+            scanner.tancaFitxer();
+
+            // SEMANTIC
             Semantic sem = parser.getComprovaTipus();
-
             ArrayList<String> errorsSem = sem.geterrorsSemantic();
-            //System.out.println("Semantic: "+errorsSem);
             ArrayList<String> errorsSint = parser.geterrorsSintactic();
-            //System.out.println("Sintactic: "+errorsSint);
 
+            // TAULA SIMBOLS
+            String ts = sem.getTs().toString();
+            FileWriter fitxerTaulaSimbols = new FileWriter("TaulaSimbols.txt");
+            fitxerTaulaSimbols.write(ts);
+            fitxerTaulaSimbols.close();
 
+            // CODI TRES ADRECES
             codiTresAdreces codi = null;
-            
             if(errorsSem.isEmpty() && errorsSint.isEmpty()) {
                 //Si no hi ha errors generam el codi
                 ArbreSintactic arbre = parser.getArbreSintac();
                 codi = arbre.generarCodiTresAdreces();
 
+                String TaulaVars = codi.getTv().toString();
+                FileWriter fitxerTV = new FileWriter("TaulaVariables.txt");
+                fitxerTV.write(TaulaVars);
+                fitxerTV.close();
+
+                String TaulaProcediments = codi.getTp().toString();
+                FileWriter fitxerTP = new FileWriter("TaulaProcediments.txt");
+                fitxerTP.write(TaulaProcediments);
+                fitxerTP.close();
+
                 String codiIntermedi = codi.toString();
-
                 FileWriter codiIntermediFile = new FileWriter("codiIntermedi.txt");
-
                 codiIntermediFile.write(codiIntermedi);
                 System.out.println(codiIntermedi);
                 codiIntermediFile.close();
-                
+
                 // CODI ENSSAMBLADOR
                 codi68k c = new codi68k("exe", codi);
                 c.generaAssembly();
-                       
 
             }else{
                 //Escriu errors al fitxer
@@ -108,7 +107,6 @@ public class Main {
                 writerErrors.close();
                System.err.println("Programa incompilable per errors"); 
             }
-          //  System.out.println("TAULA VARIABLES: "+codi.getTv());
 
         }catch(Exception e) {
             System.err.println("error: "+e);

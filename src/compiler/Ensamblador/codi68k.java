@@ -17,7 +17,7 @@ public class codi68k {
     private int numLoops = 0;
 
     public codi68k(String file, codiTresAdreces codi) throws IOException {
-        f = new Writer(file);
+        f = new Writer(file,".68K");
         this.parametres = new ArrayList<>();
         this.codi = codi;
     }
@@ -377,7 +377,15 @@ public class codi68k {
 
             // OPERACIONS INDEXACIÓ
             case INDVAL:
-                f.escriureFitxer("\tLEA.L " + instruccio.getOperadorEsquerra() + ",A0");
+                String str=instruccio.getOperadorEsquerra().getOperand();
+
+                //Cas global
+                if(str.charAt(str.length()-1)=='0'){
+                    f.escriureFitxer("\tLEA.L " + instruccio.getOperadorEsquerra() + ",A0");
+                }else{//cas subprograma
+                    f.escriureFitxer("\tMOVE.L " + instruccio.getOperadorEsquerra() + ",A0");
+                }
+                //f.escriureFitxer("\tLEA.L " + instruccio.getOperadorEsquerra() + ",A0");
                 f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta() + "),D0");
                 f.escriureFitxer("\tMOVE.L A0,D1");
                 f.escriureFitxer("\tADD.L A0,D0");
@@ -386,12 +394,12 @@ public class codi68k {
                 break;
 
             case INDASS:
-                String str=instruccio.getDesti();
+                String str2=instruccio.getDesti();
                 f.escriureFitxer("\tMOVEM.L D0-D2/A0,-(A7)");
                 f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta() + "),D0");
                 //cas programa principal
 
-                if(str.charAt(str.length()-1)=='0'){
+                if(str2.charAt(str2.length()-1)=='0'){
                     f.escriureFitxer("\tLEA.L " + instruccio.getDesti() + ",A0");
                 }else{//cas subprograma
                     f.escriureFitxer("\tMOVE.L " + instruccio.getDesti() + ",A0");
@@ -763,6 +771,14 @@ public class codi68k {
                 f.escriureFitxer("\tJSR e" + instruccio.getOperadorEsquerra().getOperand());
                 if (instruccio.getDesti()!=null){
                     f.escriureFitxer("\tMOVE.L (A2),(" + instruccio.getDesti() + ")");
+                }
+                //obtenim proc
+                Procediment proc =codi.getTp().getProcediment(instruccio.getOperadorEsquerra().getOperand());
+                int params=proc.getParametres().size();
+                System.out.println("PROCEDIMENT:"+proc.getNomProc()+",params: "+params);
+                //restablim l'ordre de la pila com estava
+                for (int i = 0; i < params; i++) {
+                    f.escriureFitxer("\tMOVE.L (A7)+,D7");
                 }
 
                 break;

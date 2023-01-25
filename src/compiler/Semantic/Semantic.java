@@ -47,7 +47,7 @@ public class Semantic {
     }
     
     public boolean gestPrint(SymbolLiteral literal){
-        Simbol s = ts.consulta(literal.toString());
+        Simbol s = ts.consultaSimbol(literal.toString());
         System.out.println(s.toString());
         TipusSub tipusSub = s.getTipusSub();
         Tipus tipus = s.getTipus();
@@ -57,41 +57,53 @@ public class Semantic {
             return true;
         }
     }
+    /*
+    Mètode per a comprovar que una crida amb paràmetres és correcta
+     */
+    public boolean paramCall(Simbol func, ArrayList<SymbolValor> values,int linea){
+        ArrayList<Simbol> llista=ts.nParametresFunc(func);//llista paràmetres que conté la funció
+        boolean error=false;
 
-//    public boolean paramCall(String iden, ArrayList<SymbolValor> values){
-//
-//        Simbol func = ts.consultaFunc(iden);
-////        ArrayList<TipusSub>tipussubparam= func.getTipusSubParam();
-////        ArrayList<Tipus> tipusparam= func.getTipusParam();
-//        System.out.println("    "+tipussubparam.size());
-//        if(values==null && tipusparam.size()>0){
-//            errors.add("ERROR Semàntic: La funció "+iden+" necesita arguments");
-//            return false;
-//        }
-//        ArrayList<SymbolValor> valoresParam = values;
-//        if(valoresParam.size()>tipusparam.size()){
-//            errors.add("ERROR Semàntic: Sobren arguments en la crida a la funció de "+iden+" ");
-//            return false;
-//        }else if(valoresParam.size()<tipusparam.size()){
-//            errors.add("ERROR Semàntic: Falten arguments en la crida a la funció de "+iden+" ");
-//            return false;
-//        }else{
-//            for (int i = 0; i < valoresParam.size(); i++) {
-//               Tipus tipusvalor = valoresParam.get(i).getTipus();
-//               TipusSub tipussubvalor = valoresParam.get(i).getTipusSub();
-//               if(tipusparam.get(i)!=tipusvalor|| tipussubparam.get(i)!=tipussubvalor){
-//                   System.out.println(tipusvalor+" "+tipusparam.get(i));
-//                   errors.add("ERROR Semàntic: El tipus dels parametres son incorrectesen la crida a la funció de "+iden);
-//                   return false;
-//               }
-//            }
-//        }
-//        for (int i = 0; i <valoresParam.size(); i++) {
-//                System.out.println("    parametros"     +valoresParam.get(i));
-//        }
-//        System.out.println(iden+"   "+tipusparam.size()+": "+valoresParam.size());
-//        return true;
-//    }
+        //Missatge de paràmetres esperats
+        String msg="";
+        for(int i=llista.size()-1;i>=0;i--){
+            msg+="{";
+            if(llista.get(i).getDimensio()>1){
+                msg+="array:";
+            }
+            msg+=llista.get(i).getTipusSub()+"} ";
+        }
+        //Missatge de paràmetres inserits
+        String msg2="";
+        for(int i=0;i<values.size();i++){
+            msg2+="{";
+            if(values.get(i).isIsarray()){
+                msg2+="array:";
+            }
+            msg2+=values.get(i).getTipusSub()+"} ";
+        }
+
+
+        //si s'han introduit el mateix nombre de paràmetresQ
+        if(values.size()==llista.size()){
+            for (int i = 0; i <llista.size(); i++) {
+                System.out.println("Esperat: "+llista.get(i).getTipusSub()+",POSAT: "+values.get(values.size()-1-i).getTipusSub());
+                if(values.get(values.size()-1-i).getTipusSub()!=llista.get(i).getTipusSub()){
+                    System.out.println("                ERROR: "+values.get(i).getTipusSub());
+                    error=true;
+                }
+            }
+            //si s'ha trobat error
+            if(error){
+                errors.add("ERROR Semàntic: s'esperen: "+msg+", s'ha trobat "+msg2+". Línea: "+linea);
+            }
+            return !error;
+        }else{//ja hi ha error
+            errors.add("ERROR Semàntic: La funció "+func.getIdAutoIncrement()+" té "+values.size()+"paràmetres i en necessita "+llista.size()+".\n" +
+                       "S'esperen: "+msg+". S'ha trobat "+msg2+". Línea: "+linea);
+            return false;
+        }
+    }
 
     public boolean isExprCorrecta(SymbolExpressioSimple expr, int posicio) {
         return expr.getTipusSubResultat() != null;
@@ -114,7 +126,7 @@ public class Semantic {
     }
 
     public boolean gestAsigDecl(String iden, SymbolVarInit varinit, int posicio) {
-        Simbol id = ts.consulta(iden);
+        Simbol id = ts.consultaSimbol(iden);
         TipusSub tipusSub = id.getTipusSub();
         Tipus tipus = id.getTipus();
 
@@ -183,7 +195,7 @@ public class Semantic {
         String iden = valor.getIden();
         SymbolVarInit varinit = operacio.getVarInit();
 
-        Simbol id = ts.consulta(iden);
+        Simbol id = ts.consultaSimbol(iden);
         TipusSub tipusSub = id.getTipusSub();
         Tipus tipus = id.getTipus();
 
@@ -298,7 +310,7 @@ public class Semantic {
     Passam identificador valor variable i true si és un element de un array i no un nom en si
      */
     public boolean gestIdArray(String iden, boolean b) {
-        Simbol id = ts.consulta(iden);
+        Simbol id = ts.consultaSimbol(iden);
         if (id != null) {
             TipusSub tipusSub = id.getTipusSub();
             Tipus tipus = id.getTipus();
@@ -321,5 +333,9 @@ public class Semantic {
 
     public ArrayList<String> geterrorsSemantic() {
         return errors;
+    }
+
+    public TaulaSimbols getTs() {
+        return ts;
     }
 }

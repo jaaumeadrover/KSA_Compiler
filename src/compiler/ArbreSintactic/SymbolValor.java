@@ -200,7 +200,7 @@ public class SymbolValor {
                 codi.generar(TipusInstruccionsCTA.PRODUCTE, o, new Operand("4", OperandsCTA.enterLit), temp);
                 //cas indexat  ->  s'utilitza per assignar valor a altra variable.
                 //temp2=iden[temp]
-                codi.generar(TipusInstruccionsCTA.INDVAL, new Operand(this.iden, OperandsCTA.variable), o, temp2);
+                codi.generar(TipusInstruccionsCTA.INDVAL, new Operand(this.iden+"_"+codi.getTp().getNumProcActius(), OperandsCTA.variable), o, temp2);
                 return temp2;//retornam variable temporal
 
             case 3:
@@ -231,7 +231,7 @@ public class SymbolValor {
             case 6:
                 //generar instruccio not del boolean
                 String operand1 = this.exprSimple.codiTresAdreces(codi);
-                Operand o3 = new Operand(operand1, OperandsCTA.boolea);
+                Operand o3 = new Operand(operand1+"_"+codi.getTp().getNumProcActius(), OperandsCTA.boolea);
                 String s = codi.addVariable(TipusSub.BOOLEAN, "t");
                 codi.generar(TipusInstruccionsCTA.NOT, o3, null, s);
                 return s;

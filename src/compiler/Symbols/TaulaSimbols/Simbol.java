@@ -66,6 +66,9 @@ public class Simbol {
     public TipusSub getTipusSub() {
         return tiopusSub;
     }
+    public int getDimensio(){
+        return this.dimensionalitat;
+    }
 
 //    public ArrayList<TipusSub> getTipusSubParam(){
 //        return this.tipusSubParam;

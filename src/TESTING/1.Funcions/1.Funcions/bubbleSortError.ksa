@@ -1,16 +1,8 @@
-func int hola(int a,int b){
-return a+b;
-}
-proc resta(int a){
-    int b<-hola(a,2);
-}
-
-
-
 proc bubbleSort(int array A, int n){
     int aux;
     for (int i <- 0; i < n - 1; i <- i + 1) {
         for (int j <- 0; j < (n- i) - 1; j <- j + 1) {
+           int c;
               if (A[j + 1] < A[j]) {
                 aux <- A[j + 1];
                 A[j + 1] <- A[j];
@@ -27,8 +19,7 @@ main(){
     a[2]<-1;
     a[3]<-8;
     a[4]<-2;
-    bubbleSort(a,5);
-}
+    //SOLUCIO :1, 2, 3, 6, 8
 
-//MOVE.L 8(A7),n
-//MOVE.L 8(A7),b
+    bubbleSort(true,5,true);
+}

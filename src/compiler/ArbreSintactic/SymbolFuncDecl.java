@@ -42,8 +42,8 @@ public class SymbolFuncDecl  {
                 stat.codiTresAdreces(codi);
             }
             String rtn_str=rtn.codiTresAdreces(codi);
-
-            codi.generar(TipusInstruccionsCTA.RTN,null,null,rtn_str);
+            Operand o2 = new Operand(iden, OperandsCTA.procediment);
+            codi.generar(TipusInstruccionsCTA.RTN,o2,null,rtn_str);
 
             codi.getTp().tancaProcediment();
 
@@ -56,7 +56,8 @@ public class SymbolFuncDecl  {
                 stat.codiTresAdreces(codi);
             }
             String rtn_str=rtn.codiTresAdreces(codi);
-            codi.generar(TipusInstruccionsCTA.RTN,null,null,rtn_str);
+            Operand o2 = new Operand(iden, OperandsCTA.procediment);
+            codi.generar(TipusInstruccionsCTA.RTN,o2,null,rtn_str);
 
             codi.getTp().tancaProcediment();
 

@@ -7,8 +7,8 @@ import java.io.IOException;
  public class Writer {
     private BufferedWriter f;
 
-    public Writer(String s) throws IOException{
-            f=new BufferedWriter(new FileWriter(s+".68K"));
+    public Writer(String s,String term) throws IOException{
+            f=new BufferedWriter(new FileWriter(s+term));
     }
     
     public void escriureFitxer(String txt) throws IOException{

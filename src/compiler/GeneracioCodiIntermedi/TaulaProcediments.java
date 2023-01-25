@@ -41,7 +41,7 @@ public class TaulaProcediments{
 
     public Procediment getProcediment(String nom){
         for (int i = 0; i < TP.size(); i++) {
-            System.out.println("GET PROCEDIMENT");
+
             if(TP.get(i).getNomProc().equals(nom)){
                 return TP.get(i);
             }
