@@ -5,6 +5,6 @@
 main() {
     int c;
     int a <- 2;
-    int b <- 1;
+    int b <- 4;
     c <- sumar(a,b);
 }

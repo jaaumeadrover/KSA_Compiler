@@ -19,5 +19,6 @@ main(){
 
     suma(a,b);
     //Aixó no funciona perque es una funció que retorna i has de assignar-ho a una variable
+    //(hauria de ser un proc)
     //Ex: c<-suma(a,b);
 }

@@ -1,0 +1,13 @@
+func bool comprova(int a, int b){
+int c;
+    if(a<b){
+    //Funció booleana no pot retornar un número
+        c<-2;
+    }else{
+        c<-3;
+    }
+    return c;
+}
+main(){
+    bool valor<-comprova(2,5);
+}

@@ -2,12 +2,15 @@ package compiler.Ensamblador;
 
 import compiler.GeneracioCodiIntermedi.Instruccio;
 import compiler.GeneracioCodiIntermedi.OperandsCTA;
+import compiler.GeneracioCodiIntermedi.Parametre;
 import compiler.GeneracioCodiIntermedi.Procediment;
 import compiler.GeneracioCodiIntermedi.Variable;
 import compiler.GeneracioCodiIntermedi.codiTresAdreces;
 import compiler.Symbols.TaulaSimbols.TipusSub;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class codi68k {
 
@@ -35,7 +38,6 @@ public class codi68k {
         f.escriureFitxer("\tORG $1000");
         f.escriureFitxer("START:");
 
-        //GETSIZE DE Tv?
         for (int i = 0; i < codi.getSize(); i++) {
             generaInstruccio(codi.Instruccions().get(i));
         }
@@ -71,7 +73,11 @@ public class codi68k {
                         f.escriureFitxer("\tMOVE.L (A7)+," + this.parametres.get(i)); // Fiquem el paràmetre a la pila
                     }
                     this.parametres.clear();
-                } else { // no es un procediment
+
+
+                } else {
+
+                    // no es un procediment
                     if (!instruccio.getOperadorEsquerra().equals("null")) {
 
                         if (instruccio.getOperadorEsquerra().getOperand().charAt(0)!='"') { // es una variable
@@ -79,7 +85,27 @@ public class codi68k {
                             if(!Character.isAlphabetic(instruccio.getOperadorEsquerra().getOperand().charAt(0))){//si enterlit
                                 f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorEsquerra().getOperand() + "," + instruccio.getDesti());
                             }else{
-                                f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra().getOperand() + ")," + instruccio.getDesti());//si variable
+                                Variable var=codi.getTv().getVariable(instruccio.getOperadorEsquerra().getOperand());
+                                //cas variable String
+                                if(var.getTipusSub()==TipusSub.STRING){
+                                    //GUARDAM DIRECCIÓ DE MEMÒRIOA DINS REGISTRE DIRECCIONS
+                                    f.escriureFitxer("\tLEA " + instruccio.getDesti() + ",A1");
+                                    f.escriureFitxer("\tLEA " + instruccio.getOperadorEsquerra().getOperand() + ",A2");
+
+                                    //bucle
+                                    f.escriureFitxer("bucle_"+instruccio.getOperadorEsquerra().getOperand()+":");
+                                    f.escriureFitxer("\tMOVE.B (A2)+,D1");
+                                    f.escriureFitxer("\tCMP.B #0,D1");
+                                    f.escriureFitxer("\tBEQ finalBucle_"+instruccio.getOperadorEsquerra().getOperand());
+                                    f.escriureFitxer("\tMOVE.B D1,(A1)+");
+                                    f.escriureFitxer("\tJMP bucle_"+instruccio.getOperadorEsquerra().getOperand());
+                                    f.escriureFitxer("finalBucle_"+instruccio.getOperadorEsquerra().getOperand()+":");
+                                    f.escriureFitxer("\tMOVE.B #0,(A1)");
+
+                                }else{
+                                    f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra().getOperand() + ")," + instruccio.getDesti());//si variable
+
+                                }
                             }
 
                         } else {
@@ -87,7 +113,6 @@ public class codi68k {
                             if (instruccio.getOperadorEsquerra().getOperand().charAt(0)=='"') {
                                 //GUARDAM DINS PILA A1
                                 f.escriureFitxer("\tMOVE.L A1,-(A7)");
-                                //String txt = instruccio.getOperadorEsquerra().getOperand().substring(1, longitud);
                                 f.escriureFitxer("\tLEA " + instruccio.getDesti() + ",A1");
                                 String txt = instruccio.getOperadorEsquerra().getOperand().replaceAll(Character.toString('"'), "");
                                 int longitud = txt.length();
@@ -380,7 +405,7 @@ public class codi68k {
                 String str=instruccio.getOperadorEsquerra().getOperand();
 
                 //Cas global
-                if(str.charAt(str.length()-1)=='0'){
+                if(!esParametre(str)){
                     f.escriureFitxer("\tLEA.L " + instruccio.getOperadorEsquerra() + ",A0");
                 }else{//cas subprograma
                     f.escriureFitxer("\tMOVE.L " + instruccio.getOperadorEsquerra() + ",A0");
@@ -397,11 +422,11 @@ public class codi68k {
                 String str2=instruccio.getDesti();
                 f.escriureFitxer("\tMOVEM.L D0-D2/A0,-(A7)");
                 f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta() + "),D0");
-                //cas programa principal
 
-                if(str2.charAt(str2.length()-1)=='0'){
+                //cas programa principal
+                if(!esParametre(str2)){
                     f.escriureFitxer("\tLEA.L " + instruccio.getDesti() + ",A0");
-                }else{//cas subprograma
+                }else{//cas array es parametre
                     f.escriureFitxer("\tMOVE.L " + instruccio.getDesti() + ",A0");
                 }
                 f.escriureFitxer("\tMOVE.L A0,D1");
@@ -410,6 +435,7 @@ public class codi68k {
                 f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),(A0)");
                 f.escriureFitxer("\tMOVEM.L (A7)+,D0-D2/A0");
                 break;
+
 
             // OPERACIONS DE BIFURCACIÓ
             case SKIP:
@@ -525,7 +551,7 @@ public class codi68k {
             case EQ:
                 //CAS EMMAGATZEMAR VALOR DINS VARIABLE (bool n <- 2 = 3  EN AQUEST EXEMPLE n VAL false)
                 //[EQ,a,b,t_x]
-                if (instruccio.getDesti().contains("t")) {
+                if (instruccio.getDesti().charAt(0)=='t') {
                     if (instruccio.getOperadorEsquerra().getTipus().equals(OperandsCTA.enterLit)) {
                         // CAS A,B dos entersLit
                         if (instruccio.getOperadorDreta().getTipus().equals(OperandsCTA.enterLit)) {
@@ -587,7 +613,6 @@ public class codi68k {
                     if (instruccio.getOperadorDreta().getTipus().equals(OperandsCTA.boolea)) {
                         f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorDreta().getOperand() + ",D1");
                     } else {
-                        System.out.println("                ERROR CONFUSIÓ VAR");
                         f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta().getOperand() + "),D1");
                     }
                     f.escriureFitxer("\tCMP.L  D1,D0");
@@ -599,54 +624,36 @@ public class codi68k {
                 break;
 
             case NE:
-                if (instruccio.getOperadorEsquerra().getTipus().equals(OperandsCTA.enterLit)) {
-                    // CAS A,B dos entersLit
-                    if (instruccio.getOperadorDreta().getTipus().equals(OperandsCTA.enterLit)) {
-                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorEsquerra().getOperand() + ",D0");
-                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorDreta().getOperand() + ",D1");
-                        f.escriureFitxer("\tCMP.L  D1,D0");
-                        f.escriureFitxer("\tBNE e_" + instruccio.getDesti());
-                        f.escriureFitxer("\tMOVE.L #0," + instruccio.getDesti());
-                        f.escriureFitxer("\tJMP ef_" + instruccio.getDesti());
-                        f.escriureFitxer("e_" + instruccio.getDesti() + ":");
-                        f.escriureFitxer("\tMOVE.L #-1," + instruccio.getDesti());//assignar true
-                        f.escriureFitxer("ef_" + instruccio.getDesti() + ":");//final
-                    } else { //CAS A enterLit, B variable
-                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorEsquerra().getOperand() + ",D0");
-                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta().getOperand() + "),D1");
-                        f.escriureFitxer("\tCMP.L  D1,D0");
-                        f.escriureFitxer("\tBNE e_" + instruccio.getDesti());
-                        f.escriureFitxer("\tMOVE.L #0," + instruccio.getDesti());
-                        f.escriureFitxer("\tJMP ef_" + instruccio.getDesti());
-                        f.escriureFitxer("e_" + instruccio.getDesti() + ":");
-                        f.escriureFitxer("\tMOVE.L #-1," + instruccio.getDesti());//assignar true
-                        f.escriureFitxer("ef_" + instruccio.getDesti() + ":");//final
-                    }
-
-                } else {
-                    //CAS A es variable,B es literal
-                    if (instruccio.getOperadorDreta().getTipus().equals(OperandsCTA.enterLit)) {
-                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra().getOperand() + "),D1");
-                        f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorDreta().getOperand() + ",D0");
-                        f.escriureFitxer("\tCMP.L  D1,D0");
-                        f.escriureFitxer("\tBNE e_" + instruccio.getDesti());
-                        f.escriureFitxer("\tMOVE.L #0," + instruccio.getDesti());
-                        f.escriureFitxer("\tJMP ef_" + instruccio.getDesti());
-                        f.escriureFitxer("e_" + instruccio.getDesti() + ":");
-                        f.escriureFitxer("\tMOVE.L #-1," + instruccio.getDesti());//assignar true
-                        f.escriureFitxer("ef_" + instruccio.getDesti() + ":");//final
-                    } else { // Cas A es variable, B es variable
-                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra().getOperand() + "),D0");
-                        f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta().getOperand() + "),D1");
-                        f.escriureFitxer("\tCMP.L  D1,D0");
-                        f.escriureFitxer("\tBNE e_" + instruccio.getDesti());
-                        f.escriureFitxer("\tMOVE.L #0," + instruccio.getDesti());
-                        f.escriureFitxer("\tJMP ef_" + instruccio.getDesti());
-                        f.escriureFitxer("e_" + instruccio.getDesti() + ":");
-                        f.escriureFitxer("\tMOVE.L #-1," + instruccio.getDesti());//assignar true
-                        f.escriureFitxer("ef_" + instruccio.getDesti() + ":");//final
-                    }
+                //Operador Esquerra
+                if(instruccio.getOperadorEsquerra().getTipus().equals(OperandsCTA.enterLit)){
+                    f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorEsquerra().getOperand() + ",D0");
+                }else{
+                    f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra().getOperand() + "),D0");
                 }
+
+                //Operador Dret
+                if(instruccio.getOperadorDreta().getTipus().equals(OperandsCTA.enterLit)){
+                    f.escriureFitxer("\tMOVE.L #" + instruccio.getOperadorDreta().getOperand() + ",D1");
+                }else{
+                    f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorDreta().getOperand() + "),D1");
+                }
+
+                //CAS EMMAGATZEMAR VARIABLES DINS TEMPORAL
+                if(instruccio.getDesti().charAt(0)=='t'){
+                    f.escriureFitxer("\tCMP.L D0,D1");
+
+                    f.escriureFitxer("\tBEQ e_" + instruccio.getDesti());
+                    f.escriureFitxer("\tMOVE.L #-1," + instruccio.getDesti());
+                    f.escriureFitxer("\tJMP ef_" + instruccio.getDesti());
+                    f.escriureFitxer("e_" + instruccio.getDesti() + ":");
+                    f.escriureFitxer("\tMOVE.L #0," + instruccio.getDesti());//assignar true
+                    f.escriureFitxer("ef_" + instruccio.getDesti() + ":");//final
+
+                }else{//CAS SALT DIRECTE
+                    f.escriureFitxer("\tCMP.L D0,D1");
+                    f.escriureFitxer("\tBNE " + instruccio.getDesti());
+                }
+
                 break;
             //GREATER EQUALS
             case GE:
@@ -757,7 +764,7 @@ public class codi68k {
                 //feim un recorregut per la taula de procediments per obtenir tots els parametres, començant per el final
                 Procediment p = this.codi.getTp().getProcediment(instruccio.getDesti());
                 for (int i = 0; i <=p.getParametres().size() - 1; i++) {
-//obtenim la posicio del parametre a la pila
+                //obtenim la posicio del parametre a la pila
                     int posPila = ((p.getParametres().size()-1 - i) * 4) + 4;
                     f.escriureFitxer("\tMOVE.L " + posPila + "(A7),"
                             + p.getParametres().get(i).getNom());
@@ -775,7 +782,6 @@ public class codi68k {
                 //obtenim proc
                 Procediment proc =codi.getTp().getProcediment(instruccio.getOperadorEsquerra().getOperand());
                 int params=proc.getParametres().size();
-                System.out.println("PROCEDIMENT:"+proc.getNomProc()+",params: "+params);
                 //restablim l'ordre de la pila com estava
                 for (int i = 0; i < params; i++) {
                     f.escriureFitxer("\tMOVE.L (A7)+,D7");
@@ -793,11 +799,8 @@ public class codi68k {
                 break;
 
             case PARAMS:
-                System.out.println("                            PARAM:s");
                 this.parametres.add(instruccio.getOperadorEsquerra().getOperand());
                 Variable var = codi.getTv().getVariable(instruccio.getOperadorEsquerra().getOperand());
-                System.out.println(instruccio.getOperadorEsquerra());
-                System.out.println("TaulaVariables: "+codi.getTv());
                 if(var.getDimensio()>1){
                     f.escriureFitxer("\tLEA " + instruccio.getOperadorEsquerra() + ",A0");
                     f.escriureFitxer("\tMOVE.L A0,-(A7)");
@@ -809,8 +812,13 @@ public class codi68k {
 
             case PARAMC:
                 f.escriureFitxer("\tMOVEM.L D0-D1/A0,-(A7)");
-                //LEA
-                f.escriureFitxer("\tLEA.L " + instruccio.getDesti() + ",A0");
+                if(!esParametre(instruccio.getDesti())){
+                    f.escriureFitxer("\tLEA.L " + instruccio.getDesti() + ",A0");
+
+                }else{
+                    f.escriureFitxer("\tMOVE.L " + instruccio.getDesti() + ",A0");
+
+                }
                 f.escriureFitxer("\tMOVE.L (" + instruccio.getOperadorEsquerra() + "),D0");
                 f.escriureFitxer("\tMOVE.L (A0,D0),D2");
                 f.escriureFitxer("\tMOVEM.L (A7)+,D0-D1/A0");
@@ -842,12 +850,37 @@ public class codi68k {
                 f.escriureFitxer("\tTRAP #15");
                 
                 //CONTROLAR TAMANY INTRODUIT DE STRING? AMB CMP D1.W
-                
+
                 //RETORNAM VALOR A VARIABLES ANTERIORS
                 f.escriureFitxer("\tMOVE.L (A7)+,A1");
                 f.escriureFitxer("\tMOVE.L (A7)+,D0");
                 break;
         }
+    }
+
+    private boolean esParametre(String s){
+        boolean parametre=false;
+        Pattern pattern = Pattern.compile("\\d+");
+        Matcher matcher = pattern.matcher(s);
+
+        String number="";
+        if (matcher.find()) {
+            number = matcher.group();
+        }
+        int num=Integer.parseInt(number);
+        Procediment proc2 = null;
+        if(num!=0){
+            proc2=codi.getTp().getProcediment(num-1);
+        }
+        if(proc2!=null){
+            ArrayList<Parametre> params2=proc2.getParametres();
+            for (int i = 0; i < params2.size(); i++) {
+                if(params2.get(i).getNom().equals(s)){
+                    parametre=true;
+                }
+            }
+        }
+        return parametre;
     }
 
 

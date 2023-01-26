@@ -9,17 +9,7 @@ alternativament
   java -classpath path_fins_java-cup-11b.jar java_cup.Main sintactic.cup
 
  **/
-
-/**
- * Assignatura 21780 - Compiladors
- * Estudis: Grau en Informàtica
- * Itinerari: Intel·ligència Artificial i Computació
- *
- * Professor: Pere Palmer
- */
 package compiler.sintactic;
-
-
 
 import java_cup.runtime.ComplexSymbolFactory.ComplexSymbol;
 import compiler.Symbols.TaulaSimbols.*;
@@ -37,9 +27,6 @@ import java.util.HashMap;
 
 class Parser;
 
-/**
- ** Aquí es podria posar un codi 'ad hoc' però en aquest cas no és necessari.
-**/
 parser code {:
     private TaulaSimbols ts=new TaulaSimbols();
     private Scanner scanner;
@@ -117,8 +104,6 @@ parser code {:
         public ArrayList<String> geterrorsSintactic(){
             return errorsSintactic;
         }
-
-
 :}
 
 //TERMINALS
@@ -138,8 +123,6 @@ terminal r_if, r_else, r_switch, r_case, r_default, r_function, r_procedure, r_r
          r_and, r_or, r_not, r_int, r_bool, r_main, r_string,r_input,r_print, r_array;
 
 non terminal M;
-
-
 
 non terminal  SymbolProgram   program;
 non terminal  SymbolDeclList  declList;
@@ -188,7 +171,6 @@ start with program;
 
 program ::= declList:declist r_main lparen rparen brop statementList:states brcl {: RESULT = new SymbolProgram(declist,states);
                                                                                     arbre.setRoot(RESULT);
-
                                                                                  :}
     ;
 
@@ -213,7 +195,6 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                                     comprovaTipus.addError("ERROR Semántic, la constant  "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
                                                                 }
                                                         } else{
-                                                            System.out.println("ERROR ELSE GESTASIGDECL");
                                                             RESULT=new SymbolVarDecl();
                                                         }:}
     |type:t id:iden varInit:varinit                    {:
@@ -228,7 +209,6 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                                     RESULT=new SymbolVarDecl();
                                                                   }
                                                                   }else{
-                                                                  System.out.println("ERROR ELSE GESTASIGDECL");
                                                                   RESULT=new SymbolVarDecl();
                                                                   }
                                                             }else{
@@ -242,7 +222,6 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                                         RESULT=new SymbolVarDecl();
                                                                     }
                                                                 } else{
-                                                                System.out.println("ERROR ELSE GESTASIGDECL");
                                                                     RESULT=new SymbolVarDecl();
                                                                 }
                                                             }
@@ -398,7 +377,6 @@ printStatement ::= r_print lparen literal:str rparen {:
                                                                 RESULT = new SymbolPrintStatement();
                                                             }
                                                         }else{
-                                                            System.out.print("soy string literal en el print");
                                                             RESULT = new SymbolPrintStatement(str);
                                                         }:}
 ;
@@ -461,12 +439,11 @@ valor::= id:iden                         {:
                                                   }
                                                   :}
     |subProgramCall:subprogram                      {:  Simbol s=ts.consultaFunc(subprogram.getID());
-                                                        System.out.println("ID:"+subprogram.getID());
                                                         p.clear();
                                                         if(s!=null){
                                                             RESULT=new SymbolValor(subprogram,s.getTipusSub());
                                                         }else{
-                                                            comprovaTipus.addError("ERROR Semántic, No existeix la funció que es crida. Línea: "+cur_token.left);
+                                                            //comprovaTipus.addError("ERROR Semántic, No existeix la funció que es crida. Línea: "+cur_token.left);
                                                             RESULT=new SymbolValor();
                                                         }
                                                         :}
@@ -481,7 +458,13 @@ valor::= id:iden                         {:
     |str:str                                         {:RESULT = new SymbolValor(str.toString(),true);:}
     ;
 
-array::=id:iden lop exprSimple:expr lclose {:RESULT=new SymbolArray(iden.toString(),expr);:}
+array::=id:iden lop exprSimple:expr lclose {:
+if(comprovaTipus.gestArray(iden.toString(),cur_token.left)){
+RESULT=new SymbolArray(iden.toString(),expr);}
+else{
+RESULT=new SymbolArray(iden.toString(),expr);
+}
+:}
 ;
 
 operacio::=op:op exprSimple:expr      {:RESULT = new SymbolOperacio(op,expr);:}
@@ -529,7 +512,7 @@ subProgramCall ::= id:iden lparen rparen            {:
                                                       if(s!=null){
                                                       //si necessita paràmetres
                                                         if(llista.size()>0){
-                                                            comprovaTipus.addError("ERROR Semántic: funció/procediment "+iden+" esperava aquests paràmetres: "+msg+". Linea: "+cur_token.left);
+                                                            comprovaTipus.addError("ERROR Semántic: la funció/procediment "+iden+" esperava aquests paràmetres: "+msg+". Linea: "+cur_token.left);
                                                             RESULT=new SymbolSubProgramCall();
                                                         }else{//si no necessita paràmetres
                                                             RESULT=new SymbolSubProgramCall(iden.toString(),!(s.getTipusSub().equals(TipusSub.NULL)),s.getTipusSub());
@@ -537,7 +520,7 @@ subProgramCall ::= id:iden lparen rparen            {:
 
                                                       }else{
                                                         //no existeix la funció cridada
-                                                        comprovaTipus.addError("ERROR Semántic, ela funció/procediment "+iden+" no esta declarat. Linea: "+cur_token.left);
+                                                        comprovaTipus.addError("ERROR Semántic,la funció/procediment "+iden+" no esta declarat. Linea: "+cur_token.left);
                                                         RESULT=new SymbolSubProgramCall();
                                                       }
                                                       :}
@@ -553,7 +536,7 @@ subProgramCall ::= id:iden lparen rparen            {:
 
                                                       }else{
                                                         //no existeix la funció cridada
-                                                        comprovaTipus.addError("ERROR Semántic, ela funció/procediment "+iden+" no esta declarat. Linea: "+cur_token.left);
+                                                        comprovaTipus.addError("ERROR Semántic, la funció/procediment "+iden+" no esta declarat. Linea: "+cur_token.left);
                                                         RESULT=new SymbolSubProgramCall();
                                                       } :}
 ;

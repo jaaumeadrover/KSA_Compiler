@@ -1,0 +1,39 @@
+func int operacions(int a, int b, int c){
+    int r;
+    switch (a+1){
+        case 1:
+            print("cas SUMA");
+            r <- b + c;
+        case 2:
+            print("cas RESTA");
+            r <- b - c;
+        case (2*5)+1:
+            //Cas que s'ha d'imprimir
+            print("cas MODUL");
+            r <- b % c;
+        case 4:
+            print("cas DIVISIO");
+            r <- b / c;
+        case 5:
+            print("case MULTIPLICACIO");
+            r <- b*c;
+        default:
+            print("res se compleix");
+    }
+
+    return r;
+}
+
+main() {
+    // Variable per seleccionar el tipus d'operacio
+    int op;
+    int x;
+    int y;
+    // Variable per guardar el resultat de la operacio
+    int z;
+    x <- 10;
+    y <- 3;
+    op <- 10;
+
+    z<-operacions(op, x, y);
+}

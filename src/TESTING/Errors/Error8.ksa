@@ -1,0 +1,8 @@
+main(){
+    //el bucle for ha de tenir una declaració obligatòria
+    //la condició intermitja ha de ser boolean, no int
+    for(;i+1;i<-i+1){
+        print("holaaaa");
+    }
+
+}

@@ -1,0 +1,9 @@
+func int resta(int x, int y){
+    int a;
+    //ERROR variable amb el mateix identificador
+    int x;
+    //Error sintactic no hi ha return
+}
+main(){
+    int c <- resta(2,3);
+}

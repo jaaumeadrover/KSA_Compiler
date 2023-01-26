@@ -7,12 +7,13 @@ proc inicialitza(int array a, int dim,int n){
 func int mult(int a,int b){
     return a*b;
 }
-func int suma(){
-    return mult(2,3)+mult(3,4);
+func int suma(int a){
+    return (mult(2,3)+mult(3,4)) + a;
 }
 
 main(){
-int a <- int[5];
-inicialitza(a,5,1);
-int c<-suma();
+    int a <- int[5];
+    //inicialitzam l'array amb 1
+    inicialitza(a,5,1);
+    int c<-suma(a[1]);
 }

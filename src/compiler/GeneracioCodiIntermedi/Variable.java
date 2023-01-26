@@ -66,6 +66,7 @@ public class Variable{
         this.procedure = procedure;
         this.dimensio=dimensio;
     }
+    
     //Constructor per a strings
     public Variable(String s, TipusSub tipusSub,int procedure,String value){
         this.idV = contadorVars;

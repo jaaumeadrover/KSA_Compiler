@@ -1,0 +1,13 @@
+proc errorSwitch(int a){
+    switch(a){
+        case 2:
+            print("La variable val 2");
+        case true:
+            //error no es del tipus de a (int)
+            print("La variable int val true?");
+
+    }
+}
+main(){
+    errorSwitch(2);
+}

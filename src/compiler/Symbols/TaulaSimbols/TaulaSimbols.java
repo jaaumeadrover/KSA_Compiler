@@ -1,15 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package compiler.Symbols.TaulaSimbols;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- AUTORS: Joan Balaguer, Marc Cañellas, Diego Bermejo i Jaume Adrover
+ AUTORS: ATA2
+ CLASSE: TaulaSimbols
+ FUNCIONALITAT:
+ implementa tota la estructura i funcionalitats de la taula de símbols,
+ encarregada d'emmagatzemar variables
  DATA CREACIÓ: 10/12/2023
  */
 public class TaulaSimbols {
@@ -36,19 +35,15 @@ public class TaulaSimbols {
     public int afegeixSimbol(String id, TipusSub tSub,Tipus t,int pos, int dimensio){
         if(t==Tipus.FUNC){//si símbol està dins una funció
             if(consultaFunc(id) != null){ //si no existeix la funció retorna 0
-                //System.out.println("simbol ja existeix"+id);
                 return 0;
             }
             Simbol sym=new Simbol(id,tSub, t, pos,nivell,dimensio);
             ta.put(nivell,sym);
             ts.add(punterInici,sym);
-            //System.out.println("        simbol afegit"+id);
             nivell=0;
             punterInici =0;
-            //System.out.println("HE AFEGIT SIMBOL FUNCIO: "+id);
         }else{
             if(consultaSimbol(id) != null){   //si ja existeix
-                //System.out.println("        simbol ja existeix"+id);
                 return 0;
             }
             if(t != Tipus.PARAM){
@@ -56,15 +51,12 @@ public class TaulaSimbols {
                 Simbol simbol = new Simbol(id,tSub, t, pos, nivell,dimensio);
                 if (nivell == 0 && !ta.isEmpty()) {
                     ts.add(ts.indexOf(ta.get(1)), simbol);
-                    //System.out.println("        simbol afegit"+id);
                 } else {
                     ts.add(simbol);
-                    //System.out.println("        simbol afegit"+id);
                 }
             }else{
                 Simbol simbol = new Simbol(id, tSub, t, pos, nivell,dimensio);
                 ts.add(punterInici, simbol);
-                //System.out.println("        simbol afegit"+id);
             }
         }
         return 1;
@@ -74,13 +66,11 @@ public class TaulaSimbols {
         nivellMax++;
         nivell=nivellMax;
         punterInici=ts.size();
-        //System.out.println("HE AFEGIT UN NIVELL A LA TAULA DE SÍMBOLS: "+nivellMax);
     }
 
     public Simbol consultaFunc(String identificador){
-        //si la taula d'àmbits no buida
+        //si la taula d'àmbits buida
         if(ta.isEmpty()){
-            //System.out.println("LA TAULA D'ÀMBITS ESTÀ BUIDA!");
             return null;
         }
 

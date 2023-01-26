@@ -16,8 +16,6 @@ public class SymbolRealOp  {
     }
 
     public TipusInstruccionsCTA codiTresAdreces(codiTresAdreces codi){
-        // generar codi 3 adreces amb els mètodes de la classe
-        System.out.println("REAL OP: "+realOp);
         return codiTresAdreces.transforma(realOp);
     }
 }

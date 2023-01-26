@@ -1,0 +1,25 @@
+proc bubbleSort(int array A,int n){
+    int aux;
+    for (int i <- 0; i < n - 1; i <- i + 1) {
+        for (int j <- 0; j < (n- i) - 1; j <- j + 1) {
+           int c;
+              if (A[j + 1] < A[j]) {
+                aux <- A[j + 1];
+                A[j + 1] <- A[j];
+                A[j] <- aux;
+              }
+        }
+    }
+}
+
+main(){
+    int a <- int[5];
+    a[0]<-3;
+    a[1]<-6;
+    a[2]<-1;
+    a[3]<-8;
+    a[4]<-2;
+    //SOLUCIO :1, 2, 3, 6, 8
+    //Aquesta crida a funció no és correcta ja que s'esperen 2 paràmetres
+    bubbleSort(a,5,true);
+}

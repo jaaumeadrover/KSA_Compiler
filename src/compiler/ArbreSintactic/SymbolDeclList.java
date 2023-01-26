@@ -21,14 +21,11 @@ public class SymbolDeclList  {
    SymbolDeclList llistaDecl;
 
     public SymbolDeclList(SymbolDecl decl,SymbolDeclList declList) {
-            //super("DeclList",null);
             this.llistaDecl=declList;
             this.declaracio=decl;
-
     }
 
     public SymbolDeclList() {
-        //System.out.println("Soc un Declist");
     }
 
     public void codiTresAdreces(codiTresAdreces codi){

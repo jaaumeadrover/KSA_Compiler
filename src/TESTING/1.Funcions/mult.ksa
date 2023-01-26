@@ -1,0 +1,11 @@
+func int mult(int a,int b){
+    return a*b;
+}
+
+main() {
+    int x<-2;
+    int y<-3;
+    int z;
+
+    z <- mult(x,y);
+}

@@ -31,8 +31,8 @@ public class Main {
         Reader input = null;
 
         try {
-            //input = new FileReader("C:\\Users\\Jaume\\Desktop\\UIB\\Cursos\\TERCER\\1r quatri\\COMPILADORS\\PRÀCTICA KSA\\KSA_Compiler\\src\\TESTING\\1.Funcions\\1.Funcions\\bubbleSortError.ksa");
-            input = new FileReader("C:\\Users\\marcc\\OneDrive\\Escritorio\\GitHub\\KSA_Compiler\\src\\TESTING\\1.Funcions\\provaReferencia.ksa");
+            //input = new FileReader("C:\\Users\\Jaume\\Desktop\\UIB\\Cursos\\TERCER\\1r quatri\\COMPILADORS\\PRÀCTICA KSA\\KSA_Compiler\\src\\TESTING\\1.Funcions\\1.Funcions\\Error4.ksa");
+            input = new FileReader("//Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/bubbleSort.ksa");
 
             FileWriter writerErrors = new FileWriter("errors.txt");
 
@@ -77,7 +77,7 @@ public class Main {
                 String codiIntermedi = codi.toString();
                 FileWriter codiIntermediFile = new FileWriter("codiIntermedi.txt");
                 codiIntermediFile.write(codiIntermedi);
-                System.out.println(codiIntermedi);
+
                 codiIntermediFile.close();
 
                 // CODI ENSSAMBLADOR

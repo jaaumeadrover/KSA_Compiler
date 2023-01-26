@@ -28,7 +28,6 @@ public class TaulaProcediments{
     public void afegirProc(Procediment proc){
         TP.add(proc);
         numProc++;
-        System.out.println("HE AFEGIT PROCEDIMENT:"+proc);
         this.numProcActius=numProc;
     }
 
@@ -48,6 +47,11 @@ public class TaulaProcediments{
         }
 
         return null;
+    }
+
+    public Procediment getProcediment(int i){
+
+        return TP.get(i);
     }
     public void tancaProcediment(){
         this.numProcActius=0;

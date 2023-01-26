@@ -45,7 +45,6 @@ public class SymbolSubProgramCall{
             //CALL funcio
             //si no hi ha paràmetres
             if(this.retorna()){
-                //temp = codi.addVariable(this.tipusSub,"t");
                 Operand op = new Operand(this.id, OperandsCTA.procediment);
                 codi.generar(TipusInstruccionsCTA.CALL,op ,null,temp);
                 return temp;
@@ -55,7 +54,7 @@ public class SymbolSubProgramCall{
             }
         }else{
             //si no hi ha paràmetres
-            // si retorna
+            //si retorna
             if(this.retorna()){
                 Operand op = new Operand(this.id, OperandsCTA.procediment);
                 codi.generar(TipusInstruccionsCTA.CALL,op ,null,temp);

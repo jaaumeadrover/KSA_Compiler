@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Simbol {
 
-    private String idAutoIncrement;
+    private String id;
     private TipusSub tiopusSub;
     private Tipus tipus;
     private int fila;
@@ -21,25 +21,16 @@ public class Simbol {
 
 
     public Simbol(String idAutoIncrement, TipusSub tipoSub, Tipus tipus, int fila, int nivell,int dimensio) {
-        this.idAutoIncrement = idAutoIncrement;
+        this.id = idAutoIncrement;
         this.tiopusSub = tipoSub;
         this.tipus = tipus;
         this.fila = fila;
         this.nivell = nivell;
         this.dimensionalitat=dimensio;
     }
-//    public Simbol(String idAutoIncrement, TipusSub tipoSub, Tipus tipus, int fila, int nivell,int dimensio) {
-//        this.idAutoIncrement = idAutoIncrement;
-//        this.tiopusSub = tipoSub;
-//        this.tipus = tipus;
-//        this.fila = fila;
-//        this.nivell = nivell;
-//        this.dimensionalitat=dimensio;
-//
-//    }
 
     public boolean equals(Simbol simbol){
-        return ( ( this.idAutoIncrement==simbol.getIdAutoIncrement() ) && ( this.nivell == simbol.getNivell() ) );
+        return ( ( this.id==simbol.getIdAutoIncrement() ) && ( this.nivell == simbol.getNivell() ) );
     }
 
     public int getFila(){
@@ -48,11 +39,11 @@ public class Simbol {
 
     @Override
     public String toString(){
-        return  tiopusSub.toString() + ": " + idAutoIncrement + ", tipo: " + tipus + ", nivel: " + nivell;
+        return  tiopusSub.toString() + ": " + id + ", tipo: " + tipus + ", nivel: " + nivell;
     }
 
     public String getIdAutoIncrement() {
-        return idAutoIncrement;
+        return id;
     }
 
     public Tipus getTipus() {
@@ -69,12 +60,4 @@ public class Simbol {
     public int getDimensio(){
         return this.dimensionalitat;
     }
-
-//    public ArrayList<TipusSub> getTipusSubParam(){
-//        return this.tipusSubParam;
-//    }
-//
-//    public ArrayList<Tipus> getTipusParam(){
-//        return this.tipusParam;
-//    }
 }

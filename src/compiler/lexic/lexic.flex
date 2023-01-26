@@ -52,7 +52,7 @@ La línia anterior és una alternativa a la indicació element a element:
 
 id		= [A-Za-z_][A-Za-z0-9_]*
 integer  = {sub}?[0-9][0-9]*
-str  = [\"](([A-Za-z0-9_)]) | ({blank}))*[\"]
+str  = [\"](. | ({blank}))*[\"]
 
 
 //Simbols Operadors
@@ -103,8 +103,8 @@ r_string    = string
 r_array     = array
 
 /* Altres */
-new_line = ([\n\r]|(\n\r))+
-blank = [ \t\r]+
+new_line = ([\n\r]|(\n\r))+ //bot de linea
+blank = [ \t\r]+ //espai en blanc
 
 /* Comentaris */
 r_comment = "//"([^\n])*
@@ -168,7 +168,7 @@ r_comment = "//"([^\n])*
 "true"                   { return symbol(ParserSym.bool,this.yytext());}
 "false"                  { return symbol(ParserSym.bool,this.yytext());}
 {bg}                     { return symbol(ParserSym.bg);}
-{str}                 { return symbol(ParserSym.str,this.yytext());}
+{str}                    { return symbol(ParserSym.str,this.yytext());}
 {r_string}               { return symbol(ParserSym.r_string);}
 
 {sm}                     { return symbol(ParserSym.sm);}
@@ -217,12 +217,7 @@ r_comment = "//"([^\n])*
 {id}                     { return symbol(ParserSym.id,this.yytext());}
 {integer}                { return symbol(ParserSym.integer,this.yytext());}
 
-
-
-
-
 {blank}                  {}
 {new_line}               {}
-//[^]                      { return symbol(ParserSym.error);  }
 
 /****************************************************************************/

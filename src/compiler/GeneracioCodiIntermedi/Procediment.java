@@ -30,9 +30,6 @@ public class Procediment{
 
     }
 
-
-
-
     // GETTERS
     public String getNomProc() {
         return this.nomProc;

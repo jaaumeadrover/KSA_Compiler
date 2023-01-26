@@ -1,0 +1,10 @@
+ func int modula(int a, int b) {
+    return b%a;
+}
+
+main() {
+    int c;
+    int a <- 2;
+    int b <- 10;
+    c <- modula(a,b);
+}

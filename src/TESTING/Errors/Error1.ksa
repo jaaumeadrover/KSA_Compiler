@@ -1,11 +1,15 @@
+//ERRORS DE CONSTANTS I TIPUS D'ASSIGNACIONS
+
 main(){
-    //se mostra aquest que es el primer error
+    //se mostra aquest que es el primer error, encara que apareguin tots al fitxer
     bool a<- 2;
 
     int b<-a;
     //Quan es solucioni assignant el tipus correcte
+
     //Botará l'error de la constant
     //La constant s'ha d'inicialitzar en la declaració
+
     const int c;
 
     //Si ja té un valor, saltará l'error de que no es pot modificar

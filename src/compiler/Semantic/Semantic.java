@@ -26,7 +26,6 @@ public class Semantic {
     public boolean gestExpr(SymbolExpressioSimple expr, TipusSub t, int posicio) {
 
         TipusSub tipoExpr = expr.getTipusSubResultat();
-        System.out.println("TIPUS EXPRESSIO: "+expr.getTipusSubResultat());
 
         // Cas 1: tipoExpr exp == NULL
         if (tipoExpr == null) {
@@ -35,20 +34,17 @@ public class Semantic {
             return false;
             // Cas 2: tipoExpr != t
         } else if (tipoExpr != t) {
-            System.out.println("ERROR: S'esperava trobar un " + t.toString() + " i s'ha trobat un " + tipoExpr.toString());
             errors.add("ERROR Semàntic: S'esperava trobar un " + t.toString() + " i s'ha trobat un " + tipoExpr.toString());
             //Ho afeigm al parser per identificar quin tipus de senténcia es incorrecte
             return false;
             // Cas 3: tipoExpr == t
         }
-        //System.out.println("CORRECTE");
         return true;
 
     }
     
     public boolean gestPrint(SymbolLiteral literal){
         Simbol s = ts.consultaSimbol(literal.toString());
-        System.out.println(s.toString());
         TipusSub tipusSub = s.getTipusSub();
         Tipus tipus = s.getTipus();
         if(tipusSub!=TipusSub.STRING){
@@ -87,9 +83,7 @@ public class Semantic {
         //si s'han introduit el mateix nombre de paràmetresQ
         if(values.size()==llista.size()){
             for (int i = 0; i <llista.size(); i++) {
-                System.out.println("Esperat: "+llista.get(i).getTipusSub()+",POSAT: "+values.get(values.size()-1-i).getTipusSub());
                 if(values.get(values.size()-1-i).getTipusSub()!=llista.get(i).getTipusSub()){
-                    System.out.println("                ERROR: "+values.get(i).getTipusSub());
                     error=true;
                 }
             }
@@ -99,7 +93,7 @@ public class Semantic {
             }
             return !error;
         }else{//ja hi ha error
-            errors.add("ERROR Semàntic: La funció "+func.getIdAutoIncrement()+" té "+values.size()+"paràmetres i en necessita "+llista.size()+".\n" +
+            errors.add("ERROR Semàntic: La funció "+func.getIdAutoIncrement()+" té "+values.size()+" paràmetres i en necessita "+llista.size()+". " +
                        "S'esperen: "+msg+". S'ha trobat "+msg2+". Línea: "+linea);
             return false;
         }
@@ -111,15 +105,11 @@ public class Semantic {
 
     public boolean gestFunc(TipusSub tfunc, SymbolReturn exprRtn) {
         SymbolExpressioSimple expresioReturn = exprRtn.getExpr();
-        //expresioReturn.setTsResultat();
         TipusSub tipoExpr = expresioReturn.getTipusSubResultat();
-        //System.out.println("TIPUS FUNCIÓ: "+tfunc+", TIPUS EXPR: "+tipoExpr);
 
         if (tipoExpr == tfunc) {
-            //System.out.println("CORRECTE");
             return true;
         } else {
-            //System.out.println("INCORRECTE");
             errors.add("ERROR Semántic, la funció no retorna un " + tfunc.toString());
             return false;
         }
@@ -132,30 +122,21 @@ public class Semantic {
 
         if (varinit.esBuit()) {
             //se declara pero no se inicialitza
-            if (tipus == Tipus.CONST) {
-                //Es una constant
+            if (tipus == Tipus.CONST) {//Es una constant
                 //ERROR
-                //System.out.println("La constant s'ha d'assignar quan es declara");
                 errors.add("ERROR Semántic, la constant s'ha d'assignar quan es declara. Linea: " + (posicio+1));
                 return false;
-            } else {
-                //Es una variable
+            } else {//Es una variable
                 return true;
             }
 
-        } else {
-            // Es declara i s'inicialitza
-            //Es array
-            if (varinit.isIsarray()) {
-                //S'inicia un array
+        } else {// Es declara i s'inicialitza
+            if (varinit.isIsarray()) {//Es array
                 SymbolArrayInit arrayInit = varinit.getArray();
-                //SymbolExpressioSimple exprArray = arrayInit.getExpr();
                 TipusSub arraytsub = arrayInit.getT();
                 return true;
-                //No es array
-            } else {
+            } else {//No es array
                 SymbolExpressioSimple expr = varinit.getExpr();
-                //expr.setTsResultat();
                 //Comprobar si es null
                 TipusSub exprTsub = expr.getTipusSubResultat();
                 if (exprTsub == null) {
@@ -169,10 +150,7 @@ public class Semantic {
                         if((varinit.getExpr().getOperacio().isEmpty())&&
                                 ((varinit.getExpr().getValor().getIndex() == 3) || (varinit.getExpr().getValor().getIndex() == 4))){
                             return true;
-
                         }else{
-                            //System.out.println("CONDICIO ERROR VARINIT.getExpr.getOperacio: "+(varinit.getExpr().getOperacio()==null));
-                            //System.out.println("CONDICIÓ ERROR INDEX:"+varinit.getExpr().getValor().getIndex());
                             errors.add("ERROR Semántic, La constant "+id+ " s'ha d'inicialitzar amb un valor enter BOOLEAN o INT. Linia: "+(posicio+1));
                             return false;
                         }
@@ -189,7 +167,7 @@ public class Semantic {
         }
         
     }
-
+    //Funció per a comprovar la correctessa d'una assignació
     public boolean gestAsig(SymbolValor valor, SymbolOperacio operacio) {
 
         String iden = valor.getIden();
@@ -210,14 +188,9 @@ public class Semantic {
                 errors.add("ERROR Semántic, la variable no es un array !!");
                 return false;
             }
-
             return true;
-            //No es array
-        } else {
-
+        } else {//No es array
             SymbolExpressioSimple expr = varinit.getExpr();
-            //System.out.println("varinit: ");
-            //expr.setTsResultat();
             //Comprobar si es null
             if (!varinit.esBuit()) {
                 TipusSub exprTsub = expr.getTipusSubResultat();
@@ -231,7 +204,6 @@ public class Semantic {
                     return true;
                 } else {
                     //ERROR
-                    //System.out.println("El tipus de l'assignació no es el mateix que el de la variable");
                     errors.add("ERROR Semántic, el tipus no coincideix");
                     return false;
                 }
@@ -252,15 +224,12 @@ public class Semantic {
         }
     }
     
-    /*
-    OPCIONAL: anar comptant els errors dels cases corresponents
-    */
+
     public boolean gestSwitch(SymbolExpressioSimple expr, SymbolLCases lcases) {
         TipusSub tsub = expr.getTipusSubResultat();
         boolean b = false;
 
         while (tsub == lcases.getCase().getExpr().getTipusSubResultat() && lcases != null) {
-            //System.out.println("iteracio gestSwitch");
             lcases = lcases.getLCases();
             if (lcases.getCase() == null) {
                 break;
@@ -284,10 +253,10 @@ public class Semantic {
     incloent una correcta inicialització,expressio intermitja i postExpression.
      */
     public boolean gestForLoop(SymbolForInit init, SymbolExpressioSimple expr, SymbolForPostExpression forPost) {
-        String msg_Errors[] = {"invàlida declaració.", "la expressió intermitja ha de ser una condicio!", "expressió final incorrecta"};
+        String msg_Errors[] = {"declaració obligatoria", "la expressió intermitja ha de ser una condicio!", "expressió final incorrecta"};
         boolean hiHaError = false;
         //Corregir inicialització
-        if (init.getVarDecl().isEmpty()) {
+        if (init==null) {
             errors.add("ERROR Semántic, al for " + msg_Errors[0]);
             hiHaError = true;
         }
@@ -316,7 +285,6 @@ public class Semantic {
             Tipus tipus = id.getTipus();
             //si la variable és un array i no un element, no es pot assignar
             if (tipus.equals(Tipus.ARRAY) && !b) {
-                //System.out.println("Estas assignant un array com una variable");
                 errors.add("ERROR Semántic, Estas assignant un array com una variable ");
                 return false;
             }
@@ -324,6 +292,15 @@ public class Semantic {
         } else {
             errors.add("ERROR Semántic, no existeix la variable: " + iden);
             return false;
+        }
+    }
+    public boolean gestArray(String iden,int pos){
+        Simbol id = ts.consultaSimbol(iden);
+        if((id.getDimensio()==0)){
+            errors.add("ERROR Semántic, la variable "+iden+" no es un array, llavors no es indexable. Linea " +(pos+1));
+            return false;
+        }else{
+            return true;
         }
     }
 

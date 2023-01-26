@@ -1,0 +1,9 @@
+//ERROR de parametre ja existeix
+proc procError(int a, int a){
+    print("Soc al procediment");
+}
+main(){
+//ERROR de a ja existeix
+    bool a;
+    bool a <- true;
+}

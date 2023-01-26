@@ -32,7 +32,7 @@ public class SymbolLiteral  {
             codi.generar(TipusInstruccionsCTA.COPIA,o,null, s);
             return s;
         }
-        return txt;
+        return txt+"_"+codi.getTp().getNumProcActius();
     }
 
 }

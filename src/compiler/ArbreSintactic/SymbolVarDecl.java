@@ -37,7 +37,6 @@ public class SymbolVarDecl {
     public String codiTresAdreces(codiTresAdreces codi) {
         String nom = this.id;
         String inicialitzacio = this.varInit.codiTresAdreces(codi);
-        System.out.println("VARINIT 3A:" + inicialitzacio);
         //fins que no declaram una variable no l'introduim en el codi de tres adreces
         if (this.varInit != null) {
             if (varInit.isIsarray()) {
@@ -48,7 +47,6 @@ public class SymbolVarDecl {
             }else {
                 if (esConst) {
                     this.varInit.getExpr().getValor();
-                    System.out.println("VALOR: " + this.varInit.getExpr().getValor());
                     int n = 0;
                     if (varInit.getExpr().getValor().toString().equals("false")) {
                         n = 0;
@@ -59,12 +57,10 @@ public class SymbolVarDecl {
                     }
                     nom = codi.addVariable(tipus, nom, n);
                 } else {
-                    System.out.println("                            NOM VARIABLE: " + id);
                     nom = codi.addVariable(tipus, nom);
                 }
             }
             if(inicialitzacio!=null) {
-                System.out.println("NOM VARIABLE: "+nom);
                 Operand o = new Operand(inicialitzacio, OperandsCTA.variable);
                 codi.generar(TipusInstruccionsCTA.COPIA, o, null,nom);
             }

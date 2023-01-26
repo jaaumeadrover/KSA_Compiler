@@ -1,0 +1,32 @@
+main() {
+    int x <- 1;
+    int y <- 2;
+    int z <- 3;
+
+    if (x > y){
+        print("Cas 1");
+    }else{
+        if(y >= z){
+            print("Cas 2");
+        }else{
+            if(z < x){
+                print("Cas 3");
+            }else{
+                if(z <= x){
+                    print("Cas 4");
+                }else{
+                    if(x != x){
+                        print("Cas 5");
+                    }else{
+                        if(y = y){
+                            //CAS que s'ha d'imprimir
+                            print("Cas 6");
+                        }else{
+                            print("No ha anat be cap cas");
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

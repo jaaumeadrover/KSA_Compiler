@@ -16,7 +16,6 @@ public class SymbolBoolOp {
     }
 
     public TipusInstruccionsCTA codiTresAdreces(codiTresAdreces codi){
-        // generar codi 3 adreces amb els mètodes de la classe
         return codiTresAdreces.transforma(bool);
     }
 }

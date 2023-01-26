@@ -2,6 +2,8 @@ main(){
     int a <- 0;
     int c <- 2;
     //Error de tipus al while
+    //seria el mateix error amb la sentencia IF
+    //També amb la expressio intermitja del for
     while(a+1){
         c<-c+1;
     }

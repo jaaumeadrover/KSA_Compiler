@@ -1,7 +1,13 @@
 package compiler.ArbreSintactic;
 import compiler.Symbols.TaulaSimbols.*;
 import compiler.GeneracioCodiIntermedi.*;
-
+/**
+ AUTORS: ATA2
+ CLASSE: ArbreSintactic
+ FUNCIONALITAT:
+ implementa tota la estructura de l'arbre
+ DATA CREACIÓ: 10/12/2023
+ */
 
 public class ArbreSintactic {
 

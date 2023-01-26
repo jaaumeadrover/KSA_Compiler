@@ -33,7 +33,6 @@ public class SymbolForIteration {
 
         String condicio = this.expressio.codiTresAdreces(codi);
 
-        //String condicio = this.expr.codiTresAdreces(codi);
         Operand o = new Operand("-1", OperandsCTA.boolea);
         Operand c = new Operand(condicio, OperandsCTA.boolea);
         codi.generar(TipusInstruccionsCTA.EQ, c, o, etiqueta2);

@@ -11,8 +11,6 @@ public class SymbolContCap {
     private String id;
     private String arr;
     private Tipus isarray;
-//    private ArrayList<TipusSub> tipusSub = new ArrayList<TipusSub>();
-  //  private ArrayList<Tipus> tipus = new ArrayList<Tipus>();
 
     public SymbolContCap(TipusSub t, String arr, String id){
         this.t=t;
@@ -20,11 +18,7 @@ public class SymbolContCap {
         this.id=id;
         if(arr==null){
             this.isarray = Tipus.VAR;
-            //this.tipus=tipus;
-            //this.tipusSub=tipusSub;
         }else{
-           // this.tipus=tipus;
-            //this.tipusSub=tipusSub;
             this.isarray=Tipus.ARRAY;
         }
     }
@@ -36,28 +30,16 @@ public class SymbolContCap {
         this.id=id;
         if(arr==null){
             this.isarray= Tipus.VAR;
-            //this.tipus=tipus;
-            //this.tipusSub=tipusSub;
         }else{
-           //this.tipus=tipus;
-            //this.tipusSub=tipusSub;
             this.isarray=Tipus.ARRAY;
         }
     }
-
-  //  public ArrayList<Tipus> getTipusParam() {
-  //      return tipus;
-   // }
-    //public ArrayList<TipusSub> getTipusSubParam(){
-   //     return tipusSub;
-  //  }
 
     public TipusSub getTipusSub() {
         return t;
     }
 
     public void codiTresAdreces(codiTresAdreces codi){
-        // Generar codi tres adreces amb els mètodes
         codi.addParametre(id,t,isarray);
         if(contCap!=null){
             contCap.codiTresAdreces(codi);

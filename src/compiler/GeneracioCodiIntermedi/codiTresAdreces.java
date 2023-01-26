@@ -66,8 +66,6 @@ public class codiTresAdreces{
             }
             return tv.novaVariable(id,t, tp,false,1,0,null);
         }
-        
-        //return tv.novaVariable(id,t, tp,false,1,0,null);
     }
     
     //MÈTODE PER A AFEGIR UNA CONSTANT
@@ -120,7 +118,6 @@ public class codiTresAdreces{
         codi.addAll(constant);
         constant.clear();
     }
-    //traduirOperacio a operador??
 
     public TipusSub getTipusOperacio(Operacions op){
         if (op == Operacions.MUL || op == Operacions.DIV || op == Operacions.ADD || op == Operacions.SUB) {

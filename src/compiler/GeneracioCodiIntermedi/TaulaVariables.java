@@ -126,6 +126,8 @@ public class TaulaVariables {
         }
         return false;
     }
+
+
     public boolean existeix(String nom) {
 
         if (TV.isEmpty()) {
@@ -138,6 +140,19 @@ public class TaulaVariables {
                 }
             }
             return false;
+        }
+    }
+
+    public Variable getVariable(String nom){
+        if (TV.isEmpty()) {
+            return null;
+        } else {
+            for (int i = 0; i < TV.size(); i++) {
+                if (nom.equals(TV.get(i).getNom())) {
+                    return TV.get(i);
+                }
+            }
+            return null;
         }
     }
 
@@ -162,21 +177,17 @@ public class TaulaVariables {
     /*
         Mètode que ens retorna la variable desitjada, passada per parametre.
      */
-    public Variable getVariable(String nom) {
+    public Variable getVar(String nom) {
         int div = nom.lastIndexOf("_");
         if (div >= 0) {
-            System.out.println("div>=0");
             int capa = Integer.parseInt(nom.substring(div + 1));
-            System.out.println("CAPA: "+capa);
             String n = nom.substring(0, div);
             for (int i = 0; i < TV.size(); i++) {
-                System.out.println("nom:"+TV.get(i).getNom()+",proc:"+TV.get(i).getProcedure());
                 if (TV.get(i).getNom().equals(nom) && TV.get(i).getProcedure() == capa) {
                     return TV.get(i);
                 }
             }
         } else {
-            System.out.println("div<0");
             for (int i = 0; i < TV.size(); i++) {
                 if (TV.get(i).getNom().equals(nom)) {
                     return TV.get(i);
@@ -195,17 +206,9 @@ public class TaulaVariables {
             Variable v = TV.get(i);
             // Cas on la variable no té processos actius (no s'està utilitzant)
             if (v.getNom().equals(nom) && v.getProcedure() == 0) {
-//                if(v.getTemp()){
-//                    return nom;
-//                }
                 return nom + "_" + 0;
-
                 // Cas on la variable té processos actius (s'està utilitzant)
             } else if (v.getNom().equals(nom) && v.getProcedure() == TP.getNumProcActius()) {
-//                if(v.getTemp()){
-//                    // si la variable és temporal tan sols retornam el nom
-//                    return nom;
-//                }
                 //si no és temporal retornam el nom amb el número de processos actius
                 return nom + "_" + TP.getNumProcActius();
             }

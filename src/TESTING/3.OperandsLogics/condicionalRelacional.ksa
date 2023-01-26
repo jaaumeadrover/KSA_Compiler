@@ -1,0 +1,17 @@
+main() {
+    int x <- 1;
+    int y <- 2;
+    //int z <- 3;
+    bool c <- x != 1;
+
+    if (x!=1){
+        print("IF");
+    }else{
+        print("ELSE 1 ");
+        if(c){
+            print("IF 2 ");
+        }else{
+            print("ELSE 2 ");
+        }
+    }
+}

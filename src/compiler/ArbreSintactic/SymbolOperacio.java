@@ -28,16 +28,12 @@ public class SymbolOperacio {
         this.varInit = simbol;
 
         if (!simbol.esBuit()) {
-            //System.out.println("CONSTRUCTOR VARINIT NO BUIT");
             this.esAssignacio = true;
             if (simbol.getExpr()!=null) {
                  this.tipusSBAnterior = simbol.getExpr().getTipusSubResultat();
             }else{
                     
             }
-            //else
-            //Tipus->ARRAY
-            //valor.Tipus==Tipus.ARRAY;
         } else {
             this.isEmpty = true;
         }
@@ -52,8 +48,7 @@ public class SymbolOperacio {
         setTsResultat();
     }
 
-    /*
-    Això s'hauria de fer al semàntic????
+    /*s
     VERIFICAR SymbolOperació.
      */
     private void setTsResultat() {
@@ -120,7 +115,7 @@ public class SymbolOperacio {
             return op;
             // Cas VARINIT
         } else {
-            return null; // PER REVISAR
+            return null;
         }
     }
 

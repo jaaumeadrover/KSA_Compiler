@@ -1,0 +1,28 @@
+main(){
+    string uno <- "Bones tardes, escriu algo: ";
+    string dos <- "Bon dia, escriu algo:: ";
+    int x <- 2;
+    string resultat1;
+    string resultat2;
+
+    //ha de entrar al primer case y mostrar el primer string
+    switch (x){
+        case 1:
+            print(uno);
+        case 2:
+            print(dos);
+    }
+    x <- 1;
+    resultat1 <- input();
+    switch (x){
+        case 1:
+            print(uno);
+        case 2:
+            print(dos);
+    }
+    resultat2 <- input();
+    print(resultat1);
+    print(" ");
+    print(resultat2);
+
+}

@@ -59,7 +59,6 @@ public class SymbolValor {
     public SymbolValor(Object integer) {
         inte = Integer.parseInt(integer.toString()); //passam text a int
         iden = integer.toString();
-        //System.out.println("Soc un integer: "+iden);
         tipusSub = TipusSub.INT;
         this.index = 3;
     }
@@ -75,7 +74,6 @@ public class SymbolValor {
             this.b = false;
             this.iden = "false";
         }
-        //System.out.println("He utilitzat el constructor de boolean!");
         this.tipusSub = TipusSub.BOOLEAN;
         this.index = 4;
     }
@@ -182,9 +180,7 @@ public class SymbolValor {
 
             case 2:
                 //GAS ARRAYS
-
                 //variable_temporal=(x-1)*(MidaTipusArray);
-
                 //NOVA VARIABLE TEMPORAL
                 String temp2 = codi.addVariable(TipusSub.INT, "t");
                 String temp = this.array.codiTresAdreces(codi);
@@ -195,7 +191,6 @@ public class SymbolValor {
                 Operand o = new Operand(temp, OperandsCTA.variable);
                 //restam 1 a l'index
                 //TEMP RETORNA VARIABLE i -> hauria d ser variable TEMPORAL
-                //codi.generar(TipusInstruccionsCTA.RESTA, o, new Operand("1", OperandsCTA.constant), temp);//temp=temp-1
                 //multiplicam l'índex
                 codi.generar(TipusInstruccionsCTA.PRODUCTE, o, new Operand("4", OperandsCTA.enterLit), temp);
                 //cas indexat  ->  s'utilitza per assignar valor a altra variable.
@@ -205,7 +200,6 @@ public class SymbolValor {
 
             case 3:
                 //generar codi de un integer
-
                 //guardar en variable temporal int
                 String temp1 = codi.addVariable(TipusSub.INT, "t");
 
@@ -236,7 +230,7 @@ public class SymbolValor {
             case 6:
                 //generar instruccio not del boolean
                 String operand1 = this.exprSimple.codiTresAdreces(codi);
-                Operand o5 = new Operand(operand1+"_"+codi.getTp().getNumProcActius(), OperandsCTA.boolea);
+                Operand o5 = new Operand(operand1, OperandsCTA.boolea);
                 String s = codi.addVariable(TipusSub.BOOLEAN, "t");
                 codi.generar(TipusInstruccionsCTA.NOT, o5, null, s);
                 return s;

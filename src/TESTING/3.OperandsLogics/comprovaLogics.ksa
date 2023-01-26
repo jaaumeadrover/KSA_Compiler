@@ -2,7 +2,7 @@
 main() {
     bool x <- true;
     bool y <- false;
-    bool z <- false;
+    bool z <- 3 = 2;
     int prova <- 3;
     bool h<-z;
     string hola <- "hola";
@@ -10,6 +10,6 @@ main() {
     if (((not(y) and x) or z) or true){
         print("Veritat");
     }else{
-        print("Mentira");
+        print("Mentida");
     }
 }
