@@ -31,7 +31,7 @@ public class Main {
         Reader input = null;
 
         try {
-            //input = new FileReader("C:\\Users\\Jaume\\Desktop\\UIB\\Cursos\\TERCER\\1r quatri\\COMPILADORS\\PRÀCTICA KSA\\KSA_Compiler\\src\\TESTING\\1.Funcions\\1.Funcions\\Error4.ksa");
+            //EN cas d'utilitzar windows utilitzar aquesta nomenclatura per al path --> EXEMPLE: "C:\\Users\\Jaume\\Desktop\\UIB\\Cursos\\TERCER\\1r quatri\\COMPILADORS\\PRÀCTICA KSA\\KSA_Compiler\\src\\TESTING\\1.Funcions\\1.Funcions\\Error4.ksa"
             input = new FileReader("//Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/bubbleSort.ksa");
 
             FileWriter writerErrors = new FileWriter("errors.txt");
