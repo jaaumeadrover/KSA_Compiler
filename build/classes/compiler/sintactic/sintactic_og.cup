@@ -175,10 +175,10 @@ program ::= declList:declist r_main lparen rparen brop statementList:states brcl
     ;
 
 //DECLARACIONS
-declList ::= declList:declList decl:decl {:RESULT=new SymbolDeclList(decl,declList);:} //NO FA FALTA
+declList ::= declList:declList decl:decl {:RESULT=new SymbolDeclList(decl,declList);:}
     |                      {:RESULT=new SymbolDeclList();:}
     ;
-decl ::= varDecl:var smcol    {:RESULT = new SymbolDecl(var,null,null);:}  //NO FA FALTA
+decl ::= varDecl:var smcol    {:RESULT = new SymbolDecl(var,null,null);:}
     | funcDecl:func            {:RESULT = new SymbolDecl(null,func,null);:}
     | procDecl:proc            {:RESULT = new SymbolDecl(null,null,proc);:}
     ;
