@@ -18,6 +18,7 @@ import java_cup.runtime.*;
 import java_cup.runtime.ComplexSymbolFactory.ComplexSymbol;
 
 import compiler.sintactic.ParserSym;
+import java.util.ArrayList;
 
 %%
 /** **
@@ -52,7 +53,7 @@ La línia anterior és una alternativa a la indicació element a element:
 
 id		= [A-Za-z_][A-Za-z0-9_]*
 integer  = {sub}?[0-9][0-9]*
-str  = [\"](. | ({blank}))*[\"]
+str  = [\"]([A-Za-z_] | ({blank}))*[\"]
 
 
 //Simbols Operadors
@@ -117,10 +118,13 @@ r_comment = "//"([^\n])*
        aquest cas potser no és del tot necessari.
      ***/
     FileWriter fitxerTokens;
+    FileWriter fitxerErrors;
+    private ArrayList<String> errors = new ArrayList<>();
 
-    public void initFitxer()throws IOException{
+    public void initFitxer(FileWriter errors)throws IOException{
          // Cream el fitxer de tokens
          fitxerTokens = new FileWriter("tokens.txt");
+         fitxerErrors=errors;
     }
 
     public void tancaFitxer()throws IOException{
@@ -150,6 +154,15 @@ r_comment = "//"([^\n])*
             fitxerTokens.write(s.toString() + "\n");
             return s;
     }
+
+    private void afegirError(String str,int linea) throws IOException{
+        String err="Error lèxic: token: "+str+", línea: "+linea+"\n";
+        fitxerErrors.write(err);
+        System.err.println(err);
+        System.out.println("error afegit");
+        System.exit(0);
+    }
+
 %}
 
 /****************************************************************************/
@@ -220,4 +233,6 @@ r_comment = "//"([^\n])*
 {blank}                  {}
 {new_line}               {}
 
+/* Gestió errors*/
+[^]         {afegirError(this.yytext(), yyline); }
 /****************************************************************************/

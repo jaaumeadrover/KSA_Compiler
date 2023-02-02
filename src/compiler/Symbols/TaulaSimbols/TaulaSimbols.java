@@ -32,12 +32,12 @@ public class TaulaSimbols {
         Params: id,tipus variable, tipus subàmbit, posició.
         Return: 0 si no ha funcionat, 1 si funciona
      */
-    public int afegeixSimbol(String id, TipusSub tSub,Tipus t,int pos, int dimensio){
+    public int afegeixSimbol(String id, TipusSub tSub,Tipus t,int pos, int dimensio,boolean init){
         if(t==Tipus.FUNC){//si símbol està dins una funció
             if(consultaFunc(id) != null){ //si no existeix la funció retorna 0
                 return 0;
             }
-            Simbol sym=new Simbol(id,tSub, t, pos,nivell,dimensio);
+            Simbol sym=new Simbol(id,tSub, t, pos,nivell,dimensio,init);
             ta.put(nivell,sym);
             ts.add(punterInici,sym);
             nivell=0;
@@ -48,14 +48,14 @@ public class TaulaSimbols {
             }
             if(t != Tipus.PARAM){
                 //cas variable/array
-                Simbol simbol = new Simbol(id,tSub, t, pos, nivell,dimensio);
+                Simbol simbol = new Simbol(id,tSub, t, pos, nivell,dimensio,init);
                 if (nivell == 0 && !ta.isEmpty()) {
                     ts.add(ts.indexOf(ta.get(1)), simbol);
                 } else {
                     ts.add(simbol);
                 }
             }else{
-                Simbol simbol = new Simbol(id, tSub, t, pos, nivell,dimensio);
+                Simbol simbol = new Simbol(id, tSub, t, pos, nivell,dimensio,init);
                 ts.add(punterInici, simbol);
             }
         }

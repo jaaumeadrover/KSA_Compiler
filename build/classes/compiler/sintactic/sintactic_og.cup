@@ -36,7 +36,7 @@ parser code {:
 
     private ArrayList<SymbolValor> p = new ArrayList<SymbolValor>();
     //CodiTresAdreces codi3A;
-    ArrayList<String> paramCrida = new ArrayList<String>();
+
     /*
     public Parser(Scanner scanner){
         this.scanner = scanner;
@@ -185,7 +185,7 @@ decl ::= varDecl:var smcol    {:RESULT = new SymbolDecl(var,null,null);:}
 //DECLARACIÓ VARIABLES
 varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                         //DECLARACIÓ CONSTANT
-                                                        int error = ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.CONST, 0, 0);
+                                                        int error = ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.CONST, 0, 0,true);
 
                                                         if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                             if(error==1){
@@ -199,10 +199,9 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                         }:}
     |type:t id:iden varInit:varinit                    {:
                                                         if(varinit.isIsarray()){
-                                                                int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0,varinit.getArray().getInteger());
+                                                                int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.ARRAY,0,varinit.getArray().getInteger(),!varinit.esBuit());
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                                     if(error==1){
-
                                                                         RESULT=new SymbolVarDecl(false,t.getTipusSub(),iden.toString(),varinit);
                                                                   }else{
                                                                     comprovaTipus.addError("ERROR Semántic, la variable array "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
@@ -213,7 +212,7 @@ varDecl ::=  r_const type:t id:iden varInit:varinit     {:
                                                                   }
                                                             }else{
 
-                                                                int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.VAR,0,0);
+                                                                int error = ts.afegeixSimbol(iden.toString(),t.getTipusSub(), Tipus.VAR,0,0,!varinit.esBuit());
                                                                 if(comprovaTipus.gestAsigDecl(iden.toString(),varinit,cur_token.left)){
                                                                     if (error==1){
                                                                         RESULT=new SymbolVarDecl(false,t.getTipusSub(),iden.toString(),varinit);
@@ -256,7 +255,7 @@ funcDecl ::= r_function M type:t  id:iden funcCap:funcCap brop statementList:sta
 
                                                                                         RESULT=new SymbolFuncDecl(t.getTipusSub(), iden.toString(), stats, rtn,funcCap);
 
-                                                                                        ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.FUNC, 0,0);
+                                                                                        ts.afegeixSimbol(iden.toString(), t.getTipusSub(), Tipus.FUNC, 0,0,true);
                                                                                     }else{
                                                                                         RESULT=new SymbolFuncDecl();
                                                                                     }
@@ -274,7 +273,7 @@ procDecl ::= r_procedure M id:iden funcCap:funcCap brop statementList:stats brcl
 if(s==null){
     RESULT =new SymbolProcDecl(iden.toString(), stats,funcCap);
 
-    ts.afegeixSimbol(iden.toString(), TipusSub.NULL, Tipus.FUNC, 0,0);
+    ts.afegeixSimbol(iden.toString(), TipusSub.NULL, Tipus.FUNC, 0,0,true);
 }else{
     comprovaTipus.addError("ERROR Semántic, el procediment "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
     RESULT=new SymbolProcDecl();
@@ -285,7 +284,7 @@ ContCap ::= lparen type:t pars:arr id:iden              {:      int dimensio=0;
                                                                 dimensio=2;
                                                              }
 
-                                                             int error= ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,dimensio);
+                                                             int error= ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,dimensio,true);
                                                              if(error==1){
                                                                 RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString());
                                                              }else{
@@ -293,7 +292,7 @@ ContCap ::= lparen type:t pars:arr id:iden              {:      int dimensio=0;
                                                                 RESULT = new SymbolContCap(t.getTipusSub(), arr.getString(), iden.toString());
                                                              }
                                                              :}//tancam parentesis i definim els paràmetres
-    | ContCap:contcap com  type:t pars:arr id:iden          {:int error =  ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0);
+    | ContCap:contcap com  type:t pars:arr id:iden          {:int error =  ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0,true);
                                                             if(error==1){
                                                                //tips.add(t.getTipusSub());
                                                                //if(arr.getString()!=null){
@@ -370,10 +369,21 @@ inputStatement ::=  r_input lparen rparen {:RESULT = new SymbolInputStatement();
 
 printStatement ::= r_print lparen literal:str rparen {:
                                                         if(str.isVariable()){
-                                                            if(comprovaTipus.gestPrint(str)){
-                                                                RESULT = new SymbolPrintStatement(str);
-                                                            }else{
-                                                                comprovaTipus.addError("ERROR Semàntic, la variable  "+str.toString()+" al print no es del tipus string. Linea: "+(cur_token.left+1));
+                                                        Simbol s=ts.consultaSimbol(str.toString());
+                                                            if(s!=null){
+                                                                    if(!s.esInit()){
+                                                                        comprovaTipus.addError("ERROR Semàntic, la variable  "+str.toString()+" al print no te cap valor. Linea: "+(cur_token.left+1));
+                                                                        RESULT=new SymbolPrintStatement();
+                                                                    }else{
+                                                                        if(comprovaTipus.gestPrint(str)){
+                                                                            RESULT = new SymbolPrintStatement(str);
+                                                                        }else{
+                                                                            comprovaTipus.addError("ERROR Semàntic, la variable  "+str.toString()+" al print no es del tipus string. Linea: "+(cur_token.left+1));
+                                                                            RESULT = new SymbolPrintStatement();
+                                                                        }
+                                                                    }
+                                                           }else{
+                                                                comprovaTipus.addError("ERROR Semàntic, la variable  "+str.toString()+" al print no existeix. Linea: "+(cur_token.left+1));
                                                                 RESULT = new SymbolPrintStatement();
                                                             }
                                                         }else{

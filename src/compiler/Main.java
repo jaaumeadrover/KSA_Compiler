@@ -32,15 +32,30 @@ public class Main {
 
         try {
             //EN cas d'utilitzar windows utilitzar aquesta nomenclatura per al path --> EXEMPLE: "C:\\Users\\Jaume\\Desktop\\UIB\\Cursos\\TERCER\\1r quatri\\COMPILADORS\\PRÀCTICA KSA\\KSA_Compiler\\src\\TESTING\\1.Funcions\\1.Funcions\\Error4.ksa"
-            input = new FileReader("//Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/bubbleSort.ksa");
+            if(args.length>0){
+                try {
+                    input = new FileReader(args[0]);
+                    //input=new FileReader("C:\\Users\\Jaume\\Desktop\\UIB\\Cursos\\TERCER\\1r quatri\\COMPILADORS\\PRÀCTICA KSA\\KSA_Compiler\\src\\compiler\\prova.ksa");
+                }catch(Exception e){
+                    System.err.println("El fitxer "+args[0]+" té un error "+e);
+                }
+            }else{
+                System.err.println("Insereix un nom de fitxer");
+                System.exit(0);
+            }
+            //input = new FileReader("//Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/bubbleSort.ksa");
 
-            FileWriter writerErrors = new FileWriter("errors.txt");
+            FileWriter writerErrors = new FileWriter(args[0]+"_errors.txt");
+
+
+
 
             // LÈXIC
             Scanner scanner = new Scanner(input);
-            scanner.initFitxer();
+            scanner.initFitxer(writerErrors);
             SymbolFactory sf = new ComplexSymbolFactory();
 
+            System.out.println("h");
             // SINTACTIC
             Parser parser = new Parser(scanner, sf);
             parser.parse();
@@ -53,7 +68,7 @@ public class Main {
 
             // TAULA SIMBOLS
             String ts = sem.getTs().toString();
-            FileWriter fitxerTaulaSimbols = new FileWriter("TaulaSimbols.txt");
+            FileWriter fitxerTaulaSimbols = new FileWriter(args[0]+"_TaulaSimbols.txt");
             fitxerTaulaSimbols.write(ts);
             fitxerTaulaSimbols.close();
 
@@ -65,23 +80,23 @@ public class Main {
                 codi = arbre.generarCodiTresAdreces();
 
                 String TaulaVars = codi.getTv().toString();
-                FileWriter fitxerTV = new FileWriter("TaulaVariables.txt");
+                FileWriter fitxerTV = new FileWriter(args[0]+"_TaulaVariables.txt");
                 fitxerTV.write(TaulaVars);
                 fitxerTV.close();
 
                 String TaulaProcediments = codi.getTp().toString();
-                FileWriter fitxerTP = new FileWriter("TaulaProcediments.txt");
+                FileWriter fitxerTP = new FileWriter(args[0]+"_TaulaProcediments.txt");
                 fitxerTP.write(TaulaProcediments);
                 fitxerTP.close();
 
                 String codiIntermedi = codi.toString();
-                FileWriter codiIntermediFile = new FileWriter("codiIntermedi.txt");
+                FileWriter codiIntermediFile = new FileWriter(args[0]+"_codiIntermedi.txt");
                 codiIntermediFile.write(codiIntermedi);
 
                 codiIntermediFile.close();
 
                 // CODI ENSSAMBLADOR
-                codi68k c = new codi68k("exe", codi);
+                codi68k c = new codi68k(args[0]+"_exe", codi);
                 c.generaAssembly();
 
             }else{

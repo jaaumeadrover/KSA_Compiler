@@ -18,15 +18,17 @@ public class Simbol {
     private int fila;
     private int nivell;
     private int dimensionalitat;
+    private boolean init;
 
 
-    public Simbol(String idAutoIncrement, TipusSub tipoSub, Tipus tipus, int fila, int nivell,int dimensio) {
+    public Simbol(String idAutoIncrement, TipusSub tipoSub, Tipus tipus, int fila, int nivell,int dimensio,boolean init) {
         this.id = idAutoIncrement;
         this.tiopusSub = tipoSub;
         this.tipus = tipus;
         this.fila = fila;
         this.nivell = nivell;
         this.dimensionalitat=dimensio;
+        this.init=init;
     }
 
     public boolean equals(Simbol simbol){
@@ -45,7 +47,14 @@ public class Simbol {
     public String getIdAutoIncrement() {
         return id;
     }
+    
+    public boolean esInit(){
+        return this.init;
+    }
 
+    public void inicialitza(){
+        this.init=true;
+    }
     public Tipus getTipus() {
         return tipus;
     }

@@ -151,7 +151,7 @@ public class Semantic {
                                 ((varinit.getExpr().getValor().getIndex() == 3) || (varinit.getExpr().getValor().getIndex() == 4))){
                             return true;
                         }else{
-                            errors.add("ERROR Semántic, La constant "+id+ " s'ha d'inicialitzar amb un valor enter BOOLEAN o INT. Linia: "+(posicio+1));
+                            errors.add("ERROR Semántic, La constant "+iden+ " s'ha d'inicialitzar amb un valor enter BOOLEAN o INT. Linia: "+(posicio+1));
                             return false;
                         }
                     }else{

@@ -1,0 +1,4 @@
+//Copia en aquest fitxer el codi que vulguis executar
+func int suma(int a,int b){
+    return a+b;
+}
