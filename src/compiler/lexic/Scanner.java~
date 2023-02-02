@@ -437,7 +437,7 @@ public class Scanner implements java_cup.runtime.Scanner {
             fitxerTokens.write(s.toString() + "\n");
             return s;
     }
-    
+
     private void afegirError(String str,int linea) throws IOException{
         String err="Error lèxic: token: "+str+", línea: "+linea+"\n";
         fitxerErrors.write(err);
@@ -857,7 +857,7 @@ public class Scanner implements java_cup.runtime.Scanner {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1:
-            { afegirError(yytext(), yyline);
+            { afegirError(this.yytext(), yyline);
             }
             // fall through
           case 49: break;
