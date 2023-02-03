@@ -394,7 +394,7 @@ literal ::=          str:str {:RESULT = new SymbolLiteral(str.toString());:}
 exprSimple ::=valor:val operacio:oper            {://Si el valor es correcte
                                                             if(!val.esBuit()){
                                                                 if(oper.isAssignacio()){
-                                                                    Simbol s=ts.consulta(val.toString());
+                                                                    Simbol s=ts.consultaSimbol(val.toString());
                                                                     s.inicialitza();
                                                                     RESULT=null;
                                                                     if(comprovaTipus.gestIdArray(val.getIden(),val.isArrayElement())){

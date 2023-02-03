@@ -53,7 +53,7 @@ La línia anterior és una alternativa a la indicació element a element:
 
 id		= [A-Za-z_][A-Za-z0-9_]*
 integer  = {sub}?[0-9][0-9]*
-str  = [\"]([A-Za-z_] | ({blank}))*[\"]
+str  = [\"](. | ({blank}))*[\"]
 
 
 //Simbols Operadors
@@ -121,9 +121,9 @@ r_comment = "//"([^\n])*
     FileWriter fitxerErrors;
     private ArrayList<String> errors = new ArrayList<>();
 
-    public void initFitxer(FileWriter errors)throws IOException{
+    public void initFitxer(FileWriter errors, String args)throws IOException{
          // Cream el fitxer de tokens
-         fitxerTokens = new FileWriter("tokens.txt");
+         fitxerTokens = new FileWriter(args+"_tokens.txt");
          fitxerErrors=errors;
     }
 
@@ -159,7 +159,7 @@ r_comment = "//"([^\n])*
         String err="Error lèxic: token: "+str+", línea: "+linea+"\n";
         fitxerErrors.write(err);
         System.err.println(err);
-        System.out.println("error afegit");
+        fitxerErrors.close();
         System.exit(0);
     }
 

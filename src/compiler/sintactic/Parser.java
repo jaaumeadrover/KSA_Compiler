@@ -932,12 +932,6 @@ if(s==null){
 		Object iden = (Object)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		int error =  ts.afegeixSimbol(iden.toString(),t.getTipusSub(),Tipus.PARAM,0,0,true);
                                                             if(error==1){
-                                                               //tips.add(t.getTipusSub());
-                                                               //if(arr.getString()!=null){
-                                                                 //      tip.add(Tipus.ARRAY);
-                                                                   //    }else{
-                                                                     //  tip.add(Tipus.VAR);}
-                                                               
                                                                 RESULT = new SymbolContCap(contcap,t.getTipusSub(),arr.getString() ,iden.toString());
                                                             }else{
                                                                comprovaTipus.addError("ERROR Semántic, el parametre  "+iden.toString()+", ja existeix. Linea: "+(cur_token.left+1));
@@ -1195,7 +1189,8 @@ if(s==null){
 		//Si el valor es correcte
                                                             if(!val.esBuit()){
                                                                 if(oper.isAssignacio()){
-
+                                                                    Simbol s=ts.consultaSimbol(val.toString());
+                                                                    s.inicialitza();
                                                                     RESULT=null;
                                                                     if(comprovaTipus.gestIdArray(val.getIden(),val.isArrayElement())){
                                                                             if(comprovaTipus.gestAsig(val,oper)){

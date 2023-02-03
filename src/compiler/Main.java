@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package compiler;
 
 import compiler.ArbreSintactic.ArbreSintactic;
@@ -31,11 +28,9 @@ public class Main {
         Reader input = null;
 
         try {
-            //EN cas d'utilitzar windows utilitzar aquesta nomenclatura per al path --> EXEMPLE: "C:\\Users\\Jaume\\Desktop\\UIB\\Cursos\\TERCER\\1r quatri\\COMPILADORS\\PRÀCTICA KSA\\KSA_Compiler\\src\\TESTING\\1.Funcions\\1.Funcions\\Error4.ksa"
             if(args.length>0){
                 try {
                     input = new FileReader(args[0]);
-                    //input=new FileReader("C:\\Users\\Jaume\\Desktop\\UIB\\Cursos\\TERCER\\1r quatri\\COMPILADORS\\PRÀCTICA KSA\\KSA_Compiler\\src\\compiler\\prova.ksa");
                 }catch(Exception e){
                     System.err.println("El fitxer "+args[0]+" té un error "+e);
                 }
@@ -43,19 +38,12 @@ public class Main {
                 System.err.println("Insereix un nom de fitxer");
                 System.exit(0);
             }
-            //input = new FileReader("//Users/joanbalaguer/Desktop/Compiladors/Practica/KSA_Compiler/src/TESTING/1.Funcions/bubbleSort.ksa");
-
             FileWriter writerErrors = new FileWriter(args[0]+"_errors.txt");
-
-
-
 
             // LÈXIC
             Scanner scanner = new Scanner(input);
-            scanner.initFitxer(writerErrors);
+            scanner.initFitxer(writerErrors, args[0]);
             SymbolFactory sf = new ComplexSymbolFactory();
-
-            System.out.println("h");
             // SINTACTIC
             Parser parser = new Parser(scanner, sf);
             parser.parse();
