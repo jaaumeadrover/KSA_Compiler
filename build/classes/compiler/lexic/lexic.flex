@@ -160,6 +160,7 @@ r_comment = "//"([^\n])*
         fitxerErrors.write(err);
         System.err.println(err);
         fitxerErrors.close();
+        fitxerTokens.close();
         System.exit(0);
     }
 

@@ -376,6 +376,7 @@ public class Scanner implements java_cup.runtime.Scanner {
         fitxerErrors.write(err);
         System.err.println(err);
         fitxerErrors.close();
+        fitxerTokens.close();
         System.exit(0);
     }
 
