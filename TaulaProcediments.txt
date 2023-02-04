@@ -1,3 +1,0 @@
-bubbleSort; 2; null; 
-	TipusSub: INT --> n_1
-	TipusSub: INT --> A_1
